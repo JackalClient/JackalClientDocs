@@ -1,7 +1,7 @@
 Shell
 命令行
 分类：Misc
-描述：暂无描述
+描述：客户端的命令行系统。
 
 需求
 - 安全级别：常规模块
@@ -12,9 +12,10 @@ Shell
 - 版本属性：普通可用
 
 介绍
-Shell（命令行）用于暂无描述。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Exclusive Mode、Batch File Execution Notify。
+Shell（命令行）用于打开客户端命令行。
+Console 控制台指的是黑窗口，Shell 命令行指的是命令系统，打开Shell会自动打开Console。有Console你只能看消息，如果要输入命令必须开这个Shell命令行模块。
+你可以使用Tab补全命令及其一些固定参数。
+退出命令行用break命令。退出客户端用exit命令。
 
 配置项
 - Theme（主题）
@@ -99,7 +100,36 @@ Shell（命令行）用于暂无描述。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+
+/interpret <path...>
+同步解释执行一个客户端批处理文件(.jbat)或者宏文件(.jm)。
+
+/perform <path...>
+异步解释执行一个客户端批处理文件(.jbat)或者宏文件(.jm)。
+
+/exclusive [enable]
+切换命令行沉浸模式。沉浸模式开启后，HUD将会隐藏。
+enable 是布尔类型，不填则表示切换。
+
+/enable <ModuleName>
+/e <ModuleName>
+/disable <ModuleName>
+/d <ModuleName>
+/toggle <ModuleName>
+/t <ModuleName>
+/<ModuleName>
+改变模块开关状态。
+
+/enables
+/enabled
+查看启用了哪些模块。
+
+/console max
+最大化控制台。
+/console min
+最小化控制台。
+/console fix
+把控制台视觉相关配置切到兼容预设（如关闭高级背景、恢复默认非客户区渲染等），并立即应用到当前控制台窗口。
 
 相关模块
 - [Active (活动)](./Active.md)
@@ -112,5 +142,6 @@ Shell（命令行）用于暂无描述。
 - [Encryptor (加密器)](./Encryptor.md)
 
 相关资料
-无
+【[C++] 我手搓了一个非常实用的客户端命令行】
+https://www.bilibili.com/video/BV1hXGfzNEBF
 

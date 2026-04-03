@@ -33,5 +33,4 @@ GUIStyler（GUI风格）用于暂无描述。
 无
 
 相关资料
-无
-
+[Windows 合法外纪又一次更新了它的GUI](https://www.bilibili.com/video/BV1Hq21BmEwq)

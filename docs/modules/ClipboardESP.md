@@ -111,7 +111,23 @@ ClipboardESP（剪贴板透视）用于暂无描述。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+
+/clipboard <args...>
+剪贴板相关命令。
+
+/clipboard show
+读取并显示剪贴板。
+
+/clipboard get
+获取并存储剪贴板内容到变量 it。
+
+/clipboard store text <text...>
+/clipboard store file <path...>
+/clipboard store movefile <path...>
+写入剪贴板。
+
+/clipboard clear
+清空剪贴板。
 
 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)

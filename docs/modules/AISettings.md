@@ -143,7 +143,55 @@ AISettings（AI设定）用于关于AI的设置。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+
+/aisettings
+/ai
+查看 AI 配置。
+
+/aisettings model/models
+查看当前选中的 AI 模型名称。
+
+/aisettings model <name>
+设置当前选中的 AI 模型名称。
+
+/aisettings local
+设置当前 AI 类型为本地大模型。
+
+/aisettings localmodels
+查看本地 Ollama 模型列表。
+
+/aisettings custom
+设置当前 AI 类型为自定义在线大模型API。
+
+/chat [content...=clipboard]
+/chatstream [content...=clipboard]
+/chat0 [content=...=clipboard]
+/chatstream0 [content...=clipboard]
+与 AI 对话。你需要在 AI Settings 模块中配置好 APIKEY 等参数。
+/chatstream 命令强制以流式输出。
+其中 /chat0 和 /chatstream0 为单次对话，没有上下文，无法持续对话。
+其余默认会话为default，支持上下文，但是有上限。你可以使用/chathistory switch命令切换会话。
+	
+
+/chathistory
+/chathistory get [session=cur_chat_session]
+输出会话聊天记录。默认为当前选中的会话。
+
+/chathistory list
+/chathistory enum
+枚举所有聊天会话及其大小。
+
+/chathistory switch [session=default]
+切换聊天会话。不同的会话会记录不同的聊天记录。
+
+/chathistory pop [session=cur_chat_session]
+删除指定聊天会话的最后一问答。这样AI就不知道你上一句发的是什么了，但是仍能知道之前的上下文。
+
+/chathistory clear [session=cur_chat_session]
+清除指定聊天会话记录（上下文）。
+
+/forget
+等价于 /chathistory clear livestream
 
 相关模块
 - [IRC (聊天室)](./IRC.md)

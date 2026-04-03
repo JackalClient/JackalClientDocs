@@ -272,5 +272,5 @@ Island（灵动岛）用于显示一个酷炫的灵动岛。
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
 相关资料
-无
+[能显示歌词的 Windows 灵动岛？ Jackal 0.7a 更新](https://www.bilibili.com/video/BV1Xxx9zsEC4)
 

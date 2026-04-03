@@ -34,7 +34,9 @@ ListModules 用于输出目标进程的模块清单（模块名、大小、路�
 该模块带并发保护：上一次枚举未结束时会拒绝再次启动。若提示正在运行，请等待当前任务完成。
 
 相关命令
-- `/listmodules [hproc/name/pid]`：枚举目标进程模块。
+/listmods [hproc/name/pid]
+/listmodules [hproc/name/pid]
+启用枚举模块（指DLL等）功能。如果参数不填，则是模块配置中的进程。
 
 相关模块
 - [ProcessManager (进程管理器)](./ProcessManager.md)

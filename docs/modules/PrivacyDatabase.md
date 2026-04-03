@@ -28,14 +28,46 @@ PrivacyDatabase 是本地 SQLite 隐私数据管理模块，用于结构化保�
 首次使用建议先执行 `/pdb init` 初始化库结构；修改目录后也应重新确认数据库是否已创建，避免出现“命令可用但无数据文件”的情况。
 
 相关命令
-- `/privacydatabase <args...>`：隐私数据库主命令。
-- `/privacydb <args...>`：同义命令。
-- `/pdb init`：初始化数据库文件与表结构。
-- `/pdb add [人名]`：交互式录入信息。
-- `/pdb set <name> <key> [value]`：设置字段值。
-- `/pdb upsert <name> <key> [value]`：不存在则创建后写入。
-- `/pdb list`、`/pdb query`、`/pdb search`：查询与检索。
-- `/pdb uninstall`：移除数据库。
+/privacydatabase <args...>
+/privacydb <args...>
+/pdb <args...>
+隐私数据库命令。请使用 /help pdb 命令查看详细帮助。
+
+/pdb init
+初始化数据库。请在 Privacy Database 模块中设定目录路径。 
+
+/pdb add [人名]
+添加人员信息。输入命令后开启一个控制台的交互式菜单，如果指定人名参数，则菜单中人名就被填写；然后你可以选择菜单多种的某几个数据项进行填写。选择“保存”则录入退出。
+
+/pdb delete/remove <人名>
+移除人员信息。
+
+/pdb list/enum/show/ls
+输出所有人员信息。
+
+/pdb list2d/table
+以二维表形式输出所有人员信息。
+
+/pdb query <人名>
+查询人员的所有信息。每行都是键：值的格式。
+
+/pdb search
+根据指定信息查询人员信息。开启一个控制台交互式菜单，选择填写什么数据项筛选器，然后选择“开始筛选”筛选，然后输出结果。
+
+/pdb set <name> <key> [value]
+设置指定人员信息。value 为空时清空该项 key。
+
+/pdb upsert <name> <key> [value]
+设置指定人员信息。value 为空时清空该项 key。如果 name 不存在，则自动创建新纪录。
+
+/pdb paste <format>
+从剪贴板以指定格式导入数据。例如一百行学号空格姓名，输入/pdb paste student_id name即可批量录入。
+
+/pdb exec <command>
+执行数据库命令。
+
+/pdb uninstall
+移除数据库。
 
 相关模块
 - [PrivacySpy (隐私密探)](./PrivacySpy.md)

@@ -37,6 +37,57 @@ Run 用于按给定目标程序、参数和工作目录启动进程。
 相关命令
 - `/run <command...>`：同步执行命令。
 - `/exe <command...>`、`/exec <command...>`、`/runasync <command...>`：异步执行命令。
+/runspeak <command...>
+同步执行命令并讲述其输出。
+
+/iarun <params...>
+交互式命令运行。params 为相关参数。
+
+/iarun start <command...>
+启动交互式命令运行。你可以用指令操纵对它的行为。
+
+/iarun restart <command...>
+重新启动交互式命令运行。如果正在运行，会先关闭。
+
+/iarun info
+输出当前交互式命令运行的状态信息。
+
+/iarun input/in <content...>
+向交互式进程的 STDIN 发送内容。
+
+/iarun output/out <content...>
+/iarun outputpatient <content...>
+从交互式进程的 STDOUT 读取内容并输出到控制台。output/out 会有一个5秒的超时时间，而使用 outputpatient 会永远等待，所以不推荐。
+
+/iarun stop
+关闭当前交互式命令。非强制。
+
+/iarun kill
+强制关闭当前交互式命令的进程。
+
+
+
+/legitexec <command...>
+模拟用户异步执行命令。旨在绕过某些杀软拦截。
+
+/parentspoofexec <command...>
+父进程欺骗异步执行命令。父进程会在一些合适的进程里挑选。
+
+/sudo <command...>
+/sudobypass <command...>
+/sudobypassex <method> <command...>
+确保以管理员身份同步执行命令。如果使用 /sudobypass，则会调用用户账户控制绕过手段。 /sudobypassex 允许你指定绕过方法。
+
+
+/runps <path...>
+/runpsfile <path...>
+/execps <path...>
+/execpsfile <path...>
+绕过执行策略运行一个后缀名为 .ps1 的 PowerShell 脚本。前者同步，后者异步。
+
+/runpsbase64 <base64>
+/execpsbase64 <base64>
+执行 Base64 加密过的 PowerShell 命令。前者同步，后者异步。
 
 相关模块
 - [QuickRun (快速运行)](./QuickRun.md)

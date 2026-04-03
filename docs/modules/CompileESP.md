@@ -108,5 +108,5 @@ CompileESP 会识别常见编译链进程（MSVC/GCC/Clang/Java 等），在“�
 - [Arraylist (模块列表)](./Arraylist.md)
 
 相关资料
-无
+[『CompileESP（编译透视）』insane bypass showcase](https://www.bilibili.com/video/BV1rNftBfErt)
 

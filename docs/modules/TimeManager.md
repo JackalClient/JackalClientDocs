@@ -13,7 +13,6 @@ TimeManager
 
 介绍
 TimeManager（时间管理）用于调整系统时间及其流速。
-适合在日常管理与自动化场景中按需启用。
 建议先以管理员身份运行客户端。
 初次使用可优先调整：Mode、Sync Method (Disabling Freeze)、Sync Method (Disabling Set)。
 
@@ -88,17 +87,59 @@ TimeManager（时间管理）用于调整系统时间及其流速。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+
+/timestamp [timestamp=now]
+/time [params.../timestamp=now]
+查看当前时间戳及其字符串形式。/time 还可以有很多子命令。
+
+/time sync [method=web/memory]
+同步系统时间。需要管理员权限。web表示用网络时间同步，memory表示用内存时间同步。使用该命令不会修改 TimeManager 模块的开关状态。
+
+/time restore [method=web/memory]
+关闭 TimeManager 模块后再执行 /time sync。需要管理员权限。
+
+/time set <timestamp/string>
+/time set <year> <month> <day> <hour> <minute> <second>
+/time set <hour> <minute> <second>
+/time set <hour> <minute>
+/time setonce <timestamp/string>
+/time setonce <year> <month> <day> <hour> <minute> <second>
+/time setonce <hour> <minute> <second>
+/time setonce <hour> <minute>
+设置系统时间。需要管理员权限。set 会打开 TimeManager 模块且自动修改模块配置使得符合你的命令参数。而 setonce 为单次操作，不会打开 TimeManager 模块。注意 <string> 参数表示你可以用字符串形式修改时间，包括下面的格式：
+YYYY/MM/DD
+YYYY/MM/DD HH:mm:SS
+YYYY/MM/DD HH:mm
+MM/DD
+MM/DD HH:mm:SS
+MM/DD HH:mm
+HH:mm:SS
+HH:mm
+
+/time memory
+显示当前 TimeManager 存储到内存中的修改数据。
+
+/time speed [value]
+/time accelspeed [value]
+查看或设置 TimeManager 的加速倍率（Acceleration Speed）。不指定 value 时仅显示当前模式和加速倍率。
+
+/time accelerate [speed]
+/time accel [speed]
+切换 TimeManager 到 Accelerated 模式并启用模块。需要管理员权限。该模式只修改时间流速，不直接设置固定时间点和偏移量。
+也可以不填 speed，这时使用 TimeManager 配置中的 Acceleration Speed。
+如果当前模式属于 Offset 系列，则会切换到 Offset Accelerated；如果属于 Set 系列，则会切换到 Set Accelerated。
+
+/time offset <expressions...>
+/time offsetonce <expressions...>
+对系统时间进行偏移。需要管理员权限。offset 会打开 TimeManager 模块且自动修改模块配置使得符合你的命令参数。而 offsetonce 为单次操作，不会打开 TimeManager 模块。expressions 表达式需要符合下面的格式：
+单位操作符数值
+单位包括：year=yr=y, month=mon, day=d, hour=hr=h, minute=min=m, second=sec=s
+操作符包括：+ - =  （其中如果使用=，则用算法将其转为+或-）
+数值就是纯数字。示例：/time offset hr+1 m-10 sec=50   表示时间+1小时，-10分钟，秒设为50
 
 相关模块
-- [Active (活动)](./Active.md)
-- [AutoSpeak (自动讲述)](./AutoSpeak.md)
-- [AntiMicrophone (反麦克风)](./AntiMicrophone.md)
-- [Console (控制台)](./Console.md)
-- [Shell (命令行)](./Shell.md)
-- [QuickCommand (快速命令)](./QuickCommand.md)
-- [ForceTopmost (强制置顶)](./ForceTopmost.md)
-- [MemeTrigger (梗触发)](./MemeTrigger.md)
+- [TimeDisplay (时间显示)](./TimeDisplay.md)
+- [OnlineTime (在线时间)](./OnlineTime.md)
 
 相关资料
 无

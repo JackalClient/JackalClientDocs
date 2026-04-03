@@ -12,9 +12,7 @@ TimeDisplay
 - 版本属性：普通可用
 
 介绍
-TimeDisplay（时间显示）用于暂无描述。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Online Time Update Cooldown (ms)、Time Announcement Mode。
+TimeDisplay（时间显示）用于显示系统时间。
 
 配置项
 - Font Size（字号）
@@ -35,17 +33,17 @@ TimeDisplay（时间显示）用于暂无描述。
  说明：用于控制检测/刷新/动画节奏。默认值 400.0f 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
 - Online Time（在线时间）
  类型：布尔；默认：false
- 说明：这是开关型配置。默认值 false 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
+ 说明：打开后会使用 Online Time 模块采用网络时间而不是本地系统时间。
 - Online Time Update Cooldown (ms)（在线时间更新冷却 (毫秒)）
  类型：数值；默认：60000L
- 说明：用于控制检测/刷新/动画节奏。默认值 60000L 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
+ 说明：网络时间同步冷却。
 - Time Announcement（报时）
  类型：枚举；默认："Notify"
- 说明：这是选项型配置。默认值 Notify 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
+ 说明：报时通知类型。
  可选：Off（关闭）；Notify（通知）；Chatter（弹幕）；WinToast（系统通知）；Title（标题）；Actionbar（行为栏）
 - Time Announcement Mode（报时模式）
  类型：枚举；默认："Half Hour"
- 说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 Half Hour ，确认稳定后再逐项切换比较效果。
+ 说明：多久报一次时间。
  可选：Half Hour（半小时）；Hour（小时）；Custom（自定义）
 - Time Announcement Custom Rules (Sep With Semicolon)（报时自定义规则（用分号分隔））
  类型：文本；默认："**:00;**:20;**:40"
@@ -66,7 +64,7 @@ TimeDisplay（时间显示）用于暂无描述。
  可选：Flow（流动）；其余颜色见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
 - New Day Notification（新日子通知）
  类型：枚举；默认："Title"
- 说明：这是选项型配置。默认值 Title 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
+ 说明：在零点的时候通知这是一年中的第几天。
  可选：Off（关闭）；Notify（通知）；Chatter（弹幕）；WinToast（系统通知）；Title（标题）；Actionbar（行为栏）
 - New Day Title Color（新日子标题颜色）
  类型：枚举；默认："Flow"
@@ -146,20 +144,14 @@ TimeDisplay（时间显示）用于暂无描述。
 - 50. 为 TimeDisplay 添加配置：
 
 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+
 
 相关命令
-无
+/timedisplay
 
 相关模块
-- [Arraylist (模块列表)](./Arraylist.md)
-- [Ambience (环境气氛)](./Ambience.md)
-- [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
-- [AutoTitle (自动标题)](./AutoTitle.md)
-- [AutoTotem (自动图腾)](./AutoTotem.md)
-- [AudioVisualizer (音频可视化)](./AudioVisualizer.md)
-- [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
-- [BetterLyrics (更好的歌词)](./BetterLyrics.md)
+- [OnlineTime (在线时间)](./OnlineTime.md)
+- [TimeManager (时间管理)](./TimeManager.md)
 
 相关资料
 无

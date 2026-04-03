@@ -13,20 +13,21 @@ Vape
 
 介绍
 Vape（电子烟）用于绘制电子烟的标志。有点帅。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Color、Easing Speed (0~1)、Logo。
+作者后来又在 CustomHUD 模块添加了另外的可拖动的客户端logo，可以去看看。
 
 配置项
+- Logo（标志）
+ 类型：枚举；默认："Vape"
+ 说明：
+ 可选：Vape（未收录）；LiquidBounce（水影）；Neverlose（未收录）；Jackal（未收录）；Custom（自定义）
 - Color（颜色）
  类型：枚举；默认："White"
  说明：用于控制视觉配色。建议先选对比度高的配色保证可读性；若是动态颜色，注意在复杂背景下的辨识度。
+ 
 - Easing Speed (0~1)（缓动速率 (0~1)）
  类型：数值；默认：0.1f
  说明：这是数值型配置。默认值 0.1f 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
-- Logo（标志）
- 类型：枚举；默认："Vape"
- 说明：这是选项型配置。默认值 Vape 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
- 可选：Vape（未收录）；LiquidBounce（水影）；Neverlose（未收录）；Jackal（未收录）；Custom（自定义）
+
 - Give Way to Mouse（给鼠标让道）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
@@ -43,20 +44,14 @@ Vape（电子烟）用于绘制电子烟的标志。有点帅。
 无（HISTORY 中暂无明确记录）
 
 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+
 
 相关命令
 无
 
 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
-- [Ambience (环境气氛)](./Ambience.md)
-- [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
-- [AutoTitle (自动标题)](./AutoTitle.md)
-- [AutoTotem (自动图腾)](./AutoTotem.md)
-- [AudioVisualizer (音频可视化)](./AudioVisualizer.md)
-- [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
-- [BetterLyrics (更好的歌词)](./BetterLyrics.md)
+- [CustomHUD (自定义显示)](./CustomHUD.md)
 
 相关资料
 无

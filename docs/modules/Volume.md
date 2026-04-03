@@ -12,14 +12,12 @@ Volume
 - 版本属性：普通可用
 
 介绍
-Volume（音量）用于暂无描述。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Auto Mute Notify、Hide HUD When Menu On、Volume Mode。
+Volume（音量）用于控制系统和进程的音量。
 
 配置项
 - Auto Mute（自动静音）
  类型：枚举；默认："Off"
- 说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
+ 说明：在特定场景自动打开静音模块。
  可选：Off（关闭）；Once On Launch（Once 开启 Launch）；Output Device Changed（未收录）；Output Device Name Keyword When Changed（Output Device 名称 Keyword 何时 Changed）
 - Off（关闭）
  类型：文本；默认："Once On Launch", "Output Device Changed", "Output Device Name Keyword When Changed"
@@ -72,11 +70,11 @@ Volume（音量）用于暂无描述。
  可选：Off（关闭）；Console Output（控制台输出）；Notify（通知）
 - Wheel System Volume Adjust（系统音量滚轮调节）
  类型：枚举；默认："Mouse On Taskbar"
- 说明：这是选项型配置。默认值 Mouse On Taskbar 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
+ 说明：选择 Mouse On Taskbar 后，在任务栏上滚轮就能调节系统音量。
  可选：Off（关闭）；LAlt（未收录）；RAlt（未收录）；Mouse On Taskbar（鼠标在任务栏上）
 - Wheel Process Volume Adjust（进程音量滚轮调节）
  类型：枚举；默认："Mouse On Caption"
- 说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。
+ 说明：
  可选：Off（关闭）；LAlt（未收录）；RAlt（未收录）；Mouse On Caption（鼠标在标题栏上）
 - Process Volume Smart ID Infer（进程音量智能ID推断）
  类型：布尔；默认：true
@@ -98,13 +96,13 @@ Volume（音量）用于暂无描述。
  说明：用于控制检测/刷新/动画节奏。默认值 300L 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
 - Limit System Volume（限制系统音量）
  类型：布尔；默认：false
- 说明：这是开关型配置。默认值 false 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
+ 说明：打开后，会保证系统音量在 [System Volume Min, System Volume Max] 之间。
 - System Volume Min（系统音量最小值）
  类型：数值；默认：1
- 说明：这是数值型配置。默认值 1 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
+ 说明：
 - System Volume Max（系统音量最大值）
  类型：数值；默认：50
- 说明：这是数值型配置。默认值 50 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
+ 说明：
 历史更新
 - 1. 修复 Volume 模块内的按键绑定错误的问题。
 - 17. 将 Volume 模块的三个按键改成自定义。
@@ -114,17 +112,22 @@ Volume（音量）用于暂无描述。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+
+/volume get [pid]
+如果不指定pid，则获取系统音量。否则获取指定进程音量。
+
+/volume enum/show/display/list
+展示系统混音器。包括系统音量和各个进程音量。
+
+/volume set <volume>
+设置系统音量 (0~100)
+
+/volume set <pid> <volume>
+设置某进程音量 (0~100)
 
 相关模块
-- [Active (活动)](./Active.md)
-- [AutoSpeak (自动讲述)](./AutoSpeak.md)
+- [Mute (静音)](./Mute.md)
 - [AntiMicrophone (反麦克风)](./AntiMicrophone.md)
-- [Console (控制台)](./Console.md)
-- [Shell (命令行)](./Shell.md)
-- [QuickCommand (快速命令)](./QuickCommand.md)
-- [ForceTopmost (强制置顶)](./ForceTopmost.md)
-- [MemeTrigger (梗触发)](./MemeTrigger.md)
 
 相关资料
 无

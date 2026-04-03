@@ -108,5 +108,4 @@ FancyTexts（花式文字）用于显示一些带有动画和特效的花哨文�
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
 相关资料
-无
-
+[C++根据音乐实时生成文字PV (?)](https://www.bilibili.com/video/BV15b9GB8EX5)

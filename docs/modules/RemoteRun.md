@@ -48,7 +48,15 @@ RemoteRun 的目标是“在别的进程里执行命令行”。它会先筛选�
 `Async NoWait` 不会等待结果回传，统计信息仅代表已下发次数，不代表全部执行成功。
 
 相关命令
-无
+
+/remoterun
+切换 RemoteRun 模块。
+
+/remoterun <hprocess> <command...>
+/remoterun32 <hprocess> <command...>
+/remoterun64 <hprocess> <command...>
+注入指定进程使之运行指定的命令。
+如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
 
 相关模块
 - [Injector (注入器)](./Injector.md)

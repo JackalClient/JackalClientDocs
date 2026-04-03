@@ -59,4 +59,4 @@ Speedhack 会向目标进程注入 `JDSpeedhack` 组件，让目标运行速度�
 - [ProcessManager (进程管理器)](./ProcessManager.md)
 
 相关资料
-无
+[Timer/Speedhack | 任意应用的基础变速 \[ft.Jackal\]](https://www.bilibili.com/video/BV1LTMPzCEXK)

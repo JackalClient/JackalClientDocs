@@ -67,7 +67,17 @@ BiliVideo（B站视频）用于查询并输出指定的B站视频的信息。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+/bili video <aid/bid/link>
+查看B站视频信息。会进入一个可交互页面。
+
+/bili video <aid/bid/link> summary
+使用人工智能总结视频信息。
+
+/bili video <aid/bid/link> comment
+使用人工智能生成并发送一条类似的评论。
+
+/bili video <aid/bid/link> gencomment
+使用人工智能生成一条类似的评论。仅生成不发送。
 
 相关模块
 - [IRC (聊天室)](./IRC.md)

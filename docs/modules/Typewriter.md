@@ -127,5 +127,6 @@ Typewriter（打字机）用于自动帮你输入段落。
 - [MouseESP (鼠标透视)](./MouseESP.md)
 
 相关资料
-无
+[\[ft.Jackal\] 热情的卖课骗子协助我测试刷屏器模块。](https://www.bilibili.com/video/BV1yfRvYQEMe)
+[时隔数月再次测试 Typewriter 刷屏器 - BalancedTimer Bypass 180bps](https://www.bilibili.com/video/BV19Jn8zCEri)
 

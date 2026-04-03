@@ -1,7 +1,7 @@
 Console
 控制台
 分类：Misc
-描述：暂无描述
+描述：黑窗口。显示通知消息以及所有的信息、警告、错误等。建议开启。
 
 需求
 - 安全级别：常规模块
@@ -12,9 +12,8 @@ Console
 - 版本属性：普通可用
 
 介绍
-Console（控制台）用于暂无描述。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Disable Insert Mode、Module Toggle Mode、Dark Mode。
+Console（控制台）就是那个黑窗口。
+**如果你需要输入命令，请打开 Shell 命令行 模块。**
 
 配置项
 - Random Title（随机标题）
@@ -71,21 +70,21 @@ Console（控制台）用于暂无描述。
 - 6. 为 Console 模块添加配置：Disable Close，可以防止控制台按右上角叉被关闭。
 
 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+如果遇到看不到字但是截图和录屏反而可以看见的情况，请禁用 Non-client Rendering Policy
 
 相关命令
-无
+
+/console max
+最大化控制台。
+/console min
+最小化控制台。
+/console fix
+把控制台视觉相关配置切到兼容预设（如关闭高级背景、恢复默认非客户区渲染等），并立即应用到当前控制台窗口。
 
 相关模块
-- [Active (活动)](./Active.md)
-- [AutoSpeak (自动讲述)](./AutoSpeak.md)
-- [AntiMicrophone (反麦克风)](./AntiMicrophone.md)
 - [Shell (命令行)](./Shell.md)
-- [QuickCommand (快速命令)](./QuickCommand.md)
-- [ForceTopmost (强制置顶)](./ForceTopmost.md)
-- [MemeTrigger (梗触发)](./MemeTrigger.md)
-- [Encryptor (加密器)](./Encryptor.md)
 
 相关资料
-无
+【[C++] 我手搓了一个非常实用的客户端命令行】
+https://www.bilibili.com/video/BV1hXGfzNEBF
 

@@ -12,9 +12,7 @@ ClipboardTweaks
 - 版本属性：普通可用
 
 介绍
-ClipboardTweaks（剪贴板功能）用于一些剪贴板的实用功能。
-适合键鼠行为控制、输入增强和自动化操作场景。
-初次使用可优先调整：Notify、Update Cooldown (ms)、Add Spaces Mode。
+ClipboardTweaks（剪贴板功能）用于对复制的文字开展混淆。
 
 配置项
 - Notify（通知）
@@ -104,5 +102,5 @@ ClipboardTweaks（剪贴板功能）用于一些剪贴板的实用功能。
 - [MouseESP (鼠标透视)](./MouseESP.md)
 
 相关资料
-无
+[【活全家程序】构史句子生成器︒](https://www.bilibili.com/video/BV1Nd9KYMEkS)
 

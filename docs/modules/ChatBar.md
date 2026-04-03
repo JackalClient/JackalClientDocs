@@ -13,9 +13,7 @@ ChatBar
 - 版本属性：PRO 独有
 
 介绍
-ChatBar（聊天栏）用于暂无描述。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Sync Console Update Cooldown (ms)。
+ChatBar（聊天栏）用于绘制一个聊天栏，可以显示控制台信息、IRC消息、直播弹幕等。
 
 配置项
 - Background（背景）
@@ -123,17 +121,16 @@ ChatBar（聊天栏）用于暂无描述。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+
+/chatbar add [msg...]
+为聊天栏添加一条新消息。
+
+/chatbar clear
+清空聊天栏消息。
 
 相关模块
-- [Arraylist (模块列表)](./Arraylist.md)
-- [Ambience (环境气氛)](./Ambience.md)
-- [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
-- [AutoTitle (自动标题)](./AutoTitle.md)
-- [AutoTotem (自动图腾)](./AutoTotem.md)
-- [AudioVisualizer (音频可视化)](./AudioVisualizer.md)
-- [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
-- [BetterLyrics (更好的歌词)](./BetterLyrics.md)
+- [IRC (聊天室)](./IRC.md)
+- [Console (控制台)](./Console.md)
 
 相关资料
 无

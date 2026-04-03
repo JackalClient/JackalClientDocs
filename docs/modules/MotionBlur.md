@@ -95,5 +95,4 @@ MotionBlur（动态模糊）用于在屏幕上应用动态模糊。
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
 相关资料
-无
-
+[在 2k25 自制脱离游戏的屏幕实时动态模糊？](https://www.bilibili.com/video/BV1nFyyBTE5D)

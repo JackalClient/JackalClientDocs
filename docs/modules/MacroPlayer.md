@@ -84,18 +84,54 @@ MacroPlayer（宏播放）用于播放键盘和鼠标操作的宏。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+
+/key <down/press> <keycode/keyname...>
+/key <up/release> <keycode/keyname...>
+/key <once> <keycode/keyname...>f
+/key <async> <keycode/keyname...>
+模拟按键操作。上述四种分别对应按下、松开、同步按下松开、异步按下松开。后两种内部间隔 100 毫秒。
+
+/key repeat <count> <keycode/keyname...>
+重复按下并松开count次指定的按键。
+
+/key hold <duration_ms> <keycode/keyname...>
+按住指定的按键duration_ms毫秒后松开。
+
+/key clearinput
+清空当前输入框（持续按住 Backspace 直到 caret 位置不再变化，最多 30 秒）。
+
+/keys <Keys...>
+模拟多个按键操作。注意，多个按键需要用空格分隔而不是逗号或分号。
+
+/input [string...=clipboard]
+模拟输入字符串。
+
+/click [interval_ms=50]
+/lclick [interval_ms=50]
+/leftclick [interval_ms=50]
+模拟左键鼠标点击。interval_ms为按下松开之间的间隙时间（毫秒）。
+
+/rclick [interval_ms=50]
+/rightclick [interval_ms=50]
+模拟右键鼠标点击。interval_ms为按下松开之间的间隙时间（毫秒）。
+
+/mclick [interval_ms=50]
+/midclick [interval_ms=50]
+/middleclick [interval_ms=50]
+模拟中键鼠标点击。interval_ms为按下松开之间的间隙时间（毫秒）。
+
+/kbstatus
+列出正在被按下的按键。包括鼠标。
+
+/clearkb
+释放所有正在被按下的按键。包括鼠标。
+
+/cleartogglekeys
+清空正在被按下的切换键。
 
 相关模块
-- [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
-- [MouseWatcher (鼠标监视)](./MouseWatcher.md)
-- [MouseSwap (鼠标交换)](./MouseSwap.md)
-- [MouseDisabler (禁用鼠标)](./MouseDisabler.md)
-- [MouseTeleport (鼠标传送)](./MouseTeleport.md)
-- [MouseTrails (鼠标轨迹)](./MouseTrails.md)
-- [MouseESP (鼠标透视)](./MouseESP.md)
+- [MacroRecorder (宏录制)](./MacroRecorder.md)
 
 相关资料
-无
-
+ [\[ft.Jackal\] 使用「宏」在丝之歌进行自动刷念珠操作](https://www.bilibili.com/video/BV1VWpdz9EWp)

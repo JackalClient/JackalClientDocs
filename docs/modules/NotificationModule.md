@@ -1,4 +1,4 @@
-NotificationModule
+Notification
 通知
 分类：Misc
 描述：显示客户端的通知。
@@ -12,14 +12,15 @@ NotificationModule
 - 版本属性：普通可用
 
 介绍
-NotificationModule（通知）用于显示客户端的通知。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Override Notify When Hidden、Notify MessageBox Duration Coefficient、Notify Style。
+Notification（通知）用于控制客户端的通知。
+建议一直开着。
 
 配置项
-- Enabled（启用）
- 类型：布尔；默认：true
- 说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
+- Notify Metro Style（地铁型通知风格）
+ 类型：枚举；默认："Vape"
+ 说明：用于选择结果反馈方式。默认值 Vape 适合大多数场景；若你不想打扰可改为更安静的输出方式。
+ 可选：Old（老版）；Vape（未收录）；SilenceFix（未收录）；Naven（未收录）；Nexus（未收录）；Acid（未收录）；Southside（南方）；LiquidBounce NextGen（水影 NextGen）
+ 
 - Override Notify When Hidden（隐藏时用什么代替普通通知）
  类型：枚举；默认："WinToast"
  说明：用于选择结果反馈方式。默认值 WinToast 适合大多数场景；若你不想打扰可改为更安静的输出方式。
@@ -31,10 +32,7 @@ NotificationModule（通知）用于显示客户端的通知。
  类型：枚举；默认："Metro"
  说明：用于选择结果反馈方式。默认值 Metro 适合大多数场景；若你不想打扰可改为更安静的输出方式。
  可选：WinToast（系统通知）；Metro（地铁）；Chatter（弹幕）；Fancy（优美）；MessageBox（消息框）
-- Notify Metro Style（地铁型通知风格）
- 类型：枚举；默认："Vape"
- 说明：用于选择结果反馈方式。默认值 Vape 适合大多数场景；若你不想打扰可改为更安静的输出方式。
- 可选：Old（老版）；Vape（未收录）；SilenceFix（未收录）；Naven（未收录）；Nexus（未收录）；Acid（未收录）；Southside（南方）；LiquidBounce NextGen（水影 NextGen）
+
 - Notify Translator（通知翻译器）
  类型：枚举；默认："Off"
  说明：用于选择结果反馈方式。默认值 Off 适合大多数场景；若你不想打扰可改为更安静的输出方式。
@@ -121,26 +119,36 @@ NotificationModule（通知）用于显示客户端的通知。
 - hidden（隐藏）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
+ 
 历史更新
 - 47. 现在 Notification 的 Notify AntiSpam 已默认开启，作用是防止通知刷屏。
 - 50. 为 Notification 添加配置项：
 - 37. 将 TimeDisplay 模块的配置 Half Hour Notify 改为 Half Hour Notification，且可以选择以下选项：
 
 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+建议一直开着。
 
 相关命令
-无
+
+/notify [msg...]
+发出一条通知。
+
+/notifydict [msg...]
+尝试在字典中找到对应的翻译词汇后，发出一条通知。
+
+/chatter <content...>
+/tchatter <content...>
+/bchatter <content...>
+/rchatter <content...>
+/hchatter <content...>
+/vchatter <content...>
+发送一条弹幕。/tchatter 发送置顶弹幕。 /bchatter 发送置底弹幕。 /rchatter 发送反向弹幕。/hchatter 发送普通或反向弹幕。/vchatter 发送置顶或置底弹幕。
+
 
 相关模块
-- [Active (活动)](./Active.md)
-- [AutoSpeak (自动讲述)](./AutoSpeak.md)
-- [AntiMicrophone (反麦克风)](./AntiMicrophone.md)
+- [Arraylist (模块列表)](./Arraylist.md)
 - [Console (控制台)](./Console.md)
 - [Shell (命令行)](./Shell.md)
-- [QuickCommand (快速命令)](./QuickCommand.md)
-- [ForceTopmost (强制置顶)](./ForceTopmost.md)
-- [MemeTrigger (梗触发)](./MemeTrigger.md)
 
 相关资料
 无

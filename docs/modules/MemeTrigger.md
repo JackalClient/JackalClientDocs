@@ -52,7 +52,12 @@ MemeTrigger（梗触发）用于暂无描述。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+
+/meme
+枚举所有梗。
+
+/meme <name>
+同步触发一个梗。
 
 相关模块
 - [Active (活动)](./Active.md)
@@ -65,5 +70,4 @@ MemeTrigger（梗触发）用于暂无描述。
 - [Encryptor (加密器)](./Encryptor.md)
 
 相关资料
-无
-
+[发送快捷键让 Windows 随机触发一张『何意味』表情包](https://www.bilibili.com/video/BV1m42wBvEMS)

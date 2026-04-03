@@ -93,7 +93,68 @@ WindowMaster 部分动作会改变窗口扩展样式或可见性，建议优先�
 若 `Phantom Window Opacity` 改动后视觉未变化，通常是目标不在幻影窗口列表；先执行一次 Toggle Phantom Window。
 
 相关命令
-无
+
+/aim
+打开窗口锁定器，按下 Esc 取消，按下 Ctrl 锁定前端窗口，按下 Alt 锁定鼠标指向的窗口。
+倒计时 30 秒，超时后自动取消。
+
+/foreground
+/fore
+五秒后自动锁定前端窗口并赋值给 it.
+
+/pointat
+/here
+/there
+五秒后自动锁定鼠标指向的窗口并赋值给 it.
+
+/foregroundproc
+/foreproc
+五秒后自动锁定前端窗口所属的进程并赋值给 it.
+
+/pointatproc
+/hereproc
+/thereproc
+五秒后自动锁定鼠标指向的窗口所属的进程并赋值给 it.
+
+/focus [hwnd]
+/focus2 [hwnd]
+聚焦窗口。后者不会使用 SW_RESTORE 还原窗口。如果不填参数，则为客户端主窗口。
+
+/close [hwnd]
+向窗口发送关闭消息。超时时间为1秒。若不填参数则启用 Hidden 模块。
+
+/destroy <hwnd>
+向窗口发送销毁消息。超时时间为1秒。	
+
+/max [hwnd]
+最大化窗口。
+
+/min [hwnd]
+最小化窗口。
+
+/show [hwnd]
+显示窗口。
+
+/shownormal [hwnd]
+正常显示窗口。
+
+/hide [hwnd]
+隐藏窗口。
+
+/invisible [hwnd]
+将窗口不透明度改为1（完全不透明是255）
+
+/screenshot [hwnd]
+只给指定窗口截图。如果不指定参数，则切换 Screenshot 模块。 
+
+/ocr file <path...>
+对指定路径的图片进行文字识别。
+
+/ocr window <hwnd>
+对指定的窗口内容进行文字识别。
+
+/ocr windowex <hwnd>
+对指定的窗口内容进行文字识别。将会输出更详细的信息，包括坐标等。
 
 相关模块
 - [PrivateWindow (隐私窗口)](./PrivateWindow.md)

@@ -86,7 +86,19 @@ Speaker（讲述人）用于调用 Windows 的讲述人念一段文本。
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 相关命令
-无
+
+/speak [content...=clipboard]
+使用讲述人说话。
+
+/speakqueue
+查看讲述人缓冲队列。
+
+/speakqueue clear
+清空讲述人缓冲队列。
+
+/speakvoice
+/speakvoice list
+查看所有讲述人音色。
 
 相关模块
 - [Active (活动)](./Active.md)

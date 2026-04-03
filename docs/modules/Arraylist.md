@@ -15,10 +15,12 @@ Arraylist
 Minecraft作弊端的核心视觉之一。在右侧显示一个花里胡哨的列表，显示启用的模块。
 如果想在从中隐藏模块显示，可以在对应的模块的配置项里找到 `hidden隐藏`，打开就行了。或者使用 `/arraylist hide` 命令。
 Arraylist（模块列表）用于显示已启用模块列表。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Background Height Mode。
 
 配置项
+- Preset (预设)
+
+ 这个东西你改了之后会自动调整相应的参数，懒得你自己手动改了。
+
 - Hide When Menu On（菜单打开时不显示）
  类型：布尔；默认：false
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
@@ -200,10 +202,27 @@ Arraylist（模块列表）用于显示已启用模块列表。
 - 3. 修复了模块列表 HUD 字右侧无法对齐的问题。
 
 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+建议一直开着
 
 相关命令
-无
+
+/enables
+查看已启用的模块。
+
+/arraylist [params...]
+模块列表相关命令。不带参数时，切换 Arraylist 模块开关状态。
+
+/arraylist hide <moduleName/id>
+将指定模块在 Arraylist 中隐藏（修改模块配置项 hidden）。支持模糊匹配和模块ID。
+
+/arraylist show <moduleName/id>
+将指定模块在 Arraylist 中显示（修改模块配置项 hidden）。支持模糊匹配和模块ID。
+
+/arraylist showall
+将所有在 Arraylist 中被隐藏的模块恢复为显示（即 hidden=false）。
+
+/arraylist hidden
+枚举当前在 Arraylist 中被隐藏的所有模块。
 
 相关模块
 - [Shell (命令行)](./Shell.md)

@@ -140,5 +140,4 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
 - [MouseESP (鼠标透视)](./MouseESP.md)
 
 相关资料
-无
-
+[Jackal 加入了完全外置的自动嘲讽...](https://www.bilibili.com/video/BV1Kb6QBdEnx)

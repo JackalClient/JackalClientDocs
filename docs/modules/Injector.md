@@ -51,7 +51,44 @@ Injector 用于批量或定向给目标进程注入/卸载 DLL。模块会先按
 `Async NoWait` 速度最快，但无法可靠拿到每个目标的成功/失败状态，适合只追求下发速度的场景。
 
 相关命令
-无
+
+/inject <hprocess> <dllpath...>
+/ntinject <hprocess> <dllpath...>
+/apcinject <hprocess> <dllpath...>
+/inject32 <hprocess> <dllpath...>
+/ntinject32 <hprocess> <dllpath...>
+/apcinject32 <hprocess> <dllpath...>
+/inject64 <hprocess> <dllpath...>
+/ntinject64 <hprocess> <dllpath...>
+/apcinject64 <hprocess> <dllpath...>
+向指定进程注入DLL。三种形式分别对应：CreateRemoteThread, NtCreateThreadEx, QueueUserAPC 注入方法。
+如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
+
+/uninject <hprocess> <dllname>
+/ntuninject <hprocess> <dllname>
+/apcuninject <hprocess> <dllname>
+/uninject32 <hprocess> <dllname>
+/ntuninject32 <hprocess> <dllname>
+/apcuninject32 <hprocess> <dllname>
+/uninject64 <hprocess> <dllname>
+/ntuninject64 <hprocess> <dllname>
+/apcuninject64 <hprocess> <dllname>
+向指定进程卸载DLL。三种形式分别对应：CreateRemoteThread, NtCreateThreadEx, QueueUserAPC 卸载方法。
+如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
+
+/rinject <hprocess> <dllpath...>
+/rinject2 <hprocess> <dllpath...>
+简单的DLL反射式注入。后面写2时，将调用外部 loader.exe 进行注入。
+
+/injectex <prefab> <hprocess> [parameters...]
+不借助DLL的其他注入操作。
+参数 prefab 可以为以下之一：
+	exit: 退出。
+		/injectex exit <hprocess>
+	terminate: 终止另外一个进程。
+		/injectex terminate <hprocess> <target_hprocess>
+	msgbox: 弹窗。
+		/injectex msgbox <hprocess> <text> [title="Inject"] [style=64]
 
 相关模块
 - [RemoteRun (远程执行)](./RemoteRun.md)

@@ -45,25 +45,32 @@ AutoStart（开机自启）支持注册表、计划任务、服务三种方式�
 - Extra Arguments（额外参数）
  类型：文本；默认：""
  说明：追加到自启动命令行的参数。建议只填稳定、可长期使用的参数。
+ 
 历史更新
 - 43. 将 AutoStart 开机自启默认项改为 Registry.
 - 6. 添加模块 AutoStart，开机自启。
 
 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+如果一种模式无效就换一种。
 
 相关命令
-无
+
+/autostart
+切换该模块。
+
+/autostart check
+检查三个地方的开机自启是否开启：注册表、服务、计划任务。
+
+/autostart enable [method]
+/autostart add [method]
+开启某种方法的开机自启。需要管理员权限。
+
+/autostart disable [method]
+/autostart remove [method]
+关闭某种方法的开机自启。需要管理员权限。
 
 相关模块
-- [AntiCapture (反捕获)](./AntiCapture.md)
-- [AntiClose (反关闭)](./AntiClose.md)
-- [AntiDebug (反调试)](./AntiDebug.md)
-- [AntiIntercept (反拦截)](./AntiIntercept.md)
-- [AntiSpy (反间谍)](./AntiSpy.md)
-- [AntiTaskkill (反进程杀手)](./AntiTaskkill.md)
-- [AntiMouseHook (反鼠标钩子)](./AntiMouseHook.md)
-- [AntiKeyHook (反键盘钩子)](./AntiKeyHook.md)
+
 
 相关资料
 无
