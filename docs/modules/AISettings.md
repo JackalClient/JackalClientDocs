@@ -163,10 +163,10 @@ AISettings（AI设定）用于关于AI的设置。
 /aisettings custom
 设置当前 AI 类型为自定义在线大模型API。
 
-/chat [content...=clipboard]
-/chatstream [content...=clipboard]
-/chat0 [content=...=clipboard]
-/chatstream0 [content...=clipboard]
+/chat [content=clipboard]
+/chatstream [content=clipboard]
+/chat0 [content==clipboard]
+/chatstream0 [content=clipboard]
 与 AI 对话。你需要在 AI Settings 模块中配置好 APIKEY 等参数。
 /chatstream 命令强制以流式输出。
 其中 /chat0 和 /chatstream0 为单次对话，没有上下文，无法持续对话。
