@@ -117,10 +117,10 @@ BiliFans（B站粉丝）用于监控B站粉丝并发送通知。
 /bili fans enum [limit=100]
 查看自己的粉丝列表。limit 为数量限制。如果粉丝太多，你可能因B站限制无法全部看完。【PRO】版的输出会更详细。
 
-/bili fans find <kw...>
-/bili fans findf <kw...>
-/bili fans search <limit> <kw...>
-/bili fans searchf <limit> <kw...>
+/bili fans find &lt;kw...&gt;
+/bili fans findf &lt;kw...&gt;
+/bili fans search &lt;limit&gt; &lt;kw...&gt;
+/bili fans searchf &lt;limit&gt; &lt;kw...&gt;
 【PRO】以昵称关键字kw搜索自己的粉丝。两个带f后缀的为快速模式，找到一个很符合的结果就会直接输出并停止。search(f)可以指定搜索范围limit（表示前limit个粉丝中搜索）, find 则为B站支持的最大搜索范围（可能为1000）中搜索。findf 为前 100 个中搜索。你可以使用UID=或UID:开头搜索指定UID的用户。
 
 /test fans_up

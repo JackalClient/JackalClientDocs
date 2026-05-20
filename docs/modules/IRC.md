@@ -104,16 +104,16 @@ IRC（聊天室）
 /irc
 切换IRC聊天室模块状态（最新 Realm WS 系统）。
 
-/irc login <user> <pass>
+/irc login &lt;user&gt; &lt;pass&gt;
 登录 Realm 账号。
 
-/irc email send register <email>
+/irc email send register &lt;email&gt;
 向指定邮箱发送注册验证码。
 
-/irc email send reset <email>
+/irc email send reset &lt;email&gt;
 向指定邮箱发送重置密码验证码。
 
-/irc register <user> <pass> <email> <code> [card]
+/irc register &lt;user&gt; &lt;pass&gt; &lt;email&gt; &lt;code&gt; [card]
 注册 Realm 账号并自动登录。code 为邮箱验证码；card 为 Pro 激活码（Pro 版可选）。
 
 /irc resume
@@ -122,10 +122,10 @@ IRC（聊天室）
 /irc guest
 [FREE] 使用访客登录。
 
-/irc password change <newPassword>
+/irc password change &lt;newPassword&gt;
 登录后修改密码（30 秒冷却，newPassword 可包含空格）。
 
-/irc password reset <user/email> <code>
+/irc password reset <user/email> &lt;code&gt;
 未登录重置密码（60 秒冷却）。成功后会发送随机密码到邮箱。
 
 /irc logout
@@ -134,7 +134,7 @@ IRC（聊天室）
 /irc status
 查看 WS/认证/IRC 加入状态。
 
-/irc setname <name>
+/irc setname &lt;name&gt;
 设置 Realm 用户昵称（Title 字段）。服务端会校验内容并限制每天仅可修改一次。
 
 /irc list
@@ -145,10 +145,10 @@ IRC（聊天室）
 /irc announce list [page=1]
 拉取 IRC 公告列表（Realm WS 最新系统）。
 
-/irc report <type> [detail...]
+/irc report &lt;type&gt; [detail...]
 【WIP 维护中】举报用户行为。type 为举报类型（如 crack），detail 为补充说明（可选）。
 
-/irc block <name>
+/irc block &lt;name&gt;
 /irc unblock <name|all|*>
 【PRO】屏蔽/取消屏蔽指定用户（用分号分隔多个名字）。
 

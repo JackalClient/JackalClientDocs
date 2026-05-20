@@ -42,7 +42,7 @@ CustomHUD（自定义显示）用于自定义 HUD 元素。
 /customhud
 切换自定义HUD显示状态。
 
-/customhud add <json...>
+/customhud add &lt;json...&gt;
 /customhud add text [text...]
 添加自定义HUD元素。
 JSON 格式支持的键值有：
@@ -70,7 +70,7 @@ int		LastUpdate: 文本上一次更新的时间。
 /customhud list
 枚举所有自定义HUD元素。
 
-/customhud move <id> <x> <y>
+/customhud move &lt;id&gt; &lt;x&gt; &lt;y&gt;
 移动指定的自定义HUD元素。
 
 /customhud mover
@@ -82,13 +82,13 @@ int		LastUpdate: 文本上一次更新的时间。
 /customhud all
 输出所有元素的JSON。
 
-/customhud set <id> <json...>
+/customhud set &lt;id&gt; &lt;json...&gt;
 设置某项自定义HUD元素。
 
-/customhud modify <id> <key> <value...>
+/customhud modify &lt;id&gt; &lt;key&gt; &lt;value...&gt;
 设置某项自定义HUD元素的一对键值。
 
-/customhud remove <id>
+/customhud remove &lt;id&gt;
 移除指定自定义HUD元素。
 
 /customhud clear

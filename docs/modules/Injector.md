@@ -52,43 +52,43 @@ Injector 用于批量或定向给目标进程注入/卸载 DLL。模块会先按
 
 相关命令
 
-/inject <hprocess> <dllpath...>
-/ntinject <hprocess> <dllpath...>
-/apcinject <hprocess> <dllpath...>
-/inject32 <hprocess> <dllpath...>
-/ntinject32 <hprocess> <dllpath...>
-/apcinject32 <hprocess> <dllpath...>
-/inject64 <hprocess> <dllpath...>
-/ntinject64 <hprocess> <dllpath...>
-/apcinject64 <hprocess> <dllpath...>
+/inject &lt;hprocess&gt; &lt;dllpath...&gt;
+/ntinject &lt;hprocess&gt; &lt;dllpath...&gt;
+/apcinject &lt;hprocess&gt; &lt;dllpath...&gt;
+/inject32 &lt;hprocess&gt; &lt;dllpath...&gt;
+/ntinject32 &lt;hprocess&gt; &lt;dllpath...&gt;
+/apcinject32 &lt;hprocess&gt; &lt;dllpath...&gt;
+/inject64 &lt;hprocess&gt; &lt;dllpath...&gt;
+/ntinject64 &lt;hprocess&gt; &lt;dllpath...&gt;
+/apcinject64 &lt;hprocess&gt; &lt;dllpath...&gt;
 向指定进程注入DLL。三种形式分别对应：CreateRemoteThread, NtCreateThreadEx, QueueUserAPC 注入方法。
 如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
 
-/uninject <hprocess> <dllname>
-/ntuninject <hprocess> <dllname>
-/apcuninject <hprocess> <dllname>
-/uninject32 <hprocess> <dllname>
-/ntuninject32 <hprocess> <dllname>
-/apcuninject32 <hprocess> <dllname>
-/uninject64 <hprocess> <dllname>
-/ntuninject64 <hprocess> <dllname>
-/apcuninject64 <hprocess> <dllname>
+/uninject &lt;hprocess&gt; &lt;dllname&gt;
+/ntuninject &lt;hprocess&gt; &lt;dllname&gt;
+/apcuninject &lt;hprocess&gt; &lt;dllname&gt;
+/uninject32 &lt;hprocess&gt; &lt;dllname&gt;
+/ntuninject32 &lt;hprocess&gt; &lt;dllname&gt;
+/apcuninject32 &lt;hprocess&gt; &lt;dllname&gt;
+/uninject64 &lt;hprocess&gt; &lt;dllname&gt;
+/ntuninject64 &lt;hprocess&gt; &lt;dllname&gt;
+/apcuninject64 &lt;hprocess&gt; &lt;dllname&gt;
 向指定进程卸载DLL。三种形式分别对应：CreateRemoteThread, NtCreateThreadEx, QueueUserAPC 卸载方法。
 如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
 
-/rinject <hprocess> <dllpath...>
-/rinject2 <hprocess> <dllpath...>
+/rinject &lt;hprocess&gt; &lt;dllpath...&gt;
+/rinject2 &lt;hprocess&gt; &lt;dllpath...&gt;
 简单的DLL反射式注入。后面写2时，将调用外部 loader.exe 进行注入。
 
-/injectex <prefab> <hprocess> [parameters...]
+/injectex &lt;prefab&gt; &lt;hprocess&gt; [parameters...]
 不借助DLL的其他注入操作。
 参数 prefab 可以为以下之一：
 	exit: 退出。
-		/injectex exit <hprocess>
+		/injectex exit &lt;hprocess&gt;
 	terminate: 终止另外一个进程。
-		/injectex terminate <hprocess> <target_hprocess>
+		/injectex terminate &lt;hprocess&gt; &lt;target_hprocess&gt;
 	msgbox: 弹窗。
-		/injectex msgbox <hprocess> <text> [title="Inject"] [style=64]
+		/injectex msgbox &lt;hprocess&gt; &lt;text&gt; [title="Inject"] [style=64]
 
 相关模块
 - [RemoteRun (远程执行)](./RemoteRun.md)

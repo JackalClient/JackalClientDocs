@@ -123,7 +123,7 @@ WindowMaster 部分动作会改变窗口扩展样式或可见性，建议优先�
 /close [hwnd]
 向窗口发送关闭消息。超时时间为1秒。若不填参数则启用 Hidden 模块。
 
-/destroy <hwnd>
+/destroy &lt;hwnd&gt;
 向窗口发送销毁消息。超时时间为1秒。	
 
 /max [hwnd]
@@ -147,13 +147,13 @@ WindowMaster 部分动作会改变窗口扩展样式或可见性，建议优先�
 /screenshot [hwnd]
 只给指定窗口截图。如果不指定参数，则切换 Screenshot 模块。 
 
-/ocr file <path...>
+/ocr file &lt;path...&gt;
 对指定路径的图片进行文字识别。
 
-/ocr window <hwnd>
+/ocr window &lt;hwnd&gt;
 对指定的窗口内容进行文字识别。
 
-/ocr windowex <hwnd>
+/ocr windowex &lt;hwnd&gt;
 对指定的窗口内容进行文字识别。将会输出更详细的信息，包括坐标等。
 
 相关模块

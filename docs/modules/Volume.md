@@ -119,10 +119,10 @@ Volume（音量）用于控制系统和进程的音量。
 /volume enum/show/display/list
 展示系统混音器。包括系统音量和各个进程音量。
 
-/volume set <volume>
+/volume set &lt;volume&gt;
 设置系统音量 (0~100)
 
-/volume set <pid> <volume>
+/volume set &lt;pid&gt; &lt;volume&gt;
 设置某进程音量 (0~100)
 
 相关模块

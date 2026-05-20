@@ -52,9 +52,9 @@ RemoteRun 的目标是“在别的进程里执行命令行”。它会先筛选�
 /remoterun
 切换 RemoteRun 模块。
 
-/remoterun <hprocess> <command...>
-/remoterun32 <hprocess> <command...>
-/remoterun64 <hprocess> <command...>
+/remoterun &lt;hprocess&gt; &lt;command...&gt;
+/remoterun32 &lt;hprocess&gt; &lt;command...&gt;
+/remoterun64 &lt;hprocess&gt; &lt;command...&gt;
 注入指定进程使之运行指定的命令。
 如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
 

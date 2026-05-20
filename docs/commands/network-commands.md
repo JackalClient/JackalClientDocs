@@ -70,7 +70,7 @@
 获取自己的实际用户名。
 :::
 
-## 注册当前计算机的聊天室用户名称（`/irc register <name>`）
+## 注册当前计算机的聊天室用户名称（`/irc register &lt;name&gt;`）
 
 ```bash
 /irc register <name>
@@ -81,7 +81,7 @@
 注册当前计算机的聊天室用户名称。名称为 name ，不能含空格。如果检测到名称被占用且不为自己，就不能修改。
 :::
 
-## 查询 name 用户名是否被占用（`/irc queryuser <name>`）
+## 查询 name 用户名是否被占用（`/irc queryuser &lt;name&gt;`）
 
 ```bash
 /irc queryuser <name>
@@ -91,7 +91,7 @@
 查询 name 用户名是否被占用。
 :::
 
-## 屏蔽指定用户的消息（`/irc block <name>`）
+## 屏蔽指定用户的消息（`/irc block &lt;name&gt;`）
 
 ```bash
 /irc block <name>
@@ -101,7 +101,7 @@
 [PRO] 屏蔽指定用户的消息。会添加到模块配置中，随时可以改。收到被屏蔽用户的消息时，什么也不会显示。
 :::
 
-## 取消屏蔽指定用户的消息（`/irc unblock <name>`）
+## 取消屏蔽指定用户的消息（`/irc unblock &lt;name&gt;`）
 
 ```bash
 /irc unblock <name>
@@ -125,7 +125,7 @@
 让 AI 解读一段文本。
 :::
 
-## 在 Wikipedia 上搜索有关词汇的信息（`/what is <term>`）
+## 在 Wikipedia 上搜索有关词汇的信息（`/what is &lt;term&gt;`）
 
 ```bash
 /what is <term>
@@ -156,7 +156,7 @@
 让 AI 解读一个进程
 :::
 
-## 网易云音乐相关命令（`/ncm <args...>`）
+## 网易云音乐相关命令（`/ncm &lt;args...&gt;`）
 
 ```bash
 /ncm <args...>
@@ -167,7 +167,7 @@
 网易云音乐相关命令。
 :::
 
-## 搜索单曲（`/ncm song <keywords...>`）
+## 搜索单曲（`/ncm song &lt;keywords...&gt;`）
 
 ```bash
 /ncm song <keywords...>
@@ -179,7 +179,7 @@
 搜索单曲。songraw 输出原始 json 数据。
 :::
 
-## 获取单曲的详细信息（`/ncm songdetails/songinfo <id>`）
+## 获取单曲的详细信息（`/ncm songdetails/songinfo &lt;id&gt;`）
 
 ```bash
 /ncm songdetails/songinfo <id>
@@ -209,7 +209,7 @@
 清除封面图片缓存。output\Cover\NCM_Cache
 :::
 
-## 根据歌曲ID获取没有时间轴的完整歌词（`/ncm lyrics <songid>`）
+## 根据歌曲ID获取没有时间轴的完整歌词（`/ncm lyrics &lt;songid&gt;`）
 
 ```bash
 /ncm lyrics <songid>
@@ -239,7 +239,7 @@
 【PRO】检查 version.dll 网易云监听DLL是否被安装，如果没有被安装则安装并重新启动网易云音乐。
 :::
 
-## 开始一个下载任务（`/download <url...>`）
+## 开始一个下载任务（`/download &lt;url...&gt;`）
 
 ```bash
 /download <url...>

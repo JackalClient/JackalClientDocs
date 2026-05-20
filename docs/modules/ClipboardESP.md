@@ -112,7 +112,7 @@ ClipboardESP（剪贴板透视）用于暂无描述。
 
 相关命令
 
-/clipboard <args...>
+/clipboard &lt;args...&gt;
 剪贴板相关命令。
 
 /clipboard show
@@ -121,9 +121,9 @@ ClipboardESP（剪贴板透视）用于暂无描述。
 /clipboard get
 获取并存储剪贴板内容到变量 it。
 
-/clipboard store text <text...>
-/clipboard store file <path...>
-/clipboard store movefile <path...>
+/clipboard store text &lt;text...&gt;
+/clipboard store file &lt;path...&gt;
+/clipboard store movefile &lt;path...&gt;
 写入剪贴板。
 
 /clipboard clear

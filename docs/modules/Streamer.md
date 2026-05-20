@@ -68,7 +68,7 @@ Streamer（主播模式）用于防止直播过程中发生意外。
 /bili live create
 为自己创建一个直播间。
 
-/bili live settitle <title...>
+/bili live settitle &lt;title...&gt;
 【PRO】设置直播间标题为 title。
 
 /bili live gettitle [roomId=~]

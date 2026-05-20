@@ -4,7 +4,7 @@
 
 共 40 组命令。
 
-## 回显文本（`/echo <string...>`）
+## 回显文本（`/echo &lt;string...&gt;`）
 
 ```bash
 /echo <string...>
@@ -30,7 +30,7 @@ Edge 翻译功能。translateto 可指定目标语言， translateloop 将会把
 如果结尾是copy，则会将结果复制到剪贴板。
 :::
 
-## opencc 离线翻译（`/translateoffline <from> <to> [content...=clipboard]`）
+## opencc 离线翻译（`/translateoffline &lt;from&gt; &lt;to&gt; [content...=clipboard]`）
 
 ```bash
 /translateoffline <from> <to> [content...=clipboard]
@@ -70,7 +70,7 @@ calccopy 命令如果成功，将会将结果写入剪贴板。
 getcalc 命令如果成功，将会将结果以字符串形式写入it
 :::
 
-## 从文本数据库获取文本（`/textdatabase get <key>`）
+## 从文本数据库获取文本（`/textdatabase get &lt;key&gt;`）
 
 ```bash
 /textdatabase get <key>
@@ -91,7 +91,7 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 从文本数据库获取文本。key 为秘钥。其中 copy 会把结果存入剪贴板，obtain 会把结果存入 it 代词中。/pastebin 会使用某种客户端的算法加密你的key以减少冲突的可能性。
 :::
 
-## 文本数据库中设置文本（`/textdatabase set <key>`）
+## 文本数据库中设置文本（`/textdatabase set &lt;key&gt;`）
 
 ```bash
 /textdatabase set <key>
@@ -106,7 +106,7 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 文本数据库中设置文本。key 为秘钥。/pastebin 会使用某种客户端的算法加密你的key以减少冲突的可能性。
 :::
 
-## 文本数据库中清空文本（`/textdatabase clear <key>`）
+## 文本数据库中清空文本（`/textdatabase clear &lt;key&gt;`）
 
 ```bash
 /textdatabase clear <key>
@@ -171,7 +171,7 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 复制字符串，但先弹出一个高级输入框让你编辑。content 作为输入框的初始内容。
 :::
 
-## 字符串功能（`/str <params...>`）
+## 字符串功能（`/str &lt;params...&gt;`）
 
 ```bash
 /str <params...>
@@ -241,7 +241,7 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 混写字符串大小写。
 :::
 
-## 移除子串（`/str transform remove <substr> [content=it...]`）
+## 移除子串（`/str transform remove &lt;substr&gt; [content=it...]`）
 
 ```bash
 /str transform remove <substr> [content=it...]
@@ -251,7 +251,7 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 移除子串。
 :::
 
-## 替换字符串（`/str transform replace <old> <new> [content=it...]`）
+## 替换字符串（`/str transform replace &lt;old&gt; &lt;new&gt; [content=it...]`）
 
 ```bash
 /str transform replace <old> <new> [content=it...]
@@ -261,7 +261,7 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 替换字符串。
 :::
 
-## 分隔字符串（`/str transform split <sep> [content=it...]`）
+## 分隔字符串（`/str transform split &lt;sep&gt; [content=it...]`）
 
 ```bash
 /str transform split <sep> [content=it...]
@@ -271,7 +271,7 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 分隔字符串。
 :::
 
-## 在字符串每个字符间添加字符（`/str transform join <sep> [content=it...]`）
+## 在字符串每个字符间添加字符（`/str transform join &lt;sep&gt; [content=it...]`）
 
 ```bash
 /str transform join <sep> [content=it...]
@@ -321,7 +321,7 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 将字符串的标点符号全部改为中文标点。
 :::
 
-## 使用 mode 模式混淆字符串（`/str transform obfuscate <mode> [content=it...]`）
+## 使用 mode 模式混淆字符串（`/str transform obfuscate &lt;mode&gt; [content=it...]`）
 
 ```bash
 /str transform obfuscate <mode> [content=it...]

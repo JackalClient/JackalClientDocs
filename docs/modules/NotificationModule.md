@@ -136,12 +136,12 @@ Notification（通知）用于控制客户端的通知。
 /notifydict [msg...]
 尝试在字典中找到对应的翻译词汇后，发出一条通知。
 
-/chatter <content...>
-/tchatter <content...>
-/bchatter <content...>
-/rchatter <content...>
-/hchatter <content...>
-/vchatter <content...>
+/chatter &lt;content...&gt;
+/tchatter &lt;content...&gt;
+/bchatter &lt;content...&gt;
+/rchatter &lt;content...&gt;
+/hchatter &lt;content...&gt;
+/vchatter &lt;content...&gt;
 发送一条弹幕。/tchatter 发送置顶弹幕。 /bchatter 发送置底弹幕。 /rchatter 发送反向弹幕。/hchatter 发送普通或反向弹幕。/vchatter 发送置顶或置底弹幕。
 
 

@@ -4,7 +4,7 @@
 
 共 62 组命令。
 
-## 获取网页完整内容（`/webpage <url...>`）
+## 获取网页完整内容（`/webpage &lt;url...&gt;`）
 
 ```bash
 /webpage <url...>
@@ -69,7 +69,7 @@
 查看用户空间主页。如果不指定uid，则为当前登录账号的空间。
 :::
 
-## 解析B站短链接（`/bili parse <shortlink>`）
+## 解析B站短链接（`/bili parse &lt;shortlink&gt;`）
 
 ```bash
 /bili parse <shortlink>
@@ -91,7 +91,7 @@
 查看自己的粉丝列表。limit 为数量限制。如果粉丝太多，你可能因B站限制无法全部看完。【PRO】版的输出会更详细。
 :::
 
-## 以昵称关键字kw搜索自己的粉丝（`/bili fans find <kw...>`）
+## 以昵称关键字kw搜索自己的粉丝（`/bili fans find &lt;kw...&gt;`）
 
 ```bash
 /bili fans find <kw...>
@@ -144,7 +144,7 @@
 使用人工智能生成一条类似的评论。仅生成不发送。
 :::
 
-## 为指定评论区添加一条评论（`/bili comment add [type=1] <oid> <content...>`）
+## 为指定评论区添加一条评论（`/bili comment add [type=1] &lt;oid&gt; &lt;content...&gt;`）
 
 ```bash
 /bili comment add [type=1] <oid> <content...>
@@ -154,7 +154,7 @@
 为指定评论区添加一条评论。type 为评论区类型代码（例如视频为1, 此时 oid 为 avid），oid 为目标评论区id。
 :::
 
-## 为指定评论区添加一条二级评论（仅二级）（`/bili comment reply [type=1] <oid> <root> <content...>`）
+## 为指定评论区添加一条二级评论（仅二级）（`/bili comment reply [type=1] &lt;oid&gt; &lt;root&gt; &lt;content...&gt;`）
 
 ```bash
 /bili comment reply [type=1] <oid> <root> <content...>
@@ -164,7 +164,7 @@
 为指定评论区添加一条二级评论（仅二级）。root为要回复的评论的 rpid。
 :::
 
-## 为指定评论区添加一条大于二级的评论（`/bili comment reply2 [type=1] <oid> <root> <parent> <content...>`）
+## 为指定评论区添加一条大于二级的评论（`/bili comment reply2 [type=1] &lt;oid&gt; &lt;root&gt; &lt;parent&gt; &lt;content...&gt;`）
 
 ```bash
 /bili comment reply2 [type=1] <oid> <root> <parent> <content...>
@@ -194,7 +194,7 @@
 【PRO】进入交互式“回复我的”界面。支持方向键选择、回车直接回复、R 刷新、Q/Esc 退出。回复输入支持 cancel 或 /cancel 取消。
 :::
 
-## 枚举评论区（单层，虽然可以显示部分子评论，但不会…（`/bili comment list/enum <type> <oid> [count=20] [page=1] [sort=1]`）
+## 枚举评论区（单层，虽然可以显示部分子评论，但不会…（`/bili comment list/enum &lt;type&gt; &lt;oid&gt; [count=20] [page=1] [sort=1]`）
 
 ```bash
 /bili comment list/enum <type> <oid> [count=20] [page=1] [sort=1]
@@ -205,7 +205,7 @@
 枚举评论区（单层，虽然可以显示部分子评论，但不会显示完整，分页）。type 为评论区类型代码（例如视频为1, 此时 oid 为 avid），oid 为目标评论区id。count 为每页数量，page 为页码，sort 为排序。
 :::
 
-## 枚举评论区（单层，虽然可以显示部分子评论，但不会…（`/bili comment listall <type> <oid> [sort=1]`）
+## 枚举评论区（单层，虽然可以显示部分子评论，但不会…（`/bili comment listall &lt;type&gt; &lt;oid&gt; [sort=1]`）
 
 ```bash
 /bili comment listall <type> <oid> [sort=1]
@@ -215,7 +215,7 @@
 枚举评论区（单层，虽然可以显示部分子评论，但不会显示完整）。type 为评论区类型代码（例如视频为1, 此时 oid 为 avid），oid 为目标评论区id，sort 为排序。
 :::
 
-## 枚举评论区（多层）（`/bili comment tree <type> <oid> [sort=1]`）
+## 枚举评论区（多层）（`/bili comment tree &lt;type&gt; &lt;oid&gt; [sort=1]`）
 
 ```bash
 /bili comment tree <type> <oid> [sort=1]
@@ -225,7 +225,7 @@
 枚举评论区（多层）。type 为评论区类型代码（例如视频为1, 此时 oid 为 avid），oid 为目标评论区id，sort 为排序。
 :::
 
-## 给若干评论点赞取消赞点踩取消踩（`/bili comment like <type> <oid> [rpid1;rpid2;rpid3;...]`）
+## 给若干评论点赞取消赞点踩取消踩（`/bili comment like &lt;type&gt; &lt;oid&gt; [rpid1;rpid2;rpid3;...]`）
 
 ```bash
 /bili comment like <type> <oid> [rpid1;rpid2;rpid3;...]
@@ -238,7 +238,7 @@
 给若干评论点赞/取消赞/点踩/取消踩。type 为评论区类型代码（例如视频为1, 此时 oid 为 avid），oid 为目标评论区id，rpid 为目标评论rpid。rpid 不填时，代表所有评论。
 :::
 
-## 删除若干评论（`/bili comment delete <type> <oid> [rpid1;rpid2;rpid3;...]`）
+## 删除若干评论（`/bili comment delete &lt;type&gt; &lt;oid&gt; [rpid1;rpid2;rpid3;...]`）
 
 ```bash
 /bili comment delete <type> <oid> [rpid1;rpid2;rpid3;...]
@@ -248,7 +248,7 @@
 删除若干评论。type 为评论区类型代码（例如视频为1, 此时 oid 为 avid），oid 为目标评论区id，rpid 为目标评论rpid。rpid 不填时，代表所有评论。
 :::
 
-## 置顶取消置顶评论（`/bili comment topmost <type> <oid> [rpid1;rpid2;rpid3;...]`）
+## 置顶取消置顶评论（`/bili comment topmost &lt;type&gt; &lt;oid&gt; [rpid1;rpid2;rpid3;...]`）
 
 ```bash
 /bili comment topmost <type> <oid> [rpid1;rpid2;rpid3;...]
@@ -270,7 +270,7 @@
 枚举编号为 uid 的用户动态。limit 表示最大数量。如果填写offset_dynamic_id，则从编号为offset_dynamic_id的动态开始枚举。
 :::
 
-## 给指定用户动态点赞取消点赞，最多 limit 个…（`/bili dynamic likes <uid> [limit=8]`）
+## 给指定用户动态点赞取消点赞，最多 limit 个…（`/bili dynamic likes &lt;uid&gt; [limit=8]`）
 
 ```bash
 /bili dynamic likes <uid> [limit=8]
@@ -312,7 +312,7 @@
 获得推荐的直播间列表。limit 为数量限制。
 :::
 
-## 向 room_id 直播间发送弹幕（`/bili live addchatter <room_id> <content...>`）
+## 向 room_id 直播间发送弹幕（`/bili live addchatter &lt;room_id&gt; &lt;content...&gt;`）
 
 ```bash
 /bili live addchatter <room_id> <content...>
@@ -418,7 +418,7 @@ go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 
 为自己创建一个直播间。
 :::
 
-## 设置直播间标题为 title（`/bili live settitle <title...>`）
+## 设置直播间标题为 title（`/bili live settitle &lt;title...&gt;`）
 
 ```bash
 /bili live settitle <title...>
@@ -512,7 +512,7 @@ go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 
 立即保存等级系统所有的观众档案数据。
 :::
 
-## 禁言指定的直播间用户（`/bili live mute <uid/name> <duration_flag>`）
+## 禁言指定的直播间用户（`/bili live mute <uid/name> &lt;duration_flag&gt;`）
 
 ```bash
 /bili live mute <uid/name> <duration_flag>
@@ -544,7 +544,7 @@ go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 
 取消指定用户的禁言。
 :::
 
-## 阅读一个专栏（`/bili opus <id>`）
+## 阅读一个专栏（`/bili opus &lt;id&gt;`）
 
 ```bash
 /bili opus <id>
@@ -554,7 +554,7 @@ go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 
 阅读一个专栏。
 :::
 
-## 查用户成分（`/bili components <uid> [preset=for_speak]`）
+## 查用户成分（`/bili components &lt;uid&gt; [preset=for_speak]`）
 
 ```bash
 /bili components <uid> [preset=for_speak]
@@ -586,7 +586,7 @@ normal:	讲述并输出。
 设置 Cookies 的必要项。如果只填前两项参数，则会提示分别输入 DedeUserID, DedeUserID__ckMd5, SESSDATA, bili_jct, sid。
 :::
 
-## 查询B站用户昵称（`/bilinickname <uid>`）
+## 查询B站用户昵称（`/bilinickname &lt;uid&gt;`）
 
 ```bash
 /bilinickname <uid>
@@ -597,7 +597,7 @@ normal:	讲述并输出。
 查询B站用户昵称。
 :::
 
-## 根据一个用户昵称反查用户UID（`/biliuid <nickname>`）
+## 根据一个用户昵称反查用户UID（`/biliuid &lt;nickname&gt;`）
 
 ```bash
 /biliuid <nickname>
@@ -618,7 +618,7 @@ normal:	讲述并输出。
 显示B站热搜。
 :::
 
-## 显示关于关键词 keyword 的哔哩哔哩搜索建…（`/bilisuggest <keyword>`）
+## 显示关于关键词 keyword 的哔哩哔哩搜索建…（`/bilisuggest &lt;keyword&gt;`）
 
 ```bash
 /bilisuggest <keyword>

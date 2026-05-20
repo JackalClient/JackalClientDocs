@@ -151,7 +151,7 @@ AISettings（AI设定）用于关于AI的设置。
 /aisettings model/models
 查看当前选中的 AI 模型名称。
 
-/aisettings model <name>
+/aisettings model &lt;name&gt;
 设置当前选中的 AI 模型名称。
 
 /aisettings local

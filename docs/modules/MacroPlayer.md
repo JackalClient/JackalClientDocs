@@ -87,20 +87,20 @@ MacroPlayer（宏播放）用于播放键盘和鼠标操作的宏。
 
 /key <down/press> <keycode/keyname...>
 /key <up/release> <keycode/keyname...>
-/key <once> <keycode/keyname...>f
-/key <async> <keycode/keyname...>
+/key &lt;once&gt; <keycode/keyname...>f
+/key &lt;async&gt; <keycode/keyname...>
 模拟按键操作。上述四种分别对应按下、松开、同步按下松开、异步按下松开。后两种内部间隔 100 毫秒。
 
-/key repeat <count> <keycode/keyname...>
+/key repeat &lt;count&gt; <keycode/keyname...>
 重复按下并松开count次指定的按键。
 
-/key hold <duration_ms> <keycode/keyname...>
+/key hold &lt;duration_ms&gt; <keycode/keyname...>
 按住指定的按键duration_ms毫秒后松开。
 
 /key clearinput
 清空当前输入框（持续按住 Backspace 直到 caret 位置不再变化，最多 30 秒）。
 
-/keys <Keys...>
+/keys &lt;Keys...&gt;
 模拟多个按键操作。注意，多个按键需要用空格分隔而不是逗号或分号。
 
 /input [string...=clipboard]

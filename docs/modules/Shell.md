@@ -101,23 +101,23 @@ Console 控制台指的是黑窗口，Shell 命令行指的是命令系统，打
 
 相关命令
 
-/interpret <path...>
+/interpret &lt;path...&gt;
 同步解释执行一个客户端批处理文件(.jbat)或者宏文件(.jm)。
 
-/perform <path...>
+/perform &lt;path...&gt;
 异步解释执行一个客户端批处理文件(.jbat)或者宏文件(.jm)。
 
 /exclusive [enable]
 切换命令行沉浸模式。沉浸模式开启后，HUD将会隐藏。
 enable 是布尔类型，不填则表示切换。
 
-/enable <ModuleName>
-/e <ModuleName>
-/disable <ModuleName>
-/d <ModuleName>
-/toggle <ModuleName>
-/t <ModuleName>
-/<ModuleName>
+/enable &lt;ModuleName&gt;
+/e &lt;ModuleName&gt;
+/disable &lt;ModuleName&gt;
+/d &lt;ModuleName&gt;
+/toggle &lt;ModuleName&gt;
+/t &lt;ModuleName&gt;
+/&lt;ModuleName&gt;
 改变模块开关状态。
 
 /enables

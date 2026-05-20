@@ -28,9 +28,9 @@ PrivacyDatabase 是本地 SQLite 隐私数据管理模块，用于结构化保�
 首次使用建议先执行 `/pdb init` 初始化库结构；修改目录后也应重新确认数据库是否已创建，避免出现“命令可用但无数据文件”的情况。
 
 相关命令
-/privacydatabase <args...>
-/privacydb <args...>
-/pdb <args...>
+/privacydatabase &lt;args...&gt;
+/privacydb &lt;args...&gt;
+/pdb &lt;args...&gt;
 隐私数据库命令。请使用 /help pdb 命令查看详细帮助。
 
 /pdb init
@@ -54,16 +54,16 @@ PrivacyDatabase 是本地 SQLite 隐私数据管理模块，用于结构化保�
 /pdb search
 根据指定信息查询人员信息。开启一个控制台交互式菜单，选择填写什么数据项筛选器，然后选择“开始筛选”筛选，然后输出结果。
 
-/pdb set <name> <key> [value]
+/pdb set &lt;name&gt; &lt;key&gt; [value]
 设置指定人员信息。value 为空时清空该项 key。
 
-/pdb upsert <name> <key> [value]
+/pdb upsert &lt;name&gt; &lt;key&gt; [value]
 设置指定人员信息。value 为空时清空该项 key。如果 name 不存在，则自动创建新纪录。
 
-/pdb paste <format>
+/pdb paste &lt;format&gt;
 从剪贴板以指定格式导入数据。例如一百行学号空格姓名，输入/pdb paste student_id name即可批量录入。
 
-/pdb exec <command>
+/pdb exec &lt;command&gt;
 执行数据库命令。
 
 /pdb uninstall

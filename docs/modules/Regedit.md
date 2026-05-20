@@ -29,7 +29,7 @@ Regedit 用于管理注册表编辑器窗口：启用时打开或聚焦 `regedit
 
 相关命令
 - `/regedit [params...]`：在注册表编辑器中定位指定项/值。
-- `/showir <params...>`：注册表定位辅助命令。
+- `/showir &lt;params...&gt;`：注册表定位辅助命令。
 
 相关模块
 - [NoRegedit (禁用注册表)](./NoRegedit.md)

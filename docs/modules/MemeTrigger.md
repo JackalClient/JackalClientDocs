@@ -56,7 +56,7 @@ MemeTrigger（梗触发）用于暂无描述。
 /meme
 枚举所有梗。
 
-/meme <name>
+/meme &lt;name&gt;
 同步触发一个梗。
 
 相关模块

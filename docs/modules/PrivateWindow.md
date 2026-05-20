@@ -64,16 +64,16 @@ PrivateWindow 会按应用预设筛选窗口，然后为目标窗口设置显示
 - `/privatewindow list`
 - `/privatewindow sync`
 - `/privatewindow clear`
-- `/privatewindow reset <hwnd>`
-- `/privatewindow set <hwnd> [affinity=none]`
-- `/privatewindow check <hwnd>`
-- `/privatewindow why <hwnd>`
-- `/privatewindow reason <hwnd>`
-- `/privatewindow diagnose <hwnd>`
-- `/privatewindow diag <hwnd>`
+- `/privatewindow reset &lt;hwnd&gt;`
+- `/privatewindow set &lt;hwnd&gt; [affinity=none]`
+- `/privatewindow check &lt;hwnd&gt;`
+- `/privatewindow why &lt;hwnd&gt;`
+- `/privatewindow reason &lt;hwnd&gt;`
+- `/privatewindow diagnose &lt;hwnd&gt;`
+- `/privatewindow diag &lt;hwnd&gt;`
 - `/privatewindow layer list`
-- `/privatewindow layer check <hwnd>`
-- `/privatewindow layer enable/disable <hwnd>`
+- `/privatewindow layer check &lt;hwnd&gt;`
+- `/privatewindow layer enable/disable &lt;hwnd&gt;`
 
 相关模块
 - [WindowMaster (窗口大师)](./WindowMaster.md)

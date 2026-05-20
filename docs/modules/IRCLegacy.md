@@ -104,19 +104,19 @@ IRC Legacy（旧版聊天室）用于一个简单的在线聊天系统。
 /irclegacy getname
 获取自己的实际用户名（Legacy）。
 
-/irclegacy register <name>
-/irclegacy setname <name>
+/irclegacy register &lt;name&gt;
+/irclegacy setname &lt;name&gt;
 注册当前计算机的聊天室用户名称（Legacy）。名称为 name ，不能含空格。如果检测到名称被占用且不为自己，就不能修改。
 
-/irclegacy queryuser <name>
+/irclegacy queryuser &lt;name&gt;
 查询 name 用户名是否被占用（Legacy）。
 
 /irclegacy list
 /irclegacy announce list [page]
-/irclegacy block <name>
+/irclegacy block &lt;name&gt;
 [PRO] 屏蔽指定用户的消息（Legacy）。会添加到模块配置中，随时可以改。收到被屏蔽用户的消息时，什么也不会显示。
 
-/irclegacy unblock <name>
+/irclegacy unblock &lt;name&gt;
 /irclegacy unblock all/*
 [PRO] 取消屏蔽指定用户的消息（Legacy）。
 

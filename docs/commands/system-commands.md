@@ -28,7 +28,7 @@
 显示所有的命令助手选项。命令助手选项，表示命令执行后可能会用到的相关命令，会自动加入这个列表。
 :::
 
-## 使用键为 option_key 的命令助手选项（`/helper use <option_key>`）
+## 使用键为 option_key 的命令助手选项（`/helper use &lt;option_key&gt;`）
 
 ```bash
 /helper use <option_key>
@@ -58,7 +58,7 @@
 关于。
 :::
 
-## 异步执行一条命令（`/async <command...>`）
+## 异步执行一条命令（`/async &lt;command...&gt;`）
 
 ```bash
 /async <command...>
@@ -68,7 +68,7 @@
 异步执行一条命令。
 :::
 
-## 执行一条命令，命令可以多行（`/multiline <command...>`）
+## 执行一条命令，命令可以多行（`/multiline &lt;command...&gt;`）
 
 ```bash
 /multiline <command...>
@@ -79,7 +79,7 @@
 执行一条命令，命令可以多行。但是会打开一个输入框，你在里面编辑后按OK即可立即执行。
 :::
 
-## 执行多条命令，用;;分隔，会依次执行，无论是否失…（`/multijackal <commands...>`）
+## 执行多条命令，用;;分隔，会依次执行，无论是否失…（`/multijackal &lt;commands...&gt;`）
 
 ```bash
 /multijackal <commands...>
@@ -90,7 +90,7 @@
 执行多条命令，用;;分隔，会依次执行，无论是否失败。
 :::
 
-## 执行多条命令，用;;分隔，遇到失败直接中止（`/multijackalinterrupt <commands...>`）
+## 执行多条命令，用;;分隔，遇到失败直接中止（`/multijackalinterrupt &lt;commands...&gt;`）
 
 ```bash
 /multijackalinterrupt <commands...>
@@ -101,7 +101,7 @@
 执行多条命令，用;;分隔，遇到失败直接中止。
 :::
 
-## 输出执行这条命令的输出（`/jackaloutput <command...>`）
+## 输出执行这条命令的输出（`/jackaloutput &lt;command...&gt;`）
 
 ```bash
 /jackaloutput <command...>
@@ -111,7 +111,7 @@
 输出执行这条命令的输出。（测试命令）
 :::
 
-## 讲述执行这条命令的输出（`/jackalspeak <command...>`）
+## 讲述执行这条命令的输出（`/jackalspeak &lt;command...&gt;`）
 
 ```bash
 /jackalspeak <command...>
@@ -206,7 +206,7 @@
 在灵动岛上显示一条临时文本。
 :::
 
-## 设置灵动岛的进度条（`/islandprogress <params...>`）
+## 设置灵动岛的进度条（`/islandprogress &lt;params...&gt;`）
 
 ```bash
 /islandprogress <params...>
@@ -217,7 +217,7 @@
 设置灵动岛的进度条。详细参数请使用 /help progress
 :::
 
-## 测试灵动岛进度条（`/progress test <time_ms> [text...]`）
+## 测试灵动岛进度条（`/progress test &lt;time_ms&gt; [text...]`）
 
 ```bash
 /progress test <time_ms> [text...]
@@ -227,7 +227,7 @@
 测试灵动岛进度条。时间为 time_ms 毫秒， 文本为 text ，默认文本为 Sleeping...
 :::
 
-## 设置灵动岛进度条文本（`/progress settext <text...>`）
+## 设置灵动岛进度条文本（`/progress settext &lt;text...&gt;`）
 
 ```bash
 /progress settext <text...>
@@ -237,7 +237,7 @@
 设置灵动岛进度条文本。
 :::
 
-## 设置灵动岛进度条的进度（0~100）（`/progress setvalue <percentage>`）
+## 设置灵动岛进度条的进度（0~100）（`/progress setvalue &lt;percentage&gt;`）
 
 ```bash
 /progress setvalue <percentage>
@@ -247,7 +247,7 @@
 设置灵动岛进度条的进度（0~100）。
 :::
 
-## 增加灵动岛进度条的进度（`/progress addvalue <value>`）
+## 增加灵动岛进度条的进度（`/progress addvalue &lt;value&gt;`）
 
 ```bash
 /progress addvalue <value>
@@ -320,7 +320,7 @@
 创建一个可受 Dialog Physics 模块控制的对话框，显示msg消息。
 :::
 
-## 创建 cnt 个可受 Dialog Physic…（`/msgbox multicreate <cnt> [msg...]`）
+## 创建 cnt 个可受 Dialog Physic…（`/msgbox multicreate &lt;cnt&gt; [msg...]`）
 
 ```bash
 /msgbox multicreate <cnt> [msg...]
@@ -370,7 +370,7 @@
 创建一个对话框，显示msg消息。
 :::
 
-## 创建 cnt 个对话框，显示msg消息（`/msgbox2 multicreate <cnt> [msg...]`）
+## 创建 cnt 个对话框，显示msg消息（`/msgbox2 multicreate &lt;cnt&gt; [msg...]`）
 
 ```bash
 /msgbox2 multicreate <cnt> [msg...]
@@ -400,7 +400,7 @@
 显示所有内置变量。如需列举环境变量，请使用 /set 命令。
 :::
 
-## 启用或禁用命令行的内置变量（`/variables <enable>`）
+## 启用或禁用命令行的内置变量（`/variables &lt;enable&gt;`）
 
 ```bash
 /variables <enable>
@@ -485,7 +485,7 @@
 展示系统混音器。包括系统音量和各个进程音量。
 :::
 
-## 设置系统音量 (0~100)（`/volume set <volume>`）
+## 设置系统音量 (0~100)（`/volume set &lt;volume&gt;`）
 
 ```bash
 /volume set <volume>
@@ -495,7 +495,7 @@
 设置系统音量 (0~100)
 :::
 
-## 设置某进程音量 (0~100)（`/volume set <pid> <volume>`）
+## 设置某进程音量 (0~100)（`/volume set &lt;pid&gt; &lt;volume&gt;`）
 
 ```bash
 /volume set <pid> <volume>
@@ -538,7 +538,7 @@
 枚举所有梗。
 :::
 
-## 同步触发一个梗（`/meme <name>`）
+## 同步触发一个梗（`/meme &lt;name&gt;`）
 
 ```bash
 /meme <name>
@@ -571,7 +571,7 @@
 强制关闭命令行 (Shell 模块) ，会终止线程，可能会导致客户端不稳定，请注意。
 :::
 
-## 断言（`/assert <condition_expr...>`）
+## 断言（`/assert &lt;condition_expr...&gt;`）
 
 ```bash
 /assert <condition_expr...>
@@ -598,7 +598,7 @@ proc_exists `<pid/procname...>`
 enable 是布尔类型，不填则表示切换。
 :::
 
-## 发送一条弹幕（`/chatter <content...>`）
+## 发送一条弹幕（`/chatter &lt;content...&gt;`）
 
 ```bash
 /chatter <content...>
@@ -623,7 +623,7 @@ enable 是布尔类型，不填则表示切换。
 显示弹幕池缓冲区。
 :::
 
-## 显示一条标题信息（`/title <content...>`）
+## 显示一条标题信息（`/title &lt;content...&gt;`）
 
 ```bash
 /title <content...>
@@ -738,7 +738,7 @@ enable 是布尔类型，不填则表示切换。
 以 UIAccess 权限运行。如果不指定参数，则为自启。
 :::
 
-## 改变模块开关状态（`/enable <ModuleName>`）
+## 改变模块开关状态（`/enable &lt;ModuleName&gt;`）
 
 ```bash
 /enable <ModuleName>
@@ -810,7 +810,7 @@ enable 是布尔类型，不填则表示切换。
 ```
 
 ::: details 点击查看说明
-设置系统时间。需要管理员权限。set 会打开 TimeManager 模块且自动修改模块配置使得符合你的命令参数。而 setonce 为单次操作，不会打开 TimeManager 模块。注意 `<string>` 参数表示你可以用字符串形式修改时间，包括下面的格式：
+设置系统时间。需要管理员权限。set 会打开 TimeManager 模块且自动修改模块配置使得符合你的命令参数。而 setonce 为单次操作，不会打开 TimeManager 模块。注意 `&lt;string&gt;` 参数表示你可以用字符串形式修改时间，包括下面的格式：
 YYYY/MM/DD
 YYYY/MM/DD HH:mm:SS
 YYYY/MM/DD HH:mm
@@ -855,7 +855,7 @@ HH:mm
 如果当前模式属于 Offset 系列，则会切换到 Offset Accelerated；如果属于 Set 系列，则会切换到 Set Accelerated。
 :::
 
-## 对系统时间进行偏移（`/time offset <expressions...>`）
+## 对系统时间进行偏移（`/time offset &lt;expressions...&gt;`）
 
 ```bash
 /time offset <expressions...>
@@ -883,7 +883,7 @@ HH:mm
 查看上一个 Win32 错误。
 :::
 
-## 等待 duration 毫秒（`/sleep <duration>`）
+## 等待 duration 毫秒（`/sleep &lt;duration&gt;`）
 
 ```bash
 /sleep <duration>
@@ -894,7 +894,7 @@ HH:mm
 等待 duration 毫秒。
 :::
 
-## 等待 duration 秒（`/sleeps <duration>`）
+## 等待 duration 秒（`/sleeps &lt;duration&gt;`）
 
 ```bash
 /sleeps <duration>
@@ -915,7 +915,7 @@ HH:mm
 具体查看代词 it 的情况，将会详细展开句柄的信息。
 :::
 
-## 快速执行（`/quickrun <command...>`）
+## 快速执行（`/quickrun &lt;command...&gt;`）
 
 ```bash
 /quickrun <command...>
@@ -1024,7 +1024,7 @@ HH:mm
 十六进制查看字符串。如果不指定参数则读取剪贴板文本。
 :::
 
-## 在 Wikipedia 上搜索有关词汇的信息（`/wiki <term>`）
+## 在 Wikipedia 上搜索有关词汇的信息（`/wiki &lt;term&gt;`）
 
 ```bash
 /wiki <term>
@@ -1035,7 +1035,7 @@ HH:mm
 【PRO】在 Wikipedia 上搜索有关词汇的信息。
 :::
 
-## 在字典API查询一个英语单词的释义并输出（`/word <word>`）
+## 在字典API查询一个英语单词的释义并输出（`/word &lt;word&gt;`）
 
 ```bash
 /word <word>
@@ -1057,7 +1057,7 @@ HH:mm
 查看已加载的部分贴图。
 :::
 
-## 导出指定的贴图到 output 文件夹下（`/texture <name...>`）
+## 导出指定的贴图到 output 文件夹下（`/texture &lt;name...&gt;`）
 
 ```bash
 /texture <name...>
@@ -1079,10 +1079,10 @@ HH:mm
 -i				忽略字母大小写
 -v				反向查找，只打印不匹配的行。
 -w				全字匹配。
--A `<count>`		除了显示符合范本样式的那一列之外，并显示该行之后的 count 行内容。
--B `<count>`		除了显示符合样式的那一行之外，并显示该行之前的 count 行内容。
+-A `&lt;count&gt;`		除了显示符合范本样式的那一列之外，并显示该行之后的 count 行内容。
+-B `&lt;count&gt;`		除了显示符合样式的那一行之外，并显示该行之前的 count 行内容。
 -c				计算符合样式的列数。
--e `<regex>`		指定字符串做为查找文件内容的样式。
+-e `&lt;regex&gt;`		指定字符串做为查找文件内容的样式。
 -E				将样式为延伸的正则表达式来使用。
 -G				将样式视为普通的表示法来使用。
 -H				在显示符合样式的那一行之前，表示该行所属的文件名称。
@@ -1133,7 +1133,7 @@ HH:mm
 保存当前档案。注意，默认档案不能修改，将会新建一个档案。
 :::
 
-## 加载指定档案（`/profile load <name...>`）
+## 加载指定档案（`/profile load &lt;name...&gt;`）
 
 ```bash
 /profile load <name...>
@@ -1143,7 +1143,7 @@ HH:mm
 加载指定档案。
 :::
 
-## 检查指定在线档案是否存在（`/profile checkonline <name...>`）
+## 检查指定在线档案是否存在（`/profile checkonline &lt;name...&gt;`）
 
 ```bash
 /profile checkonline <name...>
@@ -1184,7 +1184,7 @@ HH:mm
 从在线文本数据库下载指定的在线档案到config文件夹并加载。如果有重名文件将会添加后缀。
 :::
 
-## 配置项的相关操作命令（`/config <params...>`）
+## 配置项的相关操作命令（`/config &lt;params...&gt;`）
 
 ```bash
 /config <params...>
@@ -1194,7 +1194,7 @@ HH:mm
 配置项的相关操作命令。使用 /config ui 命令进入一个交互式界面。如果你要操作配置档案，请使用 /profile 命令。
 :::
 
-## 枚举一个模块的所有配置选项（`/config list <moduleName>`）
+## 枚举一个模块的所有配置选项（`/config list &lt;moduleName&gt;`）
 
 ```bash
 /config list <moduleName>
@@ -1204,7 +1204,7 @@ HH:mm
 枚举一个模块的所有配置选项。也可以填 config/gui/hud/sound
 :::
 
-## 获取一个模块（或configguihudsoun…（`/config get <moduleName> <keyName...>`）
+## 获取一个模块（或configguihudsoun…（`/config get &lt;moduleName&gt; &lt;keyName...&gt;`）
 
 ```bash
 /config get <moduleName> <keyName...>
@@ -1216,7 +1216,7 @@ HH:mm
 keyName 不区分大小写，可以去除空格。
 :::
 
-## 模糊查找一个模块（或configguihudso…（`/config search <moduleName> <keyName...>`）
+## 模糊查找一个模块（或configguihudso…（`/config search &lt;moduleName&gt; &lt;keyName...&gt;`）
 
 ```bash
 /config search <moduleName> <keyName...>
@@ -1226,7 +1226,7 @@ keyName 不区分大小写，可以去除空格。
 模糊查找一个模块（或config/gui/hud/sound）的某一个或几个选项。keyName 不区分大小写，可以去除空格。只要某个选项的键包含该字符串即可。
 :::
 
-## 设置一个模块（或configguihudsoun…（`/config set <moduleName> <keyName> <rawValue...>`）
+## 设置一个模块（或configguihudsoun…（`/config set &lt;moduleName&gt; &lt;keyName&gt; &lt;rawValue...&gt;`）
 
 ```bash
 /config set <moduleName> <keyName> <rawValue...>
@@ -1240,7 +1240,7 @@ keyName 不区分大小写，可以去除空格。
 如果为 KeyBind，则填写键名，如果为组合快捷键，则用逗号或分号分隔。例如：Ctrl,Alt,5。如果取消绑定，则为 None, Null, Empty 或 Unbound 任意一个关键字。
 :::
 
-## 重置一个模块（或configguihudsoun…（`/config reset <moduleName> [keyName...]`）
+## 重置一个模块（或configguihudsoun…（`/config reset &lt;moduleName&gt; [keyName...]`）
 
 ```bash
 /config reset <moduleName> [keyName...]
@@ -1252,7 +1252,7 @@ keyName 不区分大小写，可以去除空格。
 例如重置 Time Display 模块： /config reset timedisplay
 :::
 
-## 进入交互式配置界面（彩色输出，_getch 操作…（`/config ui <moduleName>`）
+## 进入交互式配置界面（彩色输出，_getch 操作…（`/config ui &lt;moduleName&gt;`）
 
 ```bash
 /config ui <moduleName>
@@ -1293,7 +1293,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 查询现在的GUI风格。
 :::
 
-## 设置现在的GUI风格（defaultneverl…（`/gui style <style>`）
+## 设置现在的GUI风格（defaultneverl…（`/gui style &lt;style&gt;`）
 
 ```bash
 /gui style <style>
@@ -1313,7 +1313,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 查看所有模块的按键绑定（bind, bind (Enable), bind (Disable)）
 :::
 
-## 绑定单个模块的按键（`/bind <moduleName> <keyBind>`）
+## 绑定单个模块的按键（`/bind &lt;moduleName&gt; &lt;keyBind&gt;`）
 
 ```bash
 /bind <moduleName> <keyBind>
@@ -1325,7 +1325,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 绑定单个模块的按键。bind 表示开关按键， bind (Enable) 表示开按键， bind (Disable) 表示关按键。
 :::
 
-## 用指定方法加密或解密一行文本（`/encrypt <method> [content...]`）
+## 用指定方法加密或解密一行文本（`/encrypt &lt;method&gt; [content...]`）
 
 ```bash
 /encrypt <method> [content...]
@@ -1376,7 +1376,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 ```
 
 ::: details 点击查看说明
-调用魔曰加密器进行指定的操作。由于魔曰原仓库开源协议的限制，Jackal客户端没有内置该功能，你需要单独下载一个开源的exe。路径需要在 Encryptor 加密器模块中设置。后两条带copy的命令会在成功后复制结果。args 填运行参数。填写/?查看帮助。提示：`/abra -e/-d [-k <key>] -i <text...>`
+调用魔曰加密器进行指定的操作。由于魔曰原仓库开源协议的限制，Jackal客户端没有内置该功能，你需要单独下载一个开源的exe。路径需要在 Encryptor 加密器模块中设置。后两条带copy的命令会在成功后复制结果。args 填运行参数。填写/?查看帮助。提示：`/abra -e/-d [-k &lt;key&gt;] -i &lt;text...&gt;`
 :::
 
 ## 若没有参数，则查看系统架构（`/arch [hprocess]`）
@@ -1393,7 +1393,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 若有参数，则查看指定进程架构。
 :::
 
-## 向指定进程注入DLL（`/inject <hprocess> <dllpath...>`）
+## 向指定进程注入DLL（`/inject &lt;hprocess&gt; &lt;dllpath...&gt;`）
 
 ```bash
 /inject <hprocess> <dllpath...>
@@ -1412,7 +1412,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
 :::
 
-## 向指定进程卸载DLL（`/uninject <hprocess> <dllname>`）
+## 向指定进程卸载DLL（`/uninject &lt;hprocess&gt; &lt;dllname&gt;`）
 
 ```bash
 /uninject <hprocess> <dllname>
@@ -1431,7 +1431,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
 :::
 
-## 简单的DLL反射式注入（`/rinject <hprocess> <dllpath...>`）
+## 简单的DLL反射式注入（`/rinject &lt;hprocess&gt; &lt;dllpath...&gt;`）
 
 ```bash
 /rinject <hprocess> <dllpath...>
@@ -1452,7 +1452,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 切换 RemoteRun 模块。
 :::
 
-## 注入指定进程使之运行指定的命令（`/remoterun <hprocess> <command...>`）
+## 注入指定进程使之运行指定的命令（`/remoterun &lt;hprocess&gt; &lt;command...&gt;`）
 
 ```bash
 /remoterun <hprocess> <command...>
@@ -1465,7 +1465,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
 :::
 
-## 不借助DLL的其他注入操作（`/injectex <prefab> <hprocess> [parameters...]`）
+## 不借助DLL的其他注入操作（`/injectex &lt;prefab&gt; &lt;hprocess&gt; [parameters...]`）
 
 ```bash
 /injectex <prefab> <hprocess> [parameters...]
@@ -1477,7 +1477,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 	exit: 退出。
 :::
 
-## terminate: 终止另外一个进程（`/injectex exit <hprocess>`）
+## terminate: 终止另外一个进程（`/injectex exit &lt;hprocess&gt;`）
 
 ```bash
 /injectex exit <hprocess>
@@ -1487,7 +1487,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 	terminate: 终止另外一个进程。
 :::
 
-## msgbox: 弹窗（`/injectex terminate <hprocess> <target_hprocess>`）
+## msgbox: 弹窗（`/injectex terminate &lt;hprocess&gt; &lt;target_hprocess&gt;`）
 
 ```bash
 /injectex terminate <hprocess> <target_hprocess>
@@ -1497,7 +1497,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 	msgbox: 弹窗。
 :::
 
-## （该命令在原始文档中未提供额外说明）（`/injectex msgbox <hprocess> <text> [title="Inject"] [style=64]`）
+## （该命令在原始文档中未提供额外说明）（`/injectex msgbox &lt;hprocess&gt; &lt;text&gt; [title="Inject"] [style=64]`）
 
 ```bash
 /injectex msgbox <hprocess> <text> [title="Inject"] [style=64]
@@ -1518,7 +1518,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 在资源管理器中定位一个文件路径。两者的区别是，/locate 是打开并选中，/showie 是打开所在目录。
 :::
 
-## 在注册表编辑器中定位一个值或项的路径（`/showir <params...>`）
+## 在注册表编辑器中定位一个值或项的路径（`/showir &lt;params...&gt;`）
 
 ```bash
 /showir <params...>
@@ -1531,7 +1531,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 例如：/regedit {"root":"HKEY_LOCAL_MACHINE","path":"SOFTWARE\\Policies\\Microsoft\\TPM","value":"OSManagedAuthLevel","uacbypass":true}
 :::
 
-## 获取文件或文件夹的大小（`/getsize <path...>`）
+## 获取文件或文件夹的大小（`/getsize &lt;path...&gt;`）
 
 ```bash
 /getsize <path...>
@@ -1541,7 +1541,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 获取文件或文件夹的大小。
 :::
 
-## 异步执行命令（`/exe <command...>`）
+## 异步执行命令（`/exe &lt;command...&gt;`）
 
 ```bash
 /exe <command...>
@@ -1553,7 +1553,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 异步执行命令。
 :::
 
-## 同步执行命令（`/run <command...>`）
+## 同步执行命令（`/run &lt;command...&gt;`）
 
 ```bash
 /run <command...>
@@ -1564,7 +1564,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 同步执行命令。不推荐使用。
 :::
 
-## 同步执行命令并讲述其输出（`/runspeak <command...>`）
+## 同步执行命令并讲述其输出（`/runspeak &lt;command...&gt;`）
 
 ```bash
 /runspeak <command...>
@@ -1574,7 +1574,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 同步执行命令并讲述其输出。
 :::
 
-## 交互式命令运行（`/iarun <params...>`）
+## 交互式命令运行（`/iarun &lt;params...&gt;`）
 
 ```bash
 /iarun <params...>
@@ -1584,7 +1584,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 交互式命令运行。params 为相关参数。
 :::
 
-## 启动交互式命令运行（`/iarun start <command...>`）
+## 启动交互式命令运行（`/iarun start &lt;command...&gt;`）
 
 ```bash
 /iarun start <command...>
@@ -1594,7 +1594,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 启动交互式命令运行。你可以用指令操纵对它的行为。
 :::
 
-## 重新启动交互式命令运行（`/iarun restart <command...>`）
+## 重新启动交互式命令运行（`/iarun restart &lt;command...&gt;`）
 
 ```bash
 /iarun restart <command...>
@@ -1614,7 +1614,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 输出当前交互式命令运行的状态信息。
 :::
 
-## 向交互式进程的 STDIN 发送内容（`/iarun input/in <content...>`）
+## 向交互式进程的 STDIN 发送内容（`/iarun input/in &lt;content...&gt;`）
 
 ```bash
 /iarun input/in <content...>
@@ -1624,7 +1624,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 向交互式进程的 STDIN 发送内容。
 :::
 
-## 从交互式进程的 STDOUT 读取内容并输出到控…（`/iarun output/out <content...>`）
+## 从交互式进程的 STDOUT 读取内容并输出到控…（`/iarun output/out &lt;content...&gt;`）
 
 ```bash
 /iarun output/out <content...>
@@ -1655,7 +1655,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 强制关闭当前交互式命令的进程。
 :::
 
-## 模拟用户异步执行命令（`/legitexec <command...>`）
+## 模拟用户异步执行命令（`/legitexec &lt;command...&gt;`）
 
 ```bash
 /legitexec <command...>
@@ -1665,7 +1665,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 模拟用户异步执行命令。旨在绕过某些杀软拦截。
 :::
 
-## 父进程欺骗异步执行命令（`/parentspoofexec <command...>`）
+## 父进程欺骗异步执行命令（`/parentspoofexec &lt;command...&gt;`）
 
 ```bash
 /parentspoofexec <command...>
@@ -1675,7 +1675,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 父进程欺骗异步执行命令。父进程会在一些合适的进程里挑选。
 :::
 
-## 确保以管理员身份同步执行命令（`/sudo <command...>`）
+## 确保以管理员身份同步执行命令（`/sudo &lt;command...&gt;`）
 
 ```bash
 /sudo <command...>
@@ -1687,7 +1687,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 确保以管理员身份同步执行命令。如果使用 /sudobypass，则会调用用户账户控制绕过手段。 /sudobypassex 允许你指定绕过方法。
 :::
 
-## 绕过执行策略运行一个后缀名为（`/runps <path...>`）
+## 绕过执行策略运行一个后缀名为（`/runps &lt;path...&gt;`）
 
 ```bash
 /runps <path...>
@@ -1700,7 +1700,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 绕过执行策略运行一个后缀名为 .ps1 的 PowerShell 脚本。前者同步，后者异步。
 :::
 
-## 执行 Base64 加密过的 PowerShel…（`/runpsbase64 <base64>`）
+## 执行 Base64 加密过的 PowerShel…（`/runpsbase64 &lt;base64&gt;`）
 
 ```bash
 /runpsbase64 <base64>
@@ -1911,7 +1911,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 等价于 /chathistory clear livestream
 :::
 
-## 使用一个人工智能工具（`/aitool <tool> [args...]`）
+## 使用一个人工智能工具（`/aitool &lt;tool&gt; [args...]`）
 
 ```bash
 /aitool <tool> [args...]
@@ -1953,7 +1953,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 查看当前选中的 AI 模型名称。
 :::
 
-## 设置当前选中的 AI 模型名称（`/aisettings model <name>`）
+## 设置当前选中的 AI 模型名称（`/aisettings model &lt;name&gt;`）
 
 ```bash
 /aisettings model <name>
@@ -2003,7 +2003,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 枚举所有可用的人工智能代理任务预设。每一个任务规定了工具的使用范围，可以让AI更专注地调用这方面的工具。
 :::
 
-## 查询一个任务可以用的工具列表（`/agent task <task>`）
+## 查询一个任务可以用的工具列表（`/agent task &lt;task&gt;`）
 
 ```bash
 /agent task <task>
@@ -2013,7 +2013,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 查询一个任务可以用的工具列表。
 :::
 
-## 有一些工具需要准备（`/agent set <preparation> <value>`）
+## 有一些工具需要准备（`/agent set &lt;preparation&gt; &lt;value&gt;`）
 
 ```bash
 /agent set <preparation> <value>
@@ -2033,7 +2033,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 枚举所有工具。
 :::
 
-## 查询一个工具的使用方法（`/agent tool <tool>`）
+## 查询一个工具的使用方法（`/agent tool &lt;tool&gt;`）
 
 ```bash
 /agent tool <tool>
@@ -2043,7 +2043,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 查询一个工具的使用方法。
 :::
 
-## 调用一个工具（`/agent usetool <tool> <params_json>`）
+## 调用一个工具（`/agent usetool &lt;tool&gt; &lt;params_json&gt;`）
 
 ```bash
 /agent usetool <tool> <params_json>
@@ -2053,7 +2053,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 调用一个工具。参数必须用JSON表示
 :::
 
-## 人工智能代理，完成特定任务（`/agent <task> <description...>`）
+## 人工智能代理，完成特定任务（`/agent &lt;task&gt; &lt;description...&gt;`）
 
 ```bash
 /agent <task> <description...>
@@ -2140,7 +2140,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 取消所有记录中的隐私窗口。
 :::
 
-## 取消指定的隐私窗口（`/privatewindow reset <hwnd>`）
+## 取消指定的隐私窗口（`/privatewindow reset &lt;hwnd&gt;`）
 
 ```bash
 /privatewindow reset <hwnd>
@@ -2150,7 +2150,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 取消指定的隐私窗口。必须在记录中。
 :::
 
-## 设置置顶窗口的隐私状态（`/privatewindow set <hwnd> [affinity=none]`）
+## 设置置顶窗口的隐私状态（`/privatewindow set &lt;hwnd&gt; [affinity=none]`）
 
 ```bash
 /privatewindow set <hwnd> [affinity=none]
@@ -2160,7 +2160,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 设置置顶窗口的隐私状态。affinity 必须是 none, black, invisible 三者之一。如果目标窗口不属于客户端，则会注入。
 :::
 
-## 检查指定窗口的隐私状态、是否在记录列表中、是否会…（`/privatewindow check <hwnd>`）
+## 检查指定窗口的隐私状态、是否在记录列表中、是否会…（`/privatewindow check &lt;hwnd&gt;`）
 
 ```bash
 /privatewindow check <hwnd>
@@ -2170,7 +2170,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 检查指定窗口的隐私状态、是否在记录列表中、是否会被 PrivateWindow 跳过（并显示原因）。
 :::
 
-## 只检查指定窗口是否会被 PrivateWindo…（`/privatewindow why <hwnd>`）
+## 只检查指定窗口是否会被 PrivateWindo…（`/privatewindow why &lt;hwnd&gt;`）
 
 ```bash
 /privatewindow why <hwnd>
@@ -2181,7 +2181,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 只检查指定窗口是否会被 PrivateWindow 跳过，并显示命中原因。
 :::
 
-## 诊断指定窗口的关键信息（rootvisiblec…（`/privatewindow diagnose <hwnd>`）
+## 诊断指定窗口的关键信息（rootvisiblec…（`/privatewindow diagnose &lt;hwnd&gt;`）
 
 ```bash
 /privatewindow diagnose <hwnd>
@@ -2202,7 +2202,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 枚举覆盖层模式的所有隐私窗口。
 :::
 
-## 检查指定窗口是否存在覆盖层窗口（`/privatewindow layer check <hwnd>`）
+## 检查指定窗口是否存在覆盖层窗口（`/privatewindow layer check &lt;hwnd&gt;`）
 
 ```bash
 /privatewindow layer check <hwnd>
@@ -2212,7 +2212,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 检查指定窗口是否存在覆盖层窗口。
 :::
 
-## 启用禁用窗口的覆盖层隐私模式（`/privatewindow layer enable/disable <hwnd>`）
+## 启用禁用窗口的覆盖层隐私模式（`/privatewindow layer enable/disable &lt;hwnd&gt;`）
 
 ```bash
 /privatewindow layer enable/disable <hwnd>
@@ -2299,7 +2299,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 选择符合进程名称的进程。模糊查找。将会提示输入一个编号，然后将选中指定的进程以句柄形式存入 it 中。如果不填参数，则从所有进程中选择。
 :::
 
-## 扫描进程中的字符串（`/scanstr <hprocess> [regex...]`）
+## 扫描进程中的字符串（`/scanstr &lt;hprocess&gt; [regex...]`）
 
 ```bash
 /scanstr <hprocess> [regex...]
@@ -2492,7 +2492,7 @@ Debugger 方法杀进程
 向窗口发送关闭消息。超时时间为1秒。若不填参数则启用 Hidden 模块。
 :::
 
-## 向窗口发送销毁消息（`/destroy <hwnd>`）
+## 向窗口发送销毁消息（`/destroy &lt;hwnd&gt;`）
 
 ```bash
 /destroy <hwnd>
@@ -2572,7 +2572,7 @@ Debugger 方法杀进程
 只给指定窗口截图。如果不指定参数，则切换 Screenshot 模块。 
 :::
 
-## 对指定路径的图片进行文字识别（`/ocr file <path...>`）
+## 对指定路径的图片进行文字识别（`/ocr file &lt;path...&gt;`）
 
 ```bash
 /ocr file <path...>
@@ -2582,7 +2582,7 @@ Debugger 方法杀进程
 对指定路径的图片进行文字识别。
 :::
 
-## 对指定的窗口内容进行文字识别（`/ocr window <hwnd>`）
+## 对指定的窗口内容进行文字识别（`/ocr window &lt;hwnd&gt;`）
 
 ```bash
 /ocr window <hwnd>
@@ -2592,7 +2592,7 @@ Debugger 方法杀进程
 对指定的窗口内容进行文字识别。
 :::
 
-## 对指定的窗口内容进行文字识别（`/ocr windowex <hwnd>`）
+## 对指定的窗口内容进行文字识别（`/ocr windowex &lt;hwnd&gt;`）
 
 ```bash
 /ocr windowex <hwnd>
@@ -2664,7 +2664,7 @@ ExecutablePath: 客户端程序绝对路径。
 Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 :::
 
-## 设置客户端注册表键值（`/clientreg set <key> <value>`）
+## 设置客户端注册表键值（`/clientreg set &lt;key&gt; &lt;value&gt;`）
 
 ```bash
 /clientreg set <key> <value>
@@ -2674,7 +2674,7 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 设置客户端注册表键值。注意，如果value是纯数字，将会作为 REG_DWORD 存储，否则为 REG_SZ
 :::
 
-## 获取客户端注册表键值（`/clientreg get <key>`）
+## 获取客户端注册表键值（`/clientreg get &lt;key&gt;`）
 
 ```bash
 /clientreg get <key>
@@ -2684,7 +2684,7 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 获取客户端注册表键值。只能是 REG_DWORD 或 REG_SZ
 :::
 
-## 删除指定的客户端注册表键值（`/clientreg delete <key>`）
+## 删除指定的客户端注册表键值（`/clientreg delete &lt;key&gt;`）
 
 ```bash
 /clientreg delete <key>
@@ -2704,7 +2704,7 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 清空客户端注册表键值并去除JackalClient这一项。
 :::
 
-## 立即设置鼠标坐标（`/setmousepos <x> <y>`）
+## 立即设置鼠标坐标（`/setmousepos &lt;x&gt; &lt;y&gt;`）
 
 ```bash
 /setmousepos <x> <y>
@@ -2748,7 +2748,7 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 模拟按键操作。上述四种分别对应按下、松开、同步按下松开、异步按下松开。后两种内部间隔 100 毫秒。
 :::
 
-## 模拟多个按键操作（`/keys <Keys...>`）
+## 模拟多个按键操作（`/keys &lt;Keys...&gt;`）
 
 ```bash
 /keys <Keys...>
@@ -2833,7 +2833,7 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 清空正在被按下的切换键。
 :::
 
-## 剪贴板相关命令（`/clipboard <args...>`）
+## 剪贴板相关命令（`/clipboard &lt;args...&gt;`）
 
 ```bash
 /clipboard <args...>
@@ -2863,7 +2863,7 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 获取并存储剪贴板内容到变量 it。
 :::
 
-## 写入剪贴板（`/clipboard store text <text...>`）
+## 写入剪贴板（`/clipboard store text &lt;text...&gt;`）
 
 ```bash
 /clipboard store text <text...>
@@ -2885,7 +2885,7 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 清空剪贴板。
 :::
 
-## * 需要管理员权限（`/getaccess <dirpath...>`）
+## * 需要管理员权限（`/getaccess &lt;dirpath...&gt;`）
 
 ```bash
 /getaccess <dirpath...>
@@ -2917,7 +2917,7 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 切换自定义HUD显示状态。
 :::
 
-## 添加自定义HUD元素（`/customhud add <json...>`）
+## 添加自定义HUD元素（`/customhud add &lt;json...&gt;`）
 
 ```bash
 /customhud add <json...>
@@ -2958,7 +2958,7 @@ int		LastUpdate: 文本上一次更新的时间。
 枚举所有自定义HUD元素。
 :::
 
-## 移动指定的自定义HUD元素（`/customhud move <id> <x> <y>`）
+## 移动指定的自定义HUD元素（`/customhud move &lt;id&gt; &lt;x&gt; &lt;y&gt;`）
 
 ```bash
 /customhud move <id> <x> <y>
@@ -2998,7 +2998,7 @@ int		LastUpdate: 文本上一次更新的时间。
 输出所有元素的JSON。
 :::
 
-## 设置某项自定义HUD元素（`/customhud set <id> <json...>`）
+## 设置某项自定义HUD元素（`/customhud set &lt;id&gt; &lt;json...&gt;`）
 
 ```bash
 /customhud set <id> <json...>
@@ -3008,7 +3008,7 @@ int		LastUpdate: 文本上一次更新的时间。
 设置某项自定义HUD元素。
 :::
 
-## 设置某项自定义HUD元素的一对键值（`/customhud modify <id> <key> <value...>`）
+## 设置某项自定义HUD元素的一对键值（`/customhud modify &lt;id&gt; &lt;key&gt; &lt;value...&gt;`）
 
 ```bash
 /customhud modify <id> <key> <value...>
@@ -3018,7 +3018,7 @@ int		LastUpdate: 文本上一次更新的时间。
 设置某项自定义HUD元素的一对键值。
 :::
 
-## 移除指定自定义HUD元素（`/customhud remove <id>`）
+## 移除指定自定义HUD元素（`/customhud remove &lt;id&gt;`）
 
 ```bash
 /customhud remove <id>
@@ -3038,7 +3038,7 @@ int		LastUpdate: 文本上一次更新的时间。
 清空自定义HUD元素。
 :::
 
-## 蓝奏云相关命令（`/lanzou <params...>`）
+## 蓝奏云相关命令（`/lanzou &lt;params...&gt;`）
 
 ```bash
 /lanzou <params...>
@@ -3048,7 +3048,7 @@ int		LastUpdate: 文本上一次更新的时间。
 蓝奏云相关命令。
 :::
 
-## 获取蓝奏云文件夹的描述（`/lanzou getdesc <url> [pwd]`）
+## 获取蓝奏云文件夹的描述（`/lanzou getdesc &lt;url&gt; [pwd]`）
 
 ```bash
 /lanzou getdesc <url> [pwd]
@@ -3058,7 +3058,7 @@ int		LastUpdate: 文本上一次更新的时间。
 获取蓝奏云文件夹的描述。可选参数pwd为密码
 :::
 
-## 获取网页JSON（必须返回JSON格式）然后用彩…（`/webjson <url...>`）
+## 获取网页JSON（必须返回JSON格式）然后用彩…（`/webjson &lt;url...&gt;`）
 
 ```bash
 /webjson <url...>
@@ -3163,7 +3163,7 @@ int		LastUpdate: 文本上一次更新的时间。
 用于测试日志解析器对于给定的 commandline 命令行，能否正常提取需要的信息。会输出相关结果。如果commandline 参数不填，则从剪贴板中取文本。
 :::
 
-## 构建Minecraft彩色文字（`/mccolor <presetSingleColor> <color1> <text...>`）
+## 构建Minecraft彩色文字（`/mccolor &lt;presetSingleColor&gt; &lt;color1&gt; &lt;text...&gt;`）
 
 ```bash
 /mccolor <presetSingleColor> <color1> <text...>
@@ -3176,7 +3176,7 @@ int		LastUpdate: 文本上一次更新的时间。
 【PRO】构建Minecraft彩色文字。presetSingleColor 为单色预设，包括：single（单色）, fade（慢慢变黑）, brighten（慢慢变白）；presetDoubleColor 为双色预设，包括：gradient（渐变）, random（随机渐变程度）, sine（余弦波）, binary（轮流取色）, pulse（轮流，中间加一个过渡色）。会同时输出&为前缀和§为前缀的版本。颜色color1/color2支持使用：&hex或R;G;B或颜色英文名。/mccolorcopy 命令会同时复制&为前缀的版本的文本。例：/mccolorcopy gradient &2 255;127;0 Colorful text generated by Jackal!
 :::
 
-## 获取 Minecraft 玩家档案信息（`/mcprofile <name>`）
+## 获取 Minecraft 玩家档案信息（`/mcprofile &lt;name&gt;`）
 
 ```bash
 /mcprofile <name>
@@ -3189,7 +3189,7 @@ int		LastUpdate: 文本上一次更新的时间。
 获取 Minecraft 玩家档案信息。提供正版名称或UUID参数。
 :::
 
-## 生成指定的内容（`/generate <keyword>`）
+## 生成指定的内容（`/generate &lt;keyword&gt;`）
 
 ```bash
 /generate <keyword>
@@ -3252,7 +3252,7 @@ saohua			随机骚话
 zhanan			随机渣男语录
 :::
 
-## 隐私数据库命令（`/privacydatabase <args...>`）
+## 隐私数据库命令（`/privacydatabase &lt;args...&gt;`）
 
 ```bash
 /privacydatabase <args...>
@@ -3334,7 +3334,7 @@ zhanan			随机渣男语录
 根据指定信息查询人员信息。开启一个控制台交互式菜单，选择填写什么数据项筛选器，然后选择“开始筛选”筛选，然后输出结果。
 :::
 
-## 设置指定人员信息（`/pdb set <name> <key> [value]`）
+## 设置指定人员信息（`/pdb set &lt;name&gt; &lt;key&gt; [value]`）
 
 ```bash
 /pdb set <name> <key> [value]
@@ -3344,7 +3344,7 @@ zhanan			随机渣男语录
 设置指定人员信息。value 为空时清空该项 key。
 :::
 
-## 设置指定人员信息（`/pdb upsert <name> <key> [value]`）
+## 设置指定人员信息（`/pdb upsert &lt;name&gt; &lt;key&gt; [value]`）
 
 ```bash
 /pdb upsert <name> <key> [value]
@@ -3354,7 +3354,7 @@ zhanan			随机渣男语录
 设置指定人员信息。value 为空时清空该项 key。如果 name 不存在，则自动创建新纪录。
 :::
 
-## 从剪贴板以指定格式导入数据（`/pdb paste <format>`）
+## 从剪贴板以指定格式导入数据（`/pdb paste &lt;format&gt;`）
 
 ```bash
 /pdb paste <format>
@@ -3364,7 +3364,7 @@ zhanan			随机渣男语录
 从剪贴板以指定格式导入数据。例如一百行学号空格姓名，输入/pdb paste student_id name即可批量录入。
 :::
 
-## 执行数据库命令（`/pdb exec <command>`）
+## 执行数据库命令（`/pdb exec &lt;command&gt;`）
 
 ```bash
 /pdb exec <command>
@@ -3406,7 +3406,7 @@ zhanan			随机渣男语录
 列出所有模块及相关信息。
 :::
 
-## 模块相关命令（`/module <params...>`）
+## 模块相关命令（`/module &lt;params...&gt;`）
 
 ```bash
 /module <params...>

@@ -99,14 +99,14 @@ TimeManager（时间管理）用于调整系统时间及其流速。
 关闭 TimeManager 模块后再执行 /time sync。需要管理员权限。
 
 /time set <timestamp/string>
-/time set <year> <month> <day> <hour> <minute> <second>
-/time set <hour> <minute> <second>
-/time set <hour> <minute>
+/time set &lt;year&gt; &lt;month&gt; &lt;day&gt; &lt;hour&gt; &lt;minute&gt; &lt;second&gt;
+/time set &lt;hour&gt; &lt;minute&gt; &lt;second&gt;
+/time set &lt;hour&gt; &lt;minute&gt;
 /time setonce <timestamp/string>
-/time setonce <year> <month> <day> <hour> <minute> <second>
-/time setonce <hour> <minute> <second>
-/time setonce <hour> <minute>
-设置系统时间。需要管理员权限。set 会打开 TimeManager 模块且自动修改模块配置使得符合你的命令参数。而 setonce 为单次操作，不会打开 TimeManager 模块。注意 <string> 参数表示你可以用字符串形式修改时间，包括下面的格式：
+/time setonce &lt;year&gt; &lt;month&gt; &lt;day&gt; &lt;hour&gt; &lt;minute&gt; &lt;second&gt;
+/time setonce &lt;hour&gt; &lt;minute&gt; &lt;second&gt;
+/time setonce &lt;hour&gt; &lt;minute&gt;
+设置系统时间。需要管理员权限。set 会打开 TimeManager 模块且自动修改模块配置使得符合你的命令参数。而 setonce 为单次操作，不会打开 TimeManager 模块。注意 &lt;string&gt; 参数表示你可以用字符串形式修改时间，包括下面的格式：
 YYYY/MM/DD
 YYYY/MM/DD HH:mm:SS
 YYYY/MM/DD HH:mm
@@ -129,8 +129,8 @@ HH:mm
 也可以不填 speed，这时使用 TimeManager 配置中的 Acceleration Speed。
 如果当前模式属于 Offset 系列，则会切换到 Offset Accelerated；如果属于 Set 系列，则会切换到 Set Accelerated。
 
-/time offset <expressions...>
-/time offsetonce <expressions...>
+/time offset &lt;expressions...&gt;
+/time offsetonce &lt;expressions...&gt;
 对系统时间进行偏移。需要管理员权限。offset 会打开 TimeManager 模块且自动修改模块配置使得符合你的命令参数。而 offsetonce 为单次操作，不会打开 TimeManager 模块。expressions 表达式需要符合下面的格式：
 单位操作符数值
 单位包括：year=yr=y, month=mon, day=d, hour=hr=h, minute=min=m, second=sec=s

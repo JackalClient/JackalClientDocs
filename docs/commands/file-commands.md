@@ -14,7 +14,7 @@
 枚举当前目录文件。
 :::
 
-## 同步解释执行一个客户端批处理文件(（`/interpret <path...>`）
+## 同步解释执行一个客户端批处理文件(（`/interpret &lt;path...&gt;`）
 
 ```bash
 /interpret <path...>
@@ -24,7 +24,7 @@
 同步解释执行一个客户端批处理文件(.jbat)或者宏文件(.jm)。
 :::
 
-## 异步解释执行一个客户端批处理文件(（`/perform <path...>`）
+## 异步解释执行一个客户端批处理文件(（`/perform &lt;path...&gt;`）
 
 ```bash
 /perform <path...>
@@ -55,7 +55,7 @@
 切换当前工作目录。注意，不需要指定/d参数，如果有会自动去除。后面的路径可以不加双引号。如果要切换到上一个目录，可以使用 /chdir .. 命令。/chdir 命令成功执行后，会输出当前工作目录，而 /cd 不会。
 :::
 
-## 删除文件或目录（`/rm <path...>`）
+## 删除文件或目录（`/rm &lt;path...&gt;`）
 
 ```bash
 /rm <path...>
@@ -68,7 +68,7 @@
 删除文件或目录。后两个使用COM接口（支持撤销）。前两者如果目标为文件夹，则必须保证文件夹为空。
 :::
 
-## 十六进制查看指定文件（`/hexviewfile <filepath...>`）
+## 十六进制查看指定文件（`/hexviewfile &lt;filepath...&gt;`）
 
 ```bash
 /hexviewfile <filepath...>
@@ -99,7 +99,7 @@
 清空客户端崩溃转储文件 (crashlog\*.dmp)
 :::
 
-## 根据文件内容辨别文件类型，较为基础，只能判断一小…（`/file <path...>`）
+## 根据文件内容辨别文件类型，较为基础，只能判断一小…（`/file &lt;path...&gt;`）
 
 ```bash
 /file <path...>
@@ -109,7 +109,7 @@
 根据文件内容辨别文件类型，较为基础，只能判断一小部分类型。
 :::
 
-## 通过 Everything 软件搜索指定的文件（`/findfile <keywords...>`）
+## 通过 Everything 软件搜索指定的文件（`/findfile &lt;keywords...&gt;`）
 
 ```bash
 /findfile <keywords...>
@@ -160,7 +160,7 @@
 【PRO】关闭 Everything 并清理接口。
 :::
 
-## 通过 findfile 搜索指定文件（`/everything search <keywords...>`）
+## 通过 findfile 搜索指定文件（`/everything search &lt;keywords...&gt;`）
 
 ```bash
 /everything search <keywords...>
@@ -310,7 +310,7 @@
 【PRO】查看或设置请求字段。可选：name path full ext size created modified accessed attributes filelist runcount rundate recent hname hpath hfull
 :::
 
-## 加载指定位置的DLL（`/load <dllpath...>`）
+## 加载指定位置的DLL（`/load &lt;dllpath...&gt;`）
 
 ```bash
 /load <dllpath...>
@@ -320,7 +320,7 @@
 加载指定位置的DLL。
 :::
 
-## 卸载已加载的DLL（`/unload <dllname>`）
+## 卸载已加载的DLL（`/unload &lt;dllname&gt;`）
 
 ```bash
 /unload <dllname>
