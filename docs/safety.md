@@ -32,7 +32,7 @@ JackalClient 关于 `远程控制` 的代码说明如下：
 
 JackalClient 属于工具箱类软件，不需要太多用户的数据，但是有一些特例，这里列举如下：
 
-1. `IRC 聊天室`  模块： 由于聊天室需要，客户端会涉及下列数据：
+1. `IRC Legacy 旧版聊天室`  模块： 由于聊天室需要，客户端会涉及下列数据：
 
 - 计算机用户名 (USERNAME) ：这里作者不推荐你的计算机用户名存在敏感信息，对于任何软件都有泄露的风险！！
 - 你所发送的聊天信息：包括时间戳、消息正文。不要在聊天中发送自己或他人的敏感信息。
@@ -82,7 +82,7 @@ JackalClient 属于工具箱类软件，不需要太多用户的数据，但是�
 1. 权限是否足够
 2. 杀软是否拦截
 3. 配置是否损坏
-4. 日志 `Release/CLIENT.LOG` 是否有明确报错，或者是否产生崩溃日志 `crashlog/last_crash.log`
+4. 日志 `Release/CLIENT.LOG` （最新日志） 以及 `logs/jackalclient-xxxxxx.log` （旧日志）是否有明确报错，或者是否产生崩溃日志 `crashlog/last_crash.log`
 
 ## PRO专业版用户权益说明
 
@@ -104,6 +104,7 @@ IV. 其他可能会发生的行为。
 重点关注：
 
 - `CLIENT.LOG`
+- 之前的日志 `logs/jackalclient-xxxx.log`
 - 崩溃日志目录（如 `crashlog`）
 - 配置目录（如 `config`）
 
