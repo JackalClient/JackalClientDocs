@@ -5,9 +5,16 @@
 <TkVpContainer type="info" title="Pro购买" text="Pro专业版购买入口： https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377/" />
 
 JackalClient 客户端作者，请支持我们！
-UP主-主要开发：[@Wormwaker](https://space.bilibili.com/3494361276877525) 
-辅助开发：[@涟幽Alex](https://space.bilibili.com/1270641296)
-驱动支持：[@KeBugCheck](https://space.bilibili.com/1632975427) [@Stars_Azusa](https://space.bilibili.com/670866766)
+
+- UP主-主要开发：
+- [@Wormwaker](https://space.bilibili.com/3494361276877525)
+  
+- 辅助开发：
+- [@涟幽Alex](https://space.bilibili.com/1270641296)
+  
+- 驱动支持：
+- [@KeBugCheck](https://space.bilibili.com/1632975427)
+- [@Stars_Azusa](https://space.bilibili.com/670866766)
 
 Free 免费版下载：
 - 蓝奏云: [wormwake.lanzout.com/b00mq8dxcb](https://wormwake.lanzout.com/b00mq8dxcb) 访问密码 d1lu
@@ -19,12 +26,12 @@ Free 免费版下载：
 
 常见启动文件：
 
-- `Launcher.exe`：一个简易的启动器（可检查更新），如果有启动问题，请运行本体：
+- `Launcher.exe`：一个简易的启动器（可检查**免费版**的更新），如果有启动问题，请运行本体：
 - `Release/JackalClient.exe`：客户端主程序（本体）
 
 ## 2. GUI （用户界面）基本操作
 
-客户端最主要的特点就是在GUI关闭时，可以以 「HUD (用户抬头显示）」或者说「Overlay (叠加层)」 的形式出现，且不影响你使用鼠标进行对其他应用的操作。
+客户端最主要的特点就是在 GUI 关闭时，可以以 「HUD (用户抬头显示）」或者说「Overlay (叠加层)」 的形式出现，且不影响你使用鼠标进行对其他应用的操作。
 
 默认打开或关闭界面（ClickGUI）快捷键：
 
@@ -32,8 +39,10 @@ Free 免费版下载：
 - 新版(>=v1.0.4): 右 `Alt` /    左 `Ctrl` + 左 `Alt` + `Insert`  （这个记不住算了，应急用的）
 
 打开 GUI 后，鼠标穿透就会被关闭，意味着除了任务栏的其他区域都是客户端的窗口，无法点击空白处和后面的窗口交互，你只能操纵客户端窗口，除非关闭 GUI。
+客户端的主窗口大多数情况下都是置顶的，这意味着始终显示。如果被其他普通桌面程序窗口盖住了，可以尝试打开 `ForceTopmost / 强制置顶` 模块。
 
 基本操作：
+（这个GUI风格可以在 `GUI选项 - ClickGUI风格` 调整）
 
 ### 下拉式 (Dropdown) 界面【默认】：
 
@@ -68,10 +77,11 @@ Free 免费版下载：
 - `Home` / `End`：快速跳转到页面的顶部或底部。
 
 ### Imgui:
-这个界面已被废弃，不建议使用。
+这个界面已被废弃，不建议使用。设置为本样式后，需要重启客户端应用。
+
 ### 右下角会有两个按钮：
-第一个绿色的表示模块编辑器，点一下后就可以修改模块显示状态了，左侧具有绿色竖线的模块表示显示在GUI上，如果你想隐藏，点一下即可。修改完毕后点击下面的完成按钮。
-第二个蓝色的表示HUD编辑器，点一下后你可以用鼠标中键（滚轮往下按）拖动任意HUD元素（例如灵动岛、目标显示、模块列表等）。注意，HUD编辑器打开的时候任何“给鼠标让道”选项都会暂时失效。
+第一个绿色的表示 `ModuleEditor / 模块编辑器` ，点一下后就可以修改模块显示状态了，左侧具有绿色竖线的模块表示显示在GUI上，如果你想隐藏，点一下即可。修改完毕后点击下面的完成按钮。
+第二个蓝色的表示 `HUD Editor / HUD编辑器` ，点一下后你可以用鼠标中键（滚轮往下按）拖动任意HUD元素（例如灵动岛、目标显示、模块列表等）。注意，HUD编辑器打开的时候任何“给鼠标让道”选项都会暂时失效。
 
 ## 3. Shell「命令行」 基本操作
 
