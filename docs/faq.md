@@ -6,15 +6,16 @@ JackalClient 是一个用 C++ 编写的公益 Windows 客户端/工具箱，你�
 
 [**<u><font style="color:#3370FF;">UP主/作者：@Wormwaker</font></u>**](https://space.bilibili.com/3494361276877525)
 
-**<u><font style="color:#3370FF;">今年搞了个文档官网，可以看看：</font></u>**[**<u><font style="color:#74B602;">https://doc.wormwake.com/</font></u>**](https://doc.wormwake.com/)
+**<u><font style="color:#3370FF;">文档官网：</font></u>**[**<u><font style="color:#74B602;">https://doc.wormwake.com/</font></u>**](https://doc.wormwake.com/)
 
 **<u><font style="color:#3370FF;"></font></u>**
-
+---
 JackalClient 最常见的问题
-
+---
 
 
 **<u>电脑小白请单击此处 → </u>**[**<u>如何下载并运行 JackalClient 说明书</u>**](https://www.yuque.com/wormwaker/tkpgqw/ppfnlcaqdkcsfmkd?singleDoc#%20《如何下载并运行%20JackalClient%20说明书%20-%20How%20To%20Download%20and%20Run%20JackalClient%20Instructions》)
+
 
 
 
@@ -26,11 +27,11 @@ JackalClient 最常见的问题
 
 **<font style="color:#DF2A3F;">Q: 怎么杀毒软件报毒了</font>**
 
-**<font style="color:#DF2A3F;">A: 正常（例如 Hetile.e, Exploit/CVE-XXXX, Exploit/Vuldriver, BypassUAC, Hacktool, Injector.bkc 等字样），恢复区恢复到原目录并添加信任（最好整个目录添加一下），客户端没有后门</font>**
+**<font style="color:#DF2A3F;">A: 正常（例如 `Hetile.e, Exploit/CVE-XXXX, Exploit/Vuldriver, BypassUAC, Hacktool, Injector.bkc` 等字样），恢复区恢复到原目录并添加信任（最好整个目录添加一下），客户端没有后门</font>**
 
 
 
-Q: 解压失败是什么鬼（一个意外错误使你无法复制该文件。如果你继续收到该错误，可以使用错误代码来搜索有关问题的帮助。错误 0x80004005: 未指定的错误 COMMANDS.txt）
+Q: 解压失败是什么鬼（一个意外错误使你无法复制该文件。如果你继续收到该错误，可以使用错误代码来搜索有关问题的帮助。错误 `0x80004005`: 未指定的错误 `COMMANDS.txt`）
 
 A: 不要用 <font style="color:#2F8EF4;">Windows自带的 </font>zip解压，因为无法识别 **<font style="color:#2F8EF4;">密码 </font>**的存在。你需要其他解压软件。解压的时候解压 <font style="color:#2F8EF4;">整个文件夹</font>。不要只解压启动器。
 
@@ -38,31 +39,35 @@ A: 不要用 <font style="color:#2F8EF4;">Windows自带的 </font>zip解压，�
 
 Q: 启动器在线下载客户端文件时候怎么自己就退出了
 
-A: 客户端本体被杀软杀掉了，添加信任，恢复到原位置，本体在 Release 文件夹下可以直接运行
+A: 客户端本体被`杀软`杀掉了，添加信任，恢复到原位置，本体在 Release 文件夹下可以直接运行
 
 
 
-Q: XXX.exe-无法找到入口  无法定位程序输入点 GetSystemTimePreciseAsFileTime 于动态链接库 KERNEL32.dIl上。
 
-A: 客户端不支持 Windows 8 以下的 Windows 系统版本。而且这个函数的调用是隐式的，我无法修改为动态调用。
+Q: XXX.exe-无法找到入口  无法定位程序输入点 `GetSystemTimePreciseAsFileTime` 于动态链接库 `KERNEL32.dll` 上。
+
+A: 客户端不支持 `Windows 8 以下`的 `Windows` 系统版本。而且这个函数的调用是隐式的，我无法修改为动态调用。
+
 
 
 
 Q: 弹窗缺少 VCRUNTIME140.DLL 等
 
-A: 缺少VC++环境。群文件搜索 vc，找到两个** ****<font style="color:#DF2A3F;">vc_redist</font>**** **的exe，都安装一下然后重试
+A: 缺少 VC++环境 。群文件搜索 vc，找到两个** ****<font style="color:#DF2A3F;">vc_redist</font>**** **的exe，都安装一下然后重试
 
 
 
 Q: 怎么打开本体后什么反应也没有，或者是任务栏图标出现几秒后闪退
 
-A: 打开 Release 文件夹下的 CLIENT.LOG，如果最后右 InitWindow 后就退出的现象，就是创建窗口失败，可能和显卡有关系，有几位群友有这个问题，但是还没有找到通用方案
+A: 打开 Release 文件夹下的 `CLIENT.LOG`，如果最后有 InitWindow 后就退出的现象，就是创建窗口失败，可能和 `显卡 (GPU) ` 有关系，如果你的显卡过于老旧或者没有显卡，那大概率是这个原因了。有几位群友有这个问题，但是还没有找到通用方案
+
 
 
 
 Q: 打开后控制台直接显示然后直接弹窗崩溃，崩溃日志里面只有一点点基本信息
 
 A: 和上面一问问题相同，硬件原因
+
 
 
 
@@ -125,11 +130,12 @@ A: 开关直接点就行；
 
 字符串点一下后 **<font style="color:#74B602;">新版本（>=0.9b) </font>**可以直接编辑；**<font style="color:#74B602;">旧版本 </font>**是原始编辑（编程语言里的字符串格式；要按回车完成编辑）可能不太方便，你按一下 <font style="color:#74B602;">Ctrl+T</font> 会弹出一个框，在里面编辑会舒服一点。
 
-如果你要输入文件路径，就按 **Ctrl+O**。
+如果你要输入`文件路径`，就按 **Ctrl+O**。
 
-如果你要输入文件夹的路径，就按 **Ctrl+Shift+O**。
+如果你要输入`文件夹的路径`，就按 **Ctrl+Shift+O**。
 
 如果你要清空，就按 **Shift+Delete**。
+大部分的编辑框在 `v1.1.0` 已支持 `Ctrl+A` `Shift+←` `Shift+→` `Shift+Home` `Shift+End` 这些快捷键了。
 
 对于按键绑定项，按Esc可以取消绑定，其他键按下后松开即可完成绑定。
 
@@ -159,7 +165,7 @@ A: 如果看不见，则是开启了 **<font style="color:#ECAA04;">Anti Capture
 
 
 
-Q: 为什么报找不到 **RTCore64.sys，**或者无法启用RTCore64模块
+Q: 为什么报找不到 `RTCore64.sys`，或者无法启用 `RTCore64` 模块
 
 A: 旧版本所需要的驱动程序（新版本 >= v1.0.9 已改用 `Sirius.sys`）。由于该驱动是漏洞利用驱动，已被一堆 <font style="color:#DF2A3F;">杀毒软件标记</font> ，为了安全考虑从Free版删除该文件。如需使用旧版本的相关模块（Protection, PPLESP, PPLButcher），请从群文件旧版本获取。
 
@@ -176,9 +182,10 @@ A: 找到“命令行”模块(Shell)，打开，会弹出一个控制台，就�
 
 
 
-Q: 怎么使用 **新版的 **更好的歌词模块（挂钩渲染模式/<font style="color:#DF2A3F;">驱动模式</font>）
+Q: 怎么使用 `新版的` 更好的歌词模块（挂钩渲染模式/<font style="color:#DF2A3F;">驱动模式</font>）
 
 A: **<font style="color:#DF2A3F;background-color:rgb(21, 22, 23);">挂钩渲染模式(Hook Render)</font>**仅限于**64位**的**网易云音乐**。将基础模式改为挂钩渲染后启用更好的歌词模块即可。只有关闭更好的歌词模块时才会将DLL从进程中卸载。**<font style="color:#EDCE02;">专业版PRO用户</font>**可以使用**<font style="color:#DF2A3F;">驱动模式(Driver)</font>**，仅限于**网易云音乐**，无需打开桌面歌词窗口，直接获取准确歌词。
+![更好的歌词说明文档](/betterlyrics.md)
 
 
 
@@ -203,7 +210,7 @@ Q: 怎么保存配置/档案
 
 A: 客户端退出会自动保存，定时也会保存，不放心就打开GUI按下 **<font style="color:#ECAA04;">Ctrl+S </font>**手动保存；如果想另存为配置，找到上面的档案(Profile)选项卡，点一下，按 **<font style="color:#ECAA04;">Ctrl+Shift+S 另存为</font>**，输入档案名称，就保存了。保存的档案在config文件夹下（json文件）；
 
-**在新版本(v1.0.3) **加入了**配置的自动备份**，如果你的配置名称叫b.json，会定期保存一个b.backup.json
+在新版本 (v1.0.3) 加入了 `配置的自动备份`，如果你的配置名称叫b.json，会定期保存一个b.backup.json
 
 
 
@@ -219,15 +226,15 @@ A: 你关闭了输出CURL错误。请在 WebSettings 网络设定 模块中打�
 
 
 
-Q: 为什么** 0.9a** 那么糊
+Q: 为什么 `v0.9a` 版本的客户端那么糊
 
-A: 关闭 GUI 选项中的 <font style="color:#74B602;">Anti Aliasing 抗锯齿</font>。新版采用了实验性的FXAA抗锯齿着色器，但是效果不理想。不过新出了一个配置项可以调整抗锯齿的强度。
+A: 关闭 GUI 选项中的 <font style="color:#74B602;">Anti Aliasing 抗锯齿</font>。新版采用了实验性的 `FXAA` 抗锯齿着色器，但是效果不理想。不过新出了一个配置项可以调整抗锯齿的强度。
 
 
 
-Q: v0.9a 怎么一启动就打开 ScreenCapture 屏幕捕获 和 AntiCapture 反捕获？
+Q: `v0.9a` 怎么一启动就打开 ScreenCapture 屏幕捕获 和 AntiCapture 反捕获？
 
-A: BUG，已经在 v0.9b 修复。将 ScreenCapture 屏幕捕获的“**Exclude Client 捕获客户端**”暂时改成“**关闭**”，然后关闭两个模块，下一次启动时 **AntiCapture** 就不会自动启动了。
+A: BUG，已经在 `v0.9b` 修复。将 ScreenCapture 屏幕捕获的 **Exclude Client 捕获客户端** 暂时改成 **关闭**，然后关闭两个模块，下一次启动时 **AntiCapture** 就不会自动启动了。
 
 
 
@@ -239,7 +246,7 @@ A: 在 其他 一栏中找到 屏幕捕获 模块，确保 排除客户端 Exclu
 
 Q: 怎么像视频中那样有发光的效果
 
-A: 打开 **着色器模块(Shader)**，右键配置里面有多种着色器可以选，这是bloom(泛光)着色器。可能会掉帧，并导致有些透明的部分变成不透明的。
+A: 打开 **着色器模块(Shader)**，右键配置里面有多种着色器可以选，这是 `bloom(泛光)` 着色器。可能会掉帧，并导致有些透明的部分变成不透明的。
 
 
 
@@ -275,13 +282,13 @@ A: 在一些模块的颜色设置中，选择 **<font style="color:#74B602;">流
 
 Q: 我怎么爆不了图腾
 
-A: 图腾 (Totem) 是视频，可能兼容性不太好，直接在客户端窗口里播放。如果卡就不要用了。如果背景是黑的，说明抠图失败，你可以选取黑色的像素点的RGB，把他输入到图腾配置里面的色键中，可能就有一点用。
+A: 新版本是 `着色器` 实现的三维效果，如果你只能见到粒子效果，作者还不清楚为什么看不到图腾。 旧版本的 `图腾 (Totem) ` 是视频，可能兼容性不太好，直接在客户端窗口里播放。如果卡就不要用了。如果背景是黑的，说明抠图失败，你可以选取黑色的像素点的RGB，把他输入到图腾配置里面的色键中，可能就有一点用。
 
 
 
 Q: 我的看门人怎么启动不了
 
-A: 看门人模块(Gatekeeper) 需要 **管理员(Admin) **和 **特权(Privileges)**，检查是否开启。如果还是开不了，就是火绒等杀毒软件拦截了对系统进程的操作。还有，32位系统是不能开的。  
+A: `看门人模块(Gatekeeper) `需要 **管理员(Admin) **和 **特权(Privileges)**，检查是否开启。如果还是开不了，就是火绒等杀毒软件拦截了对系统进程的操作。还有，32位系统是不能开的。  
   
 Q: 怎么绕过UAC窃得管理员权限
 
@@ -295,7 +302,7 @@ A: 正在启动服务，等一会哈，然后提权完的客户端就会弹出�
 
 
 
-Q: 按 System （系统）模块怎么被360拦截了
+Q: 按 `System （系统）`模块怎么被360拦截了
 
 A: 提权是敏感操作，当然会拦截
 
