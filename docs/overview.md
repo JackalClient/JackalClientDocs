@@ -1,22 +1,23 @@
 ﻿# JackalClient 文档概览
 
-欢迎查看 JackalClient 文档！
-JackalClient 是一个面向 Windows 的客户端工具箱，定位为学习与研究用途的软件集合。
+欢迎查看 `JackalClient 文档`！
+`JackalClient` 是一个面向 Windows 的客户端工具箱，定位为学习与研究用途的软件集合。
 
 查看视频合集：[JackalClient视频合集](https://space.bilibili.com/3494361276877525/lists/3986082?type=season)
+常见问题请戳这里：[常见问题 Q&A](/faq.md)
 
-它的核心形态不是“单一功能程序”，而是由多个可独立开关的模块组成：
+它的核心形态不是 “单一功能程序” ，而是由多个可独立开关的模块组成：
 
 - 图形界面（ClickGUI）
 - 用户抬头显示（HUD），也可以叫做 叠加层（Overlay）
 - 命令行 Shell 模块（大量命令）
 - 系统工具模块（窗口、进程、音量、时间、文件等）
 - 自动化模块（启动、任务、规则触发）
-- 网络模块（B 站、网易云、文本数据库等）
+- 网络模块（Bilibili、网易云等）
 
 ## 项目定位
 
-- 平台：Windows（64 位为主）
+- 平台：>= Windows 8（64 位为主）
 - 架构：本体 `JackalClient.exe` 为 x86 32位程序，部分程序为 x64
 - 交互：GUI + 命令行双栈
 - 目标：效率辅助、系统操作、自动化和信息处理
