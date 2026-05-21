@@ -7,9 +7,12 @@
 JackalClient 客户端作者，请支持我们！
 UP主-主要开发：[@Wormwaker](https://space.bilibili.com/3494361276877525) 
 辅助开发：[@涟幽Alex](https://space.bilibili.com/1270641296)
-驱动支持：[@KeBugCheck](https://space.bilibili.com/1632975427)
+驱动支持：[@KeBugCheck](https://space.bilibili.com/1632975427) [@Stars_Azusa](https://space.bilibili.com/670866766)
 
-Free 免费版可以在QQ群聊中获取: `196218959` 进群先看公告
+Free 免费版下载：
+- 蓝奏云: [wormwake.lanzout.com/b00mq8dxcb](https://wormwake.lanzout.com/b00mq8dxcb) 访问密码 d1lu
+- Github Releases: [github.com/noexcept2005/JackalClient/releases](https://github.com/noexcept2005/JackalClient/releases)
+- QQ群聊中获取: `196218959` 进群先看公告
 电脑小白请单击此处查看 → [如何下载并运行 JackalClient 说明书](/download-and-run)
 
 ## 1. 启动方式
@@ -41,6 +44,7 @@ Free 免费版可以在QQ群聊中获取: `196218959` 进群先看公告
 
 辅助操作：
 
+- `Ctrl + 滚轮`: 全局缩放
 - `Ctrl + F`：进入模块或模块配置项搜索界面
 - `Ctrl + Tab`: 切换顶部标签页。注意，这可能和「应用」中的「文件管理器」冲突。
 - `Esc`：也可以关闭 GUI
@@ -55,12 +59,19 @@ Free 免费版可以在QQ群聊中获取: `196218959` 进群先看公告
 
 辅助操作：
 
+- `Ctrl + 滚轮`: 全局缩放
 - `Ctrl + F`：进入模块或模块配置项搜索界面
 - `Ctrl + Tab`: 切换顶部标签页。注意，这可能和「应用」中的「文件管理器」冲突。
 - `Esc`：也可以关闭 GUI
 - 滚轮：上下滚动当前页面。
 - 上下箭头↑↓：可以代替滚轮滚动。
 - `Home` / `End`：快速跳转到页面的顶部或底部。
+
+### Imgui:
+这个界面已被废弃，不建议使用。
+### 右下角会有两个按钮：
+第一个绿色的表示模块编辑器，点一下后就可以修改模块显示状态了，左侧具有绿色竖线的模块表示显示在GUI上，如果你想隐藏，点一下即可。修改完毕后点击下面的完成按钮。
+第二个蓝色的表示HUD编辑器，点一下后你可以用鼠标中键（滚轮往下按）拖动任意HUD元素（例如灵动岛、目标显示、模块列表等）。注意，HUD编辑器打开的时候任何“给鼠标让道”选项都会暂时失效。
 
 ## 3. Shell「命令行」 基本操作
 
