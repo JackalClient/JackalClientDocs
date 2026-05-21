@@ -1,6 +1,6 @@
 # JackalClient 常见问题
 
-> 最新修订版本请查看此处：[https://www.yuque.com/wormwaker/tkpgqw/yc5y1ty9pg215me1?singleDoc](https://www.yuque.com/wormwaker/tkpgqw/yc5y1ty9pg215me1?singleDoc)
+> 语雀文档，由于 2026/5 被改为需要登陆才能查看，以后将不在上面更新：[https://www.yuque.com/wormwaker/tkpgqw/yc5y1ty9pg215me1?singleDoc](https://www.yuque.com/wormwaker/tkpgqw/yc5y1ty9pg215me1?singleDoc)
 
 JackalClient 常见问题
 
@@ -8,7 +8,7 @@ JackalClient 是一个用 C++ 编写的公益 Windows 客户端/工具箱，你�
 
 ​
 
-[UP主/作者：@Wormwaker](https://space.bilibili.com/3494361276877525)
+[**<u><font style="color:#3370FF;">UP主/作者：@Wormwaker</font></u>**](https://space.bilibili.com/3494361276877525)
 
 ​
 
