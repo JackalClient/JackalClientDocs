@@ -2,8 +2,6 @@
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
-共 32 组命令。
-
 ## 枚举当前目录文件（`/ls`）
 
 ```bash
@@ -14,7 +12,7 @@
 枚举当前目录文件。
 :::
 
-## 同步解释执行一个客户端批处理文件(（`/interpret &lt;path...&gt;`）
+## 同步解释执行一个客户端批处理文件(（`/interpret <path...>`）
 
 ```bash
 /interpret <path...>
