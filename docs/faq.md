@@ -1,6 +1,7 @@
-**JackalClient 常见问题**
+## JackalClient 常见问题
 
-JackalClient 是一个用 C++ 编写的公益 Windows 客户端/工具箱，你只需要关注UP主就可以下载使用。JackalClient 也有一个专业版，你可以在这里永久购买，2025年可以享受半价，节假日也会有优惠：[https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377](https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377)
+`JackalClient` 是一个用 C++ 编写的公益 `Windows 客户端/工具箱`，你只需要关注UP主就可以下载使用。JackalClient 也有一个 `专业版 (PRO)`，你可以在这里永久购买，节假日会有随机优惠：[https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377](https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377)
+[https://ifdian.net/item/1eda4ca6ca2511f0a7ae52540025c377](https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377)
 
 
 
@@ -10,13 +11,11 @@ JackalClient 是一个用 C++ 编写的公益 Windows 客户端/工具箱，你�
 
 **<u><font style="color:#3370FF;"></font></u>**
 ---
-JackalClient 最常见的问题
----
 
 
 **<u>电脑小白请单击此处 → </u>**[**<u>如何下载并运行 JackalClient 说明书</u>**](https://www.yuque.com/wormwaker/tkpgqw/ppfnlcaqdkcsfmkd?singleDoc#%20《如何下载并运行%20JackalClient%20说明书%20-%20How%20To%20Download%20and%20Run%20JackalClient%20Instructions》)
 
-
+---
 
 
 <font style="color:#2F8EF4;">Q: </font><font style="color:#2F8EF4;">解压密码是什么</font>
