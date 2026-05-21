@@ -19,32 +19,29 @@ JackalClient 最常见的问题
 
 
 
-<font style="color:#2F8EF4;">Q: </font>**<font style="color:#2F8EF4;">解压密码是什么</font>**
+<font style="color:#2F8EF4;">Q: </font><font style="color:#2F8EF4;">解压密码是什么</font>
 
-**<font style="color:#2F8EF4;">A: Wormwake</font>**
+<font style="color:#2F8EF4;">A: Wormwake</font>
 
+
+Q: 解压失败（一个意外错误使你无法复制该文件。如果你继续收到该错误，可以使用错误代码来搜索有关问题的帮助。错误 `0x80004005`: 未指定的错误 `COMMANDS.txt`）
+
+A: 不要用 <font style="color:#2F8EF4;">Windows自带的 </font>zip解压，因为无法识别 <font style="color:#2F8EF4;">密码 </font> 的存在。你需要其他解压软件。解压的时候解压 <font style="color:#2F8EF4;">整个文件夹</font>。不要只解压启动器。
 
 
 **<font style="color:#DF2A3F;">Q: 怎么杀毒软件报毒了</font>**
 
-**<font style="color:#DF2A3F;">A: 正常（例如 `Hetile.e, Exploit/CVE-XXXX, Exploit/Vuldriver, BypassUAC, Hacktool, Injector.bkc` 等字样），恢复区恢复到原目录并添加信任（最好整个目录添加一下），客户端没有后门</font>**
-
-
-
-Q: 解压失败是什么鬼（一个意外错误使你无法复制该文件。如果你继续收到该错误，可以使用错误代码来搜索有关问题的帮助。错误 `0x80004005`: 未指定的错误 `COMMANDS.txt`）
-
-A: 不要用 <font style="color:#2F8EF4;">Windows自带的 </font>zip解压，因为无法识别 **<font style="color:#2F8EF4;">密码 </font>**的存在。你需要其他解压软件。解压的时候解压 <font style="color:#2F8EF4;">整个文件夹</font>。不要只解压启动器。
-
+**<font style="color:#DF2A3F;">A: 正常现象（例如 `Hetile.e, Exploit/CVE-XXXX, Exploit/Vuldriver, BypassUAC, Hacktool, Injector.bkc` 等字样），恢复区恢复到原目录并添加信任（最好整个目录添加一下），无论什么版本的客户端都没有任何后门。</font>**
 
 
 Q: 启动器在线下载客户端文件时候怎么自己就退出了
 
-A: 客户端本体被`杀软`杀掉了，添加信任，恢复到原位置，本体在 Release 文件夹下可以直接运行
+A: 客户端本体被 `杀软` 杀掉了，添加信任，恢复到原位置，本体在 Release 文件夹下可以直接运行
 
 
 
 
-Q: XXX.exe-无法找到入口  无法定位程序输入点 `GetSystemTimePreciseAsFileTime` 于动态链接库 `KERNEL32.dll` 上。
+Q: `XXX.exe-无法找到入口` 无法定位程序输入点 `GetSystemTimePreciseAsFileTime` 于动态链接库 `KERNEL32.dll` 上。
 
 A: 客户端不支持 `Windows 8 以下`的 `Windows` 系统版本。而且这个函数的调用是隐式的，我无法修改为动态调用。
 
@@ -53,14 +50,13 @@ A: 客户端不支持 `Windows 8 以下`的 `Windows` 系统版本。而且这�
 
 Q: 弹窗缺少 VCRUNTIME140.DLL 等
 
-A: 缺少 VC++环境 。群文件搜索 vc，找到两个** ****<font style="color:#DF2A3F;">vc_redist</font>**** **的exe，都安装一下然后重试
+A: 缺少 VC++环境 。群文件搜索 vc，找到两个<font style="color:#DF2A3F;">vc_redist</font>的exe（一个64位一个32位），都安装一下然后重试
 
 
 
 Q: 怎么打开本体后什么反应也没有，或者是任务栏图标出现几秒后闪退
 
-A: 打开 Release 文件夹下的 `CLIENT.LOG`，如果最后有 InitWindow 后就退出的现象，就是创建窗口失败，可能和 `显卡 (GPU) ` 有关系，如果你的显卡过于老旧或者没有显卡，那大概率是这个原因了。有几位群友有这个问题，但是还没有找到通用方案
-
+A: 打开 Release 文件夹下的 `CLIENT.LOG`，如果最后有 InitWindow 后就退出的现象，就是`创建窗口失败`，可能和 `显卡 (GPU) ` 有关系，如果你的显卡过于老旧或者没有显卡，那大概率是这个原因了。有几位群友有这个问题，但是还没有找到通用方案
 
 
 
@@ -70,10 +66,9 @@ A: 和上面一问问题相同，硬件原因
 
 
 
-
 Q: 打开后显示托盘提示，怎么开GUI软件界面
 
-A: 默认是 **右Alt****<font style="color:#DF2A3F;">【旧版本<v1.0.4是右Shift/右Ctrl，由于可能会和一些软件冲突于是修改了】</font>**，这个可以在GUI选项里改（ Menu Toggle Key 1/2）；客户端也有托盘图标，左键也能开GUI。右键会弹出一个小菜单。
+A: 默认是 `右Alt` <font style="color:#DF2A3F;">【旧版本<v1.0.4是右Shift/右Ctrl，由于可能会和一些软件冲突于是修改了】</font>，这个可以在GUI选项里改（`Menu Toggle Key 1/2`）；客户端也有托盘图标，左键也能开GUI。右键会弹出一个小菜单。
 
 
 
@@ -81,21 +76,21 @@ Q: 怎么黑屏了（该透明的背景变成纯黑色）
 
 A: 某些N卡硬件的bug, 和OpenGL也有关系，先尝试这个方法，打开 NVIDIA 设置：
 
-**  OpenGL GDI 兼容性 ** 改为  **<font style="color:#DF2A3F;">优先兼容性</font>**。  
+`OpenGL GDI 兼容性` 改为 <font style="color:#DF2A3F;">优先兼容性</font>。  
 
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2025/png/54044512/1763041290750-f2d1bd78-f968-4d31-a982-a78c4bbfd757.png)
 
-如果你想只给客户端设置这个，你可以选择**“程序设置”**而不是“全局设置”。
+如果你想只给客户端设置这个，你可以选择`程序设置`而不是`全局设置`。
 
 还不行则看一下issue其他方法: [https://github.com/noexcept2005/JackalClient/issues/3](https://github.com/noexcept2005/JackalClient/issues/3)   up主一直很头疼这个问题，，，
-
+访问不了Github就看视频：[JackalClient 黑屏问题解决方案](https://www.bilibili.com/video/BV1vSdxBgEXc)
 
 
 Q: 怎么调中文、怎么开汉化
 
-A: 顶部有一个 GUI 选项卡，点一下，往下翻（滚轮或下箭头）找到 <font style="color:#DF2A3F;">Language/语言</font>
+A: 顶部有一个 `GUI 选项`，点一下，往下翻（滚轮或下箭头）找到 <font style="color:#DF2A3F;">Language/语言</font>
 
 <font style="color:#DF2A3F;">或者在“搜索”选择模块</font>_<font style="color:#EDCE02;">配置项搜索模式</font>_<font style="color:#DF2A3F;">，搜索语言</font>
 
@@ -238,15 +233,15 @@ A: BUG，已经在 `v0.9b` 修复。将 ScreenCapture 屏幕捕获的 **Exclude 
 
 
 
-Q: 如何启用 HUD 模糊，那种视频中的液体玻璃效果？
+Q: 如何启用 `HUD 模糊`，那种视频中的`液体玻璃`效果？
 
-A: 在 其他 一栏中找到 屏幕捕获 模块，确保 排除客户端 Exclude Client改为 保持 Keep，这样效果最好。启用 HUD Blur 模块，将风格调为 **<font style="color:#74B602;">Liquid Glass 液体玻璃</font>**。此时客户端将会持续后台截图，会消耗一些性能，然后窗口将会开启反捕获，无法被截图软件和录屏软件的普通模式捕获，只能通过游戏捕获模式捕获（也就是注入并hook）。可以调节 HUD Blur 相关参数追求更好的视觉效果。
+A: 在 其他 一栏中找到 `ScreenCapture / 屏幕捕获` 模块，确保 `排除客户端 Exclude Client` 改为 `保持 Keep`，这样效果最好。启用 HUD Blur 模块，将风格调为 <font style="color:#74B602;">Liquid Glass 液体玻璃</font>。此时客户端将会持续`后台截图`，会消耗一些性能，然后窗口将会开启 `AntiCapture 反捕获`，无法被截图软件和录屏软件的普通模式捕获，只能通过`游戏捕获模式`捕获（也就是注入并hook）。可以调节 `HUD Blur` 相关参数追求更好的视觉效果。
 
 
 
 Q: 怎么像视频中那样有发光的效果
 
-A: 打开 **着色器模块(Shader)**，右键配置里面有多种着色器可以选，这是 `bloom(泛光)` 着色器。可能会掉帧，并导致有些透明的部分变成不透明的。
+A: 打开 `着色器模块(Shader)`，右键配置里面有多种着色器可以选，这是 `bloom(泛光)` 着色器。可能会掉帧，并导致有些透明的部分变成不透明的。
 
 
 
@@ -259,12 +254,12 @@ A: 恶意模块警告。这个界面用于确认你是否知道你在做什么�
 Q: 自保护（**Protection**）模块启用后执行其他程序会直接崩溃
 
 A: PPL 的一个机制，已在新版本解决，但是可能会有潜在的问题。
+[点击了解什么是PPL](https://www.bilibili.com/video/BV1NkR5BpEWx/)
 
 
+Q: 【PRO】`AutoL / 自动嘲讽` 卡住了，具体表现为 `Key Disabler 键盘禁用` 模块一直开着，无法AWSD移动
 
-Q: 【PRO】自动嘲讽卡住了，具体表现为 Key Disabler 键盘禁用模块一直开着，无法AWSD移动
-
-A: 更新到最新版本。已经添加了 Key Disabler 的最大启用时长，解决了这个问题。
+A: 更新到最新版本。已经添加了 `Key Disabler` 的最大启用时长，解决了这个问题。
 
 
 
@@ -276,11 +271,11 @@ A: 有些哔哩模块是需要你登录的，你可能加载了别人的配置�
 
 Q: 怎样和视频当中一样有流动的颜色效果
 
-A: 在一些模块的颜色设置中，选择 **<font style="color:#74B602;">流动（Flow）</font>**即可。流动的各项参数可以在 着色器（Shader）模块中调。
+A: 在一些模块的颜色设置中，选择 **<font style="color:#74B602;">流动（Flow）</font>**即可。流动的各项参数可以在 着色器（Shader）模块中调。以及主题也可以在新版本选择了。
 
 
 
-Q: 我怎么爆不了图腾
+Q: 我怎么爆不了`图腾 (Totem)`
 
 A: 新版本是 `着色器` 实现的三维效果，如果你只能见到粒子效果，作者还不清楚为什么看不到图腾。 旧版本的 `图腾 (Totem) ` 是视频，可能兼容性不太好，直接在客户端窗口里播放。如果卡就不要用了。如果背景是黑的，说明抠图失败，你可以选取黑色的像素点的RGB，把他输入到图腾配置里面的色键中，可能就有一点用。
 
@@ -290,7 +285,7 @@ Q: 我的看门人怎么启动不了
 
 A: `看门人模块(Gatekeeper) `需要 **管理员(Admin) **和 **特权(Privileges)**，检查是否开启。如果还是开不了，就是火绒等杀毒软件拦截了对系统进程的操作。还有，32位系统是不能开的。  
   
-Q: 怎么绕过UAC窃得管理员权限
+Q: 怎么绕过 `UAC` 窃得 管理员权限
 
 A: 启用 **<font style="color:#DF2A3F;">管理员绕过(UACBypass) </font>**模块。自动获取管理员权限而无需弹出UAC窗口。如果失败了，就右键里面的方法换一种试试。还有，Config选项卡中有一个 **Elevate and Retry Admin Modules**，意为如果没有管理员权限，打开管理员模块，是否自动提权，改成 UACBypass 就会自动开启绕过然后启用那个模块。
 
@@ -320,19 +315,19 @@ A: 关闭 Taskbar Icon 模块。如果还有一个任务栏图标，那是控制
 
 
 
-Q: 我的连点器怎么不工作
+Q: 我的`连点器`怎么不工作
 
-A: 右键 AutoClicker 找到 `Only Window Center`，意思是鼠标只在当前窗口的中心时才能触发，关闭它。其他选项也看看，最后的取消抬起的意思，说白了就是在MC中可以长按。破坏方块/吃东西。
-
-
-
-Q: 讲述人怎么报错了
-
-A: 有时候会出现的（例如被调试时必定无法使用），可能由音频设备未准备好导致的，尝试重新打开客户端。
+A: 右键 `AutoClicker` 找到 `Only Window Center`，意思是鼠标只在当前窗口的中心时才能触发，关闭它。其他选项也看看，最后的取消抬起的意思，说白了就是在MC中可以长按。破坏方块/吃东西。
 
 
 
-Q: 隐私窗口是怎么用的
+Q: 讲述人 (Speaker) 怎么报错了
+
+A: 有时候会出现的（例如被调试时必定无法使用），可能由音频设备未准备好导致的，尝试重新打开客户端。也有可能是内存不足。
+
+
+
+Q: 隐私窗口 (PrivateWindow) 是怎么用的
 
 A: `PrivateWindow` 可以将一些常用的隐私在截图和录屏中隐身，右键这个模块可以看到有 `QQ/微信/Steam/哔哩客户端/Edge` 等，可以自行调节。如果想对其他窗口进行该操作，你可以打开 **窗口大师模块(WindowMaster)**，有一个按键就是 **设为隐私/取消隐私**。通过 `/help privatewindow` 查看相关命令。
 
@@ -340,19 +335,19 @@ A: `PrivateWindow` 可以将一些常用的隐私在截图和录屏中隐身，�
 
 Q: 怎么有些修改桌面设定的没用
 
-A: 尝试重新启动文件资源管理器。或者注销。
+A: 尝试重新启动`文件资源管理器 (explorer.exe)`。或者注销。
 
 
 
 Q: 我电脑怎么静音了还调不回来
 
-A: 你开启了 **Mute静音 **模块。当然没声音。关掉。
+A: 你开启了 `Mute / 静音` 模块，客户端会保持系统静音。当然没声音。关掉。
 
 
 
 Q: 怎么做到任务栏滚轮就能调系统音量，窗口顶部滚轮就能调进程音量的
 
-A: 右键 **音量模块(Volume)**，找到 Wheel System Volume Adjust，改成 Mouse On Taskbar；另一个同理。
+A: 右键 **音量模块(Volume)**，找到 `Wheel System Volume Adjust`，改成 `Mouse On Taskbar`；另一个同理。
 
 
 
@@ -364,13 +359,11 @@ A: 打开 `Opacity Changer 不透明度修改` 模块。
 
 Q: 客户端 **滚轮失效了**
 
-A: 在 Config 选项找到 `Mouse Wheel Detector（鼠标滚轮检测）`，调成另一个再试试。如果还是不行，请考虑重启客户端。模块配置等地方如果滚轮不行，你还可以使用上下箭头。
+A: 在 `Config 选项` 找到 `Mouse Wheel Detector（鼠标滚轮检测）`，调成另一个再试试。如果还是不行，请考虑重启客户端。模块配置等地方如果滚轮不行，你还可以使用上下箭头。
 
 
 
-
-
-Q: 收不到IRCLegacy聊天消息
+Q: 收不到 IRCLegacy 聊天消息
 
 A: 打开 `IRCLegacy （旧版聊天室）`模块。如果收不到中文消息，可能是一个bug，作者还修不好。还有，如果作者开启了静默模式的维护，你肯定是收不到的。还有如果经常报错就是网络不太好。
 
@@ -396,11 +389,11 @@ A: ...
 
 Q: 显示某些信息的时候出现 [Streamer Filtered] 或者 [Privacy Filtered] 是什么鬼
 
-A: 你开启了 **隐私保护（Privacy Protect）**（在旧版本 < v1.1.0下为 **主播模式 （Streamer）** 模块），会自动隐藏和过滤一些关键信息以免泄露。关闭即可。
+A: 你开启了 **隐私保护（Privacy Protect）**（在旧版本 < `v1.1.0`下为 **主播模式 (Streamer)** 模块），会自动隐藏和过滤一些关键信息以免泄露。关闭即可。
 
 
 
-Q: 我想购买专业版 (PRO)
+Q: 我想购买`专业版 (PRO)`
 
 A: [https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377](https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377) 购买激活码
 
