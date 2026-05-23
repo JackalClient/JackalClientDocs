@@ -1,18 +1,32 @@
 # 更好的歌词 BetterLyrics 说明
 
-> 来源：[https://www.yuque.com/wormwaker/tkpgqw/spwhbekbeycybdxw?singleDoc](https://www.yuque.com/wormwaker/tkpgqw/spwhbekbeycybdxw?singleDoc)
+> 语雀文档链接（不再更新）：[https://www.yuque.com/wormwaker/tkpgqw/spwhbekbeycybdxw?singleDoc](https://www.yuque.com/wormwaker/tkpgqw/spwhbekbeycybdxw?singleDoc)
 
 ## 驱动模式 Driver (PRO)
-对于 PRO专业版 用户，请优先使用 **Driver (PRO) 驱动模式**，该模式下可以提前获取准确歌词，且能获取精准译文以及每句歌词的时间。如果 CloudMusic云音乐 实在无法连接【Disconnected】，则请回退至下面的 Hook Rendering 模式。
+【网易云专用】对于 PRO专业版 用户，请优先使用 **Driver (PRO) 驱动模式**，该模式下可以提前获取准确歌词，且能获取精准译文以及每句歌词的时间。如果 CloudMusic云音乐 实在无法连接【Disconnected】，则请回退至下面的 Hook Rendering 模式。
 
 ## 挂钩渲染模式 Hook Render
-新版本（>=0.8c）加入了新的捕获模式：`Hook Render`，挂钩渲染，只对网易云音乐有效，100%准确，请优先使用这个！
+【网易云专用】0.8c 加入了新的模式：`Hook Render`，挂钩渲染，只对网易云音乐有效，100%准确，请优先使用这个！
 会用到注入。
 注入前要注意必须打开网易云的 `桌面歌词窗口`，否则无法更新歌词！
 缺点：可能对译文的处理不够准确。如果译文代替了原文的位置，请考虑桌面歌词上设置->外文歌词翻译改成关闭。客户端有手动翻译的回退路线。
 
+## SMTC 模式
+新版本（v1.1）加入新的模式：`SMTC`，读取系统 SMTC 信息（包括曲名、艺人、进度等），搜索网易云歌词进行同步。支持任何对接SMTC的音乐软件（例如QQ音乐）
+相关 `BetterLyrics` 配置项介绍：
+
+- `SMTC Exclude Browsers`: 对于每一个 `SMTC` 会话，自动排除和浏览器相关的进程，防止干扰。
+- `SMTC Song Match Threshold (0~100)`: 在查找网易云相关歌曲时，歌名的匹配阈值。默认 90.0
+- `SMTC Artist Match Threshold (0~100)`: 在查找网易云相关歌曲时，艺人的匹配阈值。默认 10.0，这里不推荐调的太高，因为音乐平台不同有很大差异
+- `SMTC Whitelist Enabled`: 是否开启白名单，白名单的进程才能匹配。
+- `SMTC Whitelist (Sep With Semicolon)`: 进程名白名单，多个进程用英文分号分隔。默认值 QQMusic.exe
+- `SMTC Blacklist Enabled`: 是否开启黑名单，黑名单中的进程不会被匹配。
+- `SMTC Blacklist (Sep With Semicolon)`: 进程名黑名单，多个进程用英文分号分隔。默认值 哔哩哔哩.exe
+
+当然网易云音乐也可以使用 BetterNCM 安装 `SMTC` 相关插件。
+
 ## OCR 模式
-如果注入失败，可以考虑用老方法：OCR
+如果上述方法都失败，可以考虑用老方法：OCR
 
 *注意有些其他的模块【例如：AutoTranslate自动翻译，Screenshot截图工具，OCR相关命令】也会用到TesseractOCR，下文可以一起参考：*
 ​
