@@ -2,6 +2,7 @@
 
 >
 > [语雀文档链接，已弃用](https://www.yuque.com/wormwaker/tkpgqw/pzx8qe24d90ildn4)
+> 如果这个界面无法加载图片，请考虑移步 [Github 仓库](https://github.com/JackalClient/JackalClientDocs/edit/main/docs/pro-auth.md) 查看
 >
 
 三月加入了新的聊天室和验证系统。
