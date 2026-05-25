@@ -31,7 +31,7 @@
 
 这段话是 Wormwaker 亲自写的，一定要阅读：
 1. 查询命令用法可以直接用 `/help <keyword>`，例如 `/help bili live` 如果你开了汉化且不想等待翻译时间就用`/helpraw`查看原文
-2. 一定要学会用`Tab`获取补全信息，例如你要设置直播间标题，你可以`bil`<Tab> `li`<Tab> `sett`<Tab> `test`
+2. 一定要学会用`Tab`获取补全信息，例如你要设置直播间标题，你可以`bil`&lt;Tab&gt; `li`&lt;Tab&gt; `sett`&lt;Tab&gt; `test`
 3. 我加入了命令的自动高亮和提示信息，希望你能喜欢
 
 ## 章节入口
