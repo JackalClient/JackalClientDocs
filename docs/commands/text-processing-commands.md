@@ -41,6 +41,18 @@ opencc 离线翻译。
 支持的语言缩写有：s简体中文，t繁体中文，hk香港，tw台湾繁体，jp日本汉字
 :::
 
+## 汉字转拼音（`/pinyin &lt;all|normal|notone|numtone|caps&gt; [content...=clipboard]`）
+
+```bash
+/pinyin <all|normal|notone|numtone|caps> [content...=clipboard]
+```
+
+::: details 点击查看说明
+汉字转拼音。`normal` 输出正常音调，例如 `nǐ hǎo`；`notone` 输出无音调，例如 `ni hao`；`numtone` 输出数字音调，例如 `ni3 hao3`；`caps` 输出首字母，例如 `n h`；`all` 会依次输出上述四种形式，每种占一行。
+
+如果不填写 content，则读取剪贴板文本；如果填写 `it` 且 `it` 当前是字符串变量，则使用代词变量 `it` 的文本。
+:::
+
 ## 生草机翻译（`/memeizer [content...=clipboard]`）
 
 ```bash

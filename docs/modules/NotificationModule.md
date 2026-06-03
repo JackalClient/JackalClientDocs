@@ -100,7 +100,15 @@ Notification（通知）用于控制客户端的通知。
  类型：枚举；默认："Audio Device"
  说明：用于选择结果反馈方式。默认值 Audio Device 适合大多数场景；若你不想打扰可改为更安静的输出方式。
  可选：Off（关闭）；Audio Device（音频设备）；All（所有）
-- Output Notification（输出通知）
+- Sound（通知音效）
+ 类型：布尔；默认：true
+ 说明：控制通知是否发出音效。关闭后通知不播放音效。
+- Sound Volume (0~100)（通知音量）
+ 类型：数值；默认：100
+ 说明：控制通知音效音量，0 为静音，100 为最大音量。
+- Sound Pitch Randomization (0~1)（通知音高随机化）
+ 类型：数值；默认：0.1f
+ 说明：控制通知音效播放前基于 1.0 默认音高的随机偏移幅度，值越大随机音高偏离越明显。- Output Notification（输出通知）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
 - Log Notification（日志记录通知）
@@ -153,3 +161,6 @@ Notification（通知）用于控制客户端的通知。
 相关资料
 无
 
+
+历史更新
+- v1.1.1：新增 Sound、Sound Volume (0~100) 与 Sound Pitch Randomization (0~1)，通知音效开关从 Sound 选项迁移到 Notification。
