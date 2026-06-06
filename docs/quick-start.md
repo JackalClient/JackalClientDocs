@@ -16,6 +16,7 @@ JackalClient 客户端作者，请支持我们！
 - [@KeBugCheck](https://space.bilibili.com/1632975427)
 - [@Stars_Azusa](https://space.bilibili.com/670866766)
 
+- JackalClient 是一个 `Windows` 平台的工具箱，并非游戏外挂。
 - 没有 Linux 版。没有 Mac 版。没有手机版。
 
 Free 免费版下载：
@@ -88,12 +89,14 @@ Free 免费版下载：
 
 ## 3. Shell「命令行」 基本操作
 
-命令行示例：
+打开命令行模块后，控制台就可以输入客户端命令。客户端命令可以不以斜杠开头。
+命令示例：
 
 - `/help`：查看帮助。例如 `/help module` 表示查找以 `module` 字样开头的命令用法。
 - `/list`：列出所有模块列表
 - `/enable <模块名>` 或 `/e <模块名>`：启用模块
 - `/disable <模块名>` 或 `/d <模块名>`：禁用模块
+- `/enables`：输出已打开的模块
 - `/break`：退出命令行
 - `/exit`：退出客户端
 
@@ -112,4 +115,4 @@ Free 免费版下载：
 ## 6. 常见问题入口
 
 - [常见问题](/faq/)
-- [BetterLyrics 专题](/betterlyrics/)
+- [BetterLyrics 更好的歌词模块专题](/betterlyrics/)
