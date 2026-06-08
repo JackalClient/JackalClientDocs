@@ -72,3 +72,7 @@ OpacityChanger（透明度调节）支持对目标窗口进行快捷透明度调
 相关资料
 无
 
+
+HUD 样式补充
+- OpacityChanger HUD 新增 Text 与 Modern (PRO) 样式；Text 为免费版默认样式，Modern (PRO) 为专业版默认样式。
+- Volume 的 System Volume HUD Style 与 Process Volume HUD Style 新增 Text、Modern (PRO)、iOS 样式；Modern (PRO) 带图标、卡片与数字翻动效果，iOS 使用方形音量面板。

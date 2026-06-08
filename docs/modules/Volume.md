@@ -132,3 +132,11 @@ Volume（音量）用于控制系统和进程的音量。
 相关资料
 无
 
+
+HUD 样式补充
+- OpacityChanger HUD 新增 Text 与 Modern (PRO) 样式；Text 为免费版默认样式，Modern (PRO) 为专业版默认样式。
+- Volume 的 System Volume HUD Style 与 Process Volume HUD Style 新增 Text、Modern (PRO)、iOS 样式；Modern (PRO) 带图标、卡片与数字翻动效果，iOS 使用方形音量面板。
+
+Volume HUD iOS 样式补充
+- iOS：新版 iPhone 风格侧边纵向胶囊 HUD；系统音量显示在屏幕右侧，进程音量显示在目标窗口左侧，带滑入/滑出、宽度收缩、坐标缓动和调节晃动。
+- iOS Old：保留旧版居中方形面板样式。
