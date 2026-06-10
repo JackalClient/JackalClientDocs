@@ -264,6 +264,204 @@
   opacity: 1;
 }
 
+.jc-arraylist {
+  position: fixed;
+  top: 116px;
+  right: 20px;
+  z-index: 60;
+  display: none;
+  width: min(260px, calc(100vw - 40px));
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 240ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jc-arraylist.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.jc-arraylist-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.jc-arraylist-row {
+  --jc-arraylist-width: 120px;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 4px;
+  align-items: center;
+  gap: 7px;
+  width: var(--jc-arraylist-width);
+  max-width: 100%;
+  min-height: 18px;
+  pointer-events: none;
+  text-decoration: none !important;
+  filter: drop-shadow(0 0 9px rgba(136, 96, 255, 0.34));
+  transition:
+    width 360ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 220ms ease,
+    transform 220ms ease;
+}
+
+.jc-arraylist.is-visible .jc-arraylist-row {
+  pointer-events: auto;
+}
+
+.jc-arraylist-row:hover {
+  filter: drop-shadow(0 0 14px rgba(217, 70, 239, 0.5));
+  transform: translateX(-3px);
+}
+
+.jc-arraylist-text {
+  overflow: hidden;
+  min-width: 0;
+  color: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #38bdf8 0%, #8b5cf6 45%, #ec4899 72%, #38bdf8 100%);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 8px rgba(56, 189, 248, 0.42),
+    0 0 16px rgba(139, 92, 246, 0.34),
+    0 0 24px rgba(236, 72, 153, 0.24);
+  animation: jc-arraylist-flow 3.2s linear infinite;
+}
+
+.jc-arraylist-bar {
+  width: 4px;
+  align-self: stretch;
+  min-height: 18px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #38bdf8 0%, #8b5cf6 52%, #ec4899 100%);
+  box-shadow:
+    0 0 8px rgba(56, 189, 248, 0.5),
+    0 0 15px rgba(139, 92, 246, 0.45),
+    0 0 22px rgba(236, 72, 153, 0.32);
+}
+
+.jc-arraylist-item-enter-active,
+.jc-arraylist-item-leave-active,
+.jc-arraylist-item-move {
+  transition:
+    opacity 320ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    width 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jc-arraylist-item-enter-from,
+.jc-arraylist-item-leave-to {
+  opacity: 0;
+  transform: translateX(74px);
+}
+
+.jc-arraylist-item-leave-active {
+  position: absolute;
+  right: 0;
+}
+
+@keyframes jc-arraylist-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 240% 50%;
+  }
+}
+
+.jc-arraylist-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-width: 156px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--vp-c-text-1);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: background-color 180ms ease;
+}
+
+.jc-arraylist-switch:hover {
+  background: var(--vp-c-default-soft);
+}
+
+.jc-arraylist-switch-text {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.jc-arraylist-switch-track {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--vp-c-default-3);
+  transition: background 220ms ease, box-shadow 220ms ease;
+}
+
+.jc-arraylist-switch-track input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.jc-arraylist-switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--vp-c-bg);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jc-arraylist-switch.is-active .jc-arraylist-switch-track {
+  background: linear-gradient(90deg, #38bdf8, #8b5cf6, #ec4899);
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.28);
+}
+
+.jc-arraylist-switch.is-active .jc-arraylist-switch-thumb {
+  transform: translateX(16px);
+}
+
+@media (min-width: 1280px) {
+  .jc-arraylist {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jc-arraylist,
+  .jc-arraylist-row,
+  .jc-arraylist-item-enter-active,
+  .jc-arraylist-item-leave-active,
+  .jc-arraylist-item-move,
+  .jc-arraylist-text {
+    animation: none;
+    transition: none;
+  }
+}
+
 /* 指令卡片样式 */
 .command-card-grid {
   display: grid;
