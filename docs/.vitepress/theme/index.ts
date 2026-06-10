@@ -20,6 +20,9 @@ type ArraylistModule = {
 const ARRAYLIST_COOKIE = 'jc_arraylist_modules'
 const ARRAYLIST_VISIBLE_COOKIE = 'jc_arraylist_visible'
 const ARRAYLIST_MAX_ITEMS = 10
+const arraylistModules = ref<ArraylistModule[]>([])
+const arraylistVisible = ref(true)
+let measureContext: CanvasRenderingContext2D | undefined
 
 const getCookieValue = (name: string) => {
   if (typeof document === 'undefined') return ''
@@ -74,38 +77,83 @@ const getModuleFromPath = (path: string): ArraylistModule | undefined => {
   }
 }
 
+const persistArraylistModules = () => {
+  setCookieValue(ARRAYLIST_COOKIE, JSON.stringify(arraylistModules.value))
+}
+
+const persistArraylistVisibility = () => {
+  setCookieValue(ARRAYLIST_VISIBLE_COOKIE, arraylistVisible.value ? '1' : '0')
+}
+
+const toggleArraylistVisibility = () => {
+  arraylistVisible.value = !arraylistVisible.value
+  persistArraylistVisibility()
+}
+
+const getMeasureContext = () => {
+  if (measureContext || typeof document === 'undefined') return measureContext
+
+  measureContext = document.createElement('canvas').getContext('2d') ?? undefined
+  if (measureContext) {
+    measureContext.font =
+      '700 14px "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif'
+  }
+  return measureContext
+}
+
+const getModuleDisplayWidth = (name: string) => {
+  const context = getMeasureContext()
+  return Math.ceil(context?.measureText(name).width ?? name.length * 8)
+}
+
+const JcArraylistToggle = defineComponent({
+  name: 'JcArraylistToggle',
+  setup() {
+    return () =>
+      h(
+        'button',
+        {
+          type: 'button',
+          class: [
+            'jc-arraylist-page-toggle',
+            {
+              'is-active': arraylistVisible.value
+            }
+          ],
+          'aria-pressed': String(arraylistVisible.value),
+          onClick: toggleArraylistVisibility
+        },
+        [
+          h('span', { class: 'jc-arraylist-page-toggle-text' }, 'Arraylist'),
+          h('span', { class: 'jc-arraylist-page-toggle-track' }, [
+            h('span', { class: 'jc-arraylist-page-toggle-thumb' })
+          ])
+        ]
+      )
+  }
+})
+
 const JackalVisualEffects = defineComponent({
   name: 'JackalVisualEffects',
   setup() {
     const route = useRoute()
-    const modules = ref<ArraylistModule[]>([])
-    const arraylistVisible = ref(true)
     let navFrame: HTMLDivElement | undefined
     let activeNavItem: Element | undefined
     let hideFrameTimer: ReturnType<typeof window.setTimeout> | undefined
-    let menuObserver: MutationObserver | undefined
     const heroTargetsSelector = '.VPHero .name, .VPHero .text, .VPHero .tagline'
 
     const sortedModules = computed(() => {
-      return [...modules.value].sort((a, b) => b.name.length - a.name.length)
+      return [...arraylistModules.value].sort((a, b) => getModuleDisplayWidth(b.name) - getModuleDisplayWidth(a.name))
     })
-
-    const persistModules = () => {
-      setCookieValue(ARRAYLIST_COOKIE, JSON.stringify(modules.value))
-    }
-
-    const persistVisibility = () => {
-      setCookieValue(ARRAYLIST_VISIBLE_COOKIE, arraylistVisible.value ? '1' : '0')
-    }
 
     const visitCurrentModule = () => {
       const moduleInfo = getModuleFromPath(route.path)
       if (!moduleInfo) return
 
-      const nextModules = modules.value.filter((item) => item.name !== moduleInfo.name)
+      const nextModules = arraylistModules.value.filter((item) => item.name !== moduleInfo.name)
       nextModules.push(moduleInfo)
-      modules.value = nextModules.slice(-ARRAYLIST_MAX_ITEMS)
-      persistModules()
+      arraylistModules.value = nextModules.slice(-ARRAYLIST_MAX_ITEMS)
+      persistArraylistModules()
     }
 
     const moveNavFrame = (target: Element) => {
@@ -180,52 +228,8 @@ const JackalVisualEffects = defineComponent({
       })
     }
 
-    const updateInjectedSwitch = () => {
-      const checkbox = document.querySelector<HTMLInputElement>('#jc-arraylist-toggle')
-      const switcher = document.querySelector<HTMLElement>('.jc-arraylist-switch')
-      if (!checkbox || !switcher) return
-
-      checkbox.checked = arraylistVisible.value
-      switcher.classList.toggle('is-active', arraylistVisible.value)
-    }
-
-    const toggleArraylist = () => {
-      arraylistVisible.value = !arraylistVisible.value
-      persistVisibility()
-      updateInjectedSwitch()
-    }
-
-    const injectArraylistSwitch = () => {
-      if (document.querySelector('.jc-arraylist-switch')) {
-        updateInjectedSwitch()
-        return
-      }
-
-      const menu =
-        document.querySelector<HTMLElement>('.NolebaseEnhancedReadabilitiesMenu') ||
-        document.querySelector<HTMLElement>('.nolebase-enhanced-readabilities-menu') ||
-        document.querySelector<HTMLElement>('[class*="EnhancedReadabilitiesMenu"]')
-
-      if (!menu) return
-
-      const switcher = document.createElement('button')
-      switcher.type = 'button'
-      switcher.className = 'jc-arraylist-switch'
-      switcher.setAttribute('aria-label', '切换 Arraylist 显示')
-      switcher.innerHTML = `
-        <span class="jc-arraylist-switch-text">Arraylist</span>
-        <span class="jc-arraylist-switch-track">
-          <input id="jc-arraylist-toggle" type="checkbox" aria-hidden="true" tabindex="-1">
-          <span class="jc-arraylist-switch-thumb"></span>
-        </span>
-      `
-      switcher.addEventListener('click', toggleArraylist)
-      menu.append(switcher)
-      updateInjectedSwitch()
-    }
-
     onMounted(() => {
-      modules.value = loadStoredModules()
+      arraylistModules.value = loadStoredModules()
       arraylistVisible.value = getCookieValue(ARRAYLIST_VISIBLE_COOKIE) !== '0'
       visitCurrentModule()
 
@@ -240,9 +244,6 @@ const JackalVisualEffects = defineComponent({
       document.addEventListener('pointermove', updateHeroLight, { passive: true })
       document.addEventListener('pointerleave', disableHeroLight)
 
-      injectArraylistSwitch()
-      menuObserver = new MutationObserver(injectArraylistSwitch)
-      menuObserver.observe(document.body, { childList: true, subtree: true })
     })
 
     onUnmounted(() => {
@@ -253,7 +254,6 @@ const JackalVisualEffects = defineComponent({
       document.removeEventListener('pointermove', updateHeroLight)
       document.removeEventListener('pointerleave', disableHeroLight)
       navFrame?.remove()
-      menuObserver?.disconnect()
       if (hideFrameTimer) window.clearTimeout(hideFrameTimer)
     })
 
@@ -264,7 +264,6 @@ const JackalVisualEffects = defineComponent({
         disableHeroLight()
         await nextTick()
         visitCurrentModule()
-        injectArraylistSwitch()
       }
     )
 
@@ -298,7 +297,7 @@ const JackalVisualEffects = defineComponent({
                     href: moduleInfo.path,
                     style: {
                       '--jc-arraylist-index': index,
-                      '--jc-arraylist-width': `${Math.max(88, moduleInfo.name.length * 9 + 22)}px`
+                      '--jc-arraylist-width': `${Math.max(88, getModuleDisplayWidth(moduleInfo.name) + 22)}px`
                     }
                   },
                   [
@@ -324,5 +323,6 @@ export default {
     await TeekTheme.enhanceApp?.(ctx)
     // 注册 TkVpContainer 组件
     ctx.app.component('TkVpContainer', TkVpContainer)
+    ctx.app.component('JcArraylistToggle', JcArraylistToggle)
   }
 } satisfies Theme

@@ -22,7 +22,7 @@ const moduleDocs = readdirSync(modulesDir, { withFileTypes: true })
       link: `/modules/${name}`
     }
   })
-  .sort((a, b) => a.text.localeCompare(b.text, 'en'))
+  .sort((a, b) => a.link.localeCompare(b.link, 'en', { sensitivity: 'base' }))
 
 const rss: RSSOptions = {
   title: 'JackalClient Docs',

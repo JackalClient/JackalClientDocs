@@ -1,4 +1,5 @@
-Arraylist
+<div class="jc-arraylist-doc-heading"><span class="jc-arraylist-doc-title">Arraylist</span><JcArraylistToggle /></div>
+
 模块列表
 分类：Render
 描述：显示已启用模块列表。

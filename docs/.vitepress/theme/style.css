@@ -265,6 +265,7 @@
 }
 
 .jc-arraylist {
+  --jc-arraylist-gradient: linear-gradient(135deg, #38bdf8 0%, #8b5cf6 48%, #ec4899 100%);
   position: fixed;
   top: 116px;
   right: 20px;
@@ -321,14 +322,16 @@
   overflow: hidden;
   min-width: 0;
   color: transparent;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.15;
   text-align: right;
   text-overflow: ellipsis;
   white-space: nowrap;
-  background: linear-gradient(90deg, #38bdf8 0%, #8b5cf6 45%, #ec4899 72%, #38bdf8 100%);
-  background-size: 240% auto;
+  background-image: var(--jc-arraylist-gradient);
+  background-size: 280px 260px;
+  background-attachment: fixed;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -336,7 +339,7 @@
     0 0 8px rgba(56, 189, 248, 0.42),
     0 0 16px rgba(139, 92, 246, 0.34),
     0 0 24px rgba(236, 72, 153, 0.24);
-  animation: jc-arraylist-flow 3.2s linear infinite;
+  animation: jc-arraylist-flow 4.2s linear infinite;
 }
 
 .jc-arraylist-bar {
@@ -344,7 +347,9 @@
   align-self: stretch;
   min-height: 18px;
   border-radius: 2px;
-  background: linear-gradient(180deg, #38bdf8 0%, #8b5cf6 52%, #ec4899 100%);
+  background-image: var(--jc-arraylist-gradient);
+  background-size: 280px 260px;
+  background-attachment: fixed;
   box-shadow:
     0 0 8px rgba(56, 189, 248, 0.5),
     0 0 15px rgba(139, 92, 246, 0.45),
@@ -373,41 +378,56 @@
 
 @keyframes jc-arraylist-flow {
   0% {
-    background-position: 0% 50%;
+    background-position: calc(100vw - 300px) 96px;
   }
   100% {
-    background-position: 240% 50%;
+    background-position: calc(100vw - 20px) 356px;
   }
 }
 
-.jc-arraylist-switch {
+.jc-arraylist-doc-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  width: 100%;
-  min-width: 156px;
-  padding: 8px 12px;
+  gap: 16px;
+  margin: 0 0 16px;
+}
+
+.jc-arraylist-doc-title {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.jc-arraylist-page-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  padding: 7px 10px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 999px;
   color: var(--vp-c-text-1);
-  background: transparent;
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 82%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--vp-c-divider) 78%, transparent) inset;
   cursor: pointer;
   font: inherit;
-  text-align: left;
-  transition: background-color 180ms ease;
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
-.jc-arraylist-switch:hover {
+.jc-arraylist-page-toggle:hover {
   background: var(--vp-c-default-soft);
+  transform: translateY(-1px);
 }
 
-.jc-arraylist-switch-text {
+.jc-arraylist-page-toggle-text {
   font-size: 13px;
   font-weight: 600;
 }
 
-.jc-arraylist-switch-track {
+.jc-arraylist-page-toggle-track {
   position: relative;
   width: 34px;
   height: 18px;
@@ -417,13 +437,7 @@
   transition: background 220ms ease, box-shadow 220ms ease;
 }
 
-.jc-arraylist-switch-track input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.jc-arraylist-switch-thumb {
+.jc-arraylist-page-toggle-thumb {
   position: absolute;
   top: 3px;
   left: 3px;
@@ -435,12 +449,16 @@
   transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.jc-arraylist-switch.is-active .jc-arraylist-switch-track {
+.jc-arraylist-page-toggle.is-active {
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.28) inset, 0 0 18px rgba(139, 92, 246, 0.16);
+}
+
+.jc-arraylist-page-toggle.is-active .jc-arraylist-page-toggle-track {
   background: linear-gradient(90deg, #38bdf8, #8b5cf6, #ec4899);
   box-shadow: 0 0 14px rgba(139, 92, 246, 0.28);
 }
 
-.jc-arraylist-switch.is-active .jc-arraylist-switch-thumb {
+.jc-arraylist-page-toggle.is-active .jc-arraylist-page-toggle-thumb {
   transform: translateX(16px);
 }
 
