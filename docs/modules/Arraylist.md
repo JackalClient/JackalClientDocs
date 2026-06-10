@@ -1,4 +1,4 @@
-# Arraylist <JcArraylistToggle />
+<h1 class="jc-arraylist-doc-heading"><span class="jc-arraylist-doc-title">Arraylist</span><JcArraylistToggle /></h1>
 
 模块列表
 分类：Render

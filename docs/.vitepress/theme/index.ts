@@ -140,7 +140,7 @@ const JcArraylistToggle = defineComponent({
           onClick: toggleArraylistVisibility
         },
         [
-          h('span', { class: 'jc-arraylist-page-toggle-text' }, 'Arraylist'),
+          h('span', { class: 'jc-arraylist-page-toggle-text' }, 'Enabled'),
           h('span', { class: 'jc-arraylist-page-toggle-track' }, [
             h('span', { class: 'jc-arraylist-page-toggle-thumb' })
           ])

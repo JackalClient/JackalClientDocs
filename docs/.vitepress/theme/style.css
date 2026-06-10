@@ -372,14 +372,16 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin: 0 0 16px;
+  width: 100%;
+  margin: 0 0 18px;
 }
 
 .jc-arraylist-doc-title {
   display: block;
+  min-width: 0;
   font-size: 32px;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.2;
   letter-spacing: 0;
 }
 
@@ -389,7 +391,8 @@
   align-items: center;
   gap: 10px;
   flex: 0 0 auto;
-  padding: 7px 10px;
+  margin-left: auto;
+  padding: 4px 9px;
   border: 0;
   border-radius: 999px;
   color: color-mix(in srgb, var(--jc-arraylist-toggle-color) 82%, var(--vp-c-text-1));
@@ -414,8 +417,8 @@
 
 .jc-arraylist-page-toggle-track {
   position: relative;
-  width: 34px;
-  height: 18px;
+  width: 30px;
+  height: 14px;
   flex: 0 0 auto;
   border-radius: 999px;
   background: color-mix(in srgb, var(--jc-arraylist-toggle-color) 78%, #111827);
@@ -424,10 +427,10 @@
 
 .jc-arraylist-page-toggle-thumb {
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 12px;
-  height: 12px;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--vp-c-bg);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
