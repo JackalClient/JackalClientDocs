@@ -233,26 +233,27 @@
   --jc-highlight-x: 50%;
   --jc-highlight-y: 50%;
   position: relative;
+  z-index: 0;
+  isolation: isolate;
 }
 
 .VPHero .name::after,
 .VPHero .text::after,
 .VPHero .tagline::after {
   position: absolute;
-  inset: -0.08em -0.12em;
-  content: attr(data-jc-text);
+  inset: -18px;
+  z-index: -1;
+  content: '';
   pointer-events: none;
-  color: transparent;
   background:
     radial-gradient(
-      circle 130px at var(--jc-highlight-x) var(--jc-highlight-y),
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(214, 192, 255, 0.72) 24%,
-      rgba(125, 211, 252, 0.3) 44%,
-      transparent 70%
+      circle 150px at calc(var(--jc-highlight-x) + 18px) calc(var(--jc-highlight-y) + 18px),
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(190, 142, 255, 0.24) 24%,
+      rgba(96, 165, 250, 0.16) 45%,
+      transparent 72%
     );
-  -webkit-background-clip: text;
-  background-clip: text;
+  filter: blur(10px);
   opacity: 0;
   transition: opacity 220ms ease;
 }

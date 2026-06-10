@@ -65,12 +65,6 @@ const JackalVisualEffects = defineComponent({
       if (activeNavItem) moveNavFrame(activeNavItem)
     }
 
-    const syncHeroTextData = () => {
-      document.querySelectorAll<HTMLElement>(heroTargetsSelector).forEach((target) => {
-        target.dataset.jcText = target.textContent?.trim() ?? ''
-      })
-    }
-
     const updateHeroLight = (event: PointerEvent) => {
       const hero = document.querySelector<HTMLElement>('.VPHero')
       if (!hero) return
@@ -103,7 +97,6 @@ const JackalVisualEffects = defineComponent({
       navFrame = document.createElement('div')
       navFrame.className = 'jc-nav-hover-frame'
       document.body.append(navFrame)
-      syncHeroTextData()
 
       document.addEventListener('pointerover', onPointerOver)
       document.addEventListener('pointerout', onPointerOut)
@@ -130,7 +123,6 @@ const JackalVisualEffects = defineComponent({
         hideNavFrame()
         disableHeroLight()
         await nextTick()
-        syncHeroTextData()
       }
     )
 
