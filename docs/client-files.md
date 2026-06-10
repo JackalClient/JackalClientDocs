@@ -8,6 +8,7 @@
 
 ## 客户端目录介绍：
 
+```
 ├───assets                      —— 客户端资源文件
 │   └───opencc                  —— 有关简繁转换功能的数据文件
 ├───backup                      —— 客户端备份文件，通常会做加密处理，涉及到 `AutoRestore` `SelfRestore` `AutoBackup` 等功能
@@ -27,6 +28,7 @@
 │   └───Screenshot              —— 存储截图（`Screenshot`模块）
 ├───Release                     —— 客户端几乎所有的组件
 └───THIRD_PARTY_LICENSE         —— 第三方库的开源协议
+```
 
 ## 客户端重要文件介绍：
 

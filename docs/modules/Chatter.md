@@ -32,11 +32,17 @@ Chatter（弹幕）用于从 GUI 快速调用 `/chatter`，向客户端添加一
 该模块对应本地客户端弹幕，不等同于直播间真弹幕发送。
 
 相关命令
-- `/chatter <content...>`
+- /chatter <content...>
+- /tchatter <content...>
+- /bchatter <content...>
+- /rchatter <content...>
+- /hchatter <content...>
+- /vchatter <content...>
+发送一条弹幕。/tchatter 发送置顶弹幕。 /bchatter 发送置底弹幕。 /rchatter 发送反向弹幕。/hchatter 发送普通或反向弹幕。/vchatter 发送置顶或置底弹幕。
 
 相关模块
 - [Title (标题显示)](./Title.md)
-- [Totem (不死图腾)](./Totem.md)
+- [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
 
 相关资料
 无

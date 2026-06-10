@@ -1,6 +1,8 @@
 # Codex Notifier
 
-Codex Notifier（Codex 通知器）用于在 Codex 任务完成后弹出提醒。模块开启时会在 `C:\Users\WormWaker\.codex` 下写入带 `jackal_codex_notifier` 标记的托管脚本，并按触发方式向 `config.toml` 或 `hooks.json` 写入托管配置；模块关闭时只会清理带该标记的托管脚本与配置块，避免误删用户自己的脚本。
+Codex Notifier（Codex 通知器）
+用于在 Codex 任务完成后弹出提醒。
+模块开启时会在 `C:\Users\WormWaker\.codex` 下写入带 `jackal_codex_notifier` 标记的托管脚本，并按触发方式向 `config.toml` 或 `hooks.json` 写入托管配置；模块关闭时只会清理带该标记的托管脚本与配置块，避免误删用户自己的脚本。
 
 ## 常用配置
 

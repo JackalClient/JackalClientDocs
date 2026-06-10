@@ -35,25 +35,26 @@ const rss: RSSOptions = {
 
 const sidebarGroups = [
   {
-    text: '开始',
+    text: '开始 START',
     items: [
       { text: '文档概览', link: '/overview' },
       { text: '快速开始', link: '/quick-start' }
     ]
   },
   {
-    text: '核心内容',
+    text: '核心内容 CORE',
     items: [
       { text: '功能与模块地图', link: '/module-map' },
-      { text: '模块介绍', link: '/modules/' },
+      { text: '完整模块介绍', link: '/modules/' },
       { text: '命令目录页', link: '/commands-catalogue' },
-      { text: '完整命令手册（分章节）', link: '/commands/' },
+      { text: '完整命令手册', link: '/commands/' },
       { text: '安全说明', link: '/safety' },
+      { text: '文件介绍', link: '/client-files' },
       { text: '版本与演进', link: '/history-summary' }
     ]
   },
   {
-    text: '命令手册',
+    text: '命令 COMMANDS',
     items: [
       { text: '章节总览', link: '/commands/' },
       { text: '按用途选命令', link: '/commands/usage-guide' },
@@ -65,14 +66,14 @@ const sidebarGroups = [
     ]
   },
   {
-    text: '专题文档',
+    text: '专题文档 THEMES',
     items: [
       { text: '常见问题', link: '/faq' },
-      { text: 'BetterLyrics 说明', link: '/betterlyrics' }
+      { text: '更好的歌词说明', link: '/betterlyrics' }
     ]
   },
   {
-    text: '模块文档索引',
+    text: '模块 MODULES',
     items: [{ text: '模块介绍', link: '/modules/' }, ...moduleDocs]
   }
 ]
@@ -106,7 +107,7 @@ const teekConfig = defineTeekConfig({
     { text: '首页', link: '/' },
     { text: '快速开始', link: '/quick-start' },
     { text: '模块介绍', link: '/modules/' },
-    { text: '安全说明', link: '/safety' },
+    { text: '常见问题', link: '/faq' },
     { text: '官网', link: 'https://www.wormwake.com/jackalclient/' }
   ],
   sidebar: {

@@ -161,4 +161,4 @@ IRC（聊天室）
 - [IRCLegacy (旧版聊天室)](./IRCLegacy.md)
 
 相关资料
-【JackalClient 新版IRC和验证系统说明】https://www.yuque.com/wormwaker/tkpgqw/pzx8qe24d90ildn4?singleDoc
+[【JackalClient 新版IRC和验证系统说明】](https://www.yuque.com/wormwaker/tkpgqw/pzx8qe24d90ildn4?singleDoc)

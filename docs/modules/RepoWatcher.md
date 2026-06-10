@@ -1,6 +1,7 @@
 ﻿# Repo Watcher
 
-Repo Watcher（仓库监视）用于定期检查 GitHub 仓库状态变化，可监视 Stars、Forks、Issues、Subscribers、归档/禁用状态、更新时间以及 Release 下载量，并按配置方式发送通知。
+Repo Watcher（仓库监视）
+用于定期检查 GitHub 仓库状态变化，可监视 Stars、Forks、Issues、Subscribers、归档/禁用状态、更新时间以及 Release 下载量，并按配置方式发送通知。
 
 ## 常用配置
 

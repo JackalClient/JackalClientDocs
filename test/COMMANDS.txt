@@ -46,6 +46,28 @@ JackalClient.exe [--help] [--open] [--system] [--ti] [--admin] [--enable:<id1;id
  --nocolor
  -b : Disable the colorful output.
  
+Launcher 命令行参数：
+
+Launcher.exe [--launcher-help] [--apply-package <zip_or_tgz_path>] [--target-dir <dir>] [--start-client] [--client-args <args...>] [--kill-client] [--wait-client-seconds <n>] [--keep-package]
+
+ --launcher-help
+ --help : Show launcher command line help and quit.
+
+ --apply-package <zip_or_tgz_path>
+ --install-package <zip_or_tgz_path> : Run headless install mode, extract the package to target directory and replace client files.
+
+ --target-dir <dir> : Override install target directory (default: launcher directory).
+
+ --start-client : Start Release\\JackalClient.exe after install.
+
+ --client-args <args...> : Extra command line arguments for JackalClient.exe (used with --start-client).
+
+ --kill-client : Force kill JackalClient.exe before install if it is running.
+
+ --wait-client-seconds <n> : Wait up to n seconds for JackalClient.exe to exit before install (default: 20).
+
+ --keep-package : Keep package file after successful install.
+ 
  
 -----------------------------------------
 
@@ -59,6 +81,9 @@ JackalClient.exe [--help] [--open] [--system] [--ti] [--admin] [--enable:<id1;id
 如果填写参数，则会从该文件中显示所有匹配以该命令开头，以空行结尾的段落并输出。
 而 /helpraw 在英文下不会翻译中文为英文。
 示例：/help kill
+
+/helprc <keyword...>
+以 keyword 搜索命令语法，但是是向 Bilibili 直播间发送弹幕（只发送命令语法行）。
 
 
 /helper [list]
@@ -83,11 +108,11 @@ JackalClient.exe [--help] [--open] [--system] [--ti] [--admin] [--enable:<id1;id
 
 /multijackal <commands...>
 /mj <commands...>
-执行多条命令，用;;分隔，会依次执行，无论是否失败。
+执行多条命令，用;;分隔，会依次执行，无论是否失败。每条命令的斜杠前缀可省略，例如：/mj notify test;;title test;;islandtip test
 
 /multijackalinterrupt <commands...>
 /mji <commands...>
-执行多条命令，用;;分隔，遇到失败直接中止。
+执行多条命令，用;;分隔，遇到失败直接中止。每条命令的斜杠前缀可省略。
 
 /jackaloutput <command...>
 输出执行这条命令的输出。（测试命令）
@@ -101,6 +126,106 @@ JackalClient.exe [--help] [--open] [--system] [--ti] [--admin] [--enable:<id1;id
 
 /ver
 查看客户端和系统版本。
+
+/when
+输出当前时间的详细信息（本地时间、UTC、时间戳、时区、ISO/RFC 格式、周数、年内天数、今日进度、毫秒时间）。
+
+/calendar [date/month/day/year]
+输出日历。默认输出当月日历。
+参数规则：
+1. `year`：输出全年 12 个月日历（每行 4 个月，共 3 行）。
+2. 其他参数均输出单月日历，支持格式：
+   - `3.4` / `3/4`：当年 3 月，并高亮 4 日
+   - `2027/1/1` / `2028.4.4` / `2030-4-1`：指定年月日，显示对应月份并高亮该日
+   - `15`：当月并高亮 15 日
+   - `April` / `六月`：指定月份
+彩色规则：
+1. 当日（Today）为红色。
+2. 指定高亮日（Selected）为黄色。
+3. 若当日同时为高亮日，使用紫色标记。
+
+/client
+客户端自身相关命令。
+
+/client window
+彩色输出客户端窗口信息（等价于 /window jc_hwnd 后执行 /it）。
+
+/filetime <params...>
+文件时间操作。
+
+/filetime get <hfile/path>
+获取文件时间（创建/修改/访问），支持 it。
+
+/filetime setm/setc/seta [date] [time] <hfile/path>
+【PRO】修改文件时间。date/time 同时为空时会提示输入。
+date: YYYY/MM/DD YYYY-MM-DD YYYY.MM.DD MM/DD MM-DD MM.DD
+time: HH:mm:SS HH:mm
+
+/client path
+输出客户端 EXE 的绝对路径。
+
+/client dir
+输出客户端 EXE 所在目录。
+
+/client workdir
+等价于 /pwd，输出当前工作目录。
+
+/client cmdline
+输出客户端命令行。
+
+/client pid
+输出客户端进程 ID。
+
+/client size
+输出客户端 EXE 的大小。
+
+/client memory
+输出客户端内存占用（Working Set / Private Usage / Peak Working Set）。
+
+/client cpu
+输出客户端 CPU 占用率。
+
+/client gpu
+输出客户端 GPU 占用率。
+
+/client copy [dest=exe]
+复制客户端信息到剪贴板。dest 可选：
+exe（默认，复制 EXE 文件对象）、path、dir、workdir、size、pid、cmdline
+
+/client version
+等价于 /ver。
+
+/client update [start]
+客户端自动更新命令：
+start（默认）异步执行更新流程（check -> plan -> 下载 full package -> 调起 Launcher 安装并退出客户端）；
+
+/client update check
+异步重新检查更新
+
+/client update status
+查看当前更新任务状态；
+
+/client update tls [status|secure|insecure]
+查看或切换更新请求 TLS 策略（默认 secure，insecure 仅建议临时排障）。
+
+/client update base [status/clear/set <http(s)://host[:port][/path]>]
+查看/清空/设置客户端更新 API 基地址。
+当默认候选地址被网关劫持或返回非 JSON 时，可手动指定服务端实际 API 地址。
+
+/client site
+打开官网：www.wormwake.com/jackalclient
+
+/client home
+用资源管理器打开客户端目录。
+
+/client parent
+输出客户端父进程信息：进程名、进程 ID、进程权限、进程命令行。
+
+/client children
+枚举并输出客户端所有子进程信息：进程名、进程 ID、进程权限、进程命令行。
+
+/client privilege
+输出客户端权限信息：管理员 / 系统 / TrustedInstaller / UIAccess / 各项 SeXXXName 特权。
 
 /exit
 /quit
@@ -212,7 +337,7 @@ JackalClient.exe [--help] [--open] [--system] [--ti] [--admin] [--enable:<id1;id
 显示 IP 地址恐吓段落。如果不填参数则显示当前 IP 地址位置。/ipaddressex 命令则使用人工智能生成段落。
 
 
-/tcptable
+/tcptable1
 /tcptable2
 /tcptable3
 获取当前计算机的所有 TCP 连接。/tcptable2 还会获取外部IP的具体位置。（外国IP只能具体到国家）。 /tcptable3 还会显示该IP的大洲、地区、经纬度。
@@ -240,6 +365,76 @@ JackalClient.exe [--help] [--open] [--system] [--ti] [--admin] [--enable:<id1;id
 /volume set <pid> <volume>
 设置某进程音量 (0~100)
 
+/vdesk <args...>
+/virtualdesktop <args...>
+/virtualdesktops <args...>
+虚拟桌面相关命令。
+
+/vdesk list
+/vdesk ls
+/vdesk show
+/vdesk enum
+彩色列出当前所有虚拟桌面，并标记当前桌面。
+
+/vdesk current
+/vdesk cur
+/vdesk status
+显示虚拟桌面总数与当前桌面编号。编号从 1 开始。
+
+/vdesk switch <index>
+/vdesk sw <index>
+/vdesk goto <index>
+/vdesk set <index>
+切换到指定虚拟桌面。index 从 1 开始。
+
+/vdesk next
+/vdesk +
+切换到下一个虚拟桌面；到末尾后循环到第一个。
+
+/vdesk prev
+/vdesk previous
+/vdesk -
+切换到上一个虚拟桌面；到开头后循环到最后一个。
+
+/vdesk new [switch]
+/vdesk create [switch]
+/vdesk add [switch]
+新建虚拟桌面。追加 switch/goto/true/1 时会在创建后立即切换到新桌面。
+
+/vdesk delete [index|current] [fallback_index]
+/vdesk del [index|current] [fallback_index]
+/vdesk remove [index|current] [fallback_index]
+/vdesk rm [index|current] [fallback_index]
+删除虚拟桌面。默认删除当前桌面；fallback_index 指定删除后切换到的备用桌面，省略时自动选择相邻桌面。不能删除最后一个虚拟桌面。
+
+
+/openurl <url...>
+打开链接。URL 中的中文、空格等字符会使用 curl escape 规则进行百分号编码后再交给系统打开。
+
+/github <args...>
+Github 相关命令。
+
+/github open <repo>
+在浏览器中打开 GitHub 仓库。repo 支持 user/repoName、github.com/user/repoName 或 https://github.com/user/repoName。
+
+/github stats <repo>
+通过 GitHub REST API 彩色输出仓库统计信息，包括简介、所有者、Star、Fork、Issue、许可证、功能开关、时间线、克隆地址和语言占比等。
+
+/smtc list
+枚举当前系统所有 SMTC 会话，彩色输出标题、艺术家、来源、播放状态，并在存在时间轴时输出进度条。
+
+/musicoverlay status
+彩色输出当前 MusicOverlay 模块正在呈现的音乐信息、来源、播放状态、进度和封面纹理。
+
+/musicoverlay cover [path...=output\]
+导出当前 MusicOverlay/SMTC 封面到指定路径；未指定时保存到 output 文件夹。
+
+/betterlyrics status
+彩色输出 BetterLyrics 当前状态；会根据 OCR / Hook Render / Driver (PRO) / SMTC 模式显示不同的窗口、Hook、歌词、时间轴、翻译与灵动岛状态信息。
+
+/betterlyrics stat
+/betterlyrics st
+`/betterlyrics status` 的简写。
 
 /music [path...]
 如果不指定参数，则切换 Music 模块。
@@ -305,6 +500,21 @@ enable 是布尔类型，不填则表示切换。
 /title <content...>
 显示一条标题信息。
 
+/typewriter init [hwnd=foreground]
+以指定窗口句柄初始化 Typewriter。默认使用当前前台窗口，支持 foreground、fg、it、jc_hwnd、jc_hwnd_console、十进制句柄和 0x 十六进制句柄。
+
+/typewriter start [timedown=10]
+在指定倒计时后启动 Typewriter。如果尚未初始化，会自动使用倒计时结束时的当前前台窗口初始化。最后五秒每秒显示一次 TitleTip。
+
+/typewriter pause
+暂停当前 Typewriter。
+
+/typewriter stop
+停止当前 Typewriter，并清空目标窗口与内容。
+
+/typewriter status
+彩色输出当前 Typewriter 状态、目标窗口和进度。
+
 /debugstr [msg...]
 /dbgstr [msg...]
 使用 OutputDebugString 输出一条调试信息。
@@ -321,6 +531,10 @@ Edge 翻译功能。translateto 可指定目标语言， translateloop 将会把
 /translateoffline <from> <to> [content...=clipboard]
 opencc 离线翻译。
 支持的语言缩写有：s简体中文，t繁体中文，hk香港，tw台湾繁体，jp日本汉字
+
+/pinyin <all|notone|caps> [content...=clipboard]
+汉字转拼音。`notone` 输出无音调，例如 `ni hao`；`caps` 输出首字母，例如 `n h`；`all` 将依次输出上述两种形式，每种占一行。
+如果不填写 content，则读取剪贴板文本；如果填写 `it` 且 `it` 当前是字符串变量，则使用代词变量 `it` 的文本。
 
 /memeizer [content...=clipboard]
 生草机翻译。相关设置请到生草机模块进行配置。
@@ -340,18 +554,23 @@ opencc 离线翻译。
 /hidden
 隐藏。（启用Hidden模块）
 
-/admin
-以管理员身份自启。
+/admin [cmdline...]
+以管理员身份运行。若不指定参数则为自启；指定参数时运行外部命令行。
 
-/uacbypass
-调用UACBypass模块，绕过UAC获取管理员权限。
+/uacbypass [cmdline...]
+调用 UACBypass 获取管理员权限。若不指定参数则为自启；指定参数时运行外部命令行。
 
-/system
-以系统身份自启。
+/system [cmdline...]
+以系统身份运行。若不指定参数则为自启；指定参数时运行外部命令行。
 
-/ti
-/trustedinstaller
-以受信任安装者权限自启。
+/ti [cmdline...]
+/trustedinstaller [cmdline...]
+以受信任安装者权限运行。若不指定参数则为自启；指定参数时运行外部命令行。
+
+/adminrestart <hprocess>
+[PRO] 对指定进程执行管理员权限重启：
+检查进程存在 -> 检查为普通用户身份 -> 检查可定位进程路径 -> 获取命令行 -> 杀进程 -> 以管理员权限按原命令行重启。
+任一步失败即中断并报错。
 
 
 /uiaccess [cmdline...]
@@ -421,11 +640,12 @@ HH:mm
 操作符包括：+ - =  （其中如果使用=，则用算法将其转为+或-）
 数值就是纯数字。示例：/time offset hr+1 m-10 sec=50   表示时间+1小时，-10分钟，秒设为50
 
-/err
-/error
-/lasterr
-/lasterror
-查看上一个 Win32 错误。
+/err [code]
+/error [code]
+/lasterr [code]
+/lasterror [code]
+不带参数：查看上一个 Win32 错误。
+带参数：解析指定错误码（十进制或 0x 十六进制），先从内置字典查找描述，再用 WinAPI 格式化输出。
 
 
 /sleep <duration>
@@ -442,29 +662,122 @@ HH:mm
 具体查看代词 it 的情况，将会详细展开句柄的信息。
 
 /irc
-切换IRC聊天室模块状态。当启用时，会自动检查用户名以及状态。启用后就可以接受聊天室消息了。
+切换IRC聊天室模块状态（最新 Realm WS 系统）。
+
+/irc login <user> <pass>
+登录 Realm 账号。
+
+/irc email send register <email>
+向指定邮箱发送注册验证码。
+
+/irc email send reset <email>
+向指定邮箱发送重置密码验证码。
+
+/irc register <user> <pass> <email> <code> [card]
+注册 Realm 账号并自动登录。code 为邮箱验证码；card 为 Pro 激活码（Pro 版可选）。
+
+/irc resume
+使用本地 token 自动恢复登录。
+
+/irc guest
+[FREE] 使用访客登录。
+
+/irc password change <newPassword>
+登录后修改密码（30 秒冷却，newPassword 可包含空格）。
+
+/irc password reset <user/email> <code>
+未登录重置密码（60 秒冷却）。成功后会发送随机密码到邮箱。
+
+/irc logout
+退出当前登录并断开 WS 连接。
+
+/irc status
+查看 WS/认证/IRC 加入状态，并显示当前经验等级与经验进度。
+
+/irc setname <name>
+设置 Realm 用户昵称（Title 字段）。服务端会校验内容并限制每天仅可修改一次。
+
+/irc list
+查看当前在线用户数量。PRO 下按用户组分组显示在线用户，格式为：
+[前缀] title - (username) #id
+当 title 为历史默认值 Rookie 时，客户端自动回退显示 username。
+
+/irc announce list [page=1]
+拉取 IRC 公告列表（Realm WS 最新系统）。
+
+/irc report <type> [detail...]
+【WIP 维护中】举报用户行为。type 为举报类型（如 crack），detail 为补充说明（可选）。
+
+/irc block <name>
+/irc unblock <name|all|*>
+【PRO】屏蔽/取消屏蔽指定用户（用分号分隔多个名字）。
 
 /irc send [msg...]
-发送一条聊天室公共信息。如果你启用了IRC模块的Fast Send With # Prefix Command选项，你可以直接使用#开头的字符串快捷发送消息。例如：#hello-world
+发送一条聊天室公共信息（Realm WS 最新系统）。你需要先登入IRC并启用模块。
+如果不填 msg，将会打开一个框，你可以在里面输入（也可以输入中文）。
+当前不支持私聊。友善交流讨论。
+
+/irclegacy
+切换IRC聊天室模块状态（旧版 Legacy 系统）。仅在 System Type=Legacy 时可用。
+
+/irclegacy send [msg...]
+发送一条旧版聊天室公共信息。如果你启用了IRC模块的Fast Send With # Prefix Command选项，你可以直接使用#开头的字符串快捷发送消息。例如：#hello-world
 如果不填msg，将会打开一个框，你可以在里面输入（也可以输入中文）。或者使用 ## 也可以。
 当前不支持私聊。友善交流讨论。
 
-/irc getname
-获取自己的实际用户名。
+/irclegacy getname
+获取自己的实际用户名（Legacy）。
 
-/irc register <name>
-/irc setname <name>
-注册当前计算机的聊天室用户名称。名称为 name ，不能含空格。如果检测到名称被占用且不为自己，就不能修改。
+/irclegacy register <name>
+/irclegacy setname <name>
+注册当前计算机的聊天室用户名称（Legacy）。名称为 name ，不能含空格。如果检测到名称被占用且不为自己，就不能修改。
 
-/irc queryuser <name>
-查询 name 用户名是否被占用。
+/irclegacy queryuser <name>
+查询 name 用户名是否被占用（Legacy）。
 
-/irc block <name>
-[PRO] 屏蔽指定用户的消息。会添加到模块配置中，随时可以改。收到被屏蔽用户的消息时，什么也不会显示。
+/irclegacy list
+/irclegacy announce list [page]
+/irclegacy block <name>
+[PRO] 屏蔽指定用户的消息（Legacy）。会添加到模块配置中，随时可以改。收到被屏蔽用户的消息时，什么也不会显示。
 
-/irc unblock <name>
-/irc unblock all/*
-[PRO] 取消屏蔽指定用户的消息。
+/irclegacy unblock <name>
+/irclegacy unblock all/*
+[PRO] 取消屏蔽指定用户的消息（Legacy）。
+
+/font <params...>
+字体相关命令。
+
+/font name
+显示当前字体名称。
+
+/font switch <name/path>
+切换字体并触发自动重载。name 必须是 GUI 选项 Font 的可选项；path 仅支持 .ttf 文件，支持双引号包裹带空格路径。
+
+/font codepoints
+彩色输出当前额外字体 codepoints 数量、上限（Auto Unload Front Extra Font Chars Max Count）以及占比。
+
+/font reload
+重新加载字体。
+
+/font pop <count>
+卸载 count 个最早加入的额外字体 codepoints，并重新加载字体以释放内存。
+
+/peparser [path/it]
+[PRO] 解析 PE 文件结构（EXE/DLL/等），支持 DOS/NT 头、节区表、导入表、导出表等详细信息，彩色输出。
+参数规则：
+1. 不填参数时，按以下优先级取路径：
+   Clipboard 单文件 -> it(hfile/string) -> Pe Parser 模块配置项 Path
+2. 参数为 it 时：
+   - it 类型为 hfile：使用该文件句柄对应路径。
+   - it 类型为 string：使用该字符串作为路径。
+3. 参数为其他字符串时：按路径处理。
+限制：
+1. 路径无效或文件不是合法 PE 会报错。
+2. 文件大小超过 50MB 会拒绝读取并报错。
+
+/nickgenerator <mode>
+/nickgenerator english/neteasemc/normalrandom/japaneserandom
+生成一个随机昵称。mode 可选 english / neteasemc / normalrandom / japaneserandom。
 
 
 /calc [expr...]
@@ -542,7 +855,7 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 
 /cd [path...]
 /chdir [path...]
-切换当前工作目录。注意，不需要指定/d参数，如果有会自动去除。后面的路径可以不加双引号。如果要切换到上一个目录，可以使用 /chdir .. 命令。/chdir 命令成功执行后，会输出当前工作目录，而 /cd 不会。
+切换当前工作目录。注意，不需要指定/d参数，如果有会自动去除。后面的路径可以不加双引号。支持 /cd D: 这类盘符写法，会切换到对应盘符根目录。如果要切换到上一个目录，可以使用 /chdir .. 命令。/chdir 命令成功执行后，会输出当前工作目录，而 /cd 不会。
 
 /rm <path...>
 /remove <path...>
@@ -569,9 +882,55 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 /file <path...>
 根据文件内容辨别文件类型，较为基础，只能判断一小部分类型。
 
+/where <keyword...>
+先调用系统原生 where 命令查找；如果 Everything 模块已启动，则继续用 Everything 粗略搜索，并彩色输出前十个 Everything 结果，格式为“短文件名 - 绝对路径”，文件名中的关键词会以粉色高亮。若仍有更多 Everything 结果，会提示使用 /findfile ... 查看完整结果。
+
+/codex <args...>
+Codex 信息管理工具。默认打开 Dashboard 面板，汇总 Codex 根目录、版本、模型、Provider、推理强度、沙盒、Skills 和 Sessions 数量。如果提供了参数但没有命中下列内置子命令，会预览将要执行的 codex 命令行，按 Enter 确认后直接调用 codex 并传递参数，按 Esc 取消。
+
+/codex config
+读取 .codex\config.toml 与 auth.json 并彩色显示关键配置；当 PrivacyProtect 模块开启时，API Key、Token、Secret、Auth 等敏感值会自动隐藏为星号。
+
+/codex skills
+枚举 .codex\skills 与 .codex\vendor_imports\skills 中包含 SKILL.md 的技能目录，并以二维表输出名称、显示名、来源、路径；较长的 short_description、description、default_prompt 会作为单独行显示。
+
+/codex new [params...]
+创建新的 Codex CLI 窗口。params 会原样追加到 codex 后面，例如 /codex new --model gpt-5.5 等价于在新的 cmd 窗口中执行 codex --model gpt-5.5。
+
+/codex terminate all
+结束所有 codex.exe 以及由其派生的相关子进程，并逐项输出 PID、PPID、进程名、路径和成功/失败反馈。
+
+/codex sessions
+显示会话数量、最近会话、session-id 与首句用户 Prompt；Prompt 预览按 60 字符截断。
+
+/codex files
+列出常用 Codex 本地文件及大小。
+
+/codex running
+输出当前运行的 Codex 进程树。
+
+/codex help
+显示 /codex 系列命令帮助。
+
+/link create <path> [dest=desktop]
+/link info <path>
+/link stats [dir=desktop]
+快捷方式工具。create 会为目标 path 创建 .lnk 快捷方式，dest 不填时创建到桌面；dest 可以是目录或完整 .lnk 路径，也可写成 dest=<path>。info 会解析单个快捷方式并彩色输出目标、参数、工作目录、图标和有效状态。stats 会统计目录中的 .lnk 与 .url 快捷方式有效率、目标路径占比、目标文件类型占比和 URL 协议占比（如 https、steam 等）。path、dest、dir 均支持双引号包裹空格路径，stats 支持以反斜线结尾的目录。
+
 /findfile <keywords...>
 /findfileb <keywords...>
 通过 Everything 软件搜索指定的文件。 /findfileb 命令只显示文件名， /findfile 显示文件名和绝对路径。
+
+/topfiles [limit=25] [dir...]
+/bigfiles [limit=25] [dir...]
+/largestfiles [limit=25] [dir...]
+统计并彩色输出最大的前 K 个文件（大小、文件名、时间差、修改日期、完整路径）。
+当不指定 dir 时，使用 Everything 在全盘范围统计；指定 dir 时递归统计该目录。
+若 Everything 返回为空且 Top Files 模块配置里的 Directory 为空，会自动回退到当前工作目录并写回该配置。
+参数示例：
+1. /topfiles
+2. /topfiles 50
+3. /topfiles limit=30 "D:\Games"
 
 /everything
 切换 Everything 模块。
@@ -696,8 +1055,21 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 /config <params...>
 配置项的相关操作命令。使用 /config ui 命令进入一个交互式界面。如果你要操作配置档案，请使用 /profile 命令。
 
+/config <keyName...>
+/config <keyName...> <rawValue...>
+Config 分组的简写：等价于
+/config get config <keyName...>
+/config set config <keyName...> <rawValue...>
+keyName 同样支持模糊匹配。
+
 /config list <moduleName>
 枚举一个模块的所有配置选项。也可以填 config/gui/hud/sound
+
+/config copy <moduleName>
+将指定模块（或config/gui/hud/sound）的配置 JSON 复制到剪贴板（无换行）。
+
+/config paste [json=clipboard]
+从 JSON 导入配置，自动识别所属模块并应用；不填参数则读取剪贴板。
 
 /config get <moduleName> <keyName...>
 获取一个模块（或config/gui/hud/sound）的某一个选项。支持模糊匹配：
@@ -737,11 +1109,33 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 /gui toggle
 打开或关闭 GUI。
 
+/gui on
+/gui off
+/gui open
+/gui close
+显式打开/关闭 GUI。
+
 /gui style
 查询现在的GUI风格。
 
 /gui style <style>
 设置现在的GUI风格（default/neverlose/imgui）
+
+/gui list
+/gui ui
+/gui get <keyName...>
+/gui search <keyName...>
+/gui set <keyName...> <rawValue...>
+/gui reset <keyName...>
+/gui <keyName...>
+/gui <keyName...> <rawValue...>
+GUI 配置快捷命令，等价于 /config 对 gui 分组的操作，支持 keyName 模糊匹配。
+
+/gui bind
+查看当前两个 GUI 开关键（Menu Toggle Key 1 / 2）的按键绑定。
+
+/gui bind <keybind...>
+修改 Menu Toggle Key 1 的按键绑定。keybind 格式同 /bind 命令，例如：/gui bind ralt
 
 /binds
 查看所有模块的按键绑定（bind, bind (Enable), bind (Disable)）
@@ -750,6 +1144,27 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 /bindenable <moduleName> <keyBind>
 /binddisable <moduleName> <keyBind>
 绑定单个模块的按键。bind 表示开关按键， bind (Enable) 表示开按键， bind (Disable) 表示关按键。
+
+/keymapper add <src> <dst>
+/keymapping add <src> <dst>
+添加一条按键映射。src 和 dst 都支持组合键，使用英文逗号分隔，例如：/keymapper add lalt,w q
+
+/keymapper list
+彩色输出所有映射（ID、启用状态、源按键、目标按键）。
+
+/keymapper remove <id>
+/keymapper delete <id>
+删除指定 ID 的映射。
+
+/keymapper enable <id>
+/keymapper disable <id>
+启用或禁用指定 ID 的映射。
+
+/keymapper info
+输出 KeyMapper 相关信息，包括映射数量以及注册表中键盘映射相关项（Scancode Map）状态。
+
+/keymapper clear
+清空所有映射。
 
 
 /encrypt <method> [content...]
@@ -763,7 +1178,10 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 	crc32
 	sha1
 	beast
+	beartalk
+	urlencode
 	abracadabra
+	latin
 	pipa
 	pipaplus
 	pipasimp: 简体
@@ -772,8 +1190,23 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 	pipatradplus: 繁体+
 	pipasimpplus2: 简体+，带标点
 	pipatradplus2: 繁体+，带标点
+其中 beartalk 解密支持噪声容错：可自动忽略夹杂的空白、标点和无关字符（只提取有效映射字符）。
+其中 beast 解密支持使用非标准字符集（使用自定义的四个字符都可以），会自动尝试解码。
+其中 latin 解密仅支持使用文件或剪贴板的命令【即/decrypt(copy) latin，后面不带任何参数，或者/decryptf(c) latin <files...>】，防止控制台吞不可见字符。
 若 content 不指定，则会先查看剪贴板里的文本，如果为空且为命令行线程，则直接要求输入。
 后两条带copy的会将结果复制到剪贴板。
+
+/encryptf <method> <files...>
+/decryptf <method> <files...>
+/encryptfc <method> <files...>
+/decryptfc <method> <files...>
+用指定方法加密或解密指定文件。files 支持双引号与多个文件。
+/encryptf 与 /decryptf 直接替换原文件，/encryptfc 与 /decryptfc 会生成副本（file.txt -> file.encrypted.txt / file.decrypted.txt）。
+
+/encryptml <method>
+/decryptml <method>
+多行加密/解密。输入命令后进入多行输入模式，单独一行输入 `::END::` 结束并执行。支持的方法与 /encrypt 相同。
+latin 解密不支持使用/decryptml，请将要解密的内容复制后使用/decrypt latin命令。
 
 /encryptor [content...]
 /decryptor [content...]
@@ -955,6 +1388,15 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 
 /shutdown [args...]
 关机。如果不写参数则为立即关机。如果写参数，则参数和 cmd 命令相同。
+
+/log <params...>
+日志相关命令。
+
+/log list
+列出所有客户端日志文件（包括 CLIENT.LOG、crashlog 和历史日志），显示文件名、大小和时间差。
+
+/log clear
+清除所有旧日志文件（不包括 CLIENT.LOG），包括 crashlog 目录下的日志文件。
 
 
 /logoff
@@ -1166,6 +1608,19 @@ Debugger 方法杀进程
 /untrust <hprocess/pid/name>
 设置进程令牌为不信任。有可能需要管理员权限。
 
+/ppl <params...>
+PPL 相关命令。输入 /help ppl 查看帮助。
+
+/ppl get <hprocess/pid/procname>
+查看指定进程的 PPL (Protected Process Light) 保护等级。无需管理员权限。
+
+/ppl set <hprocess/pid/procname> <level>
+通过 Sirius 驱动设置指定进程的 PPL 等级。需要驱动已加载。
+level 可以是数字或名称：0/none, 1/am, 2/lsa, 3/win, 4/tcb, 5/wc, 6/sys。
+
+/ppl list
+列出所有 PPL 保护的进程。通过 Sirius 驱动枚举，显示进程名、PID 和保护等级。
+
 /aim
 打开窗口锁定器，按下 Esc 取消，按下 Ctrl 锁定前端窗口，按下 Alt 锁定鼠标指向的窗口。
 倒计时 30 秒，超时后自动取消。
@@ -1228,6 +1683,42 @@ Debugger 方法杀进程
 /ocr windowex <hwnd>
 对指定的窗口内容进行文字识别。将会输出更详细的信息，包括坐标等。
 
+/qq <params...>
+QQ 相关功能命令。输入 /qq help 查看帮助。
+
+/qq help
+显示 QQ 子命令帮助（等价于 /help qq）。
+
+/qq inspect [min_port] [max_port]
+扫描本地 QQ 登录会话（端口默认取 QQ Inspect 配置的 Scan Port Min/Max），输出可用账号基础信息。
+
+/qq login [uin] [refresh]
+QQ 快捷登录。优先尝试读取 Records 中已加密会话，失败后自动回退到本地重新获取并刷新保存。
+可选参数：
+uin：指定登录哪个 QQ 号；不填则使用上次 active_uin。
+refresh：强制跳过快捷会话，直接重新获取。
+
+/qq status
+查看当前 active_uin 的 QQ 会话缓存状态（账号、会话缓存状态等）。
+
+/qq logout [all]
+删除 QQ 会话缓存。默认删除当前 active_uin；传 all 删除全部。
+
+/qq friends [page=1] [pageSize=30]
+分页输出好友列表（使用 qzone 会话，失败自动重登重试一次）。
+输出中会附带上一页与下一页命令提示。
+
+/qq groups [page=1] [pageSize=30]
+分页输出群列表（create/manage/join）。
+输出中会附带上一页与下一页命令提示。
+
+/qq members <group_id/group_name> [page=1] [pageSize=30]
+分页输出指定群成员列表。
+group_name 支持模糊匹配，匹配规则：
+1) 字符串相似度 >= 90% 时命中；
+2) 或者第一名与第二名相似度差值 > 50% 时命中第一名；
+3) 使用模糊匹配时会输出匹配过程信息。
+
 /qqbot update
 更新一次机器人。
 
@@ -1239,6 +1730,9 @@ Debugger 方法杀进程
 
 /qqbot aim [hwnd]
 锁定指定的聊天窗口为目标窗口。
+
+/clientreg <params...>
+客户端注册表项命令。params填写参数。
 
 /clientreg list
 枚举所有客户端注册表项的键值。
@@ -1275,6 +1769,15 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 /key <once> <keycode/keyname...>f
 /key <async> <keycode/keyname...>
 模拟按键操作。上述四种分别对应按下、松开、同步按下松开、异步按下松开。后两种内部间隔 100 毫秒。
+
+/key repeat <count> <keycode/keyname...>
+重复按下并松开count次指定的按键。
+
+/key hold <duration_ms> <keycode/keyname...>
+按住指定的按键duration_ms毫秒后松开。
+
+/key clearinput
+清空当前输入框（持续按住 Backspace 直到 caret 位置不再变化，最多 30 秒）。
 
 /keys <Keys...>
 模拟多个按键操作。注意，多个按键需要用空格分隔而不是逗号或分号。
@@ -1333,25 +1836,60 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 /hud
 切换HUD显示状态。
 
+/hud on
+/hud off
+/hud toggle
+显式打开/关闭 HUD。
+
+/hud list
+/hud ui
+/hud get <keyName...>
+/hud search <keyName...>
+/hud set <keyName...> <rawValue...>
+/hud reset <keyName...>
+/hud <keyName...>
+/hud <keyName...> <rawValue...>
+HUD 配置快捷命令，等价于 /config 对 hud 分组的操作，支持 keyName 模糊匹配。
+
+/sound
+/sound list
+/sound ui
+/sound get <keyName...>
+/sound search <keyName...>
+/sound set <keyName...> <rawValue...>
+/sound reset <keyName...>
+/sound <keyName...>
+/sound <keyName...> <rawValue...>
+Sound 配置快捷命令，等价于 /config 对 sound 分组的操作，支持 keyName 模糊匹配。
+示例:
+ /sound "Option Sound Enabled"
+ /sound "Option Sound Enabled" false
+ /sound set "Sound (Enable)" button_down.wav
+ /sound search button
+
 /customhud
 切换自定义HUD显示状态。
 
 /customhud add <json...>
 /customhud add text [text...]
+/customhud add image <path...>
 添加自定义HUD元素。
+image 路径支持空格；如果路径首尾有双引号会自动删除。
 JSON 格式支持的键值有：
 !表示必填项，其中 Color 和 ColorPrefab 两者选一个
-!string	Type: 类型，可以是 text
+!string	Type: 类型，可以是 text 或 image
 !int		X
 !int		Y
 !string	Text: 文本内容。
+!string	Path: 图片路径。Type 为 image 时使用，支持绝对路径或 assets 目录相对路径。
 string	Format: 可自定义格式。默认为 %s
 !string	Color: 具体某种颜色。
 !string	ColorPrefab: 颜色预设，支持动态
 int		Size: 字号。
+float	Scale: 图片缩放。Type 为 image 时使用，默认为 1.0。
 bool	Shadow: 是否绘制阴影。 默认开启。
 bool	Stroke: 是否描边。默认关闭。
-float 	Opacity: 不透明度，默认为 1.0
+float 	Opacity: 不透明度，默认为 1.0。Type 为 image 时可用。
 float 	OpacityMin: 不透明度最小值
 float 	OpacityMax：不透明度最大值
 int		OpacityDuration: 不透明度正弦变化的周期时间 (毫秒)
@@ -1366,6 +1904,15 @@ int		LastUpdate: 文本上一次更新的时间。
 
 /customhud move <id> <x> <y>
 移动指定的自定义HUD元素。
+
+/customhud scale <id> <value>
+调整指定自定义HUD元素的 Scale。
+
+/customhud opacity <id> <value>
+调整指定自定义HUD元素的不透明度，范围 0 到 1。
+
+/customhud path <id> <path...>
+修改指定图片元素的路径；路径支持空格，首尾双引号会自动删除。
 
 /customhud mover
 交互式移动界面。
@@ -1426,6 +1973,9 @@ int		LastUpdate: 文本上一次更新的时间。
 
 /aphorism
 获取一句随机名言。
+
+/mclog <params...>
+Minecraft 日志解析器相关命令。
 
 /mclog list
 枚举当前的 Minecraft 实例以及对应的日志的情况。
@@ -1528,6 +2078,18 @@ zhanan			随机渣男语录
 
 /textdatabase clear <key>
 /textdatabase delete <key>
+/text selected
+输出目前选中的文本内容。
+/text copied
+输出剪贴板中的文本（非文本或空则报错）。
+
+/console max
+最大化控制台。
+/console min
+最小化控制台。
+/console fix
+把控制台视觉相关配置切到兼容预设（如关闭高级背景、恢复默认非客户区渲染等），并立即应用到当前控制台窗口。
+
 /tdb clear <key>
 /tdb delete <key>
 /pastebin clear <key>
@@ -1615,13 +2177,33 @@ zhanan			随机渣男语录
 不指定参数时，进入主页。
 
 /bili login
-扫码登录。将会存储 Cookies 到 BiliSettings，请勿泄露以免被盗号。
+/bili login <nickname/uid>
+扫码登录（无参数时）。将会存储 Cookies 到 BiliSettings，请勿泄露以免被盗号。
+指定已有账号的昵称或UID时，直接切换到该账号（无需扫码）。支持Tab补全账号列表。
 
 /bili relogin
 重新扫码登录。
 
 /bili logout
-登出账号。清空 Cookies。
+登出账号。清空 Cookies，并将 BiliSettings Account 切换为 Logout 状态。
+
+/bili account add
+扫码登录添加新账号。登录成功后若该账号已存在则更新Cookies，否则自动添加到账号列表。
+
+/bili account list
+列出所有已保存的Bilibili账号，当前激活账号会标注。
+
+/bili account remove <nickname/uid>
+从账号列表中移除指定账号（按昵称或UID）。如果移除的是当前激活账号，则自动登出。支持Tab补全。
+
+/bili account clear
+清空所有已保存的账号数据，并登出当前账号。
+
+/bili account detect
+自动从浏览器 Cookies 检测 Bilibili 账号（Windows）。按 Chrome/Firefox/Edge/Chromium/Opera 顺序尝试：
+若检测到的账号已在账户列表中，则更新该账号 Cookies 到客户端；
+若不在列表中，则自动添加并切换登录到该账号。
+成功时通知会提示命中的浏览器，未检测到则报错。
 
 /bili space [uid]
 查看用户空间主页。如果不指定uid，则为当前登录账号的空间。
@@ -1639,6 +2221,16 @@ zhanan			随机渣男语录
 /bili fans search <limit> <kw...>
 /bili fans searchf <limit> <kw...>
 【PRO】以昵称关键字kw搜索自己的粉丝。两个带f后缀的为快速模式，找到一个很符合的结果就会直接输出并停止。search(f)可以指定搜索范围limit（表示前limit个粉丝中搜索）, find 则为B站支持的最大搜索范围（可能为1000）中搜索。findf 为前 100 个中搜索。你可以使用UID=或UID:开头搜索指定UID的用户。
+
+/bili follow <uid1/name1;uid2/name2;...>
+/bili unfollow <uid1/name1;uid2/name2;...>
+/bili black <uid1/name1;uid2/name2;...>
+/bili unblack <uid1/name1;uid2/name2;...>
+/bili cancelfans <uid1/name1;uid2/name2;...>
+批量操作B站用户关系。参数用英文分号分隔，可使用UID或昵称；使用昵称时必须与搜索结果100%匹配。follow关注UP主，unfollow取消关注，black拉黑用户，unblack取消拉黑，cancelfans踢出粉丝（解除对方粉丝关系）。follow/black在多目标时会优先使用B站批量接口。
+
+/bili blacks [limit=20] [page=1]
+查看B站黑名单用户列表。limit为每页数量（最大50），page为页码；彩色输出序号、昵称、等级、UID、拉黑时间差和拉黑时刻。无参数且黑名单超过20人时进入交互式分页：←→或A/D翻页，Home/End跳转首尾页，U输入序号取消拉黑，Esc退出。
 
 /bili video <aid/bid/link>
 查看B站视频信息。会进入一个可交互页面。
@@ -1666,6 +2258,9 @@ zhanan			随机渣男语录
 
 /bili comment recvui
 【PRO】进入交互式“回复我的”界面。支持方向键选择、回车直接回复、R 刷新、Q/Esc 退出。回复输入支持 cancel 或 /cancel 取消。
+
+/bili comment search <type> <oid> <keywords...>
+在指定评论区搜索包含关键词的评论，每页最多输出 10 条命中的评论本身，不展开其上下级；如果刚好达到 10 条，则支持交互输入下一页继续搜索。keywords 支持空格，且搜索不区分大小写。
 
 /bili comment list/enum <type> <oid> [count=20] [page=1] [sort=1]
 /bili comment list/enum <oid>
@@ -1696,12 +2291,18 @@ zhanan			随机渣男语录
 /bili dynamic list/enum <uid> [limit=10] [offset_dynamic_id=0]
 枚举编号为 uid 的用户动态。limit 表示最大数量。如果填写offset_dynamic_id，则从编号为offset_dynamic_id的动态开始枚举。
 
+/bili dynamic search <uid> <keywords...>
+在指定用户动态中搜索包含关键词的动态，每页最多输出 10 条命中结果；如果刚好达到 10 条，则支持交互输入下一页继续搜索。keywords 支持空格，且搜索不区分大小写。
+
 /bili dynamic likes <uid> [limit=8]
 /bili dynamic unlikes <uid> [limit=8]
 给指定用户动态点赞/取消点赞，最多 limit 个动态。
 
 /bili contribution [uid=own] [limit=30]
 枚举指定用户的稿件列表。uid如果不填则是当前登录的用户。limit为数量限制，显示前多少的稿件。
+
+/bili contribution search <uid> <keywords...>
+在指定用户稿件中搜索标题包含关键词的稿件，每页最多输出 10 条命中结果；如果刚好达到 10 条，则支持交互输入下一页继续搜索。keywords 支持空格，且搜索不区分大小写。
 
 /bili tag query <avid/bid/link...>
 该命令已被废弃。
@@ -1710,10 +2311,25 @@ zhanan			随机渣男语录
 /bili live feed/recommend [limit]
 获得推荐的直播间列表。limit 为数量限制。
 
+/blc <content...>
 /bili live addchatter <room_id> <content...>
 /bili live chatter <content...>
 /bili live leetchatter <content...>
-向 room_id 直播间发送弹幕。如果 room_id 填为 ~ ，则会使用 LiveStream 模块中的 Room ID。/bili live leetchatter 则会先将文本交给 Clipboard Tweaks 模块处理再发送。
+向 room_id 直播间发送弹幕（现为入队异步发送）。如果 room_id 填为 ~ ，则会使用 LiveStream 模块中的 Room ID。/bili live leetchatter 会先将文本交给 Clipboard Tweaks 模块处理再入队。
+
+/bili live cq
+/bili live cq list
+/bili live cq show
+/bili live cq display
+显示直播弹幕发送队列信息。
+
+/bili live clcq
+/bili live cq clear
+/bili live cq pause
+/bili live cq resume
+/bili live cq add <msg...>
+/bili live cq direct <msg...>
+直播弹幕发送队列控制。clear 等价于 clcq；pause/resume 暂停或继续队列；add 入队；direct 立即发送不入队。
 
 /bili live go [roomId=~]
 /bili live link [roomId=~]
@@ -1737,11 +2353,26 @@ go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 
 /bili live chat [limit=100]
 获取并输出当前直播间弹幕列表的前limit个。
 
-/bili live setroom [roomId=auto]
-将有关模块的直播间ID选项全部设为roomId。如果不填，则为自己的直播间ID。
+/bili live fetchraw [limit=100]
+获取并输出当前直播间弹幕列表的原始 JSON 数据，便于调试弹幕字段结构。
+
+/bili live setroom
+仅在 LiveStream 未设置房间号时使用，自动填充为自己的直播间号。切换直播间请使用 /bili live switch。
+
+/bili live switch <roomId> [force|auto]
+切换 LiveStream 直播间。会输出更详细的主播/标题/分区反馈并弹出通知；仅在检测到风险项时输出风险提示；force 直接切换；auto 自动调整冲突配置并备份到 Records。
+
+/bili live switch back
+切回自己的直播间，并恢复上次 auto 调整的配置。
 
 /bili live info [roomId=~]
 获得直播间原始信息JSON。
+
+/bili live status
+彩色输出自己直播间的综合状态信息，会合并账号直播间诊断接口与直播间基础信息，显示封禁/权限恢复时间以及最新一条违规记录。
+
+/bili live violation [page=1] [pageSize=6]
+彩色输出自己直播间的违规记录列表。page 为页码，pageSize 为每页数量。
 
 /bili live create
 为自己创建一个直播间。
@@ -1813,6 +2444,60 @@ normal:	讲述并输出。
 /biliuid1 <nickname>
 根据一个用户昵称反查用户UID。如果找不到精确的就输出相似的。/biliuid如果遇到空回复会多尝试几次，/biliuid1并不会。
 
+/bilivideohelper <args...>
+/bvh <args...>
+Bili Video Helper shell commands. Alias: /bvh.
+开启 `Load Comment Stats` 后，视频数据加载完成会在后台预加载评论区和用户关系，并缓存到 Records.json；新视频会话或关闭模块会清理旧评论缓存。
+
+/bvh status
+彩色输出 BiliVideoHelper 上一次呈现的视频会话数据，包括 BVID、视频链接、封面 URL、封面纹理、点赞/投币/收藏状态、统计数据、UP 主与视频歌词匹配信息。
+
+/bvh cover [path...=output\]
+导出当前 BiliVideoHelper 视频封面到指定路径；未指定时保存到 output 文件夹。
+
+/bvh like
+为最新会话视频点赞。
+
+/bvh unlike
+取消最新会话视频点赞。
+
+/bvh coin [amount=2] [like=true]
+为最新会话视频投币；amount 为 1 或 2，like 表示是否同时点赞。
+
+/bvh link
+生成 https://www.bilibili.com/video/bvxxxxxx 分享链接并复制到剪贴板。
+
+/bvh share
+生成带【视频标题-哔哩哔哩】前缀的分享文本并复制到剪贴板。
+
+/bvh space
+打开最新会话视频 UP 主空间。
+
+/bvh uploader
+查看最新会话视频 UP 主数据，输出格式同 /biliprofile。
+
+/bvh comment <content...>
+在最新会话视频下发表评论；请求前输出视频 BV 号和标题，请求后输出并弹出结果通知。
+
+/bvh search <keyword...>
+在最新会话视频的全部评论和子评论中搜索关键词，按评论树结构输出并用粉色高亮关键词；仅用于保留树结构的未命中父评论会显示为灰色。
+
+/bvh find <limit> <keyword...>
+和 /bvh search 相同，但最多输出 limit 条命中的评论。
+
+/bvh finduser <uid1/name1;uid2/name2;...>
+在最新会话视频评论区搜索指定用户的所有评论；UID 精确匹配优先，昵称支持包含式模糊匹配并排在后面，子评论命中时保留灰色父评论和树状缩进。
+
+/bvh findfans [limit=100]
+在最新会话视频评论区筛选粉丝（含互相关注）的评论，最多输出 limit 条命中评论并保留必要父评论。
+
+/bvh findfollow [limit=100]
+在最新会话视频评论区筛选关注的人（含互相关注）的评论，最多输出 limit 条命中评论并保留必要父评论。
+
+/bvh cstat
+输出最新会话视频评论区统计数据，包括评论总数、楼中楼占比、粉丝占比、关注的人占比、互相关注占比、@ 评论占比和屏蔽词占比。
+/bilifollowgraph export [path...=output\]
+异步导出当前 BiliFollowGraph 的完整黑底关注图到指定路径；未指定时保存到 output 文件夹，文件名为 `BiliFollowGraph_自己的昵称_总节点数_YYYYMMDD.png`，导出完成后会弹出成功通知。
 /bilihot [limit]
 显示B站热搜。
 
@@ -1859,6 +2544,9 @@ get输出图片链接，download下载至output\Cover，forward直接在浏览�
 /module showall
 将 ClickGUI 中所有已隐藏模块恢复为显示。
 
+/module hidedefault
+将所有默认隐藏的模块（未出现在 ClickGUI 上的模块）恢复为隐藏状态。
+
 /module hidden
 枚举当前在 ClickGUI 中被隐藏的所有模块。
 
@@ -1893,6 +2581,9 @@ get输出图片链接，download下载至output\Cover，forward直接在浏览�
 卸载已加载的DLL。
 
 
+
+/msbanner [path...]
+按 Metasploit 字符画格式彩色输出内容。若不填 path 则读取剪贴板文本；剪贴板为空或非文本格式会报错。
 
 /msbanners
 预览所有 Metasploit 字符画。
@@ -1999,3 +2690,131 @@ get输出图片链接，download下载至output\Cover，forward直接在浏览�
 
 /test [args...]
 测试命令。
+
+/test socket-pre
+以管理员身份执行以下命令：
+net stop winnat
+net stop hns
+net stop vmms
+
+/test socket-post
+以管理员身份执行以下命令：
+net start winnat
+net start hns
+net start vmms
+
+/report <hprocess/hwnd/path>
+/report <hprocess/hwnd/path> <description>
+/report <hprocess/hwnd/path> <closeText> <description>
+举报系统。
+向 Windows Error Reporting (WER) 提交一条错误报告。目标可以是进程句柄/窗口句柄表达式或可执行文件路径。
+示例：
+ /report it
+ /report 1234 "Game Client"
+ /report "C:\\Windows\\System32\\notepad.exe" "Close" "Notepad"
+
+/triggers add <name> [condition...]
+创建触发器任务。如果 condition 不填则为空任务（永不触发）。任务名称不得重复。
+免费版最多创建 6 个任务，专业版无限制。
+
+/triggers rename <name> <newName>
+重命名任务。
+
+/triggers remove <name>
+删除任务。
+
+/triggers interval <name> [seconds]
+查看或设置任务的条件检查冷却时间（秒）。不填则输出当前值。
+
+/triggers enable <name>
+/triggers disable <name>
+启用或禁用任务。
+
+/triggers list
+/triggers info
+展示所有任务的信息（名称、状态、属性、检查间隔、条件），彩色表格输出。
+禁用的任务排在后面，以灰色显示。
+
+/triggers attrib
+输出所有支持的属性说明。
+
+/triggers attrib <name>
+输出指定任务的所有属性。
+
+/triggers attrib <name> <flags...>
+切换任务的属性。支持以下标志（每次可组合多个）：
+  default       - 无冷却时间及限制
+  cooldown [s]  - 触发后冷却 s 秒（不填则使用配置默认值）
+  once          - 执行一次后自动禁用任务
+  once_remove   - 执行一次后自动删除任务
+  enabled       - 启用任务
+  disabled      - 禁用任务
+  enable_start  - 客户端每次启动时自动启用该任务
+
+/triggers condition <name> [condition...]
+查看或设置触发器的条件。不填则输出当前值。
+条件由若干组件构成，组件之间为 AND 关系：
+  on <YYYY-M-D|YYYY/M/D>        - 指定日期触发（月/日支持1~2位数字）
+  on <weekdays>                  - 指定星期触发，多个用逗号分隔，例如 Mon,Wed,Fri
+  at <H:mm|HH:mm|HH:mm:ss>      - 指定时间点触发（小时支持1~2位数字）
+  during [dateStart] <timeStart> [dateEnd] <timeEnd>
+                                 - 在时间段内持续触发，日期可选
+  in <month_spec>[,<month_spec>...]
+                                 - 指定月份触发（OR关系）。支持月份数字（1-12）、月份英文名/缩写（Jan/January等）、YYYY-M 或 YYYY/MonthName 指定年月，例如：2026/4,2027-Feb,October
+  when <event>                   - 事件发生时触发
+  unless <event>                 - 事件未发生时触发
+  
+支持的事件（event）：
+  process_exists <pid|procname>  - 指定进程存在，支持进程ID和进程名。进程名可以不加.exe，不区分大小写
+  process_ge <min> <procname>    - 指定进程数量 >= min
+  process_le <max> <procname>    - 指定进程数量 <= max
+  file_exists <path>             - 指定文件存在（含空格需加双引号）
+  file_found <filename>          - Everything 搜索完全匹配文件名
+  module_enabled <expr>          - 模块启用（& 表示与，| 表示或）。请填写去除空格的模块英文名称。大小写不区分。
+  module_disabled <expr>         - 模块禁用（& 表示与，| 表示或）
+  keybind_pressed <keybinds>     - 按键组合按下（逗号分隔，例如 LCtrl,LAlt,L）
+  keybind_released <keybinds>    - 按键组合按下并释放
+  bili_live_chatter <contains|is|startswith|endswith> <text>
+                                 - 最近一条直播间弹幕满足条件（不区分大小写）
+  jackal_output <command...> contains <keyword>
+                                 - 执行客户端命令并检查输出中是否包含关键词（不区分大小写）
+								   如果command/keyword包含空格，则需要使用英文双引号。
+                                   注意：仅捕获 Jackal 原生命令通过 cout 输出的内容（如 /triggers list、/help 等）；
+                                   系统命令（echo、dir 等通过 cmd.exe 执行的命令）的输出不会被捕获
+
+/triggers action <name> [action...]
+查看或设置任务的执行动作。不填则输出当前值。
+支持以下动作格式（只能选一种）：
+  command <cmd...>    - 执行客户端命令
+  run <cmdline...>    - 异步执行 cmd 命令
+  runps <cmdline...>  - 异步执行 PowerShell 命令
+
+/triggers perform <name>
+无视条件，立即执行指定任务的 action，并触发相关事件（once 属性会导致禁用等）。
+
+/triggers execute <name>
+无视条件，立即执行指定任务的 action，不触发相关事件。
+
+/triggers clear
+清除所有触发器任务。
+
+/triggers clear enabled
+清除所有已启用的触发器任务。
+
+/triggers clear disabled
+清除所有已禁用的触发器任务。
+
+/triggers check <condition...>
+立即评估给定条件，输出 true 或 false，不执行任何动作。可用于调试条件语法。
+
+/steam <args...>
+Steam相关命令。
+
+/steam games
+输出 Steam 注册表 Apps 下的游戏二维表，包含 AppID、中文名、是否安装、是否运行、是否更新
+
+/steam installed
+输出 Steam 注册表 Apps 下的已安装游戏二维表，包含 AppID、中文名、是否安装、是否运行、是否更新
+
+/steam running
+输出 Steam 注册表 Apps 下的正在运行游戏二维表，包含 AppID、中文名、是否安装、是否运行、是否更新
