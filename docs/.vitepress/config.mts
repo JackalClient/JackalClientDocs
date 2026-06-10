@@ -7,7 +7,13 @@ import { readFileSync, readdirSync } from 'node:fs'
 const modulesDir = new URL('../modules', import.meta.url)
 
 const moduleDocs = readdirSync(modulesDir, { withFileTypes: true })
-  .filter((entry) => entry.isFile() && entry.name.endsWith('.md') && entry.name !== 'index.md')
+  .filter(
+    (entry) =>
+      entry.isFile() &&
+      entry.name.endsWith('.md') &&
+      entry.name !== 'index.md' &&
+      entry.name !== 'NAMED_COLOR_BASE_LIST.md'
+  )
   .map((entry) => {
     const name = entry.name.replace(/\.md$/, '')
     const content = readFileSync(new URL(`../modules/${entry.name}`, import.meta.url), 'utf-8')

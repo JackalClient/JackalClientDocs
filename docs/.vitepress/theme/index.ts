@@ -20,9 +20,12 @@ type ArraylistModule = {
 const ARRAYLIST_COOKIE = 'jc_arraylist_modules'
 const ARRAYLIST_VISIBLE_COOKIE = 'jc_arraylist_visible'
 const ARRAYLIST_MAX_ITEMS = 10
+const ARRAYLIST_EXCLUDED_MODULES = new Set(['NAMED_COLOR_BASE_LIST'])
 const arraylistModules = ref<ArraylistModule[]>([])
 const arraylistVisible = ref(true)
+const arraylistColorTick = ref(0)
 let measureContext: CanvasRenderingContext2D | undefined
+let arraylistAnimationFrame: number | undefined
 
 const getCookieValue = (name: string) => {
   if (typeof document === 'undefined') return ''
@@ -57,7 +60,8 @@ const loadStoredModules = (): ArraylistModule[] => {
             typeof item.name === 'string' &&
             typeof item.path === 'string' &&
             item.name &&
-            item.path.startsWith('/modules/')
+            item.path.startsWith('/modules/') &&
+            !ARRAYLIST_EXCLUDED_MODULES.has(item.name)
         )
       })
       .slice(-ARRAYLIST_MAX_ITEMS)
@@ -69,7 +73,7 @@ const loadStoredModules = (): ArraylistModule[] => {
 const getModuleFromPath = (path: string): ArraylistModule | undefined => {
   const normalizedPath = path.replace(/\.html$/, '').replace(/\/$/, '')
   const match = normalizedPath.match(/^\/modules\/([^/]+)$/)
-  if (!match || match[1] === 'index') return undefined
+  if (!match || match[1] === 'index' || ARRAYLIST_EXCLUDED_MODULES.has(match[1])) return undefined
 
   return {
     name: decodeURIComponent(match[1]),
@@ -96,7 +100,7 @@ const getMeasureContext = () => {
   measureContext = document.createElement('canvas').getContext('2d') ?? undefined
   if (measureContext) {
     measureContext.font =
-      '700 14px "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif'
+      '600 17.6px "JetBrains Mono", "Cascadia Mono", "Consolas", monospace'
   }
   return measureContext
 }
@@ -104,6 +108,11 @@ const getMeasureContext = () => {
 const getModuleDisplayWidth = (name: string) => {
   const context = getMeasureContext()
   return Math.ceil(context?.measureText(name).width ?? name.length * 8)
+}
+
+const getArraylistColor = (index: number) => {
+  const hue = ((arraylistColorTick.value * -0.5 + index * 15) % 360 + 360) % 360
+  return `hsl(${hue}, 80%, 60%)`
 }
 
 const JcArraylistToggle = defineComponent({
@@ -145,6 +154,11 @@ const JackalVisualEffects = defineComponent({
     const sortedModules = computed(() => {
       return [...arraylistModules.value].sort((a, b) => getModuleDisplayWidth(b.name) - getModuleDisplayWidth(a.name))
     })
+
+    const animateArraylistColors = () => {
+      arraylistColorTick.value += 1
+      arraylistAnimationFrame = window.requestAnimationFrame(animateArraylistColors)
+    }
 
     const visitCurrentModule = () => {
       const moduleInfo = getModuleFromPath(route.path)
@@ -230,6 +244,7 @@ const JackalVisualEffects = defineComponent({
 
     onMounted(() => {
       arraylistModules.value = loadStoredModules()
+      persistArraylistModules()
       arraylistVisible.value = getCookieValue(ARRAYLIST_VISIBLE_COOKIE) !== '0'
       visitCurrentModule()
 
@@ -243,7 +258,7 @@ const JackalVisualEffects = defineComponent({
       window.addEventListener('scroll', onWindowChange, { passive: true })
       document.addEventListener('pointermove', updateHeroLight, { passive: true })
       document.addEventListener('pointerleave', disableHeroLight)
-
+      arraylistAnimationFrame = window.requestAnimationFrame(animateArraylistColors)
     })
 
     onUnmounted(() => {
@@ -254,6 +269,7 @@ const JackalVisualEffects = defineComponent({
       document.removeEventListener('pointermove', updateHeroLight)
       document.removeEventListener('pointerleave', disableHeroLight)
       navFrame?.remove()
+      if (arraylistAnimationFrame) window.cancelAnimationFrame(arraylistAnimationFrame)
       if (hideFrameTimer) window.clearTimeout(hideFrameTimer)
     })
 
@@ -297,7 +313,8 @@ const JackalVisualEffects = defineComponent({
                     href: moduleInfo.path,
                     style: {
                       '--jc-arraylist-index': index,
-                      '--jc-arraylist-width': `${Math.max(88, getModuleDisplayWidth(moduleInfo.name) + 22)}px`
+                      '--jc-arraylist-color': getArraylistColor(index),
+                      '--jc-arraylist-width': `${Math.max(120, getModuleDisplayWidth(moduleInfo.name) + 34)}px`
                     }
                   },
                   [
