@@ -1,9 +1,9 @@
-Island
+# Island
 灵动岛
 分类：Render
 描述：显示一个酷炫的灵动岛。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,13 +11,13 @@ Island
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Island（灵动岛）用于显示一个酷炫的灵动岛。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Sync Notify Status、Sync Actionbar Status、Diversify Notify Icons。
 背景图片模糊会自动缓存；遇到过大的模糊纹理时会跳过磁盘导出，优先保证客户端不卡死。
 
-配置项
+## 配置项
 - Font Size（字号）
  类型：数值；默认：40
  说明：用于控制文本可读性。默认字号 40 适合多数分辨率；高分屏可适当加大，低分辨率建议减少以免拥挤。
@@ -251,18 +251,18 @@ Island（灵动岛）用于显示一个酷炫的灵动岛。
 - Y Rate（纵坐标比例）
  类型：数值；默认：0.12f
  说明：用于控制界面元素在屏幕中的相对位置。默认值 0.12f 一般是作者调过的稳定布局；建议每次只改一个轴，避免元素跑出可视区域。
-历史更新
+## 历史更新
 - 39. 将 Island 的 Use Normal Icon 改为 Show Icon
 - 30. 添加模块：Island，简单的灵动岛效果。在 Audio Visualizer 启用时会随音频旋律震动。
 - 36. 为 BetterLyrics 的 Display Mode 显示模式添加一个 Island 灵动岛上显示。带动画。没有歌词时会采用歌名。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
 - [Ambience (环境气氛)](./Ambience.md)
 - [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
@@ -272,7 +272,7 @@ Island（灵动岛）用于显示一个酷炫的灵动岛。
 - [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
-相关资料
+## 相关资料
 [能显示歌词的 Windows 灵动岛？ Jackal 0.7a 更新](https://www.bilibili.com/video/BV1Xxx9zsEC4)
 
 ## ?????????

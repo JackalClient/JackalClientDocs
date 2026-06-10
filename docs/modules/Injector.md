@@ -1,9 +1,9 @@
-Injector
+# Injector
 注入器
 分类：Process
 描述：向/从目标进程（取消）注入动态链接库。
 
-需求
+## 需求
 - Unsafe：是
 - Malicious：否
 - 需要管理员权限：否
@@ -14,11 +14,11 @@ Injector
 - 是否需要联网：否
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Injector 用于批量或定向给目标进程注入/卸载 DLL。模块会先按“进程名/PID”筛选目标，再按“进程架构”和“最大进程数量”逐个处理。
 在执行层面，x86 进程主要走客户端内置注入函数，x64 进程主要通过 `loader.exe` 子命令执行；你选择的注入方法会直接决定调用哪条分支。若选择 `Async NoWait`，模块只负责下发任务，不等待结果回传。
 
-配置项
+## 配置项
 - Method（方法）
 类型：枚举；默认：NtCreateThreadEx；作用：选择注入实现方式。可选项：CreateRemoteThread（创建远程线程）、NtCreateThreadEx（跨会话兼容更好）、QueueUserAPC（APC 投递）、Reflective（反射注入）、Reflective (External)（外部反射注入）。建议：先用 `NtCreateThreadEx`，失败再尝试 `CreateRemoteThread` 或 `Reflective (External)`。
 
@@ -46,11 +46,11 @@ Injector 用于批量或定向给目标进程注入/卸载 DLL。模块会先按
 - Max Process Count（最大进程数量）
 类型：整数；默认：8；作用：限制本次最多处理的目标数量。建议：先用 1~3 灰度验证，确认稳定后再上调。
 
-备注
+## 备注
 模块启用后会自动执行并关闭开关，不是常驻型模块。
 `Async NoWait` 速度最快，但无法可靠拿到每个目标的成功/失败状态，适合只追求下发速度的场景。
 
-相关命令
+## 相关命令
 
 /inject &lt;hprocess&gt; &lt;dllpath...&gt;
 /ntinject &lt;hprocess&gt; &lt;dllpath...&gt;
@@ -90,10 +90,10 @@ Injector 用于批量或定向给目标进程注入/卸载 DLL。模块会先按
 	msgbox: 弹窗。
 		/injectex msgbox &lt;hprocess&gt; &lt;text&gt; [title="Inject"] [style=64]
 
-相关模块
+## 相关模块
 - [RemoteRun (远程执行)](./RemoteRun.md)
 - [Speedhack (变速齿轮)](./Speedhack.md)
 - [ProcessManager (进程管理器)](./ProcessManager.md)
 
-相关资料
+## 相关资料
 无

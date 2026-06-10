@@ -1,9 +1,9 @@
-ListServices
+# ListServices
 枚举服务
 分类：Process
 描述：列出系统服务信息。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意标记：否
 - 权限需求：无
@@ -12,11 +12,11 @@ ListServices
 - 开发状态：稳定
 - 版本属性：普通可用
 
-介绍
+## 介绍
 ListServices 用于输出系统服务列表，支持“客户端格式化输出”和“原生命令输出”两类模式。
 你可以根据场景选择更偏可读性的 Normal/Simple，或选择 Vanilla 系列直接调用 `sc query` 系列命令。
 
-配置项
+## 配置项
 - Async（异步）
   类型：布尔；默认：true；说明：开启后后台执行枚举，适合服务较多时避免前台等待。
 - Auto Console（自动启用控制台）
@@ -27,20 +27,20 @@ ListServices 用于输出系统服务列表，支持“客户端格式化输出�
 - Vanilla Enum Custom Command（原版枚举自定义命令）
   类型：文本；默认："sc query"；说明：用于 Vanilla Custom 模式下自定义命令。建议先在命令行手动验证命令可执行后再写入。
 
-历史更新
+## 历史更新
 - 10. 新增模块 ListServices（枚举服务）。
 
-备注
+## 备注
 Normal/Simple 模式使用内部枚举逻辑并带进度条；Vanilla 系列直接执行系统命令，输出格式由系统命令决定。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [ListModules (枚举模块)](./ListModules.md)
 - [ListTasks (枚举计划任务)](./ListTasks.md)
 - [ProcessManager (进程管理器)](./ProcessManager.md)
 - [Taskmgr (任务管理器)](./Taskmgr.md)
 
-相关资料
+## 相关资料
 无

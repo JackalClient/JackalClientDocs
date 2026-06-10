@@ -1,9 +1,9 @@
-Gatekeeper
+# Gatekeeper
 看门人
 分类：Combat
 描述：通过注入动态链接库，拦截 Winlogon 事件（需要管理员和特权）
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：管理员
 - 驱动依赖：否
@@ -11,9 +11,9 @@ Gatekeeper
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Gatekeeper（看门人）通过把组件注入到 `winlogon` 来拦截系统级快捷动作和会话事件，并把策略写入配置文件供内核侧逻辑读取。建议先从 `Query` 启动，观察误拦截情况后再收紧为 `Deny`。
-配置项
+## 配置项
 - Use Loader to Inject (Suggested)（使用加载器注入（推荐））
  类型：布尔；默认：true
  说明：使用 `loader` 执行注入/卸载与工作状态检查。默认路径更稳，失败率通常更低。
@@ -65,18 +65,18 @@ Gatekeeper（看门人）通过把组件注入到 `winlogon` 来拦截系统级�
 - Accessibility（辅助功能）
  类型：枚举；默认："Query"
  说明：辅助功能入口策略：Allow/Query/Deny 三态。
-历史更新
+## 历史更新
 - 7. 为 JDGatekeeper.dll 添加了新的注销（一个）、关机（两个）和重启（一个）筛选。
 - 11. 现在 Gatekeeper 模块弹出的选择是否的对话框默认落在否上。
 - 16. 为 JDGatekeeper.dll 添加了几个事件：
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiCapture (反捕获)](./AntiCapture.md)
 - [AntiClose (反关闭)](./AntiClose.md)
 - [AntiDebug (反调试)](./AntiDebug.md)
@@ -86,6 +86,5 @@ Gatekeeper（看门人）通过把组件注入到 `winlogon` 来拦截系统级�
 - [AntiMouseHook (反鼠标钩子)](./AntiMouseHook.md)
 - [AntiKeyHook (反键盘钩子)](./AntiKeyHook.md)
 
-相关资料
+## 相关资料
 无
-

@@ -1,9 +1,9 @@
-Totem
+# Totem
 不死图腾
 分类：Render
 描述：播放不死图腾的动画。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,10 +11,10 @@ Totem
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Totem（不死图腾）用于播放不死图腾的动画。新版采用着色器绘制三维的不死图腾，旧版采用播放视频（兼容性不好）。
 
-配置项
+## 配置项
 
 - Brightness (0~1)
  控制亮度。
@@ -67,14 +67,14 @@ Totem（不死图腾）用于播放不死图腾的动画。新版采用着色器
  类型：枚举；默认："Only First Time"
  说明：用于选择结果反馈方式。默认值 Only First Time 适合大多数场景；若你不想打扰可改为更安静的输出方式。
  可选：Off（关闭）；Only First Time（只在第一次显示）；Always（总是）
-历史更新
+## 历史更新
 - 6. 稍微修改了一下不死图腾的触发动画视频。
 - 45. 为 Totem 不死图腾模块添加冷却时间：Cooldown (ms)，防止刷屏导致卡死。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
 - [Ambience (环境气氛)](./Ambience.md)
 - [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
@@ -84,6 +84,5 @@ Totem（不死图腾）用于播放不死图腾的动画。新版采用着色器
 - [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
-相关资料
+## 相关资料
 无
-

@@ -1,9 +1,9 @@
-MacroPlayer
+# MacroPlayer
 宏播放
 分类：Control
 描述：播放键盘和鼠标操作的宏。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,13 +11,13 @@ MacroPlayer
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 观看视频 [\[ft.Jackal\] 使用「宏」在丝之歌进行自动刷念珠操作](https://www.bilibili.com/video/BV1VWpdz9EWp)
 MacroPlayer（宏播放）用于播放键盘和鼠标操作的宏。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Notify、Actionbar Display Key Press、Actionbar Display Mouse Move。
 
-配置项
+## 配置项
 - Start Delay (ms)（开始延迟 (毫秒)）
  类型：数值；默认：3000L
  说明：这是数值型配置。默认值 3000L 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
@@ -76,14 +76,14 @@ MacroPlayer（宏播放）用于播放键盘和鼠标操作的宏。
 - bind (Disable)（绑定 (关闭)）
  类型：按键/复合；默认：`{ { "Keybind", {0 } }`}
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
-历史更新
+## 历史更新
 - 27. 为 Macro Player 添加配置：
 - 11. 添加模块： MacroPlayer（宏播放）
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 
 /key <down/press> <keycode/keyname...>
 /key <up/release> <keycode/keyname...>
@@ -129,9 +129,9 @@ MacroPlayer（宏播放）用于播放键盘和鼠标操作的宏。
 /cleartogglekeys
 清空正在被按下的切换键。
 
-相关模块
+## 相关模块
 - [AutoClicker (连点器)](./AutoClicker.md)
 - [MacroRecorder (宏录制)](./MacroRecorder.md)
 
-相关资料
+## 相关资料
  [\[ft.Jackal\] 使用「宏」在丝之歌进行自动刷念珠操作](https://www.bilibili.com/video/BV1VWpdz9EWp)

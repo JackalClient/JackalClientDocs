@@ -1,9 +1,9 @@
-MinecraftUtils
+# MinecraftUtils
 MC功能
 分类：Control
 描述：一些MC上的实用功能。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ MC功能
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 MinecraftUtils（MC功能）用于一些MC上的实用功能。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Key Input Method、Log Parser Notify、Log Parser Update Cooldown (ms)。
 
-配置项
+## 配置项
 - Auto Sprint (Forward)（自动疾跑 (前进)）
  类型：布尔；默认：true
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
@@ -127,18 +127,18 @@ MinecraftUtils（MC功能）用于一些MC上的实用功能。
 - Command Key（命令键）
  类型：按键/复合；默认：`{ { "Keybind", {VK_OEM_2 } }`}
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
-历史更新
+## 历史更新
 - 52. 为 Minecraft Utils 添加配置：
 - 13. 修复 MinecraftUtils 的 Log Parser Utilities 尝试对基岩版启动解析的问题。
 - 8. 添加模块：MinecraftUtils，关于MC的合法功能
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
 - [MouseWatcher (鼠标监视)](./MouseWatcher.md)
@@ -148,6 +148,5 @@ MinecraftUtils（MC功能）用于一些MC上的实用功能。
 - [MouseTrails (鼠标轨迹)](./MouseTrails.md)
 - [MouseESP (鼠标透视)](./MouseESP.md)
 
-相关资料
+## 相关资料
 无
-

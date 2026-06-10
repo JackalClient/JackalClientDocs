@@ -1,9 +1,9 @@
-ClipboardESP
+# ClipboardESP
 剪贴板透视
 分类：Control
 描述：暂无描述
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ ClipboardESP
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 ClipboardESP（剪贴板透视）用于暂无描述。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Font Size、Line Gap、Max Lines Shown。
 
-配置项
+## 配置项
 - Font Size（字号）
  类型：数值；默认：20
  说明：用于控制文本可读性。默认字号 20 适合多数分辨率；高分屏可适当加大，低分辨率建议减少以免拥挤。
@@ -102,15 +102,15 @@ ClipboardESP（剪贴板透视）用于暂无描述。
 - Mid Y Rate（中心纵坐标比例）
  类型：数值；默认：0.3
  说明：用于控制界面元素在屏幕中的相对位置。默认值 0.3 一般是作者调过的稳定布局；建议每次只改一个轴，避免元素跑出可视区域。
-历史更新
+## 历史更新
 - 6. 修复 ClipboardESP 文件路径显示的问题，现在还会标注额外信息。对于文件，会标注文件大小。
 - 25. 修复 Clipboard ESP 的崩溃问题。
 - 29. 修复 Clipboard ESP 的还有几行未显示文本的错位问题。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 
 /clipboard &lt;args...&gt;
 剪贴板相关命令。
@@ -129,7 +129,7 @@ ClipboardESP（剪贴板透视）用于暂无描述。
 /clipboard clear
 清空剪贴板。
 
-相关模块
+## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
 - [MouseWatcher (鼠标监视)](./MouseWatcher.md)
@@ -139,6 +139,5 @@ ClipboardESP（剪贴板透视）用于暂无描述。
 - [MouseTrails (鼠标轨迹)](./MouseTrails.md)
 - [MouseESP (鼠标透视)](./MouseESP.md)
 
-相关资料
+## 相关资料
 无
-

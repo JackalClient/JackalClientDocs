@@ -1,9 +1,9 @@
-TimeDisplay
+# TimeDisplay
 时间显示
 分类：Render
 描述：暂无描述
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,10 +11,10 @@ TimeDisplay
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 TimeDisplay（时间显示）用于显示系统时间。
 
-配置项
+## 配置项
 - Font Size（字号）
  类型：数值；默认：50
  说明：用于控制文本可读性。默认字号 50 适合多数分辨率；高分屏可适当加大，低分辨率建议减少以免拥挤。
@@ -138,21 +138,20 @@ TimeDisplay（时间显示）用于显示系统时间。
 - Hide When Menu On（菜单打开时不显示）
  类型：布尔；默认：false
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
-历史更新
+## 历史更新
 - 37. 将 TimeDisplay 模块的配置 Half Hour Notify 改为 Half Hour Notification，且可以选择以下选项：
 - 44. 将 TimeDisplay 模块的 Rainbow 选项改为 Color，可以选颜色预设。
 - 50. 为 TimeDisplay 添加配置：
 
-备注
+## 备注
 
 
-相关命令
+## 相关命令
 /timedisplay
 
-相关模块
+## 相关模块
 - [OnlineTime (在线时间)](./OnlineTime.md)
 - [TimeManager (时间管理)](./TimeManager.md)
 
-相关资料
+## 相关资料
 无
-

@@ -1,9 +1,9 @@
-BiliFollowGraph
+# BiliFollowGraph
 B站关注图
 分类：Web / Apps
 描述：分析并展示 B 站账号之间的关注关系图。支持递归抓取公开关注列表、查看单向/双向关系、缩放拖拽浏览、缓存关注列表与昵称、实时查看分析进度。 
 
-需求
+## 需求
 - 安全级别：专业版模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,7 +11,7 @@ B站关注图
 - 开发状态：实验性 / 持续改进
 - 版本属性：PRO 可用
 
-介绍
+## 介绍
 BiliFollowGraph（B站关注图）用于从当前登录的 B 站账号出发，递归分析公开关注列表，并生成一张关注关系图。
 适合排查社交圈层、观察互关结构、快速查看谁关注了自己、以及筛选高连接度节点。
 
@@ -20,7 +20,7 @@ BiliFollowGraph（B站关注图）用于从当前登录的 B 站账号出发，�
 - 缩放可读性：Node Font Size、Minimum Node Font Size、Minimum Offscreen Tag Font Size
 - 布局与缩放时的显示策略：Ring Spacing、Layout Radius Power、Layout Same Depth Edge Ideal Rate、Layout Cross Depth Edge Ideal Rate、Layout Depth Spread Rate、Zoomed Out Visible Budget Scale
 
-配置项
+## 配置项
 - Async（异步）
  类型：布尔；默认：true
  说明：控制模块是否以异步方式启动分析。保持默认值通常更稳妥，不建议关闭。
@@ -154,25 +154,25 @@ BiliFollowGraph（B站关注图）用于从当前登录的 B 站账号出发，�
  说明：控制边线与箭头的透明度。
  推荐：图较乱时可降到 0.45~0.6；想更清楚地看方向可提高到 0.8~1.0。
 
-历史更新
+## 历史更新
 - 27. 新增专业版模块 `Bili Follow Graph`。
 - 28. 改善双向边、节点高亮、关注缓存、渐进展示与基础布局。
 - 29. 完善缩放显示控制，增加多项缩小时的显示策略配置。
 
-备注
+## 备注
 - 模块依赖当前 B 站登录状态；若没有可用 Cookies/UID，将无法开始分析。
 - 关注列表、昵称和部分关系结果会缓存到系统 temp，首次打开会明显更慢，后续通常会快很多。
 - 图越大，对 FPS 的压力越高。若感觉卡顿，优先降低 `Max Nodes`、`Followings Per User Limit`，或减少缩小时的可见节点数量。
 - 如果你主要看结构，建议先保持 `Show Single Edge Nodes=false`，并开启 `Progressive Detail Prioritize Multi-Edge Nodes`。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [BiliProfile (B站资料)](./BiliProfile.md)
 - [BiliFans (B站粉丝)](./BiliFans.md)
 - [BiliSettings (B站设置)](./BiliSettings.md)
 - [BiliVideoHelper (B站视频助手)](./BiliVideoHelper.md)
 
-相关资料
+## 相关资料
 无

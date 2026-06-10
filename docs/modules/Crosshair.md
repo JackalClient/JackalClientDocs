@@ -1,9 +1,9 @@
-Crosshair
+# Crosshair
 准星线
 分类：Control
 描述：暂无描述
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ Crosshair
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Crosshair（准星线）用于暂无描述。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Advanced Mode、Advanced Mode Show HUD、Advanced Mode Hotkey。
 
-配置项
+## 配置项
 - Advanced Mode（高级模式）
  类型：布尔；默认：false
  说明：这是该模块的核心行为开关。默认值 false 通常更稳，建议先验证默认策略再尝试其他模式。
@@ -70,18 +70,18 @@ Crosshair（准星线）用于暂无描述。
 - Hide When Menu On（菜单打开时不显示）
  类型：布尔；默认：false
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
-历史更新
+## 历史更新
 - 2. 为 Crosshair 准星模块添加：
 - 23. 为 Crosshair 模块添加配置：
 - 24. 现在 Crosshair 模块高级模式的坐标不会出屏幕了。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
 - [MouseWatcher (鼠标监视)](./MouseWatcher.md)
@@ -91,6 +91,5 @@ Crosshair（准星线）用于暂无描述。
 - [MouseTrails (鼠标轨迹)](./MouseTrails.md)
 - [MouseESP (鼠标透视)](./MouseESP.md)
 
-相关资料
+## 相关资料
 无
-

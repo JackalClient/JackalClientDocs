@@ -1,4 +1,4 @@
-Actionbar
+# Actionbar
 行为栏
 分类：Render
 描述：显示一条动作栏消息。
@@ -61,7 +61,7 @@ Actionbar（行为栏）用于显示一条动作栏消息。
  类型：枚举；默认："Green"
  说明：用于控制视觉配色。建议先选对比度高的配色保证可读性；若是动态颜色，注意在复杂背景下的辨识度。
  可选：Flow（流动）；其余颜色见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
-历史更新
+## 历史更新
 - 47. 为 Actionbar 模块添加配置：
 - 70. 为 Actionbar 模块添加配置：
 - 14. 添加模块： Actionbar
@@ -72,10 +72,9 @@ Actionbar（行为栏）用于显示一条动作栏消息。
 ## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
 - [Title (标题显示)](./Title.md)
 
-相关资料
+## 相关资料
 无
-

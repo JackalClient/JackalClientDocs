@@ -1,9 +1,9 @@
-HexViewer
+# HexViewer
 十六进制查看
 分类：File
 描述：以十六进制格式查看文件。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意标记：否
 - 权限需求：无
@@ -12,11 +12,11 @@ HexViewer
 - 开发状态：稳定
 - 版本属性：普通可用
 
-介绍
+## 介绍
 HexViewer 是十六进制可视化配置模块，本体不会常驻执行；启用时会提示你使用命令进行查看。
 它支持多种着色策略：关闭、简易、类别、步长，以及命名色表模式。对于文本内容还会做 UTF-8 分析，并对 Unicode 字节做差异化上色，方便识别编码结构。
 
-配置项
+## 配置项
 - Color Mode（颜色模式）
   类型：组合框；默认：Simple；说明：决定 Hex 输出着色策略。默认 Simple 可读性最稳，建议先用它排查数据结构，再切到 Category 或 Step 做细粒度分析。
   可选项：Off（关闭）、Simple（简易）、Category（类别）、Step（步长）、其余命名色见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
@@ -53,25 +53,25 @@ HexViewer 是十六进制可视化配置模块，本体不会常驻执行；启�
 - Step Color End（步长 颜色终点）
   类型：颜色文本；默认："255;255;255"；说明：Step 模式下的渐变终点，建议设置为亮色便于观察高字节值区域。
 
-历史更新
+## 历史更新
 - 9. 新增模块：Hex Viewer（需命令调用）。
 - 35. 增强类别配色并支持 Unicode 解析。
 - 1. 修复数字左对齐问题。
 
-备注
+## 备注
 HexViewer 对“文本”与“二进制”使用的解析路径不同。查看字符串建议用 `/hexview`，查看文件结构建议用 `/hexviewfile`，查看进程内存建议用 `/hexviewproc`。
 
-相关命令
+## 相关命令
 - `/hexview [text...]`：查看文本（不带参数时读取剪贴板文本）。
 - `/hexviewfile &lt;filepath...&gt;`：查看文件十六进制内容。
 - `/hexviewproc <pid/hprocess/hwnd>`：导出并查看进程十六进制内容。
 - `/hexviewer`：打开 HexViewer 相关配置列表。
 
-相关模块
+## 相关模块
 - [FileManager (文件管理器)](./FileManager.md)
 - [Everything (Everything)](./Everything.md)
 - [ProcessManager (进程管理器)](./ProcessManager.md)
 - [NAMED_COLOR_BASE_LIST (命名颜色表)](./NAMED_COLOR_BASE_LIST.md)
 
-相关资料
+## 相关资料
 无

@@ -1,9 +1,9 @@
-Notification
+# NotificationModule
 通知
 分类：Misc
 描述：显示客户端的通知。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,11 +11,11 @@ Notification
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Notification（通知）用于控制客户端的通知。
 建议一直开着。
 
-配置项
+## 配置项
 - Notify Metro Style（地铁型通知风格）
  类型：枚举；默认："Vape"
  说明：用于选择结果反馈方式。默认值 Vape 适合大多数场景；若你不想打扰可改为更安静的输出方式。
@@ -128,15 +128,15 @@ Notification（通知）用于控制客户端的通知。
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
  
-历史更新
+## 历史更新
 - 47. 现在 Notification 的 Notify AntiSpam 已默认开启，作用是防止通知刷屏。
 - 50. 为 Notification 添加配置项：
 - 37. 将 TimeDisplay 模块的配置 Half Hour Notify 改为 Half Hour Notification，且可以选择以下选项：
 
-备注
+## 备注
 建议一直开着。
 
-相关命令
+## 相关命令
 
 /notify [msg...]
 发出一条通知。
@@ -153,14 +153,14 @@ Notification（通知）用于控制客户端的通知。
 发送一条弹幕。/tchatter 发送置顶弹幕。 /bchatter 发送置底弹幕。 /rchatter 发送反向弹幕。/hchatter 发送普通或反向弹幕。/vchatter 发送置顶或置底弹幕。
 
 
-相关模块
+## 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
 - [Console (控制台)](./Console.md)
 - [Shell (命令行)](./Shell.md)
 
-相关资料
+## 相关资料
 无
 
 
-历史更新
+## 历史更新
 - v1.1.1：新增 Sound、Sound Volume (0~100) 与 Sound Pitch Randomization (0~1)，通知音效开关从 Sound 选项迁移到 Notification。

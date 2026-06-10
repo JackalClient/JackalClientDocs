@@ -1,9 +1,9 @@
-PrivateWindow
+# PrivateWindow
 隐私窗口
 分类：Window
 描述：防止一些私人窗口被截屏或者录屏。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意属性：否
 - 权限需求：可能需要管理员权限（部分窗口需注入/跨进程设置时）
@@ -12,12 +12,12 @@ PrivateWindow
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 适合直播使用，防止私密信息泄露。
 PrivateWindow 会按应用预设筛选窗口，然后为目标窗口设置显示亲和（黑屏或从捕获中排除），以减少被截图/录屏捕获的风险。
 模块包含窗口跳过策略，会主动避开一批高风险临时窗口（例如无激活浮层、输入法/阴影视窗），以降低白色幽灵窗等副作用。
 
-配置项
+## 配置项
 - Async（异步）
   类型：布尔；默认：true。开启后启停操作走异步流程，窗口较多时更不容易卡界面。
 - Mode（模式）
@@ -49,17 +49,17 @@ PrivateWindow 会按应用预设筛选窗口，然后为目标窗口设置显示
 - Record Window When Failed（失败时也记载窗口）
   类型：布尔；默认：true。设置失败的窗口也保留在记录中，方便后续排障与重试。
 
-历史更新
+## 历史更新
 - 8. 添加模块：PrivateWindow，可以将一些隐私窗口从捕获中去除。
 - 21. 修复 PrivateWindow 关闭时的迭代器崩溃问题。
 - 44. 添加对特殊窗口的跳过判定，尝试防止关闭后出现白色幽灵窗口。
 - 45. 为 PrivateWindow 添加配置。
 
-备注
+## 备注
 建议先用 `Simple Check` 跑一段时间观察命中情况，再决定是否切到 `Complete Check` 或 `Blatant Apply`。
 如果目标窗口始终设置失败，先尝试管理员权限，再考虑 `Edge Overlay Mode` 等替代路径。
 
-相关命令
+## 相关命令
 - `/privatewindows`
 - `/privatewindow list`
 - `/privatewindow sync`
@@ -75,10 +75,10 @@ PrivateWindow 会按应用预设筛选窗口，然后为目标窗口设置显示
 - `/privatewindow layer check &lt;hwnd&gt;`
 - `/privatewindow layer enable/disable &lt;hwnd&gt;`
 
-相关模块
+## 相关模块
 - [WindowMaster (窗口大师)](./WindowMaster.md)
 - [WindowTags (窗口标签)](./WindowTags.md)
 - [WindowHighlight (窗口高亮)](./WindowHighlight.md)
 
-相关资料
+## 相关资料
 无

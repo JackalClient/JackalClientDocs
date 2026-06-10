@@ -1,9 +1,9 @@
-Keystrokes2
+# Keystrokes2
 按键显示II
 分类：Control
 描述：暂无描述
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ Keystrokes2
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 很多人喜欢的一个模块，动态显示你按下的键，有丝滑的入场和退场动画，还可以打开雨效果，冰火玩家狂喜
 Keystrokes2（按键显示II）用于动态显示按键。
 初次使用可优先调整：Multi Row Mode、Toggle KeyReaction Module、Rain Effect Coordinate Mode。
 
-配置项
+## 配置项
 - Box Width（方框宽度）
  类型：数值；默认：55
  说明：这是数值型配置。默认值 55 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
@@ -180,18 +180,18 @@ Keystrokes2（按键显示II）用于动态显示按键。
  类型：枚举；默认："Black"
  说明：用于控制视觉配色。建议先选对比度高的配色保证可读性；若是动态颜色，注意在复杂背景下的辨识度。
  可选：见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
-历史更新
+## 历史更新
 - 17. 尝试修复 Keystrokes2 对按下按键检测不灵敏的问题。没成功，，
 - 3. Keystrokes2 按键显示的方框大小和间隙可以调节了。
 - 7. 为 Keystrokes2 添加了丝滑动画。添加配置项：
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
 - [MouseWatcher (鼠标监视)](./MouseWatcher.md)
@@ -201,6 +201,5 @@ Keystrokes2（按键显示II）用于动态显示按键。
 - [MouseTrails (鼠标轨迹)](./MouseTrails.md)
 - [MouseESP (鼠标透视)](./MouseESP.md)
 
-相关资料
+## 相关资料
 无
-

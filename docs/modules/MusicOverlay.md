@@ -1,10 +1,10 @@
-MusicOverlay
+# MusicOverlay
 音乐信息
 [PRO]
 分类：Render
 描述：显示一个覆盖层，展示音乐信息。（专业版）
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -12,14 +12,14 @@ MusicOverlay
 - 开发状态：稳定/常规
 - 版本属性：PRO 独有
 
-介绍
+## 介绍
 MusicOverlay（音乐信息）用于显示一个覆盖层，展示音乐信息。（专业版）。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Detect Mode、Temp HUD Duration (ms)、Progress Bar Update Cooldown (ms)。
 封面模糊背景会自动缓存；遇到过大的全屏模糊纹理时会跳过磁盘导出，优先保证客户端不卡死。
 当前媒体会话没有进度信息时不会显示其它播放器的进度条；网易云暂停时会保留网易云驱动自己的进度条；封面未加载完成时按无封面样式排版。
 
-配置项
+## 配置项
 - Auto Clean Cache（自动清理缓存）
  类型：布尔；默认：true
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
@@ -180,18 +180,18 @@ MusicOverlay（音乐信息）用于显示一个覆盖层，展示音乐信息�
  类型：枚举；默认："White"
  说明：用于控制视觉配色。建议先选对比度高的配色保证可读性；若是动态颜色，注意在复杂背景下的辨识度。
  可选：见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
-历史更新
+## 历史更新
 - 70. 把 Music Overlay 歌曲ID和封面获取在 Detect Mode 模式为 Hook 时改为从 NeteaseHookSDK 获取。
 - 71. 为 Music Overlay 进度条添加圆圈。
 - 26. 添加模块：Music Overlay，显示当前播放的音乐信息。目前只有网易云。需联网。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
 - [Ambience (环境气氛)](./Ambience.md)
 - [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
@@ -201,7 +201,7 @@ MusicOverlay（音乐信息）用于显示一个覆盖层，展示音乐信息�
 - [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
-相关资料
+## 相关资料
 无
 
 ## ???????

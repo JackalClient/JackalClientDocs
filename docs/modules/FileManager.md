@@ -1,9 +1,9 @@
-FileManager
+# FileManager
 文件管理器
 分类：File
 描述：暂无描述
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ FileManager
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 FileManager（文件管理器）启用后进入文件管理器界面。（也可以在「应用」找到它）
 我做的内置资源管理器。你可以使用它操作计算机上的文件。
 初次使用可优先调整：File Enum Min Cooldown (ms)、File Enum Max Cooldown (ms)、File Attributes Update Cooldown (ms)。
 
-配置项
+## 配置项
 - Async File Enum（异步文件枚举）
  类型：布尔；默认：true
  说明：用于控制是否异步处理。默认值 true 通常能减少主线程卡顿；若你遇到并发相关问题，可回退到更保守设置测试。
@@ -286,24 +286,23 @@ FileManager（文件管理器）启用后进入文件管理器界面。（也可
 - Cancel Selection Hotkey（取消选择快捷键）
  类型：按键/复合；默认：`{ { "Keybind", {VK_ESCAPE } }`}
  说明：用于设置快捷键触发。建议避免与系统或常用软件冲突，优先使用组合键提高可控性。
-历史更新
+## 历史更新
 - 2. 为 File Manager 添加配置：
 - 10. 修复 FileManager 在不显示隐藏文件和系统文件时留出多余位子的问题。
 - 4. 加入模块：FileManager 文件管理器。添加新的顶部选项卡 "Apps"，文件管理器在这里查看。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Everything (Everything)](./Everything.md)
 - [FileDelete (文件删除)](./FileDelete.md)
 - [FileCreate (文件创建)](./FileCreate.md)
 - [FileMonitor (文件监视)](./FileMonitor.md)
 - [ProcessManager (进程管理器)](./ProcessManager.md)
 
-相关资料
+## 相关资料
 无
-

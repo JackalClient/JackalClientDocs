@@ -1,9 +1,9 @@
-AutoTranslate
+# AutoTranslate
 自动翻译
 分类：Window
 描述：自动翻译并展示目标窗口的文本。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意属性：否
 - 权限需求：无
@@ -12,11 +12,11 @@ AutoTranslate
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 AutoTranslate 会对目标窗口（或全屏）截图做 OCR，再按阈值过滤、可选文本合并，并把结果翻译后叠加显示。
 推荐调参顺序：先定 Target/Trigger，再定识别质量（置信度与合并），最后再调视觉样式。
 
-配置项
+## 配置项
 - Async（异步）
   类型：布尔；默认：true。开启后识别流程在异步线程执行，减少主界面阻塞。
 - Target（目标）
@@ -93,20 +93,20 @@ AutoTranslate 会对目标窗口（或全屏）截图做 OCR，再按阈值过�
 - Clear Hotkey（清除快捷键）
   类型：按键/复合；默认：`{ { "Keybind", {VK_CAPITAL } }`}。清空结果并强制重新显示文本。
 
-历史更新
+## 历史更新
 - 49. 添加模块：AutoTranslate，自动识别文本并翻译展示。
 
-备注
+## 备注
 `Action=Recognize` 很适合先调 OCR 质量；确认文本框准确后再切回 `Translate`，调翻译显示参数。
 若 Screen 模式出现“自己翻自己”，优先检查 `Screen Mode Exclude Client` 是否开启。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [PrivateWindow (隐私窗口)](./PrivateWindow.md)
 - [WindowMaster (窗口大师)](./WindowMaster.md)
 - [TargetHUD (目标显示)](./TargetHUD.md)
 
-相关资料
+## 相关资料
 无

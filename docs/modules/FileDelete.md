@@ -1,9 +1,9 @@
-FileDelete
+# FileDelete
 文件删除
 分类：File
 描述：删除指定文件。
 
-需求
+## 需求
 - Unsafe：否
 - Malicious：否
 - 需要管理员权限：否
@@ -14,11 +14,11 @@ FileDelete
 - 是否需要联网：否
 - 版本属性：普通可用
 
-介绍
+## 介绍
 FileDelete 用于按路径删除文件或目录。启用后会立即执行一次删除；若 `Keep` 开启，模块在后台按固定周期重复检查并继续删除。
 删除前会做路径与目标存在性校验，并根据你选择的删除模式走不同实现（普通 API、命令方式、强化删除）。
 
-配置项
+## 配置项
 - Path（路径）
 类型：文本；默认："null"；作用：指定待删除目标。支持文件或目录（目录在普通模式下需为空）。建议：使用绝对路径，先对测试目录验证。
 
@@ -31,18 +31,18 @@ FileDelete 用于按路径删除文件或目录。启用后会立即执行一次
 - Mode（模式）
 类型：枚举；默认：Normal；作用：选择删除实现。可选项：Normal（普通 API）、Command（命令方式）、Supreme（强化删除：含接管权限与重启后删除兜底）。建议：先 `Normal`，失败再逐级提高。
 
-备注
+## 备注
 当 `Mode=Supreme` 且即时删除失败时，会尝试注册“重启后删除”作为兜底。
 启用 `Keep` 时，若路径长期无效会持续重试，建议配合通知或日志观察状态。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [FileCreate (文件创建)](./FileCreate.md)
 - [FileMonitor (文件监视)](./FileMonitor.md)
 - [FileManager (文件管理器)](./FileManager.md)
 - [Everything (Everything)](./Everything.md)
 
-相关资料
+## 相关资料
 无

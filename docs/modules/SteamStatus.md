@@ -1,9 +1,9 @@
-SteamStatus
+# SteamStatus
 蒸汽状态
 分类：Misc
 描述：跟踪当前 Steam 游戏状态，并可同步通知或 B 站签名。
 
-配置项
+## 配置项
 - Exclude Non-steam Game（排除非 Steam 游戏）
   类型：布尔；默认：true。开启后会隐藏无法解析为 Steam 游戏的非 Steam 状态。
 - Detect Minecraft（检测 Minecraft）
@@ -21,5 +21,5 @@ SteamStatus
 - Notify Changes（状态变化通知）
   类型：组合框；默认：Notify。控制游戏状态变化时的提示方式。
 
-历史更新
+## 历史更新
 - v1.1.1：新增 `Detect Minecraft`，检测到 Minecraft 前台或日志实例时按游戏名 `Minecraft` 参与 SteamStatus 流程，并支持在 B 站签名排除项中排除。

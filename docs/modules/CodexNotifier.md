@@ -1,4 +1,4 @@
-CodexNotifier
+# CodexNotifier
 Codex 通知器
 用于在 Codex 任务完成后弹出提醒。
 模块开启时会在 `C:\Users\WormWaker\.codex` 下写入带 `jackal_codex_notifier` 标记的托管脚本，并按触发方式向 `config.toml` 或 `hooks.json` 写入托管配置；模块关闭时只会清理带该标记的托管脚本与配置块，避免误删用户自己的脚本。
@@ -22,4 +22,3 @@ Codex 通知器
 ## 状态同步
 
 模块会读取 `config.toml` 与 `hooks.json` 的实际内容同步开关状态：发现托管 notify/hook 时会静默启用模块，发现托管配置不存在时会静默关闭模块。
-

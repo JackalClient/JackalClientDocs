@@ -1,9 +1,9 @@
-WindowTags
+# WindowTags
 窗口标签
 分类：Window
 描述：在窗口的左上角显示一个信息标签。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意属性：否
 - 权限需求：无
@@ -12,11 +12,11 @@ WindowTags
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 WindowTags 会在目标窗口附近显示标题、类名、句柄、进程等标签信息，适合快速定位窗口身份与层级。
 它既能跟随鼠标/前台窗口，也能在 Aura 场景下优先突出当前 Aura 目标。
 
-配置项
+## 配置项
 - Easing（缓动）
   类型：布尔；默认：true。控制标签位置切换时是否平滑过渡。
 - Easing Speed (0~1)（缓动速率 (0~1)）
@@ -53,24 +53,24 @@ WindowTags 会在目标窗口附近显示标题、类名、句柄、进程等标
 - Hide When Menu On（菜单打开时不显示）
   类型：布尔；默认：true。菜单开启时隐藏标签。
 
-历史更新
+## 历史更新
 - 1. 为 WindowTags 添加配置。
 - 18. 为 Window Tags 模块添加丝滑动画。添加配置。
 - 27. 汉化 WindowTags 的 HUD。
 
-备注
+## 备注
 Show Z-Order Band 会按周期刷新，不是每帧实时更新；用于排障足够，但不适合作为高频动态指标。
 如果信息太多导致标签过长，建议先保留 Show Process Info 与 Show Handle Value，再按需开启其余项。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [WindowHighlight (窗口高亮)](./WindowHighlight.md)
 - [WindowESP (窗口透视)](./WindowESP.md)
 - [Tracers (追踪线)](./Tracers.md)
 - [TargetESP (目标透视)](./TargetESP.md)
 - [TargetHUD (目标显示)](./TargetHUD.md)
 
-相关资料
+## 相关资料
 无

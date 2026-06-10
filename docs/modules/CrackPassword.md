@@ -1,9 +1,9 @@
-CrackPassword
+# CrackPassword
 破解密码
 分类：Combat
 描述：凭借字典，暴力破解计算机当前用户的密码。
 
-需求
+## 需求
 - 安全级别：恶意模块（高风险）
 - 权限需求：无
 - 驱动依赖：否
@@ -11,9 +11,9 @@ CrackPassword
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 CrackPassword（破解密码）会读取密码字典并尝试登录验证，支持多线程与生日组合扩展，同时会检查账户锁定阈值策略以降低把账户锁死的风险。建议先确认阈值策略再开始跑字典。
-配置项
+## 配置项
 - Async（异步）
  类型：布尔；默认：true
  说明：模块开启后异步执行破解任务，避免阻塞主线程。
@@ -55,18 +55,18 @@ CrackPassword（破解密码）会读取密码字典并尝试登录验证，支�
  类型：枚举；默认："Cancel"
  说明：确认弹窗超时或无响应时采用的默认按钮，直接影响流程是否继续。
  可选：Yes（是）；No（否）；Cancel（取消）
-历史更新
+## 历史更新
 - 18. 添加了 CrackPassword 破解密码时的HUD。
 - 19. 修复 CrackPassword 中配置 Notify Password 无效的问题。
 - 7. 添加模块：CrackPassword，用于暴力破解当前用户登录密码。使用一个字典。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiCapture (反捕获)](./AntiCapture.md)
 - [AntiClose (反关闭)](./AntiClose.md)
 - [AntiDebug (反调试)](./AntiDebug.md)
@@ -76,6 +76,5 @@ CrackPassword（破解密码）会读取密码字典并尝试登录验证，支�
 - [AntiMouseHook (反鼠标钩子)](./AntiMouseHook.md)
 - [AntiKeyHook (反键盘钩子)](./AntiKeyHook.md)
 
-相关资料
+## 相关资料
 无
-

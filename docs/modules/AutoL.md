@@ -1,10 +1,10 @@
-AutoL
+# AutoL
 自动嘲讽
 [PRO]
 分类：Control
 描述：敌人死亡时自动发送嘲讽信息。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -12,12 +12,12 @@ AutoL
 - 开发状态：稳定/常规
 - 版本属性：PRO 独有
 
-介绍
+## 介绍
 AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Add Target Name、Trigger Cooldown (ms)、Event Dedup Cooldown (ms)。
 
-配置项
+## 配置项
 - Source（来源）
  类型：枚举；默认："Preset"
  说明：这是选项型配置。默认值 Preset 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
@@ -119,17 +119,17 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
  类型：枚举；默认："Smart Send"
  说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 Smart Send ，确认稳定后再逐项切换比较效果。
  可选：Smart Send（智能发送）；Copy（复制）；Chatter（弹幕）；Speak（讲述）；WinToast（系统通知）；Real Chatter（真弹幕）
-历史更新
+## 历史更新
 - 10. 【PRO】修改自动嘲讽和检测发言的调用顺序，可以规避一些特殊情况。
 - 68. 【PRO】添加模块：Auto L，在 Minecraft 中自动嘲讽你的敌人。建议打开 ChatQueue 模块实时查看待发送消息队列。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
 - [MouseWatcher (鼠标监视)](./MouseWatcher.md)
@@ -139,5 +139,5 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
 - [MouseTrails (鼠标轨迹)](./MouseTrails.md)
 - [MouseESP (鼠标透视)](./MouseESP.md)
 
-相关资料
+## 相关资料
 [Jackal 加入了完全外置的自动嘲讽...](https://www.bilibili.com/video/BV1Kb6QBdEnx)

@@ -1,9 +1,9 @@
-MouseWatcher
+# MouseWatcher
 鼠标监视
 分类：Control
 描述：监视鼠标移动和交互。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ MouseWatcher
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 MouseWatcher（鼠标监视）用于监视鼠标移动和交互。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Movement Check Mode、Hide HUD When Menu On、HUD。
 
-配置项
+## 配置项
 - Movement Check（运动检查）
  类型：枚举；默认："Ignore"
  说明：这是选项型配置。默认值 Ignore 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
@@ -57,18 +57,18 @@ MouseWatcher（鼠标监视）用于监视鼠标移动和交互。
 - Strict Check Threshold（严格检查阈值）
  类型：数值；默认：10
  说明：这是数值型配置。默认值 10 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
-历史更新
+## 历史更新
 - 51. 为 Mouse Watcher 添加配置：
 - 3. 为 Modules Color, WindowMaster HUD Color, MouseWatcher HUD Color 添加新颜色样式：Colorful。根据字符串决定一种随机颜色。
 - 10. 添加模块 MouseWatcher，用于监视鼠标运动。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
 - [MouseSwap (鼠标交换)](./MouseSwap.md)
@@ -78,6 +78,5 @@ MouseWatcher（鼠标监视）用于监视鼠标移动和交互。
 - [MouseESP (鼠标透视)](./MouseESP.md)
 - [Crosshair (准星线)](./Crosshair.md)
 
-相关资料
+## 相关资料
 无
-

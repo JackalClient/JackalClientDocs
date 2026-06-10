@@ -1,10 +1,10 @@
-CompileESP
+# CompileESP
 编译透视
 [PRO]
 分类：Process
 描述：监控编译器进程并通知编译开始/结束。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -12,12 +12,12 @@ CompileESP
 - 开发状态：稳定/常规
 - 版本属性：PRO 独有
 
-介绍
+## 介绍
 CompileESP 会识别常见编译链进程（MSVC/GCC/Clang/Java 等），在“编译开始”和“编译结束”两个阶段发出通知，并维护一个可视 HUD。
 它不是简单看进程名，而是会结合命令行判断是否属于真实编译行为，避免把无关同名进程当作编译任务。
 对于并行编译场景，模块会聚合多任务状态；结束通知采用防抖，减少子进程切换导致的误判“编译已结束”。
 
-配置项
+## 配置项
 - Compile Start Notify Mode（编译开始通知模式）
  类型：枚举；默认："Notify"；说明：控制“检测到编译开始”时如何提示。若你希望低打扰建议 `Notify`，希望直播可见性更高可选 `Title/Island`。可选：Off（关闭）；Notify（通知）；Chatter（弹幕）；Title（标题）；Island（灵动岛）；Console Output（控制台输出）；WinToast（系统托盘提示）；Speak（语音播报）；Real Chatter（真实弹幕）
 - Compile Finish Notify Mode（编译结束通知模式）
@@ -90,23 +90,22 @@ CompileESP 会识别常见编译链进程（MSVC/GCC/Clang/Java 等），在“�
  类型：文本；默认：""；说明：用于补充内置编译器名单，适合接入自定义构建包装器；即使为空也会识别内置编译器集合。
 - Check Cooldown (ms)（检查冷却 (毫秒)）
  类型：数值；默认：300L；说明：编译事件检测周期；调小可提升起止响应速度，调大可降低频繁扫描开销。
-历史更新
+## 历史更新
 - 34. 【PRO】添加 CompileESP 模块：监控常见编译器进程（Java / C / C++，支持 MSVC/GCC/Clang），在编译开始和结束时发送通知。
 - 35. 【PRO】为 CompileESP 添加可配置项：开始/结束通知模式、PID/命令行/耗时显示、编译器进程白名单/黑名单、检查间隔。以及各种HUD配置项。
 
-备注
+## 备注
 若你开启了 `Real Chatter` 但没有看到结果，优先检查直播房间号与网络状态；该模式会走直播弹幕发送链路。
 多项目并行编译时，建议保留 `Show PID` 与 `HUD Show Task Count`，并把 `Arraylist Extra Info` 设为 `Type + File`，最容易快速定位当前主任务。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [ProcessManager (进程管理器)](./ProcessManager.md)
 - [ProcessESP (进程透视)](./ProcessESP.md)
 - [SecurityESP (安全透视)](./SecurityESP.md)
 - [Arraylist (模块列表)](./Arraylist.md)
 
-相关资料
+## 相关资料
 [『CompileESP（编译透视）』insane bypass showcase](https://www.bilibili.com/video/BV1rNftBfErt)
-

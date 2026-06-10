@@ -1,9 +1,9 @@
-MacroRecorder
+# MacroRecorder
 宏录制
 分类：Control
 描述：录制键盘和鼠标操作的宏。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,13 +11,13 @@ MacroRecorder
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 观看视频 [\[ft.Jackal\] 使用「宏」在丝之歌进行自动刷念珠操作](https://www.bilibili.com/video/BV1VWpdz9EWp)
 MacroRecorder（宏录制）用于录制键盘和鼠标操作的宏。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Recording HUD、Recording HUD Font Size、Recording HUD X Rate。
 
-配置项
+## 配置项
 - Output Format（输出格式）
  类型：枚举；默认："Jackal Macro"
  说明：这是选项型配置。默认值 Jackal Macro 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
@@ -62,16 +62,16 @@ MacroRecorder（宏录制）用于录制键盘和鼠标操作的宏。
 - bind (Disable)（绑定 (关闭)）
  类型：按键/复合；默认：`{ { "Keybind", {0 } }`}
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
-历史更新
+## 历史更新
 - 10. 添加模块： MacroRecorder（宏录制）
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
 - [MouseWatcher (鼠标监视)](./MouseWatcher.md)
@@ -81,6 +81,5 @@ MacroRecorder（宏录制）用于录制键盘和鼠标操作的宏。
 - [MouseTrails (鼠标轨迹)](./MouseTrails.md)
 - [MouseESP (鼠标透视)](./MouseESP.md)
 
-相关资料
+## 相关资料
 无
-

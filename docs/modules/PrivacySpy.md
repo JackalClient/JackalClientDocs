@@ -1,9 +1,9 @@
-PrivacySpy
+# PrivacySpy
 隐私密探
 分类：File
 描述：根据本地文件汇总用户的隐私信息，让你变得紧张。
 
-需求
+## 需求
 - 安全级别：高风险模块
 - 恶意标记：是（malware）
 - 权限需求：无
@@ -12,11 +12,11 @@ PrivacySpy
 - 开发状态：稳定
 - 版本属性：普通可用
 
-介绍
+## 介绍
 PrivacySpy 会扫描指定目录的文件名与目录名，提取可能的人名、身份证号、手机号，并输出统计与可疑路径列表。
 它还支持“其他隐私线索”检测（例如常见软件路径痕迹），用于快速评估本机可被侧推的隐私暴露面。模块不需要联网，但结果高度敏感，建议仅在授权环境下使用。
 
-配置项
+## 配置项
 - Async（异步）
   类型：布尔；默认：true；说明：开启后异步扫描，主界面可继续操作；目录较大时建议开启，避免界面长时间等待。
 - Auto Console（自动启用控制台）
@@ -50,24 +50,24 @@ PrivacySpy 会扫描指定目录的文件名与目录名，提取可能的人名
 - Find Other Privacy（寻找其他隐私）
   类型：布尔；默认：true；说明：开启后先检测一组预置隐私线索路径并输出命中结果，适合快速预判风险面。
 
-历史更新
+## 历史更新
 - 31. 新增 PrivacySpy，支持按目录扫描并汇总人名/身份证号/手机号线索。
 - 35. 为 PrivacySpy 增加配置项。
 - 11. 增加可疑文件路径输出，便于用户定位与改名。
 - 12. 增加目录名检查（可由 Skip Folders 关闭）。
 - 13. 支持扫描中取消。
 
-备注
+## 备注
 PrivacySpy 依赖 `assets/PERSON_SURNAMES.TXT` 与 `assets/PERSON_EXCLUDE.TXT` 辅助识别。若你发现人名识别偏差，优先调整这两个词表与扩展名白名单。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [PrivacyDatabase (隐私数据库)](./PrivacyDatabase.md)
 - [FileMonitor (文件监视)](./FileMonitor.md)
 - [Everything (Everything)](./Everything.md)
 - [FileManager (文件管理器)](./FileManager.md)
 
-相关资料
+## 相关资料
 无

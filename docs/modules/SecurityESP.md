@@ -1,9 +1,9 @@
-SecurityESP
+# SecurityESP
 安全透视
 分类：Process
 描述：在右侧显示病毒和杀软列表。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ SecurityESP
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 SecurityESP 会定期扫描当前进程列表，并根据内置进程画像把结果分为“恶意软件”和“杀毒软件”两组展示。
 当检测到新增恶意进程或新增杀软进程时，会立即发出提醒；HUD 面板支持动态动画、鼠标让位、悬停说明和拖拽定位。
 它适合做安全态势可视化，尤其在你同时运行对抗类模块时，能快速观察环境变化。
 
-配置项
+## 配置项
 - Hide When Menu On（菜单打开时不显示）
  类型：布尔；默认：true；说明：菜单打开时隐藏 SecurityESP 面板，减少与 GUI 的叠层干扰。
 - Give Way to Mouse（给鼠标让道）
@@ -57,25 +57,24 @@ SecurityESP 会定期扫描当前进程列表，并根据内置进程画像把�
  类型：数值；默认：0.8；说明：面板横向锚点比例，支持拖拽回写。
 - Mid Y Rate（中心纵坐标比例）
  类型：数值；默认：0.5；说明：面板纵向中心比例，面板会按高度自动居中到该位置。
-历史更新
+## 历史更新
 - 40. 为 ClipboardESP / SecurityESP 添加众多配置项，整改视觉，可以高度定制。支持 HudEditor 拖曳。添加为鼠标让位。
 - 23. 为 Download HUD, Chat Bar, Clipboard ESP, Security ESP, Letter Graph 添加 HUD Editor 拖曳。
 - 12. 为 Clipboard ESP, Security ESP 添加自定义位置。
 
-备注
+## 备注
 该模块每约 500ms 更新一次安全态势，并在“数量增加”时发送新增提示；如果你只想静态看板，可关闭通知模块而保留 HUD。
 如果出现“鼠标悬停看不到描述”，优先检查 `Give Way to Mouse` 是否开启；开启时面板会优先执行让位逻辑。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [ProcessManager (进程管理器)](./ProcessManager.md)
 - [KillAV (击杀杀软)](./KillAV.md)
 - [KillMalware (击杀病毒)](./KillMalware.md)
 - [ProcessESP (进程透视)](./ProcessESP.md)
 - [PPLESP (受保护进程透视)](./PPLESP.md)
 
-相关资料
+## 相关资料
 无
-

@@ -1,9 +1,9 @@
-HUDBlur
+# HUDBlur
 HUD模糊
 分类：Render
 描述：应用模糊效果到HUD。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ HUD模糊
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 HUDBlur（HUD模糊）用于应用模糊效果到HUD。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Screen Capture Cooldown (ms)。
 
-配置项
+## 配置项
 - Style（风格）
  类型：枚举；默认："Blur"
  说明：这是选项型配置。默认值 Blur 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
@@ -78,17 +78,17 @@ HUDBlur（HUD模糊）用于应用模糊效果到HUD。
 - Liquid Brightness（液体亮度）
  类型：数值；默认：0.8f
  说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。
-历史更新
+## 历史更新
 - 35. 为 HUD Blur 添加配置项：
 - 58. 添加 HUD Blur 模块，为 HUD 背景添加模糊或者【PRO】液体玻璃效果。需要实时屏幕捕获，会降低性能，但是可以调低频率。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
 - [Ambience (环境气氛)](./Ambience.md)
 - [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
@@ -98,5 +98,5 @@ HUDBlur（HUD模糊）用于应用模糊效果到HUD。
 - [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
-相关资料
+## 相关资料
 [Windows 美丽的窗口局部毛玻璃（非DWM）](https://www.bilibili.com/video/BV1FSiMBUEQd)

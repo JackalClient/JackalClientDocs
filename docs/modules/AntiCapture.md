@@ -1,9 +1,9 @@
-AntiCapture
+# AntiCapture
 反捕获
 分类：Combat
 描述：从截屏或录屏中排除此客户端的窗口（至少需要 Win10）
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,9 +11,9 @@ AntiCapture
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 AntiCapture（反捕获）会为客户端窗口设置防录屏/防截屏属性，核心目的是降低常见捕获手段对窗口内容的获取能力。使用时建议先确认系统版本兼容，再通过 HUD 参数把状态提示摆在不遮挡的位置。
-配置项
+## 配置项
 - HUD（是否显示HUD。）
  类型：布尔；默认：false
  说明：显示模块状态HUD，便于确认当前防捕获是否处于有效状态。
@@ -43,18 +43,18 @@ AntiCapture（反捕获）会为客户端窗口设置防录屏/防截屏属性�
  类型：枚举；默认："Rainbow"
  说明：状态HUD颜色。
  可选：见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
-历史更新
+## 历史更新
 - 61. 为 Anti Capture 和 Black Capture 添加配置：
 - 13. 为 AntiCapture 和 BlackCapture 添加 HUD 相关的配置。
 - 5. 发现 SetWindowDisplayAffinity 和 图腾动画不兼容。受影响的模块有：AntiCapture, BlackCapture。经过修改，这两个模块在启用的时候如果 AutoTotem 启用，则会启用失败。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiClose (反关闭)](./AntiClose.md)
 - [AntiDebug (反调试)](./AntiDebug.md)
 - [AntiIntercept (反拦截)](./AntiIntercept.md)
@@ -64,6 +64,5 @@ AntiCapture（反捕获）会为客户端窗口设置防录屏/防截屏属性�
 - [AntiKeyHook (反键盘钩子)](./AntiKeyHook.md)
 - [AutoStart (开机自启)](./AutoStart.md)
 
-相关资料
+## 相关资料
 无
-

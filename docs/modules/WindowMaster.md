@@ -1,9 +1,9 @@
-WindowMaster
+# WindowMaster
 窗口大师
 分类：Window
 描述：显示一个简易的窗口面板，你可以通过快捷键控制前端窗口。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意属性：否
 - 权限需求：无（部分动作对高权限目标可能失败）
@@ -12,11 +12,11 @@ WindowMaster
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 WindowMaster 是窗口操作中枢：它用统一目标选择 + 快捷键动作来完成隐私、冻结、置顶、隐藏、结束、下沉等操作，并提供 HUD 展示当前目标与快捷键状态。
 建议先完成“目标模式 + 快捷键冲突检查”，再启用高风险动作（Kill/EndTask/Destroy）。
 
-配置项
+## 配置项
 - Hide HUD When Menu On（打开菜单时隐藏HUD）
   类型：布尔；默认：true。菜单打开时隐藏 WindowMaster HUD。
 - HUD Font Size（HUD 字号）
@@ -82,17 +82,17 @@ WindowMaster 是窗口操作中枢：它用统一目标选择 + 快捷键动作�
 - Sink Keybind（沉没窗口快捷键）
   类型：按键/复合；默认：`{ { "Keybind", {0 } }`}。把窗口下沉到底层。
 
-历史更新
+## 历史更新
 - 9. 为 WindowMaster 添加注入式隐私设置功能。
 - 9. WindowMaster HUD 不再超出左侧和顶部边缘。
 - 21. Window Master 添加 Target 配置。
 - 19. 修复默认按键冲突问题。
 
-备注
+## 备注
 WindowMaster 部分动作会改变窗口扩展样式或可见性，建议优先绑定不常用组合键，并先在非关键窗口演练。
 若 `Phantom Window Opacity` 改动后视觉未变化，通常是目标不在幻影窗口列表；先执行一次 Toggle Phantom Window。
 
-相关命令
+## 相关命令
 
 /aim
 打开窗口锁定器，按下 Esc 取消，按下 Ctrl 锁定前端窗口，按下 Alt 锁定鼠标指向的窗口。
@@ -156,12 +156,12 @@ WindowMaster 部分动作会改变窗口扩展样式或可见性，建议优先�
 /ocr windowex &lt;hwnd&gt;
 对指定的窗口内容进行文字识别。将会输出更详细的信息，包括坐标等。
 
-相关模块
+## 相关模块
 - [PrivateWindow (隐私窗口)](./PrivateWindow.md)
 - [WindowTags (窗口标签)](./WindowTags.md)
 - [WindowHighlight (窗口高亮)](./WindowHighlight.md)
 - [WindowESP (窗口透视)](./WindowESP.md)
 - [TargetHUD (目标显示)](./TargetHUD.md)
 
-相关资料
+## 相关资料
 无

@@ -1,9 +1,9 @@
-AntiTopmost
+# AntiTopmost
 反置顶
 分类：Window
 描述：抵御其他置顶窗口。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,9 +11,9 @@ AntiTopmost
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 AntiTopmost（反置顶）用于清理“强制置顶”窗口对前台操作的干扰，可选择温和处理（去置顶/置底）或激进处理（关窗/结束进程）。建议先使用温和策略。
-配置项
+## 配置项
 - Only Check Foreground（只检查前端）
  类型：布尔；默认：false
  说明：仅处理当前前台置顶窗口。副作用最小，建议先用此模式验证。
@@ -33,16 +33,16 @@ AntiTopmost（反置顶）用于清理“强制置顶”窗口对前台操作的
 - Notify Kill（通知击杀）
  类型：布尔；默认：true
  说明：激进策略触发后是否提示处理结果（包括击杀失败原因）。
-历史更新
+## 历史更新
 无（HISTORY 中暂无明确记录）
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [WindowTags (窗口标签)](./WindowTags.md)
 - [WindowHighlight (窗口高亮)](./WindowHighlight.md)
 - [WindowESP (窗口透视)](./WindowESP.md)
@@ -52,6 +52,5 @@ AntiTopmost（反置顶）用于清理“强制置顶”窗口对前台操作的
 - [WindowMaster (窗口大师)](./WindowMaster.md)
 - [PrivateWindow (隐私窗口)](./PrivateWindow.md)
 
-相关资料
+## 相关资料
 无
-

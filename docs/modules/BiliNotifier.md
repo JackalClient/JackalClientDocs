@@ -1,9 +1,9 @@
-BiliNotifier
+# BiliNotifier
 B站通知
 分类：Web
 描述：向你发送B站的通知。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,13 +11,13 @@ B站通知
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 BiliNotifier（B站通知）用于向你发送B站的通知。
 适合联网信息获取、账号联动和在线交互场景。
 初次使用可优先调整：Mode、Query Cooldown (s)、Notify Ats。
 使用前请确认网络可用及相关 API/平台账号配置完整。
 
-配置项
+## 配置项
 - Async（异步）
  类型：布尔；默认：true
  说明：用于控制是否异步处理。默认值 true 通常能减少主线程卡顿；若你遇到并发相关问题，可回退到更保守设置测试。
@@ -74,18 +74,18 @@ BiliNotifier（B站通知）用于向你发送B站的通知。
 - PREVIOUS DATA（上一次的缓存数据。无需修改。）
  类型：文本；默认："{\"at\":0,\"chat\":0,\"coin\":0,\"danmu\":0,\"favorite\":0,\"like\":0,\"recv_like\":0,\"recv_reply\":0,\"reply\":0,\"sys_msg\":0,\"up\":0} ...
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
-历史更新
+## 历史更新
 - 31. 为 Bili Notifier 添加配置：
 - 15. 添加新模块：Bili Settings。表面上看是B站设定，其实按一下就可以扫码登录。Bili Notifier, Bili Console等模块会用到这里的 Cookies 等信息。
 - 16. 添加新模块：Bili Notifier，可以通知你B站的消息种类和数量。注意：需要先用 Bili Settings 登录才能使用。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [IRC (聊天室)](./IRC.md)
 - [AntiRickroll (反诈骗)](./AntiRickroll.md)
 - [AntiBrowser (反浏览器)](./AntiBrowser.md)
@@ -95,6 +95,5 @@ BiliNotifier（B站通知）用于向你发送B站的通知。
 - [TcpKiller (TCP杀手)](./TcpKiller.md)
 - [LiveStream (直播间)](./LiveStream.md)
 
-相关资料
+## 相关资料
 无
-

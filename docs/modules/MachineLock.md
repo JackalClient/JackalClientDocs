@@ -1,9 +1,9 @@
-MachineLock
+# MachineLock
 锁机
 分类：Combat
 描述：锁定这台计算机（谨慎使用）。
 
-需求
+## 需求
 - 安全级别：不安全模块（高风险）
 - 恶意属性：是
 - 权限需求：部分配置需要管理员权限（如 Disable Logoff）
@@ -12,11 +12,11 @@ MachineLock
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 MachineLock 启用后会接管输入与界面控制：按配置联动静音、禁输入法、鼠标/键盘限制、隐藏任务栏与强制前台，并在退出时尽量恢复启用前状态。
 该模块属于高风险能力，建议先在可恢复环境验证“进入-紧急退出-自动恢复”全链路。
 
-配置项
+## 配置项
 - Title（标题）
   类型：文本；默认："计算机已锁定"。锁机主标题文本。
 - Subtitle（副标题）
@@ -79,19 +79,19 @@ MachineLock 启用后会接管输入与界面控制：按配置联动静音、�
 - AUTO ENABLE WHEN CLIENT LAUNCHED（客户端启动时自动启用）
   类型：布尔；默认：false。客户端启动后自动启用 MachineLock。
 
-历史更新
+## 历史更新
 - 28. 添加模块：MachineLock，用于锁机。
 - 17. 为 MachineLock 添加配置。
 - 20. 继续为 MachineLock 添加配置。
 
-备注
+## 备注
 如果同时开启 `Keyboard Lock (Ctrl, Win, Alt)`，紧急热键不要依赖这些修饰键。
 `AUTO ENABLE WHEN CLIENT LAUNCHED` 风险很高，启用前务必确认紧急退出通道可用。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [NoLogOff (禁止注销)](./NoLogOff.md)
 - [KeyDisabler (键盘限制)](./KeyDisabler.md)
 - [MouseDisabler (鼠标限制)](./MouseDisabler.md)
@@ -99,5 +99,5 @@ MachineLock 启用后会接管输入与界面控制：按配置联动静音、�
 - [ForceTopmost (强制置顶)](./ForceTopmost.md)
 - [HideTaskbar (隐藏任务栏)](./HideTaskbar.md)
 
-相关资料
+## 相关资料
 无

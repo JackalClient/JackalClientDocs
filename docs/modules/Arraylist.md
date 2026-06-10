@@ -1,10 +1,10 @@
-<div class="jc-arraylist-doc-heading"><span class="jc-arraylist-doc-title">Arraylist</span><JcArraylistToggle /></div>
+# Arraylist <JcArraylistToggle />
 
 模块列表
 分类：Render
 描述：显示已启用模块列表。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -12,12 +12,12 @@
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Minecraft作弊端的核心视觉之一。在右侧显示一个花里胡哨的列表，显示启用的模块。
 如果想在从中隐藏模块显示，可以在对应的模块的配置项里找到 `hidden隐藏`，打开就行了。或者使用 `/arraylist hide` 命令。
 Arraylist（模块列表）用于显示已启用模块列表。
 
-配置项
+## 配置项
 - Preset (预设)
 
  这个东西你改了之后会自动调整相应的参数，懒得你自己手动改了。
@@ -197,15 +197,15 @@ Arraylist（模块列表）用于显示已启用模块列表。
 - hidden（隐藏）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
-历史更新
+## 历史更新
 - 17. 现在 模块列表HUD 添加了丝滑的动画。
 - 25. 现在模块列表HUD支持靠左了。
 - 3. 修复了模块列表 HUD 字右侧无法对齐的问题。
 
-备注
+## 备注
 建议一直开着
 
-相关命令
+## 相关命令
 
 /enables
 查看已启用的模块。
@@ -225,9 +225,8 @@ Arraylist（模块列表）用于显示已启用模块列表。
 /arraylist hidden
 枚举当前在 Arraylist 中被隐藏的所有模块。
 
-相关模块
+## 相关模块
 - [Shell (命令行)](./Shell.md)
 
-相关资料
+## 相关资料
 无
-

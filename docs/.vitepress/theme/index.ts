@@ -19,13 +19,15 @@ type ArraylistModule = {
 
 const ARRAYLIST_COOKIE = 'jc_arraylist_modules'
 const ARRAYLIST_VISIBLE_COOKIE = 'jc_arraylist_visible'
-const ARRAYLIST_MAX_ITEMS = 10
+const ARRAYLIST_MAX_ITEMS = 16
 const ARRAYLIST_EXCLUDED_MODULES = new Set(['NAMED_COLOR_BASE_LIST'])
 const arraylistModules = ref<ArraylistModule[]>([])
 const arraylistVisible = ref(true)
 const arraylistColorTick = ref(0)
+const isDesktopArraylist = ref(true)
 let measureContext: CanvasRenderingContext2D | undefined
 let arraylistAnimationFrame: number | undefined
+let arraylistMediaQuery: MediaQueryList | undefined
 
 const getCookieValue = (name: string) => {
   if (typeof document === 'undefined') return ''
@@ -90,6 +92,8 @@ const persistArraylistVisibility = () => {
 }
 
 const toggleArraylistVisibility = () => {
+  if (!isDesktopArraylist.value) return
+
   arraylistVisible.value = !arraylistVisible.value
   persistArraylistVisibility()
 }
@@ -100,7 +104,7 @@ const getMeasureContext = () => {
   measureContext = document.createElement('canvas').getContext('2d') ?? undefined
   if (measureContext) {
     measureContext.font =
-      '600 17.6px "JetBrains Mono", "Cascadia Mono", "Consolas", monospace'
+      '600 14.08px "JetBrains Mono", "Cascadia Mono", "Consolas", monospace'
   }
   return measureContext
 }
@@ -126,10 +130,13 @@ const JcArraylistToggle = defineComponent({
           class: [
             'jc-arraylist-page-toggle',
             {
-              'is-active': arraylistVisible.value
+              'is-active': arraylistVisible.value,
+              'is-disabled': !isDesktopArraylist.value
             }
           ],
           'aria-pressed': String(arraylistVisible.value),
+          'aria-disabled': String(!isDesktopArraylist.value),
+          disabled: !isDesktopArraylist.value,
           onClick: toggleArraylistVisibility
         },
         [
@@ -158,6 +165,10 @@ const JackalVisualEffects = defineComponent({
     const animateArraylistColors = () => {
       arraylistColorTick.value += 1
       arraylistAnimationFrame = window.requestAnimationFrame(animateArraylistColors)
+    }
+
+    const updateArraylistMedia = () => {
+      isDesktopArraylist.value = arraylistMediaQuery?.matches ?? true
     }
 
     const visitCurrentModule = () => {
@@ -258,6 +269,9 @@ const JackalVisualEffects = defineComponent({
       window.addEventListener('scroll', onWindowChange, { passive: true })
       document.addEventListener('pointermove', updateHeroLight, { passive: true })
       document.addEventListener('pointerleave', disableHeroLight)
+      arraylistMediaQuery = window.matchMedia('(min-width: 1280px)')
+      updateArraylistMedia()
+      arraylistMediaQuery.addEventListener('change', updateArraylistMedia)
       arraylistAnimationFrame = window.requestAnimationFrame(animateArraylistColors)
     })
 
@@ -269,6 +283,7 @@ const JackalVisualEffects = defineComponent({
       document.removeEventListener('pointermove', updateHeroLight)
       document.removeEventListener('pointerleave', disableHeroLight)
       navFrame?.remove()
+      arraylistMediaQuery?.removeEventListener('change', updateArraylistMedia)
       if (arraylistAnimationFrame) window.cancelAnimationFrame(arraylistAnimationFrame)
       if (hideFrameTimer) window.clearTimeout(hideFrameTimer)
     })

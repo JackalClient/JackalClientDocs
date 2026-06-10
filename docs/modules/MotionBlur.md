@@ -1,9 +1,9 @@
-MotionBlur
+# MotionBlur
 动态模糊
 分类：Render
 描述：在屏幕上应用动态模糊。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ MotionBlur
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 MotionBlur（动态模糊）用于在屏幕上应用动态模糊。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Apply Model、Update Cooldown。
 
-配置项
+## 配置项
 - Apply Area（应用区域）
  类型：枚举；默认："Screen"
  说明：这是选项型配置。默认值 Screen 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
@@ -74,17 +74,17 @@ MotionBlur（动态模糊）用于在屏幕上应用动态模糊。
  类型：枚举；默认："Both"
  说明：这是选项型配置。默认值 Both 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
  可选：Off（关闭）；Horizontal（横向）；Vertical（纵向）；Both（两者）
-历史更新
+## 历史更新
 - 30. 改良了 Motion Blur 模块：
 - 11. 添加 MotionBlur 模块，通过叠加截图帧模拟动态模糊。当然，目前还是重影的效果，不是真正的动态模糊。当你打开 Screen 模式时，将会消耗大量CPU，请注意。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
 - [Ambience (环境气氛)](./Ambience.md)
 - [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
@@ -94,5 +94,5 @@ MotionBlur（动态模糊）用于在屏幕上应用动态模糊。
 - [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
-相关资料
+## 相关资料
 [在 2k25 自制脱离游戏的屏幕实时动态模糊？](https://www.bilibili.com/video/BV1nFyyBTE5D)

@@ -1,9 +1,9 @@
-UACBypass
+# UACBypass
 管理员绕过
 分类：Combat
 描述：绕过UAC弹窗获得管理员权限。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,11 +11,11 @@ UACBypass
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 UACBypass（管理员绕过）用于按指定链路触发 **提权** 流程，不同方法在不同系统环境成功率不同。建议保持默认方法并开启安全检查，失败时再切换方法逐个测试。
 新版 JackalClient 已将代码转移至DLL并混淆，防止本体被报毒。
 
-配置项
+## 配置项
 - Method（方法）
  类型：枚举；默认："Computerdefaults Legit"
  说明：选择提权链路（Computerdefaults/Fodhelper/Cmstp/Sdclt/Slui/PCA 等）。不同系统版本命中率不同，建议保留默认并按需切换。
@@ -41,22 +41,21 @@ UACBypass（管理员绕过）用于按指定链路触发 **提权** 流程，�
  类型：按键/复合；默认：`{ { "Keybind", {VK_RMENU, 'U' } }`}
  说明：手动触发 UACBypass 的快捷键。建议使用不与系统快捷键冲突的组合。
  
-历史更新
+## 历史更新
 - 30. 改善了一下 UAC Bypass ，并添加了新手段，可以更好的绕过。
 - 1. UAC Bypass: 修复 Legit Mode 的粘贴问题
 - 30. 添加新的 UAC Bypass 方式：Sdclt Legit 和 Slui Legit.
 
-备注
+## 备注
 该模块可能会受到杀毒软件的拦截，请注意安全。
 
-相关命令
+## 相关命令
 
 /uacbypass [cmdline...]
 调用 UACBypass 获取管理员权限。若不指定参数则为自启；指定参数时运行外部命令行。
 
-相关模块
+## 相关模块
 - [Admin (管理员)](./Admin.md)
 
-相关资料
+## 相关资料
 无
-

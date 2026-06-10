@@ -1,9 +1,9 @@
-TargetHUD
+# TargetHUD
 目标显示
 分类：Window
 描述：显示目标窗口的 HUD。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意属性：否
 - 权限需求：无
@@ -12,11 +12,11 @@ TargetHUD
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 TargetHUD 会为目标窗口绘制一块信息面板，展示进程名、PID、窗口标题和类名，并支持跟随或固定位置显示。
 它更偏“可读性面板”，适合排障、演示或窗口巡检；建议先设置 Target 与 HUD Position，再调整样式项。
 
-配置项
+## 配置项
 - Target（目标）
   类型：组合框；默认："Foreground"。决定 HUD 跟踪的窗口来源。
   可选：Foreground（前端）；PointAt（指向）；it (Pronoun)（代词 it）。
@@ -85,24 +85,24 @@ TargetHUD 会为目标窗口绘制一块信息面板，展示进程名、PID、�
 - Command Line Getter Hotkey（命令行获取器快捷键）
   类型：按键/复合；默认：`{ { "Keybind", {VK_LCONTROL, VK_LWIN, VK_SUBTRACT } }`}。触发命令行读取动作的快捷键。
 
-历史更新
+## 历史更新
 - 31. 添加新模块：TargetHUD，显示目标窗口HUD。拥有丝滑动画。
 - 2. 修复通知、WindowTags、TargetHUD 中的百分号显示问题。
 - 40. 为 Target Hud 添加了裁剪，以免文本超出范围。
 
-备注
+## 备注
 TargetHUD 在 Follow 模式下会自动做边界校正，尽量避免面板跑出屏幕；在 Fixed 模式下可配合拖拽快速定位。
 若你常用于排障，建议保留 Command Line Getter；若偏演示，建议降低背景图移动速度并保留 Give Way to Mouse。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [TargetESP (目标透视)](./TargetESP.md)
 - [WindowTags (窗口标签)](./WindowTags.md)
 - [WindowHighlight (窗口高亮)](./WindowHighlight.md)
 - [WindowESP (窗口透视)](./WindowESP.md)
 - [Tracers (追踪线)](./Tracers.md)
 
-相关资料
+## 相关资料
 无

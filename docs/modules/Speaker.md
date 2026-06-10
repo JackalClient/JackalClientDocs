@@ -1,9 +1,9 @@
-Speaker
+# Speaker
 讲述人
 分类：Misc
 描述：调用 Windows 的讲述人念一段文本。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ Speaker
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Speaker（讲述人）用于调用 Windows 的讲述人念一段文本。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Notify Error、Method、Spoken Text Mode。
 
-配置项
+## 配置项
 - Async（异步）
  类型：布尔；默认：true
  说明：用于控制是否异步处理。默认值 true 通常能减少主线程卡顿；若你遇到并发相关问题，可回退到更保守设置测试。
@@ -77,15 +77,15 @@ Speaker（讲述人）用于调用 Windows 的讲述人念一段文本。
 - List Current Index（列表当前索引）
  类型：数值；默认：0
  说明：这是数值型配置。默认值 0 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
-历史更新
+## 历史更新
 - 14. 将部分配置中的 Speaker 改为 Speak
 - 12. 为 Speaker 添加配置：
 - 12. 添加模块：Speaker（讲述人）
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 
 /speak [content...=clipboard]
 使用讲述人说话。
@@ -100,7 +100,7 @@ Speaker（讲述人）用于调用 Windows 的讲述人念一段文本。
 /speakvoice list
 查看所有讲述人音色。
 
-相关模块
+## 相关模块
 - [Active (活动)](./Active.md)
 - [AutoSpeak (自动讲述)](./AutoSpeak.md)
 - [AntiMicrophone (反麦克风)](./AntiMicrophone.md)
@@ -110,6 +110,5 @@ Speaker（讲述人）用于调用 Windows 的讲述人念一段文本。
 - [ForceTopmost (强制置顶)](./ForceTopmost.md)
 - [MemeTrigger (梗触发)](./MemeTrigger.md)
 
-相关资料
+## 相关资料
 无
-

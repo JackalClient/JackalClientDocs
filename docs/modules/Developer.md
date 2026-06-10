@@ -1,9 +1,9 @@
-Developer
+# Developer
 开发者
 分类：Misc
 描述：开发者模式。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ Developer
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Developer（开发者）用于开发者调试使用。普通用户不用动它，反正你也开不起来 :(
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Level System Profiles HUD。
 
-配置项
+## 配置项
 - AI Context（人工智能 Context）
  类型：布尔；默认：false
  说明：这是开关型配置。默认值 false 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
@@ -107,16 +107,16 @@ Developer（开发者）用于开发者调试使用。普通用户不用动它�
 - Debug Break Hotkey（Debug Break 快捷键）
  类型：按键/复合；默认：`{ { "Keybind", {VK_LCONTROL, VK_LMENU, VK_SUBTRACT } }`}
  说明：用于设置快捷键触发。建议避免与系统或常用软件冲突，优先使用组合键提高可控性。
-历史更新
+## 历史更新
 无（HISTORY 中暂无明确记录）
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Active (活动)](./Active.md)
 - [AutoSpeak (自动讲述)](./AutoSpeak.md)
 - [AntiMicrophone (反麦克风)](./AntiMicrophone.md)
@@ -126,6 +126,5 @@ Developer（开发者）用于开发者调试使用。普通用户不用动它�
 - [ForceTopmost (强制置顶)](./ForceTopmost.md)
 - [MemeTrigger (梗触发)](./MemeTrigger.md)
 
-相关资料
+## 相关资料
 无
-

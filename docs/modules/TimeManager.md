@@ -1,9 +1,9 @@
-TimeManager
+# TimeManager
 时间管理
 分类：Misc
 描述：调整系统时间及其流速。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：管理员
 - 驱动依赖：否
@@ -11,12 +11,12 @@ TimeManager
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 TimeManager（时间管理）用于调整系统时间及其流速。
 建议先以管理员身份运行客户端。
 初次使用可优先调整：Mode、Sync Method (Disabling Freeze)、Sync Method (Disabling Set)。
 
-配置项
+## 配置项
 - Async（异步）
  类型：布尔；默认：true
  说明：用于控制是否异步处理。默认值 true 通常能减少主线程卡顿；若你遇到并发相关问题，可回退到更保守设置测试。
@@ -78,15 +78,15 @@ TimeManager（时间管理）用于调整系统时间及其流速。
 - Offset Second（偏移秒钟）
  类型：数值；默认：0
  说明：这是数值型配置。默认值 0 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
-历史更新
+## 历史更新
 - 2. 尝试修复 TimeManager 模块设置时间有时会发生错误的问题。添加时间修改数据的持久化。
 - 3. 为 TimeManager 的 Mode 模式添加：Accelerated，仅加速模式。
 - 15. 添加模块： TimeManager (时间管理大师)
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 
 /timestamp [timestamp=now]
 /time [params.../timestamp=now]
@@ -137,10 +137,9 @@ HH:mm
 操作符包括：+ - =  （其中如果使用=，则用算法将其转为+或-）
 数值就是纯数字。示例：/time offset hr+1 m-10 sec=50   表示时间+1小时，-10分钟，秒设为50
 
-相关模块
+## 相关模块
 - [TimeDisplay (时间显示)](./TimeDisplay.md)
 - [OnlineTime (在线时间)](./OnlineTime.md)
 
-相关资料
+## 相关资料
 无
-

@@ -1,9 +1,9 @@
-WindowHighlight
+# WindowHighlight
 窗口高亮
 分类：Window
 描述：用彩虹色方框高亮当前窗口。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意属性：否
 - 权限需求：无
@@ -12,11 +12,11 @@ WindowHighlight
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 WindowHighlight 会围绕目标窗口绘制高亮框，并可给非目标区域加暗背景，让焦点更集中。
 它既可用于日常聚焦，也可与 Aura 系模块联动用于“目标跟踪提示”；后者能显著减少误操作。
 
-配置项
+## 配置项
 - Easing（缓动）
   类型：布尔；默认：true。控制高亮框是否平滑追随目标位置。开启后移动更丝滑，关闭后会瞬间跳到新目标。
 - Easing Speed (0~1)（缓动速率 (0~1)）
@@ -40,19 +40,19 @@ WindowHighlight 会围绕目标窗口绘制高亮框，并可给非目标区域�
 - Dark Background Alpha (0~1)（暗背景不透明度 (0~1)）
   类型：数值；默认：0.5f。控制暗幕强度。0.3~0.6 适合日常使用；太高会影响周边内容辨识。
 
-历史更新
+## 历史更新
 - 17. 为 Window Highlight 模块添加丝滑动画。
 - 18. 为 Window Highlight 添加配置。
 - 25. 为 Window Highlight 添加配置。
 
-备注
+## 备注
 若你同时开启 WindowHighlight 与 WindowESP，建议优先降低 WindowESP 的透明度或范围，避免视觉冲突。
 在 Aura 类模块开启时，建议保留 Endangered Excla Mark，能更快识别高风险目标。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [WindowESP (窗口透视)](./WindowESP.md)
 - [WindowTags (窗口标签)](./WindowTags.md)
 - [Tracers (追踪线)](./Tracers.md)
@@ -61,5 +61,5 @@ WindowHighlight 会围绕目标窗口绘制高亮框，并可给非目标区域�
 - [KillAuraLegit (合法杀戮光环)](./KillAuraLegit.md)
 - [AimAssist (自动瞄准)](./AimAssist.md)
 
-相关资料
+## 相关资料
 无

@@ -1,9 +1,9 @@
-ConsoleESP
+# ConsoleESP
 控制台透视
 分类：Window
 描述：监控任意应用程序的控制台内容。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意属性：否
 - 权限需求：无
@@ -12,11 +12,11 @@ ConsoleESP
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 ConsoleESP 会周期性扫描 `conhost.exe` 的拥有者进程，并在“创建/退出”事件发生时按你指定的通知渠道输出。
 内容监控采用外部监视子进程回传的方式：你需要先选定目标进程，模块才会开始接收该控制台的文本内容。
 
-配置项
+## 配置项
 - Check Cooldown (ms)（检查冷却 (毫秒)）
   类型：数值；默认：500U。控制拥有者扫描频率；越小越实时，但进程枚举频率更高。
 - Monitor Console Created（监视 控制台 已新建）
@@ -66,18 +66,18 @@ ConsoleESP 会周期性扫描 `conhost.exe` 的拥有者进程，并在“创建
 - Target Single Process (Content)（目标 单个 进程 (内容)）
   类型：组合框；默认：""。选择要监听内容的控制台拥有者；未选中时不会启动内容监视回传。
 
-历史更新
+## 历史更新
 - 5. 添加新模块：ConsoleESP（控制台透视）。
 - 20. 现在不允许 Console ESP 监视自己的控制台，防止客户端卡死。
 
-备注
+## 备注
 建议先把 `Notify Mode (Content)` 设为 `Console Output` 或 `File Output`，稳定后再切到 Notify/Title 等更显眼模式。
 如果你看到创建/销毁事件正常、但内容一直为空，先检查是否已正确选择 `Target Single Process (Content)`。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [WindowTags (窗口标签)](./WindowTags.md)
 - [WindowHighlight (窗口高亮)](./WindowHighlight.md)
 - [WindowESP (窗口透视)](./WindowESP.md)
@@ -87,5 +87,5 @@ ConsoleESP 会周期性扫描 `conhost.exe` 的拥有者进程，并在“创建
 - [WindowMaster (窗口大师)](./WindowMaster.md)
 - [PrivateWindow (隐私窗口)](./PrivateWindow.md)
 
-相关资料
+## 相关资料
 无

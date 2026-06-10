@@ -1,9 +1,9 @@
-TargetESP
+# TargetESP
 目标透视
 分类：Window
 描述：标记目标窗口的位置。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意属性：否
 - 权限需求：无
@@ -12,11 +12,11 @@ TargetESP
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 TargetESP 会在目标窗口中心绘制动态标记，用于快速确认“当前锁定的是哪个窗口”。
 该模块支持目标切换淡入/淡出、旋转与平滑跟随；建议先确定目标来源，再调动画参数。
 
-配置项
+## 配置项
 - Target（目标）
   类型：组合框；默认："PointAt"。决定目标来源。
   可选：Target HUD（跟随 TargetHUD 的目标）；Foreground（前端）；PointAt（指向）；it (Pronoun)（代词 it）。
@@ -42,22 +42,22 @@ TargetESP 会在目标窗口中心绘制动态标记，用于快速确认“当�
   类型：组合框；默认："White"。控制标记颜色。
   可选：Flow（流动）；其余颜色见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)。
 
-历史更新
+## 历史更新
 - 7. 添加模块：Target ESP。
 
-备注
+## 备注
 如果你开启 Show Temporarily，却感觉“标记偶尔消失”，通常是显示时长到期后的正常行为。
 需要常驻提示时可关闭 Show Temporarily；需要更柔和的视觉可增加 Fade In/Out 并略降 Opacity。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [TargetHUD (目标显示)](./TargetHUD.md)
 - [WindowHighlight (窗口高亮)](./WindowHighlight.md)
 - [WindowTags (窗口标签)](./WindowTags.md)
 - [WindowESP (窗口透视)](./WindowESP.md)
 - [Tracers (追踪线)](./Tracers.md)
 
-相关资料
+## 相关资料
 无

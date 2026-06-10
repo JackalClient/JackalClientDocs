@@ -1,9 +1,9 @@
-Run
+# Run
 运行
 分类：Process
 描述：运行指定进程。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意标记：否
 - 权限需求：无
@@ -12,11 +12,11 @@ Run
 - 开发状态：稳定
 - 版本属性：普通可用
 
-介绍
+## 介绍
 Run 用于按给定目标程序、参数和工作目录启动进程。
 当 Watch 关闭时，它是一次性启动模块；当 Watch 开启时，模块会和目标进程状态联动，进程存在则保持开启，进程消失则自动关闭，并可通过再次启用触发拉起。
 
-配置项
+## 配置项
 - Target（目标）
   类型：文本；默认："cmd.exe"；说明：要启动的程序或命令。建议使用明确可执行文件名或绝对路径，避免被系统 PATH 中同名文件误匹配。
 - Parameters（参数）
@@ -28,13 +28,13 @@ Run 用于按给定目标程序、参数和工作目录启动进程。
 - Watch（守望）
   类型：布尔；默认：false；说明：开启后进入“进程存在性联动”模式；关闭后每次启用只执行一次启动并自动关闭模块。
 
-历史更新
+## 历史更新
 无（HISTORY 中暂无明确记录）
 
-备注
+## 备注
 在 Watch 模式下手动关闭模块时，模块会尝试结束 `Target` 对应进程名。若目标进程并非由模块拉起，建议谨慎使用该模式。
 
-相关命令
+## 相关命令
 - `/run &lt;command...&gt;`：同步执行命令。
 - `/exe &lt;command...&gt;`、`/exec &lt;command...&gt;`、`/runasync &lt;command...&gt;`：异步执行命令。
 /runspeak &lt;command...&gt;
@@ -89,11 +89,11 @@ Run 用于按给定目标程序、参数和工作目录启动进程。
 /execpsbase64 &lt;base64&gt;
 执行 Base64 加密过的 PowerShell 命令。前者同步，后者异步。
 
-相关模块
+## 相关模块
 - [QuickRun (快速运行)](./QuickRun.md)
 - [ProcessManager (进程管理器)](./ProcessManager.md)
 - [ProcessKill (进程击杀)](./ProcessKill.md)
 - [RestartExplorer (重启资源管理器)](./RestartExplorer.md)
 
-相关资料
+## 相关资料
 无

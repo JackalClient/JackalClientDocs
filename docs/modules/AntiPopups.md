@@ -1,9 +1,9 @@
-AntiPopups
+# AntiPopups
 反弹窗
 分类：Window
 描述：可以根据规则自动关闭符合条件的弹窗。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 恶意属性：否
 - 权限需求：无
@@ -12,11 +12,11 @@ AntiPopups
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 AntiPopups 会先处理“广告进程”黑名单，再对候选窗口做规则判定并执行关闭措施。
 它不是全屏遍历，而是重点检查几个高价值位置（屏幕中心、右下区域、前台窗口、鼠标指向窗口），因此响应快但也更依赖规则配置质量。
 
-配置项
+## 配置项
 - Ad Process Policy（广告进程策略）
   类型：组合框；默认："Warn & AutoKill"。命中进程黑名单后的处理策略。
   可选：Ignore（忽略）；Warn（警告）；AutoKill（自动击杀）；Warn & AutoKill（警告并自动击杀）。
@@ -64,23 +64,23 @@ AntiPopups 会先处理“广告进程”黑名单，再对候选窗口做规则
 - Whitelist Processes (Sep With Semicolon)（进程白名单，用分号分隔。）
   类型：文本；默认："哔哩哔哩.exe;explorer.exe;..."。白名单进程名列表。
 
-历史更新
+## 历史更新
 - 5. 添加新模块 Anti Popups。
 - 1. 为 Anti Popups 设置进程白名单，防止信任窗口被关或进程被杀。
 - 29. Ad Process Policy 默认值改为 Warn & AutoKill。
 
-备注
+## 备注
 `Measures=Chain` 对同一窗口有约 5 秒去重间隔，不会无限高频重复执行。
 建议先开白名单、保守判定，再逐步提高动作强度，避免误伤正常业务窗口。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [WindowMaster (窗口大师)](./WindowMaster.md)
 - [PrivateWindow (隐私窗口)](./PrivateWindow.md)
 - [WindowTags (窗口标签)](./WindowTags.md)
 - [WindowHighlight (窗口高亮)](./WindowHighlight.md)
 
-相关资料
+## 相关资料
 无

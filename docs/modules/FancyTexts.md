@@ -1,9 +1,9 @@
-FancyTexts
+# FancyTexts
 花式文字
 分类：Render
 描述：显示一些带有动画和特效的花哨文字。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ FancyTexts
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 FancyTexts（花式文字）用于显示一些带有动画和特效的花哨文字。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Async、Hide When Menu On、Module Status Auto Switch。
 
-配置项
+## 配置项
 - Async（异步）
  类型：布尔；默认：true
  说明：用于控制是否异步处理。默认值 true 通常能减少主线程卡顿；若你遇到并发相关问题，可回退到更保守设置测试。
@@ -86,18 +86,18 @@ FancyTexts（花式文字）用于显示一些带有动画和特效的花哨文�
 - Opacity Period (ms)（不透明度周期（毫秒））
  类型：数值；默认：6000L
  说明：用于控制透明度。默认值 6000L 兼顾可见性和遮挡；如果你觉得挡视线可小幅下调，若看不清可小幅上调。
-历史更新
+## 历史更新
 - 35. 改良 Fancy Text 的渲染，添加了三种新布局: 阻止元素超出屏幕范围
 - 36. 为 Fancy Text 添加配置：
 - 32. 添加新模块：FancyTexts，显示花哨的文字。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
 - [Ambience (环境气氛)](./Ambience.md)
 - [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
@@ -107,5 +107,5 @@ FancyTexts（花式文字）用于显示一些带有动画和特效的花哨文�
 - [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
-相关资料
+## 相关资料
 [C++根据音乐实时生成文字PV (?)](https://www.bilibili.com/video/BV15b9GB8EX5)

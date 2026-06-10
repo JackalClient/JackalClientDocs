@@ -1,9 +1,9 @@
-BetterLyrics
+# BetterLyrics
 更好的歌词
 分类：Render
 描述：识别歌词并以更好的方式显示。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ BetterLyrics
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 BetterLyrics（更好的歌词）用于识别歌词并以更好的方式显示。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Basic Mode、Notify Music Change、Lyrics Fetch Attempt Cooldown (s)。
 
-配置项
+## 配置项
 - Async（异步）
  类型：布尔；默认：true
  说明：用于控制是否异步处理。默认值 true 通常能减少主线程卡顿；若你遇到并发相关问题，可回退到更保守设置测试。
@@ -148,18 +148,18 @@ BetterLyrics（更好的歌词）用于识别歌词并以更好的方式显示�
 - Bar Graph Lyrics Opacity (0~1)（柱状图歌词不透明度 (0~1)）
  类型：数值；默认：0.9f
  说明：用于控制透明度。默认值 0.9f 兼顾可见性和遮挡；如果你觉得挡视线可小幅下调，若看不清可小幅上调。
-历史更新
+## 历史更新
 - 36. 为 BetterLyrics 的 Display Mode 显示模式添加一个 Island 灵动岛上显示。带动画。没有歌词时会采用歌名。
 - 37. 为 BetterLyrics 的 Exclude Non-lyrics Content 排除非歌词内容添加对特定前缀的检查（例如“作曲：”）
 - 29. 添加模块： BetterLyrics，更好的桌面歌词。目前只支持网易云音乐。
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [Arraylist (模块列表)](./Arraylist.md)
 - [Ambience (环境气氛)](./Ambience.md)
 - [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
@@ -169,6 +169,5 @@ BetterLyrics（更好的歌词）用于识别歌词并以更好的方式显示�
 - [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
 - [MusicOverlay (音乐信息)](./MusicOverlay.md)
 
-相关资料
+## 相关资料
 无
-

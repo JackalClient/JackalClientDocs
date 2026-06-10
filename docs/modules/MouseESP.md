@@ -1,9 +1,9 @@
-MouseESP
+# MouseESP
 鼠标透视
 分类：Control
 描述：高亮鼠标指针的位置。
 
-需求
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
@@ -11,12 +11,12 @@ MouseESP
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
-介绍
+## 介绍
 MouseESP（鼠标透视）用于高亮鼠标指针的位置。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Visibility Check、Circle、Circle Radius。
 
-配置项
+## 配置项
 - Visibility Check（可见性检查）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
@@ -127,17 +127,17 @@ MouseESP（鼠标透视）用于高亮鼠标指针的位置。
  类型：枚举；默认："Aqua-Pink"
  说明：用于控制视觉配色。建议先选对比度高的配色保证可读性；若是动态颜色，注意在复杂背景下的辨识度。
  可选：见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
-历史更新
+## 历史更新
 - 28. 为 Mouse ESP 添加配置：
 - 2. 为 Mouse ESP 添加配置：
 
-备注
+## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
-相关命令
+## 相关命令
 无
 
-相关模块
+## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
 - [MouseWatcher (鼠标监视)](./MouseWatcher.md)
@@ -147,6 +147,5 @@ MouseESP（鼠标透视）用于高亮鼠标指针的位置。
 - [MouseTrails (鼠标轨迹)](./MouseTrails.md)
 - [Crosshair (准星线)](./Crosshair.md)
 
-相关资料
+## 相关资料
 无
-
