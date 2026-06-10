@@ -15,7 +15,7 @@ Everything
 - 版本属性：普通可用（含部分 PRO 命令）
 
 介绍
-Everything 模块用于对接 `Everything.exe` 及其 SDK 接口。启用时会尝试确保 `Everything.exe` 运行并初始化请求参数；关闭时会重置并清理接口，同时尝试结束 `Everything.exe` 进程。
+Everything 模块用于对接 `Everything.exe` 及其 SDK 接口。启用时会尝试确保 `Everything.exe` 运行并初始化请求参数；关闭时会重置并清理接口，同时尝试结束 `Everything.exe` 进程。`Everything 1.5` 可用时会使用新版 SDK，并在默认实例与 `1.5a` 实例中自动选择版本更高的一侧。
 它本身没有模块配置项，主要能力通过命令行使用（文件搜索、状态查看、索引/历史维护、匹配选项调优等）。
 
 配置项

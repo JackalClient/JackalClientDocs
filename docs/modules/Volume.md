@@ -64,6 +64,15 @@ Volume（音量）用于控制系统和进程的音量。
  类型：枚举；默认："Bottom"
  说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。
  可选：Bottom（底部）；Giant（巨型）；Rainbow Giant（彩虹巨型）
+- iOS System Volume X Rate（iOS 系统音量横坐标比例）
+ 类型：数值；默认：0.9f
+ 说明：控制 iOS 样式系统音量 HUD 的屏幕横坐标比例，锚点为 HUD 中心。
+- iOS Process Volume X Rate（iOS 进程音量横坐标比例）
+ 类型：数值；默认：0.1f
+ 说明：控制 iOS 样式进程音量 HUD 的目标窗口横坐标比例，锚点为 HUD 中心。
+- iOS HUD Scale（iOS HUD 缩放）
+ 类型：数值；默认：1.0f
+ 说明：控制 iOS 样式音量 HUD 的整体缩放。
 - Notify Type（通知类型）
  类型：枚举；默认："Off"
  说明：用于选择结果反馈方式。默认值 Off 适合大多数场景；若你不想打扰可改为更安静的输出方式。
@@ -138,5 +147,5 @@ HUD 样式补充
 - Volume 的 System Volume HUD Style 与 Process Volume HUD Style 新增 Text、Modern (PRO)、iOS 样式；Modern (PRO) 带图标、卡片与数字翻动效果，iOS 使用方形音量面板。
 
 Volume HUD iOS 样式补充
-- iOS：新版 iPhone 风格侧边纵向胶囊 HUD；系统音量显示在屏幕右侧，进程音量显示在目标窗口左侧，带滑入/滑出、宽度收缩、坐标缓动和调节晃动。
+- iOS：新版 iPhone 风格侧边纵向胶囊 HUD；系统音量默认显示在屏幕右侧，进程音量默认显示在目标窗口左侧，可通过 iOS System Volume X Rate、iOS Process Volume X Rate 和 iOS HUD Scale 调整中心锚点横向位置与缩放，带滑入/滑出、宽度收缩、坐标缓动和调节晃动。
 - iOS Old：保留旧版居中方形面板样式。

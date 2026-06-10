@@ -1,4 +1,4 @@
-# 文件命令
+﻿# 文件命令
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
@@ -50,7 +50,7 @@
 ```
 
 ::: details 点击查看说明
-切换当前工作目录。注意，不需要指定/d参数，如果有会自动去除。后面的路径可以不加双引号。如果要切换到上一个目录，可以使用 /chdir .. 命令。/chdir 命令成功执行后，会输出当前工作目录，而 /cd 不会。
+切换当前工作目录。注意，不需要指定/d参数，如果有会自动去除。后面的路径可以不加双引号。支持 `/cd D:` 这类盘符写法，会切换到对应盘符根目录。如果要切换到上一个目录，可以使用 /chdir .. 命令。/chdir 命令成功执行后，会输出当前工作目录，而 /cd 不会。
 :::
 
 ## 删除文件或目录（`/rm &lt;path...&gt;`）
@@ -105,6 +105,35 @@
 
 ::: details 点击查看说明
 根据文件内容辨别文件类型，较为基础，只能判断一小部分类型。
+:::
+
+## Codex 信息管理（`/codex <args...>`）
+
+```bash
+/codex
+/codex config
+/codex skills
+/codex new [params...]
+/codex terminate all
+/codex sessions
+/codex files
+/codex running
+/codex help
+```
+
+::: details 点击查看说明
+查看本机 Codex 配置与状态信息。默认 Dashboard 会汇总 Codex 根目录、版本、模型、Provider、推理强度、沙盒、Skills 和 Sessions 数量；`config` 会读取 `C:\Users\WormWaker\.codex\config.toml` 与 `auth.json` 并彩色显示关键配置；`skills` 枚举 `.codex\skills` 与 `.codex\vendor_imports\skills` 中包含 `SKILL.md` 的技能目录，并将较长说明作为单独行显示；`new` 会创建新的 Codex CLI 窗口并把参数追加给 `codex`；`terminate all` 会结束所有 `codex.exe` 及相关子进程并输出详细反馈；`sessions` 显示会话数量、最近会话和 60 字符 Prompt 预览；`files` 列出常用 Codex 本地文件及大小；`running` 输出当前 Codex 进程树。若参数没有命中内置子命令，会预览将要执行的 `codex` 命令行，按 Enter 确认执行，按 Esc 取消。若客户端开启 PrivacyProtect，API Key、Token、Secret、Auth 等敏感值会自动隐藏为星号。
+:::
+## 快捷方式工具（`/link create <path> [dest=desktop]`）
+
+```bash
+/link create <path> [dest=desktop]
+/link info <path>
+/link stats [dir=desktop]
+```
+
+::: details 点击查看说明
+创建、解析与统计 Windows 快捷方式。`create` 默认创建到桌面，`dest` 可为目录或完整 `.lnk` 路径；`info` 彩色输出目标、参数、工作目录、图标与有效状态；`stats` 统计目录中的 `.lnk` 与 `.url` 快捷方式有效率、目标路径占比、目标文件类型占比和 URL 协议占比（如 https、steam 等）。路径参数支持双引号和空格，统计目录支持反斜线结尾。
 :::
 
 ## 通过 Everything 软件搜索指定的文件（`/findfile &lt;keywords...&gt;`）

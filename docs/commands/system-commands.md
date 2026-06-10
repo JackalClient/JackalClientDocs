@@ -3566,3 +3566,27 @@ zhanan			随机渣男语录
 ::: details 点击查看说明
 测试命令。
 :::
+
+## 切换字体并触发自动重载（`/font switch <name/path>`）
+
+```bash
+/font switch <name/path>
+```
+
+::: details 点击查看说明
+切换字体并触发自动重载。name 必须是 GUI 选项 Font 的可选项；path 仅支持 .ttf 文件，支持双引号包裹带空格路径。
+:::
+
+## 控制 Typewriter 打字机（`/typewriter <init|start|pause|stop|status>`）
+
+```bash
+/typewriter init [hwnd=foreground]
+/typewriter start [timedown=10]
+/typewriter pause
+/typewriter stop
+/typewriter status
+```
+
+::: details 点击查看说明
+`init` 以指定窗口句柄初始化 Typewriter，默认使用当前前台窗口；`start` 在指定倒计时后启动，未初始化时会自动初始化，最后五秒每秒显示一次 TitleTip；`pause` 暂停；`stop` 停止并清空目标窗口与内容；`status` 彩色输出当前状态、目标窗口和进度。
+:::

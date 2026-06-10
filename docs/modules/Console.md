@@ -65,6 +65,7 @@ Console（控制台）就是那个黑窗口。
  类型：按键/复合；默认：`{ { "Keybind", {VK_RMENU, 'C' } }`}
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
 历史更新
+- 130. 修复 PRO 验证后 Console 仍可能按临时验证窗口状态弹出的问题，进入客户端后会再次按 Console 配置隐藏或关闭控制台。
 - 48. 为 Console 控制台模块添加配置：
 - 20. 为 IP Address, IP Horror 和 Weather 添加 Auto Console 选项。
 - 6. 为 Console 模块添加配置：Disable Close，可以防止控制台按右上角叉被关闭。
