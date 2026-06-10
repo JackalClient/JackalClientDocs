@@ -20,14 +20,14 @@ hero:
       link: /modules/
     - theme: alt
       text: 官网 / 购买专业版（Pro）
-      link: https://www.wormwake.com/jackalclient/
+      link: https://www.wormwake.com/jackalclient/download
 
 features:
   - title: 快速上手
     details: 入门指南，涵盖启动方式、GUI 操作、基础命令与常见入口，使你快速掌握核心用法。
     link: /quick-start/
   - title: 模块能力
-    details: 介绍300+功能模块，并提供配置项详细信息。
+    details: 介绍三百余种功能模块，并提供配置项详细信息。
     link: /module-map/
   - title: 命令手册
     details: 详尽的命令参考文档，支持系统管理、文件操作、网络控制、文本处理及B站专属指令。
@@ -37,4 +37,4 @@ features:
     link: /safety/
 ---
 
-<TkVpContainer type="tip" title="推荐阅读顺序" text="建议优先阅读「快速开始」，随后浏览「模块地图」了解功能全貌，最后查阅 「命令目录」与 「安全说明」。" />
+<TkVpContainer type="tip" title="小贴士" text="建议优先阅读「快速开始」，随后浏览「模块地图」了解功能全貌，最后查阅 「命令目录」与 「安全说明」。" />
