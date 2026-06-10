@@ -147,6 +147,122 @@
   }
 }
 
+@keyframes jc-brand-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.jc-nav-hover-frame {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: var(--jc-nav-w, 0);
+  height: var(--jc-nav-h, 0);
+  pointer-events: none;
+  border: 1px solid rgba(168, 85, 247, 0.82);
+  border-radius: 10px;
+  opacity: 0;
+  transform: translate3d(var(--jc-nav-x, 0), var(--jc-nav-y, 0), 0) scale(0.96);
+  box-shadow:
+    0 0 0 1px rgba(196, 181, 253, 0.18) inset,
+    0 0 22px rgba(168, 85, 247, 0.24);
+  transition:
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    width 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    height 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 360ms ease,
+    border-color 360ms ease,
+    box-shadow 360ms ease;
+}
+
+.jc-nav-hover-frame.is-visible {
+  opacity: 1;
+  transform: translate3d(var(--jc-nav-x, 0), var(--jc-nav-y, 0), 0) scale(1);
+}
+
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup,
+.VPNavBarMenu .VPLink {
+  border-radius: 10px;
+}
+
+.VPNavBarTitle .title {
+  position: relative;
+  transition: color 260ms ease, text-shadow 260ms ease;
+}
+
+.VPNavBarTitle .title::after {
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  left: 0;
+  height: 2px;
+  content: '';
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8b5cf6, #d946ef, #38bdf8);
+  opacity: 0;
+  transform: scaleX(0.2);
+  transform-origin: left;
+  transition: opacity 260ms ease, transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.VPNavBarTitle:hover .title {
+  color: transparent;
+  background: linear-gradient(110deg, #6d5dfc 0%, #b65cff 32%, #38bdf8 52%, #7c3aed 72%, #6d5dfc 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 24px rgba(139, 92, 246, 0.28);
+  animation: jc-brand-flow 2.4s linear infinite;
+}
+
+.VPNavBarTitle:hover .title::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.VPHero .name,
+.VPHero .text,
+.VPHero .tagline {
+  --jc-highlight-x: 50%;
+  --jc-highlight-y: 50%;
+  position: relative;
+}
+
+.VPHero .name::after,
+.VPHero .text::after,
+.VPHero .tagline::after {
+  position: absolute;
+  inset: -0.08em -0.12em;
+  content: attr(data-jc-text);
+  pointer-events: none;
+  color: transparent;
+  background:
+    radial-gradient(
+      circle 130px at var(--jc-highlight-x) var(--jc-highlight-y),
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(214, 192, 255, 0.72) 24%,
+      rgba(125, 211, 252, 0.3) 44%,
+      transparent 70%
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.VPHero.jc-hero-highlight-active .name::after,
+.VPHero.jc-hero-highlight-active .text::after,
+.VPHero.jc-hero-highlight-active .tagline::after {
+  opacity: 1;
+}
+
 /* 指令卡片样式 */
 .command-card-grid {
   display: grid;
