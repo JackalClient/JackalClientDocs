@@ -118,8 +118,10 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
 - Mode（模式）
  类型：枚举；默认："Smart Send"
  说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 Smart Send ，确认稳定后再逐项切换比较效果。
- 可选：Smart Send（智能发送）；Copy（复制）；Chatter（弹幕）；Speak（讲述）；WinToast（系统通知）；Real Chatter（真弹幕）
+ 可选：Smart Send（智能发送）；Copy（复制）；Chatter（弹幕）；Notify（通知）；Actionbar（行为栏）；Chat Bar（聊天栏）；Console Output（控制台输出）；Log（日志）；Speak（讲述）；WinToast（系统通知）；Real Chatter（真弹幕）
 ## 历史更新
+- v1.1.1：玩家名前导 `?` 会自动清理；清理异常前缀后以“正版”开头的玩家名会自动去除“正版”；Mode 新增 Notify、Actionbar、Chat Bar、Console Output、Log。
+- v1.1.1：新增两类中文挖床提示识别，会从行首前三个字中的颜色字判断队伍。
 - 10. 【PRO】修改自动嘲讽和检测发言的调用顺序，可以规避一些特殊情况。
 - 68. 【PRO】添加模块：Auto L，在 Minecraft 中自动嘲讽你的敌人。建议打开 ChatQueue 模块实时查看待发送消息队列。
 

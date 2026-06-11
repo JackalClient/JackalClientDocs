@@ -29,6 +29,10 @@ Title（标题显示）用于在屏幕中央显示一个标题。和MC的很像�
 - Force Exit Speed Boost（强制退出速度加成）
  类型：数值；默认：2.0f
  说明：
+- Preset（预设）
+ 类型：枚举；默认："Shake"
+ 说明：快速应用标题外观预设；Custom 表示保留当前自定义配置。
+ 可选：Custom（自定义）；Shake（抖动）；Minecraft；Banner（横幅）
 - Title Text Mode（标题文本模式）
  类型：枚举；默认："Fixed"
  说明：用于选择结果反馈方式。默认值 Fixed 适合大多数场景；若你不想打扰可改为更安静的输出方式。
@@ -39,6 +43,9 @@ Title（标题显示）用于在屏幕中央显示一个标题。和MC的很像�
 - Subtitle Enabled（启用副标题）
  类型：布尔；默认：true
  说明：这个选项启用时，才会显示副标题文本。
+- Merge Subtitle And Title（合并副标题和标题）
+ 类型：布尔；默认：false
+ 说明：开启后副标题会合并到主标题后方，中间使用 " - " 分隔，不再单独绘制副标题行。
 - Fixed Subtitle Text（固定副标题文本）
  类型：文本；默认："yee~"
  说明：
@@ -69,10 +76,10 @@ Title（标题显示）用于在屏幕中央显示一个标题。和MC的很像�
  类型：数值；默认：0.02f
  说明：
 - Animation Type (Enter)（动画类型 (进入)）
- 类型：枚举；默认："Slide (Bottom
+ 类型：枚举；默认：Slide (Bottom)
  说明：
 - Animation Type (Exit)（动画类型 (离开)）
- 类型：枚举；默认："Slide (Top
+ 类型：枚举；默认：Slide (Top)
  说明：
 - Animation Slide Fade（滑动动画淡入淡出）
  类型：布尔；默认：true
@@ -163,6 +170,44 @@ Title（标题显示）用于在屏幕中央显示一个标题。和MC的很像�
 - Mask Alpha (0~1)（遮罩不透明度 (0~1)）
  类型：数值；默认：0.5f
  说明：
+- Background（文本背景）
+ 类型：枚举；默认："Off"
+ 说明：控制标题文本背景。Rectangle 按主标题和副标题的文本包围盒计算宽度；Stripe 使用屏幕宽度。
+ 可选：Off（关闭）；Stripe（横幅条）；Rectangle（矩形）
+- Background For Subtitle（背景包含副标题）
+ 类型：布尔；默认：true
+ 说明：关闭后背景矩形只按主标题计算，不包含单独显示的副标题。合并副标题时，合并后的整行仍按主标题计算。
+- Background X Scale（背景 X 缩放）
+ 类型：数值；默认：1.0f
+ 说明：背景先以中心为锚点进行横向缩放。
+- Background Y Scale（背景 Y 缩放）
+ 类型：数值；默认：1.0f
+ 说明：背景先以中心为锚点进行纵向缩放。
+- Background X Offset（背景 X 偏移）
+ 类型：数值；默认：0.0f
+ 说明：背景缩放后再应用横向偏移。
+- Background Y Offset（背景 Y 偏移）
+ 类型：数值；默认：0.0f
+ 说明：背景缩放后再应用纵向偏移。
+- Background Pattern（背景样式）
+ 类型：枚举；默认："Diagonal Lines"
+ 说明：控制背景填充样式。
+ 可选：Solid（纯色）；Gradient（纵向渐变）；Diagonal Lines（动态斜向粗条带）
+- Background Color（背景颜色）
+ 类型：枚举；默认："Colorful"
+ 说明：背景颜色。
+ 可选：Colorful（彩色）；其余颜色见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
+- Background Opacity (0~1)（背景不透明度 (0~1)）
+ 类型：数值；默认：0.8f
+ 说明：背景整体不透明度。
+- Background Animation (Enter)（背景入场动画）
+ 类型：枚举；默认："Fade"
+ 说明：背景入场动画，背景不会跟随文本旋转。
+ 可选：Fade（淡入）；Slide (Top)；Slide (Left)；Slide (Bottom)；Slide (Right)
+- Background Animation (Exit)（背景出场动画）
+ 类型：枚举；默认："Fade"
+ 说明：背景出场动画，背景不会跟随文本旋转。
+ 可选：Fade（淡出）；Slide (Top)；Slide (Left)；Slide (Bottom)；Slide (Right)
 - Debug Gizmos（未收录）
  类型：布尔；默认：false
  说明：用于调试，可以不用开启。
