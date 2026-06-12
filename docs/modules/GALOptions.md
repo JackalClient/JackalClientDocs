@@ -22,6 +22,12 @@ GALOptions（GAL 选项）用于在直播弹幕和 B 站评论场景中生成多
 - Do Not Trigger Live Chatter In Other's Room（不在别人的直播间触发直播弹幕回复）
  类型：布尔；默认：true
  说明：开启后，当前房间不是自己的直播间时不触发直播弹幕回复；若关闭且当前正在回复别人的直播间，HUD 底部会显示淡红色警告提示。
+- Blacklist Window Enabled（启用窗口进程黑名单）
+ 类型：布尔；默认：true
+ 说明：开启后，当前前台窗口进程命中黑名单时，不再触发新的 GALOptions 对话。
+- Blacklist Window Processes (Sep With Semicolon)（窗口进程黑名单，用分号分隔）
+ 类型：文本；默认："A Dance of Fire and Ice.exe;Minecraft.Windows.exe;MuseDash.exe"
+ 说明：配置不会触发新 GALOptions 的前台窗口进程名，多个进程用英文分号分隔，匹配时忽略大小写和首尾空白。
 - Live Chatter Reply Count（直播弹幕回复数量）
  类型：数值；默认：3
  说明：控制一次生成多少条直播弹幕候选回复。
@@ -41,6 +47,7 @@ GALOptions（GAL 选项）用于在直播弹幕和 B 站评论场景中生成多
 行为说明
 - AI 生成候选时，会尽量要求不同候选呈现明显不同的立场或观点，而不是同义改写。
 - 直播弹幕与 B 站评论回复结果会在发送前做基础清理，以避免多余句末标点影响观感。
+- 直播弹幕触发时会直接判断当前直播间是否为账号自己的直播间，不再受直播弹幕发送保护开关状态影响。
 - 若启用了 HUD 对话框，倒计时、来源信息和额外操作项会一起显示。
 
 关联模块

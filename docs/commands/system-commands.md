@@ -3163,6 +3163,16 @@ int		LastUpdate: 文本上一次更新的时间。
 用于测试日志解析器对于给定的 commandline 命令行，能否正常提取需要的信息。会输出相关结果。如果commandline 参数不填，则从剪贴板中取文本。
 :::
 
+## 模拟输入一条 Minecraft 原始日志行（`/mclog simulate <logline...>`）
+
+```bash
+/mclog simulate <logline...>
+```
+
+::: details 点击查看说明
+模拟输入一条 Minecraft 原始日志行，并触发 Minecraft Utils 日志解析事件。logline 可以包含空格，也可以包含完整日志前缀。
+:::
+
 ## 构建Minecraft彩色文字（`/mccolor &lt;presetSingleColor&gt; &lt;color1&gt; &lt;text...&gt;`）
 
 ```bash
