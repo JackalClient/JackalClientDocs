@@ -3173,6 +3173,26 @@ int		LastUpdate: 文本上一次更新的时间。
 模拟输入一条 Minecraft 原始日志行，并触发 Minecraft Utils 日志解析事件。logline 可以包含空格，也可以包含完整日志前缀。
 :::
 
+## 显示 BiliDaily 缓存状态（`/bilidaily status`）
+
+```bash
+/bilidaily status
+```
+
+::: details 点击查看说明
+显示 BiliDaily 每个操作的缓存日期、冷却倒计时、最后结果和最后更新时间。
+:::
+
+## 重置 BiliDaily 缓存（`/bilidaily reset <exp|redeem|signin|all>`）
+
+```bash
+/bilidaily reset <exp|redeem|signin|all>
+```
+
+::: details 点击查看说明
+重置 BiliDaily 指定操作的当天缓存，并立即异步触发可执行操作。
+:::
+
 ## 构建Minecraft彩色文字（`/mccolor &lt;presetSingleColor&gt; &lt;color1&gt; &lt;text...&gt;`）
 
 ```bash
