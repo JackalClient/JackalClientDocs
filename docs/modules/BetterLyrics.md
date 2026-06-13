@@ -16,6 +16,10 @@ BetterLyrics（更好的歌词）用于识别歌词并以更好的方式显示�
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Basic Mode、Notify Music Change、Lyrics Fetch Attempt Cooldown (s)。
 
+
+## Driver (PRO) 与 Island 显示
+Driver (PRO) 模式会按当前歌曲 ID 与歌曲标题维护独立歌词时间轴；当切歌、Hook 曲目变化或当前歌曲没有可用歌词时，会清空旧时间轴和 Island/Karaoke 运行态，避免上一首歌的歌词继续按时间轴重播。
+从 OCR、Hook Render 或 SMTC 切换到 Driver (PRO) 时，会主动刷新当前歌曲信息；如果暂时没有歌曲 ID，会后台解析当前歌名并在解析完成后继续拉取歌词。
 ## 配置项
 - Async（异步）
  类型：布尔；默认：true

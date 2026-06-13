@@ -1204,6 +1204,46 @@ HH:mm
 枚举一个模块的所有配置选项。也可以填 config/gui/hud/sound
 :::
 
+## 复制模块差异配置（`/config copy &lt;moduleName&gt;`）
+
+```bash
+/config copy <moduleName>
+```
+
+:::: details 点击查看说明
+将指定模块（或config/gui/hud/sound）中不同于默认值的配置差异 JSON 复制到剪贴板（无换行）。
+::::
+
+## 复制模块完整配置（`/config copyfull &lt;moduleName&gt;`）
+
+```bash
+/config copyfull <moduleName>
+/config pastefull <moduleName>
+```
+
+:::: details 点击查看说明
+将指定模块（或config/gui/hud/sound）的完整配置 JSON 复制到剪贴板（无换行）。
+::::
+
+## 导入模块配置 JSON（`/config paste [json=clipboard]`）
+
+```bash
+/config paste [json=clipboard]
+```
+
+:::: details 点击查看说明
+从 JSON 导入配置，自动识别所属模块并应用；不填参数则读取剪贴板。支持 /config copy 生成的差异 JSON，也兼容旧版 /config copy 生成的裸配置 JSON。
+::::
+
+## 对比模块配置 JSON（`/config diff &lt;moduleName&gt; [json=clipboard]`）
+
+```bash
+/config diff <moduleName> [json=clipboard]
+```
+
+:::: details 点击查看说明
+将 JSON 中的配置与当前模块（或config/gui/hud/sound）的本机配置进行对比；不填 JSON 则读取剪贴板。
+::::
 ## 获取一个模块（或configguihudsoun…（`/config get &lt;moduleName&gt; &lt;keyName...&gt;`）
 
 ```bash
