@@ -35,3 +35,5 @@ BiliDaily（B站日常）用于在登录B站账号后自动执行大会员日常
 
 - `/bilidaily status`：查看每个操作的缓存状态、冷却倒计时和最后结果。
 - `/bilidaily reset <exp|redeem|signin|all>`：重置指定操作的当天缓存，并立即异步触发可执行操作。
+
+## 相关资料
