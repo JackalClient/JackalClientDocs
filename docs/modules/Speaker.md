@@ -13,8 +13,6 @@
 
 ## 介绍
 Speaker（讲述人）用于调用 Windows 的讲述人念一段文本。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Notify Error、Method、Spoken Text Mode。
 
 ## 配置项
 - Async（异步）
@@ -83,7 +81,7 @@ Speaker（讲述人）用于调用 Windows 的讲述人念一段文本。
 - 12. 添加模块：Speaker（讲述人）
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+
 
 ## 相关命令
 
@@ -101,14 +99,8 @@ Speaker（讲述人）用于调用 Windows 的讲述人念一段文本。
 查看所有讲述人音色。
 
 ## 相关模块
-- [Active (活动)](./Active.md)
 - [AutoSpeak (自动讲述)](./AutoSpeak.md)
 - [AntiMicrophone (反麦克风)](./AntiMicrophone.md)
-- [Console (控制台)](./Console.md)
-- [Shell (命令行)](./Shell.md)
-- [QuickCommand (快速命令)](./QuickCommand.md)
-- [ForceTopmost (强制置顶)](./ForceTopmost.md)
-- [MemeTrigger (梗触发)](./MemeTrigger.md)
 
 ## 相关资料
 无

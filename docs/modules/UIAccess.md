@@ -12,7 +12,9 @@
 - 版本属性：普通可用
 
 ## 介绍
-UIAccess（界面特权）建议先按默认配置运行一段时间，确认对目标窗口/系统行为的影响后，再从关键开关项开始逐步微调。
+UIAccess（界面特权）
+你需要在客户端拿到 `System 系统权限` 后才能使用这个模块。开启后会重启客户端，窃取`UIAccess` 进程令牌特权。此时客户端窗口具有最高层级的置顶级别 `UIAccess` (ZBID_UIACCESS)。
+
 ## 配置项
 无（该模块在 default_settings.h 中未定义独立配置项）
 
@@ -20,20 +22,14 @@ UIAccess（界面特权）建议先按默认配置运行一段时间，确认对
 - 20. 【PRO】添加模块：SuperTopmost，动态设置客户端窗口为 UIAccess
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+
 
 ## 相关命令
-无
+- /uiaccess
 
 ## 相关模块
-- [AntiCapture (反捕获)](./AntiCapture.md)
-- [AntiClose (反关闭)](./AntiClose.md)
-- [AntiDebug (反调试)](./AntiDebug.md)
-- [AntiIntercept (反拦截)](./AntiIntercept.md)
-- [AntiSpy (反间谍)](./AntiSpy.md)
-- [AntiTaskkill (反进程杀手)](./AntiTaskkill.md)
-- [AntiMouseHook (反鼠标钩子)](./AntiMouseHook.md)
-- [AntiKeyHook (反键盘钩子)](./AntiKeyHook.md)
+- [SuperTopmost (超级置顶)](./SuperTopmost.md)
+- [BandSetter (Z序段设置)](./BandSetter.md)
 
 ## 相关资料
-无
+- [揭秘窗口置顶中的『等级制度』！窗口Z序和UIAccess又是什么?](https://www.bilibili.com/video/BV1HCwwegEVp)

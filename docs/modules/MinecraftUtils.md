@@ -49,6 +49,9 @@ MinecraftUtils（MC功能）用于一些MC上的实用功能。
 - Log Parser Notify（日志解析通知）
  类型：布尔；默认：false
  说明：用于选择结果反馈方式。默认值 false 适合大多数场景；若你不想打扰可改为更安静的输出方式。
+- Log Parser Save Data（保存日志解析数据）
+ 类型：布尔；默认：true
+ 说明：开启后会把日志解析得到的游戏实例数据保存到 Records.json，客户端重启后会按仍在运行的游戏进程 PID 校验并恢复服务器地址等信息。
 - Log Parser Update Cooldown (ms)（日志解析更新冷却（毫秒））
  类型：数值；默认：300L
  说明：用于控制检测/刷新/动画节奏。默认值 300L 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
@@ -56,9 +59,9 @@ MinecraftUtils（MC功能）用于一些MC上的实用功能。
  类型：数值；默认：32L
  说明：这是数值型配置。默认值 32L 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
 - Log Game Chat Output Mode (PRO)（日志游戏聊天输出模式（专业版））
- 类型：枚举；默认："Notify"
- 说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 Notify ，确认稳定后再逐项切换比较效果。
- 可选：Off（关闭）；Notify（通知）；Chatter（弹幕）；Title（标题）；Speak（讲述）；Island（岛）；Real Chatter（真弹幕）
+ 类型：枚举；默认："Island"
+ 说明：这是该模块的核心行为开关，不同选项对应不同执行策略。选择 Chat Bar 时会按社交媒体格式自动染色，并对内置关键词使用特殊颜色。
+ 可选：Off（关闭）；Notify（通知）；Chatter（弹幕）；Title（标题）；Speak（讲述）；Island（岛）；Real Chatter（真弹幕）；Console Output（控制台输出）；Log（日志）；Chat Bar（聊天栏）；Actionbar（行为栏）
 - Log Game Chat Chatter Type（日志游戏聊天弹幕类型）
  类型：枚举；默认："Top"
  说明：用于选择结果反馈方式。默认值 Top 适合大多数场景；若你不想打扰可改为更安静的输出方式。

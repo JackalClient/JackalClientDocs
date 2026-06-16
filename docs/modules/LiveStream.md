@@ -192,6 +192,7 @@ LiveStream（直播间）用于一些直播间的功能。
  类型：数值；默认：240
  说明：这是数值型配置。默认值 240 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
 ## 历史更新
+- v1.1.2：在线观众 HUD 缓存与直播提醒状态迁移到 output/Cache 下的独立 JSON 文件，减少 Records.json 体积和保存卡顿。
 - 7. 修复 Livestream 模块中 Chatter Remote Execution (Riskful) 无效的问题。
 - 8. 为 Livestream 添加配置：
 - 14. 添加模块：LiveStream，支持爬取B站直播间弹幕并显示出来：

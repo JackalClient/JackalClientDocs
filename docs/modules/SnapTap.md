@@ -48,12 +48,10 @@ SnapTap（急停键）用于按下新键（A/D）和（W/S）时，自动释放�
 ## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)
 - [AutoClicker (连点器)](./AutoClicker.md)
-- [MouseWatcher (鼠标监视)](./MouseWatcher.md)
-- [MouseSwap (鼠标交换)](./MouseSwap.md)
-- [MouseDisabler (禁用鼠标)](./MouseDisabler.md)
-- [MouseTeleport (鼠标传送)](./MouseTeleport.md)
-- [MouseTrails (鼠标轨迹)](./MouseTrails.md)
-- [MouseESP (鼠标透视)](./MouseESP.md)
-
+- 
 ## 相关资料
-无
+- 本模块参考 `SnapKey` 开源项目：
+- [cafali/SnapKey - Github](https://github.com/cafali/SnapKey)
+- 其他：
+- [valignatev/hitboxer - Github](https://github.com/valignatev/hitboxer)
+- [在所有键盘上使用雷蛇新功能？【免费开源小程序】](https://www.bilibili.com/video/BV16U411U7LC)

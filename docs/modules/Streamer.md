@@ -1,7 +1,7 @@
 # Streamer
 主播模式
 分类：Web
-描述：防止直播过程中发生意外。
+描述：主播模式。
 
 ## 需求
 - 安全级别：常规模块
@@ -12,7 +12,7 @@
 - 版本属性：普通可用
 
 ## 介绍
-Streamer（主播模式）用于防止直播过程中发生意外。
+Streamer（主播模式）用于哔哩哔哩开播相关内容。
 也可以自动帮你打开或关闭你的哔哩哔哩直播、管理分区标题等。
 
 ## 配置项
@@ -98,5 +98,5 @@ Streamer（主播模式）用于防止直播过程中发生意外。
 - [LiveStream (直播间)](./LiveStream.md)
 
 ## 相关资料
-观看视频的这一部分，如何使用该模块开播：
-【Windows 桌面大纪 Jackal 0.9d更新】 【精准空降到 00:58】 https://www.bilibili.com/video/BV1JpF9zTEDk/?t=58
+- 观看视频的这一部分，如何使用该模块开播：
+- [【Windows 桌面大纪 Jackal 0.9d更新】 【精准空降到 00:58】 ](https://www.bilibili.com/video/BV1JpF9zTEDk/?t=58)

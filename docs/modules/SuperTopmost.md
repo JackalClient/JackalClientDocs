@@ -13,32 +13,36 @@
 - 版本属性：PRO 独有
 
 ## 介绍
-SuperTopmost（超级置顶）建议先按默认配置运行一段时间，确认对目标窗口/系统行为的影响后，再从关键开关项开始逐步微调。
+SuperTopmost（超级置顶）
+会动态地将客户端窗口设置为`超级置顶`，使其在所有窗口之上显示，不受其他窗口遮挡，包括屏幕键盘、任务管理器等。
+
 ## 配置项
 - Main Window（主窗口）
  类型：布尔；默认：true
- 说明：该开关会直接改变系统或窗口行为。建议逐项启用并观察，避免一次开启过多导致排查困难。
+ 说明：是否设置主窗口的 `Z-Order Band`
 - Console Window（控制台窗口）
  类型：布尔；默认：false
- 说明：用于控制结果反馈方式。调试阶段建议开启，日常使用可按需要关闭。
+ 说明：是否尝试设定控制台窗口的 `Z-Order Band`
+
 ## 历史更新
-- 20. 【PRO】添加模块：SuperTopmost，动态设置客户端窗口为 UIAccess
+- 20. 【PRO】添加模块：SuperTopmost，动态设置客户端窗口为 `UIAccess`
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+依赖 `WindowTopMost.dll` `IAMKeyHacker.dll`
 
 ## 相关命令
-无
+- /bands
+- 了解所有Z序段的信息。
+
+- /getband [hwnd]
+- 获取窗口的Z序段。hwnd 不填，则为客户端主窗口，如果主窗口不存在则为控制台窗口
+
+- /setband [hwnd] [zorderband]
+- 【PRO】动态设置窗口的Z序段。hwnd不填，则为客户端主窗口，如果主窗口不存在则为控制台窗口，- zorderband不填则为 `ZBID_UIACCESS（值为2）`
 
 ## 相关模块
-- [AntiCapture (反捕获)](./AntiCapture.md)
-- [AntiClose (反关闭)](./AntiClose.md)
-- [AntiDebug (反调试)](./AntiDebug.md)
-- [AntiIntercept (反拦截)](./AntiIntercept.md)
-- [AntiSpy (反间谍)](./AntiSpy.md)
-- [AntiTaskkill (反进程杀手)](./AntiTaskkill.md)
-- [AntiMouseHook (反鼠标钩子)](./AntiMouseHook.md)
-- [AntiKeyHook (反键盘钩子)](./AntiKeyHook.md)
-
+- [BandSetter (Z序段设置)](./BandSetter.md)
+- [UIAccess (界面特权)](./UIAccess.md)
+  
 ## 相关资料
-无
+- [揭秘窗口置顶中的『等级制度』！窗口Z序和UIAccess又是什么?](https://www.bilibili.com/video/BV1HCwwegEVp)

@@ -22,32 +22,33 @@ BandSetter（层级设置）用于修改窗口 Z-Order Band。该操作影响显
 - Operation（操作）
  类型：枚举；默认："Auto"
  说明：层级操作模式。自动模式会按当前状态推断方向。
- 可选：Auto（自动）；Set（未收录）；Reset（重置）
+ 可选：Auto（自动）；Set；Reset（重置）
 - Sync Topmost Status（同步置顶状态）
  类型：布尔；默认：true
  说明：调整Z序后同步置顶状态，避免两套状态互相打架。
 - Z-Order Band（Z序段）
  类型：枚举；默认："UIAccess"
- 说明：目标Z序带位。错误层级可能导致窗口不可见或不可交互，建议先小范围测试。
- 可选：Desktop（未收录）；UIAccess（未收录）；Immersive IHM（未收录）；Immersive Notification（Immersive 通知）；Immersive AppChrome（未收录）；Immersive MoGo（未收录）；Immersive Edgy（未收录）；Immersive InactiveMoBody（未收录）；Immersive InactiveDock（未收录）；Immersive ActiveMoBody（未收录）；Immersive ActiveDock（未收录）；Immersive Background（Immersive 背景）；Immersive Search（Immersive 查找）；Genuine Windows（Genuine 窗口）；Immersive Restricted（未收录）；System Tools（系统 工具）；Lock Screen（Lock 屏幕）；Above Lock UX（未收录）
+ 说明：目标窗口Z序段。
+ 可选：Desktop（桌面）；UIAccess；Immersive IHM；Immersive Notification（Immersive 通知）；Immersive AppChrome；Immersive MoGo；Immersive Edgy；Immersive InactiveMoBody；Immersive InactiveDock；Immersive ActiveMoBody；Immersive ActiveDock；Immersive Background（Immersive 背景）；Immersive Search（Immersive 查找）；Genuine Windows（Genuine 窗口）；Immersive Restricted；System Tools（系统工具）；Lock Screen（Lock 屏幕）；Above Lock UX
 ## 历史更新
-- 21. 【PRO】添加模块：BandSetter，动态设置窗口Z序段。
+- 21. 【PRO】添加模块：`BandSetter`，动态设置窗口Z序段。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+依赖 `WindowTopMost.dll` `IAMKeyHacker.dll`
 
 ## 相关命令
-无
+- /bands
+- 了解所有Z序段的信息。
+
+- /getband [hwnd]
+- 获取窗口的Z序段。hwnd 不填，则为客户端主窗口，如果主窗口不存在则为控制台窗口
+
+- /setband [hwnd] [zorderband]
+- 【PRO】动态设置窗口的Z序段。hwnd不填，则为客户端主窗口，如果主窗口不存在则为控制台窗口，- zorderband不填则为 `ZBID_UIACCESS（值为2）`
 
 ## 相关模块
-- [WindowTags (窗口标签)](./WindowTags.md)
-- [WindowHighlight (窗口高亮)](./WindowHighlight.md)
-- [WindowESP (窗口透视)](./WindowESP.md)
-- [Tracers (追踪线)](./Tracers.md)
-- [TargetESP (目标透视)](./TargetESP.md)
-- [TargetHUD (目标显示)](./TargetHUD.md)
-- [WindowMaster (窗口大师)](./WindowMaster.md)
-- [PrivateWindow (隐私窗口)](./PrivateWindow.md)
-
+- [SuperTopmost (超级置顶)](./SuperTopmost.md)
+- [UIAccess (界面特权)](./UIAccess.md)
+  
 ## 相关资料
-无
+- [揭秘窗口置顶中的『等级制度』！窗口Z序和UIAccess又是什么?](https://www.bilibili.com/video/BV1HCwwegEVp)

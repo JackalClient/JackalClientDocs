@@ -51,12 +51,14 @@ BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中�
  说明：用于控制 HUD 透明度。
 
 ## 历史更新
+- v1.1.2：视频助手会话缓存迁移到 output/Cache/BiliVideoHelperSessions.json，进一步减少 Records.json 保存压力。
 - v1.1.2：优化记录缓存，只保留当前/淡出视频会话所需的轻量字段，减少 Records.json 过大导致的卡顿。
 - v1.1.2：新增 Danmaku Sync，可自动下载当前视频弹幕文件并按 SMTC 进度联动 AutoDanmaku。
 
 ## 备注
 Danmaku Sync 使用 BiliChatter.Output Directory for Video Helper 作为缓存目录，并定期清理其中超过 3 天的 BV*.xml 文件。
 Always Sync 会在当前视频会话可用且 SMTC 正在播放时推送弹幕；Sync In Background 只在前台不是 B 站相关窗口时推送。
+当当前视频时间轴后续没有弹幕时，Danmaku Sync 会静默结束本轮 AutoDanmaku，不再发送模块关闭提示。
 
 ## 相关命令
 `/bilivideohelper`
