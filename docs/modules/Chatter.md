@@ -23,8 +23,36 @@ Chatter（弹幕）用于从 GUI 快速调用 `/chatter`，向客户端添加一
  类型：枚举；默认："Colorful"
  说明：本地弹幕颜色。该配置也会影响 `/chatter`、`/tchatter`、`/bchatter`、`/rchatter`、`/hchatter`、`/vchatter` 命令生成的弹幕颜色。
  可选：Flow（流动）；Colorful（彩色）；见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
+- Line Gap（行距）
+ 类型：整数；默认：10
+ 说明：弹幕行间距。
+- Show Duration（显示时长）
+ 类型：整数；默认：10000
+ 说明：弹幕从出现到结束的持续时间，单位为毫秒。
+- Font Size（字号）
+ 类型：整数；默认：60
+ 说明：本地弹幕字号，也用于计算滚动弹幕可用行数。
+- Opacity (0~1)（不透明度）
+ 类型：小数；默认：0.8
+ 说明：弹幕基础不透明度。
+- Give Way to Mouse（鼠标避让）
+ 类型：布尔；默认：开启
+ 说明：鼠标经过弹幕时，将弹幕不透明度平滑降低为基础不透明度的 20%，离开后恢复。
+- Movement（运动方式）
+ 类型：枚举；默认：Linear
+ 说明：滚动弹幕的水平运动曲线。
+ 可选：Linear；EaseInOutSine
+- Row Decision（行决定方式）
+ 类型：枚举；默认：Auto
+ 说明：滚动弹幕选择行的策略。
+ 可选：Auto；Random
+- Outline（轮廓）
+ 类型：枚举；默认：Shadow
+ 说明：弹幕文本轮廓效果。
+ 可选：Off；Shadow；Stroke
 
 ## 历史更新
+- 148. Chatter 接管原 HUD 中的弹幕显示选项，并新增 Give Way to Mouse 鼠标避让。
 - 147. Chatter 新增 Color 配置，并统一影响本地弹幕命令颜色。
 - 146. 新增 Chatter 模块，可通过图形界面快速添加单条本地弹幕。
 

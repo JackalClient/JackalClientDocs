@@ -14,7 +14,7 @@ B站视频助手
 ## 介绍
 BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中的视频，查询并显示视频数据。
 开启 Danmaku Sync 后，模块会在 BiliChatter 的 Output Directory for Video Helper 中查找当前视频的 BVID.xml；如果文件不存在或无法解析，会自动调用 BiliChatter 下载弹幕。
-下载失败会重试一次；仍失败则取消当前视频的弹幕同步。同步播放依赖 SMTC 的时间轴进度。
+下载失败会重试一次；仍失败则取消当前视频的弹幕同步。同步播放依赖 SMTC 的时间轴进度；当当前 B 站视频会话消失，或已匹配的前台 B 站视频窗口被隐藏时，会自动关闭由 BiliVideoHelper 启动的 AutoDanmaku 并清空同步弹幕。
 
 ## 配置项
 - Detect Mode（检测模式）
@@ -51,6 +51,8 @@ BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中�
  说明：用于控制 HUD 透明度。
 
 ## 历史更新
+- v1.1.2：Danmaku Sync 会监控已匹配的前台 B 站窗口，窗口隐藏时自动关闭由 BiliVideoHelper 启动的 AutoDanmaku 并清空同步弹幕。
+- v1.1.2：Danmaku Sync 在当前视频会话消失时会自动关闭由 BiliVideoHelper 启动的 AutoDanmaku。
 - v1.1.2：视频助手会话缓存迁移到 output/Cache/BiliVideoHelperSessions.json，进一步减少 Records.json 保存压力。
 - v1.1.2：优化记录缓存，只保留当前/淡出视频会话所需的轻量字段，减少 Records.json 过大导致的卡顿。
 - v1.1.2：新增 Danmaku Sync，可自动下载当前视频弹幕文件并按 SMTC 进度联动 AutoDanmaku。

@@ -45,8 +45,39 @@ Click Effects（点击效果）用于在鼠标点击位置绘制动画反馈。
  类型：枚举；默认：专业版 "Buttons"，免费版 "Off"
  说明：Off 时 Phigros 固定为黄色；Buttons 时左键黄色、右键蓝色、其他鼠标键红色，并联动 Auto 音效。
  可选：Off（关闭）；Buttons（按键）
+- Phigros Hold Repeat（Phigros Hold 重复）
+ 类型：枚举；默认："All"
+ 说明：Phigros 模式下，当前显示为黄色 Hold 效果的鼠标键长按时，是否按周期追加效果。All 会在 Sound 开启时同时播放音效，Only Particle 只生成视觉效果。
+ 可选：Off（关闭）；Only Particle（仅效果）；All（所有）
+- Phigros Tap Repeat（Phigros Tap 重复）
+ 类型：枚举；默认："Only Particle"
+ 说明：Phigros 模式下，当前显示为蓝色 Tap 效果的鼠标键长按时，是否按周期追加效果。
+ 可选：Off（关闭）；Only Particle（仅效果）；All（所有）
+- Phigros Flicker Repeat（Phigros Flicker 重复）
+ 类型：枚举；默认："Off"
+ 说明：Phigros 模式下，当前显示为红色 Flicker 效果的鼠标键长按时，是否按周期追加效果。
+ 可选：Off（关闭）；Only Particle（仅效果）；All（所有）
+- Phigros Hold Interval (ms)（Phigros Hold 间隔（毫秒））
+ 类型：整数；默认：200
+ 说明：Hold 长按重复触发的周期。
+- Phigros Tap Interval (ms)（Phigros Tap 间隔（毫秒））
+ 类型：整数；默认：250
+ 说明：Tap 长按重复触发的周期。
+- Phigros Flicker Interval (ms)（Phigros Flicker 间隔（毫秒））
+ 类型：整数；默认：1000
+ 说明：Flicker 长按重复触发的周期。
+- Phigros Hold Extra Key（Phigros Hold 额外按键）
+ 类型：按键绑定；默认：空
+ 说明：额外触发一次 Hold 效果，不参与长按重复。
+- Phigros Tap Extra Key（Phigros Tap 额外按键）
+ 类型：按键绑定；默认：空
+ 说明：额外触发一次 Tap 效果，不参与长按重复。
+- Phigros Flicker Extra Key（Phigros Flicker 额外按键）
+ 类型：按键绑定；默认：空
+ 说明：额外触发一次 Flicker 效果，不参与长按重复。
 
 ## 历史更新
+- v1.1.2：Phigros 预设新增 Hold、Tap、Flicker 的长按重复触发、重复间隔和额外按键配置。
 - v1.1.2：新增 Click Effects 模块，补充 Scale、Sound、Phigros Color (PRO) 配置，并优化 Blue Archive 与 Phigros 预设的可见性、层级和尺寸。
 
 ## 备注
