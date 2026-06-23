@@ -41,6 +41,12 @@ Click Effects（点击效果）用于在鼠标点击位置绘制动画反馈。
 - Sound (Custom)（音效（自定义））
  类型：字符串；默认：""
  说明：Sound=Custom 时使用的音频路径，可填写绝对路径，也可填写 assets 下的音频文件名。
+- Blacklisted Window Processes (Sep With Semicolon)（窗口进程黑名单（用分号分隔））
+ 类型：字符串；默认："javaw.exe"
+ 说明：当前前台窗口进程名命中列表时，不再生成点击特效或播放点击音效。多个进程名使用英文分号分隔。
+- Not When Cursor Hidden（鼠标隐藏时禁用）
+ 类型：布尔；默认：true
+ 说明：鼠标隐藏时不再生成点击特效或播放点击音效。
 - Phigros Color (PRO)（Phigros 颜色（专业版））
  类型：枚举；默认：专业版 "Buttons"，免费版 "Off"
  说明：Off 时 Phigros 固定为黄色；Buttons 时左键黄色、右键蓝色、其他鼠标键红色，并联动 Auto 音效。
@@ -78,6 +84,7 @@ Click Effects（点击效果）用于在鼠标点击位置绘制动画反馈。
 
 ## 历史更新
 - v1.1.2：Phigros 预设新增 Hold、Tap、Flicker 的长按重复触发、重复间隔和额外按键配置。
+- v1.1.2：新增前台窗口进程黑名单和鼠标隐藏时禁用选项，可阻止点击特效和点击音效。
 - v1.1.2：新增 Click Effects 模块，补充 Scale、Sound、Phigros Color (PRO) 配置，并优化 Blue Archive 与 Phigros 预设的可见性、层级和尺寸。
 
 ## 备注

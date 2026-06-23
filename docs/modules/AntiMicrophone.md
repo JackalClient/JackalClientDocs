@@ -24,9 +24,19 @@ AntiMicrophone（反麦克风）用于自动将采集设备静音，防止录音
  类型：数值；默认：1000U
  说明：用于控制检测/刷新/动画节奏。默认值 1000U 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
 - Mode（模式）
- 类型：枚举；默认："Mute"
- 说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 Mute ，确认稳定后再逐项切换比较效果。
- 可选：Mute（静音）
+ 类型：枚举；默认："Default"
+ 说明：Default 会保持录音设备静音；Hold to Talk 按住 Hold Key 并达到阈值后临时取消静音；Hold to Mute 则在按住达到阈值后临时静音。
+ 可选：Default（默认）；Hold to Talk（按住说话）；Hold to Mute（按住静音）
+- Hold Time Threshold (ms)（按住时间阈值 (毫秒)）
+ 类型：数值；默认：500U
+ 说明：Hold to Talk/Hold to Mute 模式下，按住 Hold Key 达到该时间后才触发状态切换，避免误触。
+- Hold Key（按住键）
+ 类型：按键/复合；默认：Left Control
+ 说明：Hold to Talk/Hold to Mute 模式下用于临时切换麦克风静音状态的按键。
+- HUD（HUD）
+ 类型：枚举；默认："Text"
+ 说明：控制麦克风静音提示的 HUD 显示样式。
+ 可选：Off（关闭）；Text（文本）；Texture（贴图）
 - Notify（通知）
  类型：布尔；默认：true
  说明：用于选择结果反馈方式。默认值 true 适合大多数场景；若你不想打扰可改为更安静的输出方式。

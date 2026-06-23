@@ -71,6 +71,9 @@ Developer（开发者）用于开发者调试使用。普通用户不用动它�
 - Live Chatter Time Diff（直播中 弹幕 Time Diff）
  类型：布尔；默认：false
  说明：用于选择结果反馈方式。默认值 false 适合大多数场景；若你不想打扰可改为更安静的输出方式。
+- Live Chatter Fullwidth Spaces（直播弹幕全角空格）
+ 类型：布尔；默认：false
+ 说明：控制直播弹幕发送时是否把半角空格转换为全角空格；关闭后，/blc、/bili live chatter、直播弹幕队列等命令路径会保留半角空格。
 - MC Log Lines（MC Log 行数）
  类型：布尔；默认：false
  说明：这是开关型配置。默认值 false 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。

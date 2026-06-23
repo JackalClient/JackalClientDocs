@@ -27,12 +27,19 @@ Mouse Trails V2（鼠标轨迹V2）用于在鼠标移动时绘制半透明轨迹
 - Ribbon Thickness（缎带粗细）
  类型：数值；默认：10.0f
  说明：控制轨迹线条基础粗细。数值越大，鼠标移动后的缎带越宽。
+- Blacklisted Window Processes (Sep With Semicolon)（窗口进程黑名单（用分号分隔））
+ 类型：字符串；默认："javaw.exe"
+ 说明：当前前台窗口进程名命中列表时，不再追加新的轨迹节点或粒子。多个进程名使用英文分号分隔。
+- Not When Cursor Hidden（鼠标隐藏时禁用）
+ 类型：布尔；默认：true
+ 说明：鼠标隐藏时不再追加新的轨迹节点或粒子，已有轨迹会自然淡出。
 - Color（颜色）
  类型：枚举；默认："Rainbow"
  说明：用于控制轨迹配色。建议先使用 Rainbow 观察动态效果，再按背景复杂度选择更高对比度的颜色。
  可选：见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
 
 ## 历史更新
+- v1.1.2：新增前台窗口进程黑名单和鼠标隐藏时禁用选项。
 - v1.1.2：新增 Mouse Trails V2 模块，并补充 Opacity 与 Ribbon Thickness 配置。
 
 ## 备注

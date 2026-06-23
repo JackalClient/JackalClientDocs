@@ -3180,7 +3180,7 @@ int		LastUpdate: 文本上一次更新的时间。
 ```
 
 ::: details 点击查看说明
-枚举当前的 Minecraft 实例以及对应的日志的情况。
+枚举当前的 Minecraft 实例以及对应的日志的情况；如果已解析到多人服务器，也会显示服务器地址。
 :::
 
 ## 清空 Minecraft 实例记录（`/mclog clear`）

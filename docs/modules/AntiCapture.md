@@ -13,6 +13,7 @@
 
 ## 介绍
 AntiCapture（反捕获）会为客户端窗口设置防录屏/防截屏属性，核心目的是降低常见捕获手段对窗口内容的获取能力。使用时建议先确认系统版本兼容，再通过 HUD 参数把状态提示摆在不遮挡的位置。
+当 ScreenCapture 模块启用且 Exclude Client 为 Keep 时，正在使用屏幕捕获的模块可能会保持 AntiCapture 开启。此时关闭 AntiCapture 后会出现通知，提示具体来源模块；请先关闭这些来源模块，再关闭 ScreenCapture。
 ## 配置项
 - HUD（是否显示HUD。）
  类型：布尔；默认：false

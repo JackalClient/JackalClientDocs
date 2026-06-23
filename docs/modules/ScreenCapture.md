@@ -23,7 +23,7 @@ ScreenCapture（屏幕捕获）用于一个持续捕捉屏幕的后台线程。
  可选：GDI（未收录）；DXGI（未收录）
 - Exclude Client（排除客户端）
  类型：枚举；默认："Keep"
- 说明：这是选项型配置。默认值 Keep 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
+ 说明：Keep 会保持客户端窗口处于 AntiCapture 防捕获状态，适合需要持续排除客户端画面的场景。如果在 ClickGUI 中关闭 AntiCapture 后又被自动恢复，通知会显示正在使用 ScreenCapture 的来源模块；请先关闭这些模块，再关闭 ScreenCapture。
  可选：Off（关闭）；Slow（缓慢）；Keep（保持）
 ## 历史更新
 - 29. 将屏幕捕获线程单独放到新的模块：Screen Capture，支持DXGI方法

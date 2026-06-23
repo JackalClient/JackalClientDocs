@@ -16,6 +16,7 @@ Island（灵动岛）用于显示一个酷炫的灵动岛。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Sync Notify Status、Sync Actionbar Status、Diversify Notify Icons。
 背景图片模糊会自动缓存；遇到过大的模糊纹理时会跳过磁盘导出，优先保证客户端不卡死。
+与 BetterLyrics 联动显示歌词译文时，缺失译文会由 BetterLyrics 后台预取；网络异常时会自动降低翻译重试频率，避免长期运行时积累过多请求。
 
 ## 配置项
 - Font Size（字号）
@@ -178,6 +179,27 @@ Island（灵动岛）用于显示一个酷炫的灵动岛。
 - Background Image Moving Speed（背景图片移动速度）
  类型：数值；默认：0.5f
  说明：这是数值型配置。默认值 0.5f 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
+- Audio Wave (PRO)（音频波（专业版））
+ 类型：枚举；默认："Off"
+ 说明：在灵动岛侧边绘制小型音频可视化波。开启后会自动启用 Audio Visualizer 模块。
+ 可选：Off（关闭）；Inside（岛内侧边）；Outside（岛外独立圆角容器）
+- Audio Wave Color（音频波颜色）
+ 类型：枚举；默认："White"
+ 说明：用于控制音频波颜色。建议选择与背景对比明显的颜色。
+ 可选：见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
+- Audio Wave Position（音频波位置）
+ 类型：枚举；默认："Left"
+ 说明：控制音频波显示在灵动岛左侧或右侧。
+ 可选：Left（左侧）；Right（右侧）
+- Audio Wave Opacity (0~1)（音频波不透明度 (0~1)）
+ 类型：数值；默认：0.9f
+ 说明：用于控制音频波透明度。
+- Audio Wave Scale（音频波缩放）
+ 类型：数值；默认：1.0f
+ 说明：用于调整音频波与外侧容器的整体尺寸。
+- Audio Wave Width Rate（音频波宽度比例）
+ 类型：数值；默认：1.0f
+ 说明：用于控制音频波宽度；数值越大，显示的柱子数量越多。
 - Lyrics Text Color（歌词文本颜色）
  类型：文本；默认："255;109;194;255"
  说明：用于控制视觉配色。建议先选对比度高的配色保证可读性；若是动态颜色，注意在复杂背景下的辨识度。
@@ -252,6 +274,8 @@ Island（灵动岛）用于显示一个酷炫的灵动岛。
  类型：数值；默认：0.12f
  说明：用于控制界面元素在屏幕中的相对位置。默认值 0.12f 一般是作者调过的稳定布局；建议每次只改一个轴，避免元素跑出可视区域。
 ## 历史更新
+- 52. Audio Wave (PRO) 新增宽度比例配置，并优化岛内整体居中与岛外容器样式。
+- 50. 新增 Audio Wave (PRO)，可在灵动岛内侧或岛外独立容器中显示小型音频波，并自动启用 Audio Visualizer。
 - 39. 将 Island 的 Use Normal Icon 改为 Show Icon
 - 30. 添加模块：Island，简单的灵动岛效果。在 Audio Visualizer 启用时会随音频旋律震动。
 - 36. 为 BetterLyrics 的 Display Mode 显示模式添加一个 Island 灵动岛上显示。带动画。没有歌词时会采用歌名。

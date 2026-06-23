@@ -30,6 +30,10 @@ BiliFans（B站粉丝）用于监控B站粉丝并发送通知。
  类型：枚举；默认："Off"
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
  可选：Off（关闭）；Only Self（仅自己）
+- Notify Famous Fans (Own Only) (PRO)（通知名人粉丝（仅自己）（专业版））
+ 类型：枚举；默认："Off"
+ 说明：仅在 Show Fans Nickname (PRO)=Only Self 且能识别新增粉丝昵称时生效；新增粉丝达到 10000 粉丝后，会按所选模式额外提示。
+ 可选：Off（关闭）；Notify（通知）；Chatter（弹幕）；Actionbar（行为栏）；Chat Bar（聊天栏）；WinToast（系统通知）；Speak（讲述）；Real Chatter（真弹幕）
 - Notify Fans Increase（通知涨粉）
  类型：布尔；默认：true
  说明：用于选择结果反馈方式。默认值 true 适合大多数场景；若你不想打扰可改为更安静的输出方式。
@@ -103,6 +107,7 @@ BiliFans（B站粉丝）用于监控B站粉丝并发送通知。
  类型：数值；默认：0.75f
  说明：用于控制界面元素在屏幕中的相对位置。默认值 0.75f 一般是作者调过的稳定布局；建议每次只改一个轴，避免元素跑出可视区域。
 ## 历史更新
+- 新增 Notify Famous Fans (Own Only) (PRO)，可在自己的新增粉丝中识别万粉以上用户并额外通知。
 - 18. 修改 Bili Fans 使之可以通知客户端退出期间的粉丝变化。
 - 15. 为 Bili Fans 添加新配置：
 - 8. 添加模块： Bili Fans，监控B站粉丝数量，如果有变化会触发通知。

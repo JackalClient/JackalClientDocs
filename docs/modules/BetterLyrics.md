@@ -20,6 +20,7 @@ BetterLyrics（更好的歌词）用于识别歌词并以更好的方式显示�
 ## Driver (PRO) 与 Island 显示
 Driver (PRO) 模式会按当前歌曲 ID 与歌曲标题维护独立歌词时间轴；当切歌、Hook 曲目变化或当前歌曲没有可用歌词时，会清空旧时间轴和 Island/Karaoke 运行态，避免上一首歌的歌词继续按时间轴重播。
 从 OCR、Hook Render 或 SMTC 切换到 Driver (PRO) 时，会主动刷新当前歌曲信息；如果暂时没有歌曲 ID，会后台解析当前歌名并在解析完成后继续拉取歌词。
+当 Island/Karaoke 使用 Manual 或 Driver+ 译文来源时，BetterLyrics 会后台预取缺失译文；网络异常时会自动限制并发和重试频率，避免反复请求翻译接口。
 ## 配置项
 - Async（异步）
  类型：布尔；默认：true
@@ -123,6 +124,9 @@ Driver (PRO) 模式会按当前歌曲 ID 与歌曲标题维护独立歌词时间
  类型：枚举；默认："Off"
  说明：这是选项型配置。默认值 Off 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
  可选：Off（关闭）；Chinese（中文）；English（英语）；Japanese（日语）
+- Translation Cache Entry Limit（翻译缓存条目上限）
+ 类型：数值；默认：500L
+ 说明：控制 BetterLyrics 歌词翻译持久缓存的最大条目数。译文会保存到 output/Cache/lyricsTranslation.txt，重启后可复用；设为 0 时不会读取或写入缓存文件。切换 Translation 目标语言时，会自动清空内存和文件中的旧译文缓存。
 - Off（关闭）
  类型：文本；默认："Chinese", "English", "Japanese"
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
