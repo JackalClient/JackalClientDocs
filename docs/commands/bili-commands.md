@@ -104,6 +104,36 @@
 【PRO】以昵称关键字kw搜索自己的粉丝。两个带f后缀的为快速模式，找到一个很符合的结果就会直接输出并停止。search(f)可以指定搜索范围limit（表示前limit个粉丝中搜索）, find 则为B站支持的最大搜索范围（可能为1000）中搜索。findf 为前 100 个中搜索。你可以使用UID=或UID:开头搜索指定UID的用户。
 :::
 
+## 查看或搜索直播粉丝团成员（`/bili member`）
+
+```bash
+/bili member list [limit=100] [uid=<UID或昵称>]
+/bili member enum [limit=100] [uid=<UID或昵称>]
+/bili member find <kw...> [uid=<UID或昵称>]
+/bili member findf <kw...> [uid=<UID或昵称>]
+/bili member search <limit> <kw...> [uid=<UID或昵称>]
+/bili member searchf <limit> <kw...> [uid=<UID或昵称>]
+```
+
+::: details 点击查看说明
+【PRO】查看或搜索指定用户的直播粉丝团成员。未指定 uid/user 时默认使用当前登录账号；uid= 或 user= 可填写 UID 或昵称，昵称会按 ParseBilibiliUserUID 解析。
+:::
+
+## 查看或搜索大航海成员（`/bili guard`）
+
+```bash
+/bili guard list [limit=100] [uid=<UID或昵称>]
+/bili guard enum [limit=100] [uid=<UID或昵称>]
+/bili guard find <kw...> [uid=<UID或昵称>]
+/bili guard findf <kw...> [uid=<UID或昵称>]
+/bili guard search <limit> <kw...> [uid=<UID或昵称>]
+/bili guard searchf <limit> <kw...> [uid=<UID或昵称>]
+```
+
+::: details 点击查看说明
+【PRO】查看或搜索指定用户直播间的大航海成员，会显示舰长/提督/总督、粉丝牌等级与陪伴天数。未指定 uid/user 时默认使用当前登录账号。
+:::
+
 ## 查看B站视频信息（`/bili video <aid/bid/link>`）
 
 ```bash

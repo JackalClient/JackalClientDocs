@@ -2138,6 +2138,22 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 句柄支持十进制和十六进制；十六进制前缀 0x 可加可不加。PID 仅支持精确匹配，不支持模糊匹配。
 :::
 
+## 查看、搜索和导出 UI 元素树（`/widgetesp ...`）
+
+```bash
+/widgetesp view [hwnd=null]
+/widgetesp details [hwnd=null]
+/widgetesp search [hwnd=null] <keyword...>
+/widgetesp export <hwnd=null> [path=output/WidgetESPResult.txt]
+/widgetesp exportcsv <hwnd=null> [path=output/WidgetESPResult.csv]
+/widgetesp ask1 [hwnd=null] <prompt...>
+/widgetesp ask [hwnd=null] <prompt...>
+```
+
+::: details 点击查看说明
+[PRO] 复用 WidgetESP 的 UIA 元素查询逻辑。`view` 以树形结构输出窗口或全屏元素；`details` 在同一行输出坐标、尺寸、句柄和各项 UIA 信息；`search` 按关键词搜索元素并用粉色高亮命中片段，关键词不区分大小写；`export` 导出详细文本报告；`exportcsv` 导出 CSV 报告。`ask1` 会把 `/widgetesp view` 的元素树作为上下文向 AI 提问并输出一次性回答；`ask` 会切换到 `widgetesp` 聊天会话并保存上下文，之后可用 `/chat` 或 `/chatstream` 继续交流。`hwnd` 不填或填 `null` 表示审查整个屏幕，也支持 `it`、`jc_hwnd`、`jc_hwnd_console`、十进制和十六进制句柄。`ask/ask1` 省略 hwnd 时会直接使用上一次 WidgetESP 缓存结果且不受 10 秒限制。`view/details/ask/ask1` 对同一目标在 10 秒内重复执行时会复用缓存结果。导出路径不以对应扩展名结尾时视为目录，并创建默认文件名。
+:::
+
 ## 先按 findwindow 的规则查找，再输入编…（`/selectwindow <hwnd/title/class/procname/pid>`）
 
 ```bash

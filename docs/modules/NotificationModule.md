@@ -61,6 +61,18 @@ Notification（通知）用于控制客户端的通知。
 - Notify Opacity (0~1)（通知不透明度 (0~1)）
  类型：数值；默认：1.0f
  说明：`Metro`类型的通知不透明度。
+- Shadow（阴影）
+ 类型：布尔；默认：true
+ 说明：控制 `Metro` 类型通知是否绘制阴影。切换到 `Nvidia (PRO)` 样式时会自动关闭一次，之后仍可手动重新开启。
+- Shadow Color（阴影颜色）
+ 类型：枚举；默认："Black"
+ 说明：控制 `Metro` 类型通知阴影颜色。
+- Shadow Opacity (0~1)（阴影不透明度 (0~1)）
+ 类型：数值；默认：0.35f
+ 说明：控制 `Metro` 类型通知阴影不透明度。
+- Shadow Thickness（阴影厚度）
+ 类型：数值；默认：18.0f
+ 说明：控制 `Metro` 类型通知阴影扩散厚度。
 - Notify Horizontal Margin（通知横向间隙）
  类型：数值；默认：80
  说明：`Metro`类型的通知与屏幕边缘的横向距离。
@@ -163,4 +175,5 @@ Notification（通知）用于控制客户端的通知。
 
 
 ## 历史更新
+- v1.1.2：新增 Shadow、Shadow Color、Shadow Opacity (0~1)、Shadow Thickness，用于控制 Metro 通知阴影；切换到 Nvidia (PRO) 样式时会自动关闭一次阴影。
 - v1.1.1：新增 Sound、Sound Volume (0~100) 与 Sound Pitch Randomization (0~1)，通知音效开关从 Sound 选项迁移到 Notification。

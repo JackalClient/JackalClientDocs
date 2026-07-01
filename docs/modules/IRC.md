@@ -1,4 +1,4 @@
-# IRC
+﻿# IRC
 新版聊天室
 分类：Web
 描述：和验证合二为一的聊天室系统。
@@ -21,6 +21,9 @@ IRC（聊天室）
  类型：枚举；默认："CN-Ali > GL-EdgeOne > GL-Web"
  说明：控制新版 Realm WS 连接时三条线路的尝试顺序。每条线路会按配置顺序尝试，并保留协议兜底。
  可选：CN-Ali > GL-EdgeOne > GL-Web；CN-Ali > GL-Web > GL-EdgeOne；GL-EdgeOne > CN-Ali > GL-Web；GL-EdgeOne > GL-Web > CN-Ali；GL-Web > CN-Ali > GL-EdgeOne；GL-Web > GL-EdgeOne > CN-Ali
+- Realm Route Order Auto Adjust（Realm 线路顺序自动调节）
+ 类型：布尔；默认：true
+ 说明：开启后，如果当前首选 Realm 线路连续多次失败、但后续线路可以连接成功，客户端会自动把该线路移动到顺序最后，并同步修改 Realm Route Order。
 - Async While Getting Username（异步获取用户名）
  类型：布尔；默认：true
  说明：用于控制是否异步处理。默认值 true 通常能减少主线程卡顿；若你遇到并发相关问题，可回退到更保守设置测试。
