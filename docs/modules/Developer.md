@@ -107,6 +107,36 @@ Developer（开发者）用于开发者调试使用。普通用户不用动它�
 - Download Manager（未收录）
  类型：布尔；默认：false
  说明：这是开关型配置。默认值 false 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
+- Better Topmost Enable Experimental Features（更好的置顶 启用实验性功能）
+ 类型：布尔；默认：false
+ 说明：控制 Better Topmost 的实验性高级策略总开关，关闭后会隐藏并停用相关 PassThrough 选项。
+- Better Topmost Detect WorkerW（更好的置顶 扩展检测弹出式桌面窗口 (WorkerW)）
+ 类型：布尔；默认：true
+ 说明：允许 Better Topmost 将 WorkerW 桌面窗口识别为桌面覆盖状态。
+- Better Topmost Detect Progman（更好的置顶 扩展检测桌面主窗口 (Progman)）
+ 类型：布尔；默认：false
+ 说明：允许 Better Topmost 将 Progman 桌面窗口识别为桌面覆盖状态。
+- Better Topmost Detect ShellDLL_DefView（更好的置顶 扩展检测桌面图标网格窗口 (ShellDLL_DefView)）
+ 类型：布尔；默认：false
+ 说明：允许 Better Topmost 将 ShellDLL_DefView 桌面图标窗口识别为桌面覆盖状态。
+- Better Topmost LivePreview PassThrough（更好的置顶 让行任务栏实时预览窗口）
+ 类型：布尔；默认：false
+ 说明：实验性选项，遇到任务栏实时预览窗口时临时让行，减少菜单遮挡预览的问题。
+- Better Topmost ExplorerWinUI PassThrough（更好的置顶 让行资源管理器 WinUI 弹出窗口）
+ 类型：布尔；默认：false
+ 说明：实验性选项，遇到资源管理器 WinUI 弹出窗口时临时让行。
+- Better Topmost ExplorerWinUI Auto Close Menu（更好的置顶 资源管理器弹出 WinUI 窗口时自动关闭菜单）
+ 类型：布尔；默认：false
+ 说明：遇到资源管理器 WinUI 弹出窗口时自动关闭菜单；开启后会优先于 PassThrough 策略。
+- Better Topmost Same Monitor Only（更好的置顶 仅检测当前显示器）
+ 类型：布尔；默认：true
+ 说明：仅在客户端所在显示器范围内判断桌面覆盖状态，降低多屏场景误判。
+- Better Topmost Debug Output（更好的置顶 调试输出）
+ 类型：布尔；默认：false
+ 说明：输出 Better Topmost 诊断日志，主要供开发排查窗口层级问题使用。
+- Force LivePreview Topmost（强制让客户端菜单打开时使用实时预览独占置顶）
+ 类型：布尔；默认：false
+ 说明：菜单打开时强制使用实时预览方式维持置顶；开启后会临时禁用与其冲突的让行策略。
 - Debug Break Hotkey（Debug Break 快捷键）
  类型：按键/复合；默认：`{ { "Keybind", {VK_LCONTROL, VK_LMENU, VK_SUBTRACT } }`}
  说明：用于设置快捷键触发。建议避免与系统或常用软件冲突，优先使用组合键提高可控性。

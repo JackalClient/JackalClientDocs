@@ -24,7 +24,7 @@ Free 免费版下载：
 - Github Releases: [github.com/noexcept2005/JackalClient/releases](https://github.com/noexcept2005/JackalClient/releases)
 - QQ群聊中获取: `196218959` 进群先看公告
 - 电脑小白请单击此处查看 → [如何下载并运行 JackalClient 说明书](/download-and-run)
-- 解压密码统一 `Wormwake`
+- 解压密码统一 `Wormwake`，请勿使用 Windows 自带的解压缩。
 
 ## 1. 启动方式
 
@@ -39,8 +39,8 @@ Free 免费版下载：
 
 默认打开或关闭界面（ClickGUI）快捷键：
 
-- 旧版(<v1.0.4)：右 `Ctrl` / 右 `Shift`；
-- 新版(>=v1.0.4): 右 `Alt` /    左 `Ctrl` + 左 `Alt` + `Insert`  （这个记不住算了，应急用的）
+- 旧版(&lt;v1.0.4)：右 `Ctrl` / 右 `Shift`；
+- 新版(&gt;=v1.0.4): 右 `Alt` /    左 `Ctrl` + 左 `Alt` + `Insert`  （这个记不住算了，应急用的）
 
 打开 GUI 后，鼠标穿透就会被关闭，意味着除了任务栏的其他区域都是客户端的窗口，无法点击空白处和后面的窗口交互，你只能操纵客户端窗口，除非关闭 GUI。
 客户端的主窗口大多数情况下都是置顶的，这意味着始终显示。如果被其他普通桌面程序窗口盖住了，可以尝试打开 `ForceTopmost / 强制置顶` 模块。
