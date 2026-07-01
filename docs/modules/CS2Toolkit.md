@@ -9,8 +9,8 @@ CS2工具箱
 - 权限需求：无
 - 驱动依赖：否
 - 联网需求：否，仅监听本机 `127.0.0.1`
-- 开发状态：第一版
-- 版本属性：免费版可用
+- 开发状态：【！】注意这个模块未经过测试，请谨慎使用
+- 版本属性：v1.1.2 免费版可用
 
 ## 介绍
 `CS2 Toolkit` 通过 CS2 的 Game State Integration 机制接收游戏状态推送。模块会在本机启动一个 HTTP 监听器，并按配置生成 `gamestate_integration_jackalclient.cfg`，让 CS2 将玩家状态、回合、炸弹和武器数据 POST 到 Jackal Client。
@@ -66,4 +66,4 @@ CS2工具箱
 - [Actionbar (行为栏)](./Actionbar.md)
 
 ## 相关资料
-- https://github.com/clover-233/CS2Toolkit
+- [https://github.com/clover-233/CS2Toolkit](https://github.com/clover-233/CS2Toolkit)
