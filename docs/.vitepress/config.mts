@@ -50,13 +50,14 @@ const sidebarGroups = [
   {
     text: '核心内容 CORE',
     items: [
+      { text: '常见问题', link: '/faq' },
       { text: '功能与模块地图', link: '/module-map' },
       { text: '完整模块介绍', link: '/modules/' },
       { text: '命令目录页', link: '/commands-catalogue' },
       { text: '完整命令手册', link: '/commands/' },
       { text: '安全说明', link: '/safety' },
       { text: '文件介绍', link: '/client-files' },
-      { text: '版本与演进', link: '/history-summary' }
+      { text: '配置项说明', link: '/configuration' }
     ]
   },
   {
@@ -74,7 +75,6 @@ const sidebarGroups = [
   {
     text: '专题文档 THEMES',
     items: [
-      { text: '常见问题', link: '/faq' },
       { text: '专业版', link: '/pro' },
       { text: '更好的歌词说明', link: '/betterlyrics' }
     ]
