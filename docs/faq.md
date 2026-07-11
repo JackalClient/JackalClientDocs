@@ -18,8 +18,7 @@
 ---
 
 
-<font style="color:#2F8EF4;">Q: </font><font style="color:#2F8EF4;">解压密码是什么</font>
-
+<font style="color:#2F8EF4;">Q: </font><font style="color:#2F8EF4;">解压密码是什么<br></font>
 <font style="color:#2F8EF4;">A: Wormwake</font>
 
 
@@ -30,8 +29,9 @@ A: 不要用 <font style="color:#2F8EF4;">Windows自带的 </font>zip解压，�
 
 **<font style="color:#DF2A3F;">Q: 怎么杀毒软件报毒了</font>**
 
-**<font style="color:#DF2A3F;">A: 正常现象（例如 `Hetile.e, Exploit/CVE-XXXX, Exploit/Vuldriver, BypassUAC, Hacktool, Injector.bkc` 等字样），恢复区恢复到原目录并添加信任（最好整个目录添加一下），无论什么版本的客户端都没有任何后门。</font>**
+<font style="color:#DF2A3F;">A: 正常现象（例如 `Hetile.e, Exploit/CVE-XXXX, Exploit/Vuldriver, BypassUAC, Hacktool, Injector.bkc` 等字样），恢复区恢复到原目录并添加信任（最好整个目录添加一下），无论什么版本的客户端都没有任何后门。</font>
 
+---
 
 Q: 启动器在线下载客户端文件时候怎么自己就退出了
 
@@ -49,7 +49,7 @@ A: 客户端不支持 `Windows 8 以下`的 `Windows` 系统版本。而且这�
 
 Q: 弹窗缺少 VCRUNTIME140.DLL 等
 
-A: 缺少 VC++环境 。群文件搜索 vc，找到两个<font style="color:#DF2A3F;">vc_redist</font>的exe（一个64位一个32位），都安装一下然后重试
+A: 缺少 VC++环境 。群文件搜索 vc，找到两个 <font style="color:#DF2A3F;">vc_redist</font> 的exe（一个64位一个32位），都安装一下然后重试
 
 
 
@@ -400,6 +400,16 @@ A: ...
 Q: 显示某些信息的时候出现 [Streamer Filtered] 或者 [Privacy Filtered] 是什么鬼
 
 A: 你开启了 **隐私保护（Privacy Protect）**（在旧版本 < `v1.1.0`下为 **主播模式 (Streamer)** 模块），会自动隐藏和过滤一些关键信息以免泄露。关闭即可。
+
+
+Q: v1.1.2 版本客户端打开后资源管理器卡死，鼠标突然非常卡
+
+A: v1.1.2 客户端导致资源管理器卡死的问题解决方案
+1. 找到 config 文件夹，以修改时间排序，找到你的配置文件（在未重命名的时候，通常为 `profile-` 开头的 json 文件。
+2. 用记事本打开，`Ctrl+F` 搜索 `No UAC`，找到下面的 `Bypass Explorer Notify`，把 true 改成 false，保存。
+3. 搜索改成 `No Firewall`，找到下面的 `Masquerade`，把 true 改成 false，保存。
+4. 重新打开客户端。
+5. （自 v1.1.3 起，客户端已永久移除这两个选项。关闭防火墙模块将不提供绕过，始终需要管理员权限。）
 
 
 
