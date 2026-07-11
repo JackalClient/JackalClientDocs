@@ -3380,24 +3380,64 @@ zhanan			随机渣男语录
 移除人员信息。
 :::
 
-## 输出所有人员信息（`/pdb list/enum/show/ls`）
+## 输出所有人员信息（`/pdb list/enum/show/ls [id/name]`）
 
 ```bash
-/pdb list/enum/show/ls
+/pdb list/enum/show/ls [id/name]
 ```
 
 ::: details 点击查看说明
-输出所有人员信息。
+彩色输出所有或指定人员信息，空数据会显示为 --。参数为纯数字时按 id 查询，否则按人名模糊查询；人名可以包含空格。
 :::
 
-## 以二维表形式输出所有人员信息（`/pdb list2d/table`）
+## 以二维表形式输出所有人员信息（`/pdb list2d/table [id/name]`）
 
 ```bash
-/pdb list2d/table
+/pdb list2d/table [id/name]
 ```
 
 ::: details 点击查看说明
-以二维表形式输出所有人员信息。
+以二维表形式彩色输出所有或指定人员信息，会按 UTF-8 视觉宽度对齐中文字符，空数据会显示为 --。参数为纯数字时按 id 查询，否则按人名模糊查询；人名可以包含空格。
+:::
+
+## 正规化隐私数据库数据（`/pdb normalize [id/name]`）
+
+```bash
+/pdb normalize [id/name]
+```
+
+::: details 点击查看说明
+正规化所有或指定人员信息：清除各项数据中的制表符和换行符，并校验身份证号；身份证号无效时会自动清空并警告。参数为纯数字时按 id 查询，否则按人名模糊查询；人名可以包含空格。
+:::
+
+## 检查隐私数据库数据（`/pdb check [id/name]`）
+
+```bash
+/pdb check [id/name]
+```
+
+::: details 点击查看说明
+只检查并警告需要正规化的数据，不写入修改。参数为空时检查全部；参数为纯数字时按 id 查询，否则按人名模糊查询；人名可以包含空格。
+:::
+
+## 输出隐私数据库记录数量（`/pdb count/stat/stats`）
+
+```bash
+/pdb count/stat/stats
+```
+
+::: details 点击查看说明
+输出隐私数据库中的记录数量。
+:::
+
+## 输出隐私数据库可用字段名（`/pdb keys/schema`）
+
+```bash
+/pdb keys/schema
+```
+
+::: details 点击查看说明
+输出 /pdb set、/pdb upsert 和 /pdb paste 可用字段名；/pdb paste 还支持 ignore 或 * 跳过对应位置的数据。
 :::
 
 ## 查询人员的所有信息（`/pdb query <人名>`）
@@ -3447,7 +3487,7 @@ zhanan			随机渣男语录
 ```
 
 ::: details 点击查看说明
-从剪贴板以指定格式导入数据。例如一百行学号空格姓名，输入/pdb paste student_id name即可批量录入。
+从剪贴板以指定格式导入数据，剪贴板内容中的制表符会全部替换为 1 个空格，各项数据中的换行符会被去除。format 支持命令行补全字段名，ignore 或 * 表示忽略对应位置的数据。例如一百行学号空格姓名，输入/pdb paste student_id name即可批量录入。
 :::
 
 ## 执行数据库命令（`/pdb exec &lt;command&gt;`）
@@ -3633,10 +3673,10 @@ zhanan			随机渣男语录
 切换晴雨状态。
 :::
 
-## 切换天气状态（`/weather <clear/rain/thunder>`）
+## 切换天气状态（`/weather <clear/rain/thunder/snow/sandstorm>`）
 
 ```bash
-/weather <clear/rain/thunder>
+/weather <clear/rain/thunder/snow/sandstorm>
 ```
 
 ::: details 点击查看说明

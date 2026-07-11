@@ -375,14 +375,27 @@ go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 
 查询自己已关注的所有 up 的直播状态。
 :::
 
-## 输出现在的直播间观众信息（`/bili live audience [roomId=~]`）
+## 输出直播间观众信息（`/bili live audience [roomId=livestream]`）
 
 ```bash
-/bili live audience [roomId=~]
+/bili live audience [roomId=livestream]
 ```
 
 ::: details 点击查看说明
-输出现在的直播间观众信息。如果 roomId 不填，则为当前的缓存。如果填~，则取 LiveStream 模块的 Room ID。
+输出指定直播间的在线观众信息，最多输出 20 位观众。如果 roomId 不填或填 ~，则取 LiveStream 模块的 Room ID。
+:::
+
+## Audience Tracker 控制命令（`/audiencetracker status [uid/nickname=all]`）
+
+```bash
+/audiencetracker status [uid/nickname=all]
+/audiencetracker trace <uid/nickname>
+/audiencetracker reload
+/audiencetracker config
+```
+
+::: details 点击查看说明
+Audience Tracker 控制命令。status 输出目标用户当前状态、所在直播间与最近最多 20 条弹幕；trace 打开 Present 目标所在直播间；reload 在 Config Source=Config File 时重新加载配置文件；config 彩色列举当前配置和目标组。
 :::
 
 ## 给现在的直播间观众的动态点赞（`/bili live likeauds [roomId=~] [limit=5]`）

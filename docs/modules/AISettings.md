@@ -78,6 +78,9 @@ AISettings（AI设定）用于关于AI的设置。
 - Custom AI API Key（自定义人工智能ApiKey）
  类型：文本；默认：""
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
+- Custom AI Base URL（自定义人工智能基础链接）
+ 类型：文本；默认："https://"
+ 说明：自定义 OpenAI 兼容接口地址。可填写服务根地址、`/v1`、`/v1/chat` 或完整 `/v1/chat/completions`，客户端会自动补全聊天补全接口后缀。
 - Custom AI Model（自定义人工智能模型）
  类型：文本；默认：""
  说明：这是该模块的核心行为开关。默认值 + + 通常更稳，建议先验证默认策略再尝试其他模式。
@@ -135,6 +138,7 @@ AISettings（AI设定）用于关于AI的设置。
  类型：布尔；默认：false
  说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。
 ## 历史更新
+- v1.1.3：Custom AI Base URL 支持自动补全 `/v1/chat/completions` 等聊天补全接口后缀。
 - 13. 为 AI Settings 添加配置：
 - 31. 为 AI Settings 添加配置：
 - 52. 添加模块：AI Settings，将之前的 Chat Ask 的 API Key 等配置移动到这里。

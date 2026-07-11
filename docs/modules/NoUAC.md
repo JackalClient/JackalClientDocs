@@ -15,12 +15,9 @@
 NoUAC（禁UAC）用于暂无描述。
 适合在日常管理与自动化场景中按需启用。
 建议先以管理员身份运行客户端。
-初次使用可优先调整：Bypass Explorer Notify、Keep Mode Notify Action。
+初次使用可优先调整：Keep Mode Notify Action。
 
 ## 配置项
-- Bypass Explorer Notify（绕过资源管理器通知）
- 类型：布尔；默认：true
- 说明：用于选择结果反馈方式。默认值 true 适合大多数场景；若你不想打扰可改为更安静的输出方式。
 - Highest Level When UAC Enabled（UAC启用时使用最高等级）
  类型：布尔；默认：false
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。

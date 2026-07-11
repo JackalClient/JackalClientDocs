@@ -21,6 +21,7 @@ BetterLyrics（更好的歌词）用于识别歌词并以更好的方式显示�
 Driver (PRO) 模式会按当前歌曲 ID 与歌曲标题维护独立歌词时间轴；当切歌、Hook 曲目变化或当前歌曲没有可用歌词时，会清空旧时间轴和 Island/Karaoke 运行态，避免上一首歌的歌词继续按时间轴重播。
 从 OCR、Hook Render 或 SMTC 切换到 Driver (PRO) 时，会主动刷新当前歌曲信息；如果暂时没有歌曲 ID，会后台解析当前歌名并在解析完成后继续拉取歌词。
 当 Island/Karaoke 使用 Manual 或 Driver+ 译文来源时，BetterLyrics 会后台预取缺失译文；网络异常时会自动限制并发和重试频率，避免反复请求翻译接口。
+Display Mode 选择 Mixed 且 Island 模块开启时，BetterLyrics 会同时维护灵动岛的正常歌词显示；Mixed 的标题、弹幕、通知、Fancy 等原有混合输出保持不变。
 ## 配置项
 - Async（异步）
  类型：布尔；默认：true
@@ -159,6 +160,7 @@ Driver (PRO) 模式会按当前歌曲 ID 与歌曲标题维护独立歌词时间
 ## 历史更新
 - 36. 为 BetterLyrics 的 Display Mode 显示模式添加一个 Island 灵动岛上显示。带动画。没有歌词时会采用歌名。
 - 37. 为 BetterLyrics 的 Exclude Non-lyrics Content 排除非歌词内容添加对特定前缀的检查（例如“作曲：”）
+- 38. 修复 Mixed 显示模式下灵动岛歌词可能短暂消失并回到 Idle 信息的问题。
 - 29. 添加模块： BetterLyrics，更好的桌面歌词。目前只支持网易云音乐。
 
 ## 备注

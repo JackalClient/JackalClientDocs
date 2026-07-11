@@ -9,7 +9,7 @@ Codex 通知器
 - `Off-client Notification`：客户端外通知方式。`Off` 不弹系统外通知；`Message` 调用 `msg`；`WinToast` 优先尝试 Windows Toast，失败时回退到系统托盘气泡或消息框；`Speak` 通过系统 SAPI 语音服务讲述通知正文。
 - `Send to Client`：若 JackalClient 正在运行，则通过 `loader.exe clientcommand` 把消息发送给客户端；若客户端不存在则放弃。
 - `Client Notification`：客户端内通知方式，支持 `Off`、`Notify`、`Chatter`、`Title`、`Speak`、`WinToast`、`Real Chatter`、`Actionbar`，默认 `Speak`。当该项不是 `Notify`、`Title` 或 `Off` 时，客户端会同时在控制台用深绿色输出该消息。
-- `Client Custom Command Enabled` / `Client Custom Command`：开启后，客户端收到 Codex 通知时会额外执行自定义命令。默认命令为 `mj notify %message%;;music assets/icechime.wav`，其中 `%message%` 会替换为 Codex 通知正文；若 Hook 事件带有标题，也可用 `%title%` 引用。
+- `Client Custom Command Enabled` / `Client Custom Command`：开启后，客户端收到 Codex 通知时会额外执行自定义命令。默认命令为 `mj notify %message%;;async music assets/icechime.wav`，其中 `%message%` 会替换为 Codex 通知正文；若 Hook 事件带有标题，也可用 `%title%` 引用。
 
 ## 安全策略
 
@@ -17,7 +17,7 @@ Codex 通知器
 
 ## 稳定性保护
 
-客户端收到 `/codexnotify` 后只负责解析参数并把通知投递到主线程执行，避免 Hook 外部进程触发时直接访问客户端通知对象。客户端通知、自定义命令、自动重装托管脚本等路径均带异常捕获，异常会写入 DebugError 日志。Hook 脚本会限制标题与正文长度，并对 `loader.exe clientcommand` 调用做额外保护，降低超长 Stop 消息或通知异常导致客户端崩溃的风险。Debug 模式会复用同一 PowerShell 解析路径显示标题、正文与 Hook 原始摘要，不再通过空白 CMD 暂停窗口兜底。
+客户端收到 `/codexnotify` 后只负责解析参数并把通知投递到主线程执行，避免 Hook 外部进程触发时直接访问客户端通知对象；自定义命令会进入运行时命令队列执行，避免播放提示音等同步命令卡住主线程。客户端通知、自定义命令、自动重装托管脚本等路径均带异常捕获，异常会写入 DebugError 日志。Hook 脚本会限制标题与正文长度，并对 `loader.exe clientcommand` 调用做额外保护，降低超长 Stop 消息或通知异常导致客户端崩溃的风险；通知正文传回客户端时使用 URL-safe base64，并会尝试修复权限请求文本中 UTF-8 被系统 ANSI 代码页误解码造成的中文乱码。Debug 模式会复用同一 PowerShell 解析路径显示标题、正文与 Hook 原始摘要，不再通过空白 CMD 暂停窗口兜底。
 
 ## 状态同步
 

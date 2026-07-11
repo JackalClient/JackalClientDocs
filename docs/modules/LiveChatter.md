@@ -74,13 +74,25 @@ LiveChatter 负责直播弹幕本身：它从 LiveStream 当前房间接收弹�
  说明：弹幕发送队列的基础冷却。队列命令、自动回复或手动发送密集触发时会受它限制，避免过快连续发送。
 - Prevent Others Room Chatter Sending（阻止向他人直播间发送弹幕）
  类型：布尔；默认：true
- 说明：防止向非本人直播间发送弹幕的保护开关。观察别人直播间、调试 AI 回复或切换房间时建议保持开启。
+ 说明：防止向非本人直播间发送弹幕的保护开关。观察别人直播间、调试 AI 回复或切换房间时建议保持开启。Neverlose GUI 的 BiliLive 页检测到该保护生效时会将发送按钮显示为深红色，并阻止回车发送。
+- Confirm Others Room Chatter Sending（确认向他人直播间发送弹幕）
+ 类型：枚举；默认："Every Enqueue Request"
+ 说明：当发送目标不是本人直播间时，控制是否弹出确认。`Never` 不确认；`Every Enqueue Request` 对一次完整入队请求确认一次；`Every Segment` 对按长度限制切分后的每句弹幕分别确认。若 `Prevent Others Room Chatter Sending` 开启，仍会优先阻止发送。
+ 可选：Never；Every Enqueue Request；Every Segment
+- Confirm Others Room Chatter Sending Type（向他人直播间发送弹幕确认类型）
+ 类型：枚举；默认："MessageBox"
+ 说明：选择确认界面。`MessageBox` 使用系统异步对话框；`MsgBox2` 使用客户端手绘对话框；`GALOptions` 使用 PRO 的 GALOptions 选择 HUD。确认倒计时为 10 秒，超时视为取消发送。
+ 可选：MessageBox；MsgBox2；GALOptions
 - Max Allowed Chatter Delay (s)（弹幕延迟最大允许值，秒）
  类型：数值；默认：60U
  说明：丢弃过旧的直播间弹幕，避免网络恢复后把历史弹幕当作新消息显示、朗读或触发命令。
 - Single Chatter Length Limit（单条弹幕长度限制）
  类型：数值；默认：40U
  说明：单条发送弹幕的长度上限。超过上限的文本会被拆分；过小会增加分段数量，过大可能超过平台限制。
+- NL User Bili Live Chat Box Style（Neverlose用户BiliLive聊天框样式）
+ 类型：枚举；默认："Text"
+ 说明：控制 Neverlose GUI 用户信息页下方 BiliLive 聊天页的显示样式。`Modern` 使用 B 站头像、用户名、财富等级、粉丝牌和气泡布局；当前无可用 B 站头像元数据时会回退为昵称首字符头像。打开 Neverlose GUI 并停留在 BiliLive 页时，LiveChatter 模块未启用会按 10 秒冷却拉取历史弹幕，已启用会按 30 秒冷却补拉历史弹幕，切换到 BiliLive 页时也会立即拉取一次；滚动到顶部时会按 5 秒冷却补拉历史弹幕。历史弹幕会按用户、正文和时间戳去重，并按直播间分别写入 Neverlose BiliLive 页的私有显示缓存，不会重新写入全局聊天栏；切换直播间时会刷新为当前房间的消息。开启 `User Blacklist Enabled` 后，黑名单用户也不会同步显示到 Neverlose BiliLive 聊天页。Modern 消息支持悬停高亮、复制、翻译和头像右键菜单。
+ 可选：Text（文本）；Modern（现代）
 - Color（颜色）
  类型：枚举；默认："White"
  说明：普通弹幕以 `Chatter` 方式显示时的颜色。直播背景复杂时建议使用高对比度颜色。
@@ -276,6 +288,7 @@ LiveChatter 负责直播弹幕本身：它从 LiveStream 当前房间接收弹�
  说明：实验性的 @ 相关处理。除非正在测试直播间点名或回复链路，否则保持关闭。
 
 ## 历史更新
+- v1.1.4：新增 Neverlose 用户信息页 BiliLive 聊天框样式配置，并在 LiveChatter 开启时定期补拉历史弹幕。
 - 35. 将 AutoLiveChatter 模块重命名为 LiveChatter，并将 LiveStream 模块的弹幕部分分到 LiveChatter 模块。重命名部分配置项。
 - 8. 添加模块：AutoLiveChatter，自动直播间弹幕。
 

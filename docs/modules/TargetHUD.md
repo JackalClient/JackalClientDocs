@@ -20,6 +20,8 @@ TargetHUD 会为目标窗口绘制一块信息面板，展示进程名、PID、�
 - Target（目标）
   类型：组合框；默认："Foreground"。决定 HUD 跟踪的窗口来源。
   可选：Foreground（前端）；PointAt（指向）；it (Pronoun)（代词 it）。
+- Scale（整体缩放）
+  类型：数值；默认：1.0f。统一缩放 TargetHUD 的背景、头像、文字、血条和反馈效果；该尺寸不再跟随 ClickGUI Global Scale。
 - Avatar Circle（圆形头像）
   类型：布尔；默认：true。控制头像区域是否圆形裁切。
 - UWP Show Original Process（UWP 应用显示原始进程）
@@ -76,6 +78,9 @@ TargetHUD 会为目标窗口绘制一块信息面板，展示进程名、PID、�
   类型：数值；默认：0.2f。控制 HUD 追随速度。
 - Fade Time (ms)（淡入淡出时间（毫秒））
   类型：数值；默认：500L。目标切换时 HUD 的淡入淡出时间。
+- Animation（动画）
+  类型：组合框；默认："Enlarge II"。控制目标切换或出现时的 HUD 缩放动画。
+  可选：Off（关闭）；Expand（展开）；Enlarge（放大）；Enlarge II（放大 II）；Shrink（缩小）；Shrink II（缩小 II）；Elastic（弹性）。
 - Style（风格）
   类型：组合框；默认："Default"。当前版本主样式入口。
   可选：Default（默认）。

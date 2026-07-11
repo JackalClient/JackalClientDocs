@@ -22,9 +22,10 @@ QuickRun（快捷运行）用于暂无描述。
  说明：这是选项型配置。默认值 system & pause 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
  可选：ShellExecute（未收录）；system（系统）；system & pause（系统 & pause）
 - Unknown Command Auto Resolve（未知命令自动解析）
- 类型：枚举；默认："Off"
+ 类型：枚举；默认："Confirm"
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
  可选：Off（关闭）；Confirm（确认）；Run（未收录）
+ 补充：通过 Everything 搜索到结果并成功运行后，会把程序名和绝对路径记入 Records.json 的 SAVED PROGRAMS；之后路径失效时会自动从记录中移除。
 - Remember Multi-Result Selection（记忆多结果选择）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
@@ -52,6 +53,7 @@ QuickRun（快捷运行）用于暂无描述。
  可选：Lazy（懒散）；Launch（未收录）；Daily（未收录）
 ## 历史更新
 - 32. 完善 /quickrun ，先扫描 Program Files，如果无结果再扫描全盘。
+- 55. Quick Run 通过 Everything 成功运行的程序会自动记住，路径失效后会自动移除；Shell 输入高亮会用白色提示已保存程序。
 - 11. 添加模块：QuickRun，需要用指令调用。
 - 27. 完善 QuickRun 模块。
 
