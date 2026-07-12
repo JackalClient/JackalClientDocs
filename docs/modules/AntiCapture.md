@@ -56,14 +56,9 @@ AntiCapture（反捕获）会为客户端窗口设置防录屏/防截屏属性�
 无
 
 ## 相关模块
-- [AntiClose (反关闭)](./AntiClose.md)
-- [AntiDebug (反调试)](./AntiDebug.md)
-- [AntiIntercept (反拦截)](./AntiIntercept.md)
-- [AntiSpy (反间谍)](./AntiSpy.md)
-- [AntiTaskkill (反进程杀手)](./AntiTaskkill.md)
-- [AntiMouseHook (反鼠标钩子)](./AntiMouseHook.md)
-- [AntiKeyHook (反键盘钩子)](./AntiKeyHook.md)
-- [AutoStart (开机自启)](./AutoStart.md)
+- [BlackCapture (黑屏捕获)](./BlackCapture.md)
+- [PrivateWindow (隐私窗口)](./PrivateWindow.md)
+
 
 ## 相关资料
-无
+视频：[神秘的窗口『反截屏』是什么原理？【SetWindowDisplayAffinity】](https://www.bilibili.com/video/BV1EkrwY7E5Z)

@@ -102,4 +102,4 @@ Mute（静音）用于暂无描述。
 - [MemeTrigger (梗触发)](./MemeTrigger.md)
 
 ## 相关资料
-无
+视频介绍：[更加便利的 Windows 音量调节【ft.Jackal】](https://www.bilibili.com/video/BV1PFJH6HEWJ)

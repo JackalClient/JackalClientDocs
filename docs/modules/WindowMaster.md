@@ -164,4 +164,4 @@ WindowMaster 部分动作会改变窗口扩展样式或可见性，建议优先�
 - [TargetHUD (目标显示)](./TargetHUD.md)
 
 ## 相关资料
-无
+[输入密码时自动黑屏 | Jackal 的隐私保护模块](https://www.bilibili.com/video/BV174Gz63EnC/)

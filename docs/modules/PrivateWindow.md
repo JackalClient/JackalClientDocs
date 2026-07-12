@@ -82,5 +82,5 @@ PrivateWindow 会按应用预设筛选窗口，然后为目标窗口设置显示
 - [WindowHighlight (窗口高亮)](./WindowHighlight.md)
 
 ## 相关资料
-无
-
+视频：[神秘的窗口『反截屏』是什么原理？【SetWindowDisplayAffinity】](https://www.bilibili.com/video/BV1EkrwY7E5Z)
+[输入密码时自动黑屏 | Jackal 的隐私保护模块](https://www.bilibili.com/video/BV174Gz63EnC/)

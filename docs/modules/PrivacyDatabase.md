@@ -14,8 +14,9 @@
 - 版本属性：PRO 独有
 
 ## 介绍
-PrivacyDatabase 是本地 SQLite 隐私数据管理模块，用于结构化保存人员信息（姓名、学号、电话、邮箱、证件号等）。
+`PrivacyDatabase` 是本地 SQLite 隐私数据管理模块，用于结构化保存人员信息（姓名、学号、电话、邮箱、证件号等）。
 模块本体是配置入口，实际操作主要通过 `/pdb` 系列命令完成，适合需要离线、可检索的人员信息整理场景。
+所有数据均由用户导入完成，和第三方无关，因此可以放心使用。
 
 ## 配置项
 - Database Directory（数据库目录）
@@ -28,6 +29,7 @@ PrivacyDatabase 是本地 SQLite 隐私数据管理模块，用于结构化保�
 首次使用建议先执行 `/pdb init` 初始化库结构；修改目录后也应重新确认数据库是否已创建，避免出现“命令可用但无数据文件”的情况。
 
 ## 相关命令
+
 /privacydatabase &lt;args...&gt;
 /privacydb &lt;args...&gt;
 /pdb &lt;args...&gt;
@@ -69,11 +71,11 @@ PrivacyDatabase 是本地 SQLite 隐私数据管理模块，用于结构化保�
 /pdb uninstall
 移除数据库。
 
+...
+详情输入 `/help pdb` 查看帮助。
+
 ## 相关模块
 - [PrivacySpy (隐私密探)](./PrivacySpy.md)
-- [SelfBackup (自我备份)](./SelfBackup.md)
-- [SelfRestore (自我还原)](./SelfRestore.md)
-- [AutoRestore (自动还原)](./AutoRestore.md)
 
 ## 相关资料
 无

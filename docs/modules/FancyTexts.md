@@ -13,8 +13,8 @@
 
 ## 介绍
 FancyTexts（花式文字）用于显示一些带有动画和特效的花哨文字。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Async、Hide When Menu On、Module Status Auto Switch。
+模仿 PV 效果。
+如果你想实现 `实时PV` ，可以参考底部的视频，配合 `BetterLyrics 更好的歌词` 模块使用。
 
 ## 配置项
 - Async（异步）
@@ -92,20 +92,18 @@ FancyTexts（花式文字）用于显示一些带有动画和特效的花哨文�
 - 32. 添加新模块：FancyTexts，显示花哨的文字。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+配合更好的歌词模块使用更佳。
 
 ## 相关命令
-无
+- `/fancytext [content...]`
+- 显示花式文字。
 
 ## 相关模块
-- [Arraylist (模块列表)](./Arraylist.md)
-- [Ambience (环境气氛)](./Ambience.md)
-- [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
-- [AutoTitle (自动标题)](./AutoTitle.md)
-- [AutoTotem (自动图腾)](./AutoTotem.md)
+- [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 - [AudioVisualizer (音频可视化)](./AudioVisualizer.md)
 - [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
-- [BetterLyrics (更好的歌词)](./BetterLyrics.md)
 
 ## 相关资料
-[C++根据音乐实时生成文字PV (?)](https://www.bilibili.com/video/BV15b9GB8EX5)
+视频演示：[C++根据音乐实时生成文字PV (?)](https://www.bilibili.com/video/BV15b9GB8EX5)
+视频演示：[【实时PV】Credits EX - Frums](https://www.bilibili.com/video/BV1Rw9uBnEdQ)
+视频演示：[【C++实时PV】サイエンス (科学) /MIMI feat.重音テトSV](https://www.bilibili.com/video/BV1MY536nEFp)

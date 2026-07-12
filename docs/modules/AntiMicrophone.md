@@ -60,4 +60,4 @@ AntiMicrophone（反麦克风）用于自动将采集设备静音，防止录音
 - [Encryptor (加密器)](./Encryptor.md)
 
 ## 相关资料
-无
+视频介绍：[更加便利的 Windows 音量调节【ft.Jackal】](https://www.bilibili.com/video/BV1PFJH6HEWJ)

@@ -34,4 +34,4 @@ PPLButcher（解除进程保护）用于尝试解除每一个受保护进程的�
 无
 
 ## 相关资料
-无
+视频科普：[揭秘 Windows「PPL」: 进程无法被终止的秘密](https://www.bilibili.com/video/BV1NkR5BpEWx)

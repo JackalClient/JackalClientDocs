@@ -126,4 +126,4 @@ Mixer（混音器）用于显示所有所有发声的进程的音量。
 - [MemeTrigger (梗触发)](./MemeTrigger.md)
 
 ## 相关资料
-无
+视频介绍：[更加便利的 Windows 音量调节【ft.Jackal】](https://www.bilibili.com/video/BV1PFJH6HEWJ)

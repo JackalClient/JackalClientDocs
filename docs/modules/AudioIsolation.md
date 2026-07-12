@@ -56,4 +56,4 @@ AudioIsolation（音频隔离）用于只有一个进程可以发出声音。
 - [MemeTrigger (梗触发)](./MemeTrigger.md)
 
 ## 相关资料
-无
+视频介绍：[更加便利的 Windows 音量调节【ft.Jackal】](https://www.bilibili.com/video/BV1PFJH6HEWJ)

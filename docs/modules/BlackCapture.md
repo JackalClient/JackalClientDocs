@@ -58,14 +58,8 @@ BlackCapture（黑屏捕获）用于暂无描述。
 无
 
 ## 相关模块
-- [Arraylist (模块列表)](./Arraylist.md)
-- [Ambience (环境气氛)](./Ambience.md)
-- [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)
-- [AutoTitle (自动标题)](./AutoTitle.md)
-- [AutoTotem (自动图腾)](./AutoTotem.md)
-- [AudioVisualizer (音频可视化)](./AudioVisualizer.md)
-- [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
-- [BetterLyrics (更好的歌词)](./BetterLyrics.md)
+- [AntiCapture (反捕获)](./AntiCapture.md)
+- [PrivateWindow (隐私窗口)](./PrivateWindow.md)
 
 ## 相关资料
-无
+视频：[神秘的窗口『反截屏』是什么原理？【SetWindowDisplayAffinity】](https://www.bilibili.com/video/BV1EkrwY7E5Z)

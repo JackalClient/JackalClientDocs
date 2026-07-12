@@ -91,7 +91,7 @@ LiveChatter 负责直播弹幕本身：它从 LiveStream 当前房间接收弹�
  说明：单条发送弹幕的长度上限。超过上限的文本会被拆分；过小会增加分段数量，过大可能超过平台限制。
 - NL User Bili Live Chat Box Style（Neverlose用户BiliLive聊天框样式）
  类型：枚举；默认："Text"
- 说明：控制 Neverlose GUI 用户信息页下方 BiliLive 聊天页的显示样式。`Modern` 使用 B 站头像、用户名、财富等级、粉丝牌和气泡布局；当前无可用 B 站头像元数据时会回退为昵称首字符头像。打开 Neverlose GUI 并停留在 BiliLive 页时，LiveChatter 模块未启用会按 10 秒冷却拉取历史弹幕，已启用会按 30 秒冷却补拉历史弹幕，切换到 BiliLive 页时也会立即拉取一次；滚动到顶部时会按 5 秒冷却补拉历史弹幕。历史弹幕会按用户、正文和时间戳去重，并按直播间分别写入 Neverlose BiliLive 页的私有显示缓存，不会重新写入全局聊天栏；切换直播间时会刷新为当前房间的消息。开启 `User Blacklist Enabled` 后，黑名单用户也不会同步显示到 Neverlose BiliLive 聊天页。Modern 消息支持悬停高亮、复制、翻译和头像右键菜单。
+ 说明：控制 Neverlose GUI 用户信息页下方 BiliLive 聊天页的显示样式。`Modern` 使用 B 站头像、用户名、财富等级、粉丝牌和气泡布局；当前无可用 B 站头像元数据时会回退为昵称首字符头像。打开 Neverlose GUI 并停留在 BiliLive 页时，LiveChatter 模块未启用会按 10 秒冷却拉取历史弹幕，已启用会按 30 秒冷却补拉历史弹幕，切换到 BiliLive 页时也会立即拉取一次；滚动到顶部时会按 5 秒冷却补拉历史弹幕。历史弹幕会按用户、正文和时间戳去重，并按直播间分别写入 Neverlose BiliLive 页的私有显示缓存，不会重新写入全局聊天栏；补拉历史与实时消息会按弹幕时间排序，切换直播间时会刷新为当前房间的消息。开启 `User Blacklist Enabled` 后，黑名单用户也不会同步显示到 Neverlose BiliLive 聊天页。Modern 消息支持悬停高亮、复制、翻译和头像右键菜单。
  可选：Text（文本）；Modern（现代）
 - Color（颜色）
  类型：枚举；默认："White"
