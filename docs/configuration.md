@@ -43,7 +43,7 @@
 ### 2.5 Neverlose Flyout (NL的飞出式配置项界面)
 
 (v1.1.2)
-在 `NL Module Option Style` = `Flyout` 时，模块配置项会单独在`GUI`窗口的右侧作为独立的小窗口，开启和关闭具有飞出和飞入动画，非常好看。这个配置项窗口默认吸附在`GUI`窗口的右侧；你也可以拖动标题栏进行移动。注意，`GUI`窗口最大化时，该窗口将自动关闭。
+在 `NL Module Option Style` = `Flyout` 时，模块配置项会单独在`GUI`窗口的右侧作为独立的小窗口，开启和关闭具有飞出和飞入动画，非常难看。这个配置项窗口默认吸附在`GUI`窗口的右侧；你也可以拖动标题栏进行移动。注意，`GUI`窗口最大化时，该窗口将自动关闭。
 
 ![Neverlose-Flyout](/neverlose-flyout.jpg)
 
