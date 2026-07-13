@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.18.2",
+    "debug": "^4.4.3",
     "flexsearch": "^0.7.43",
     "markdown-it": "^14.1.1",
     "mermaid": "^11.12.3",
@@ -12,6 +13,9 @@
     "vitepress-theme-teek": "^1.5.4"
   },
   "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",

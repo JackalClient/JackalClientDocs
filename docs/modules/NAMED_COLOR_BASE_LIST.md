@@ -37,9 +37,8 @@ NAMED_COLOR_BASE_LIST
 - Colorful（缤纷）：对于每一种元素，都映射一种不同的颜色。
 - Rainbow（彩虹色）
 
-有些模块会提供 `Flow`，这是一种基于`着色器`的流动颜色，非常华丽。你可以在 [Shader](/docs/modules/Shaders.md) 模块中找到相关配置项。
+有些模块会提供 `Flow`，这是一种基于`着色器`的流动颜色，非常华丽。你可以在 [Shader](/modules/Shaders) 模块中找到相关配置项。
 有些模块会提供 `Transparent`，意思是透明。
 
 ## 相关资料
 无
-

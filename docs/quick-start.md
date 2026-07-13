@@ -136,5 +136,5 @@ Free 免费版下载：
 - [常见问题](/faq/)
 - [安全说明](/safety/)
 - [文件介绍](/client-files/)
-- [命令行参数](/docs/client-cmdline.md)
+- [命令行参数](/client-cmdline)
 - [BetterLyrics 更好的歌词模块专题](/betterlyrics/)

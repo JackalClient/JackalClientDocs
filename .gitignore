@@ -4,3 +4,5 @@ docs/.vitepress/dist
 .agents
 .trae
 docs/.vitepress/cache
+.npm-cache
+vitepress-dev.*.log

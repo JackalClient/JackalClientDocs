@@ -201,7 +201,7 @@ Display Mode 选择 Mixed 且 Island 模块开启时，BetterLyrics 会同时维
 - [AudioVisualizer (音频可视化)](./AudioVisualizer.md)
 
 ## 相关资料
-这里面有教程：[BetterLyrics 更好的歌词专题](/docs/betterlyrics.md)
+这里面有教程：[BetterLyrics 更好的歌词专题](/betterlyrics)
 
 视频：[实时显示B站视频歌词的 Windows 灵动岛？ Jackal v1.1迎来神秘更新！](https://www.bilibili.com/video/BV1pmLk6NEJK/)
 历史视频：[能显示歌词的 Windows 灵动岛？ Jackal 0.7a 更新](https://www.bilibili.com/video/BV1Xxx9zsEC4)

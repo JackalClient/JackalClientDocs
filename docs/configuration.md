@@ -20,32 +20,32 @@
 
 在 `Module Option Style` = `Old` ，以及 `Config` `GUI` `HUD` `Sound` 配置项界面，配置项会显示在一个单独的页面里。
 
-![Dropdown-Old](/docs/public/dropdown-old.jpg)
+![Dropdown-Old](/dropdown-old.jpg)
 
 ### 2.2 Dropdown Integration (下拉式界面的集成配置项界面)
 
 在 `Module Option Style` = `Integration` 时，模块配置项会显示在模块的下方，类似于一个抽屉或者卡片，可以直接调节。
 
-![Dropdown-Integration](/docs/public/dropdown-integration.jpg)
+![Dropdown-Integration](/dropdown-intergration.jpg)
 
 ### 2.3 Neverlose Card (NL的卡片式配置项界面)
 在 `NL Module Option Style` = `Card` 时，模块配置项会显示在模块的下方，类似于一个小卡片，可以直接调节。
 
-![Neverlose-Card](/docs/public/neverlose-card.jpg)
+![Neverlose-Card](/neverlose-card.jpg)
 
 ### 2.4 Neverlose Page (NL的页面式配置项界面)
 
 (v1.1.2)
 在 `NL Module Option Style` = `Card` 时，模块配置项会单独在右侧作为一列，方便调节。
 
-![Neverlose-Page](/docs/public/neverlose-page.jpg)
+![Neverlose-Page](/neverlose-page.jpg)
 
 ### 2.5 Neverlose Flyout (NL的飞出式配置项界面)
 
 (v1.1.2)
 在 `NL Module Option Style` = `Flyout` 时，模块配置项会单独在`GUI`窗口的右侧作为独立的小窗口，开启和关闭具有飞出和飞入动画，非常好看。这个配置项窗口默认吸附在`GUI`窗口的右侧；你也可以拖动标题栏进行移动。注意，`GUI`窗口最大化时，该窗口将自动关闭。
 
-!![Neverlose-Flyout](/docs/public/neverlose-flyout.jpg)
+![Neverlose-Flyout](/neverlose-flyout.jpg)
 
 ## 3. 配置项编辑
 
@@ -53,7 +53,7 @@
 
 点击即可切换。具有切换动画和音效。
 
-![Boolean](/docs/public/boolean.jpg)
+![Boolean](/boolean.jpg)
 
 ### 3.2 字符串类型
 
@@ -89,28 +89,28 @@
 - `Esc` 或者 `GUI按键` 取消编辑，`Enter` 确认编辑。
 - 你可以看到按键提示。
 
-![String](/docs/public/string-option.jpg)
+![String](/string-option.jpg)
 
 ### 3.3 整数类型
 
 点击即可编辑。下面具有滑动条，可以滑动。也可以用鼠标滚轮进行微调。
 
-![Int](/docs/public/int-option.jpg)
+![Int](/int-option.jpg)
 
 ### 3.4 浮点数类型
 
 浮点数就是小数的意思。点击即可编辑。支持使用整数，将自动转换为浮点数。下面具有滑动条，可以滑动。也可以用鼠标滚轮进行微调。
 
-![Float](/docs/public/float-option.jpg)
+![Float](/float-option.jpg)
 
 ### 3.5 下拉框类型
 
 点击即可选择。具有切换动画和音效。
 
-![Combobox](/docs/public/combobox-option.jpg)
+![Combobox](/combobox.jpg)
 
 ### 3.6 按键绑定类型
 
 点击即可编辑。下面具有滑动条，可以滑动。也可以用鼠标滚轮进行微调。
 
-![Keybind](/docs/public/keybind-option.jpg)
+![Keybind](/keybind.jpg)

@@ -3,7 +3,7 @@
 `JackalClient` 是一个用 C++ 编写的公益 `Windows 客户端/工具箱`，你只需要关注UP主就可以下载使用。JackalClient 也有一个 `专业版 (PRO)`，你可以在这里永久购买，节假日会有随机优惠：[https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377](https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377)
 [https://ifdian.net/item/1eda4ca6ca2511f0a7ae52540025c377](https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377)
 
-![client-poster](/docs/public/jackal-1.jpg)
+![client-poster](/jackal-1.jpg)
 
 [**<u><font style="color:#3370FF;">UP主/作者：@Wormwaker</font></u>**](https://space.bilibili.com/3494361276877525)
 
@@ -26,7 +26,7 @@ Q: 解压失败（一个意外错误使你无法复制该文件。如果你继�
 
 A: 不要用 <font style="color:#2F8EF4;">Windows自带的 </font>zip解压，因为无法识别 <font style="color:#2F8EF4;">密码 </font> 的存在。你需要其他解压软件。解压的时候解压 <font style="color:#2F8EF4;">整个文件夹</font>。不要只解压启动器。
 
-![extract-failure](/docs/public/extract-failure.png)
+![extract-failure](/extract-failure.png)
 
 **<font style="color:#DF2A3F;">Q: 怎么杀毒软件报毒了</font>**
 
@@ -48,22 +48,9 @@ A: 客户端不支持 `Windows 8 以下`的 `Windows` 系统版本。而且这�
 
 
 
-Q: 弹窗缺少 VCRUNTIME140.DLL 等
+Q: 弹窗缺少 `VCRUNTIME140.DLL` 等
 
-A: 缺少 VC++环境 。群文件搜索 vc，找到两个 <font style="color:#DF2A3F;">vc_redist</font> 的exe（一个64位一个32位），都安装一下然后重试
-
-
-
-Q: 怎么打开本体后什么反应也没有，或者是任务栏图标出现几秒后闪退
-
-A: 打开 Release 文件夹下的 `CLIENT.LOG`，如果最后有 InitWindow 后就退出的现象，就是`创建窗口失败`，可能和 `显卡 (GPU) ` 有关系，如果你的显卡过于老旧或者没有显卡，那大概率是这个原因了。有几位群友有这个问题，但是还没有找到通用方案
-
-
-
-Q: 打开后控制台直接显示然后直接弹窗崩溃，崩溃日志里面只有一点点基本信息
-
-A: 和上面一问问题相同，硬件原因
-
+A: 缺少 VC++ 环境 。群文件搜索 vc，找到两个 <font style="color:#DF2A3F;">vc_redist</font> 的exe（一个64位一个32位），都安装一下然后重试
 
 
 Q: 打开后显示托盘提示，怎么开GUI软件界面
@@ -74,7 +61,7 @@ A: 默认是 `右Alt` <font style="color:#DF2A3F;">【旧版本<v1.0.4是右Shif
 
 Q: 怎么黑屏了（该透明的背景变成纯黑色）
 
-A: 某些N卡硬件的bug, 和OpenGL也有关系，先尝试这个方法，打开 NVIDIA 设置：
+A: 某些N卡硬件的 bug, 和 OpenGL 也有关系，先尝试这个方法，打开 NVIDIA 设置：
 
 `OpenGL GDI 兼容性` 改为 <font style="color:#DF2A3F;">优先兼容性</font>。  
 
@@ -94,7 +81,7 @@ A: 顶部有一个 `GUI 选项`，点一下，往下翻（滚轮或下箭头）�
 
 <font style="color:#DF2A3F;">或者在“搜索”选择模块</font>_<font style="color:#EDCE02;">配置项搜索模式</font>_<font style="color:#DF2A3F;">，搜索语言</font>
 
-![language](/docs/public/language.jpg)
+![language](/language.jpg)
 
 
 Q: 为什么开了汉化还是英文
@@ -122,7 +109,7 @@ A: 作者的失误，这一步如果客户端目录含有非 ASCII（例如中�
 
 Q: 怎么编辑客户端模块配置里面的每个配置项
 
-A: 建议查看：[配置项介绍](/docs/configuration.md)
+A: 建议查看：[配置项介绍](/configuration)
 开关直接点就行；
 
 数字点一下后编辑（编辑完要按回车），或者用滚轮微调，或者用 **滑动条 **进行调整（新出的）；
@@ -143,7 +130,7 @@ A: 建议查看：[配置项介绍](/docs/configuration.md)
 Q: 右上角HUD怎么那么大，遮住我屏幕了
 
 A: 那个模块叫「**<font style="color:#117CEE;">模块列表 (Arraylist)</font>**」，你可以在GUI的 **<font style="color:#117CEE;">渲染(Render)</font>**** **列第一个找到它，展开模块配置，找到 <font style="color:#117CEE;">字号(Font Size)</font>，调小该数值。或者有一个叫 **<font style="color:#117CEE;">给鼠标让道(Give Way to Mouse)</font>** 的选项，把<font style="color:#117CEE;">距离</font>调大点，这样鼠标靠近时就会让道得更厉害一点，防止遮挡。
-![arraylist-options](/docs/public/arraylist-options.jpg)
+![arraylist-options](/arraylist-options.jpg)
 
 
 Q: 为什么 Ambience 环境氛围 模块打开不会下雨
@@ -156,7 +143,7 @@ Q: 按键显示无法捕获星铁等游戏的按键
 
 A: Windows 机制之一：低权限进程无法捕获高权限进程的输入。米哈游启动器是要获取管理员权限的。你只需要给客户端也开一个 **Admin管理员** 就行了。如果你始终想让客户端以管理员身份启动，你可以在 `Config 选项` 中把 `Always Admin` 打开，或者直接给桌面快捷方式属性里面的`以管理员身份启动`打开（后者更推荐）。
 
-![快捷方式中的管理员身份启动](/docs/public/shortcut-runas.jpg)
+![快捷方式中的管理员身份启动](/shortcut-runas.jpg)
 
 
 Q: 为什么开 **屏幕共享/直播/录屏/截图** 看不到客户端窗口
@@ -178,7 +165,7 @@ A: 找到“命令行”模块(Shell)，打开，会弹出一个控制台，就�
 **<font style="color:#74B602;">新版本添加了非常好用的</font>****<font style="color:#DF2A3F;">命令补全</font>****<font style="color:#74B602;">和</font>****<font style="color:#DF2A3F;">高亮系统</font>****<font style="color:#74B602;">，按 Tab 补全。客户端的命令很多，有八百多条，请慢慢探索。</font>**
 
 <!-- 这是一张图片，ocr 内容为： -->
-![Jackal Shell (CLI)](/docs/public/shell.jpg)
+![Jackal Shell (CLI)](/shell.jpg)
 
 
 
@@ -186,7 +173,7 @@ Q: 怎么使用 `新版的` 更好的歌词模块（挂钩渲染模式/<font sty
 
 A: **<font style="color:#DF2A3F;background-color:rgb(21, 22, 23);">挂钩渲染模式(Hook Render)</font>**仅限于**64位**的**网易云音乐**。将基础模式改为挂钩渲染后启用更好的歌词模块即可。只有关闭更好的歌词模块时才会将DLL从进程中卸载。**<font style="color:#EDCE02;">专业版PRO用户</font>**可以使用**<font style="color:#DF2A3F;">驱动模式(Driver)</font>**，仅限于**网易云音乐**，无需打开桌面歌词窗口，直接获取准确歌词。
 
-![更好的歌词说明文档](/betterlyrics.md)
+[更好的歌词说明文档](/betterlyrics)
 
 
 
@@ -194,9 +181,7 @@ Q: 怎么使用 **旧版的 **更好的歌词模块（**OCR模式**）
 
 A: 群文件搜索找到一个 `tesseractocr` 的文件（官网下载也可以），安装。然后打开客户端GUI， `Ctrl+F` 搜索 `Tesser`，找到<font style="color:#117CEE;">TesseractOCR模块</font>，右键打开模块配置，找到可执行文件路径，右边点一下进入编辑，按下 **<font style="color:#74B602;">Ctrl+O </font>**会弹出一个选择文件，找到你**刚刚安装的位置**，找到 **<font style="color:#117CEE;">tesseract.exe</font>**，点击确认，路径就输进去了。<font style="color:#74B602;">TesseractOCR模块是不需要打开的。</font><font style="color:#ECAA04;">打开网易云音乐的桌面歌词窗口。</font>找到客户端的更好的歌词模块，打开。更好的歌词模块右键里面的配置可以调，例如展示模式可以改成灵动岛(Island)
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/54044512/1762610637330-58233aa4-ac41-4b9c-aaf2-12440fac5a21.png)
-[Tesseract-OCR](/docs/public/tesseract-ocr-1.jpg)
+![Tesseract-OCR](/tesseract-ocr-1.jpg)
 
 Q: OCR模式的更好的歌词只能网易云吗
 
@@ -216,7 +201,7 @@ A: 客户端退出会自动保存，定时也会保存，不放心就打开GUI�
 
 - v1.1.2 加入了配置档案的右键菜单功能：
 
-![Profiles Menu](/docs/public/profiles.jpg)
+![Profiles Menu](/profiles.jpg)
 
 
 Q: 怎么手动修改配置/档案
@@ -227,7 +212,7 @@ Q: 如何解决客户端会导致 `壁纸引擎 (Wallpaper Engine)` 暂停的问
 
 A: 因为客户端最大化被壁纸引擎判定为最大化窗口导致壁纸暂停了。右键壁纸引擎托盘，找到设置：
 
-![Wallpaper-Rules](public/wallpaper-rules.jpg)
+![Wallpaper-Rules](/wallpaper-rules.jpg)
 
 `性能` → `应用程序规则` 点击，创建新规则：
 - JackalClient.exe；条件：最大化；壁纸回放：保持运行
@@ -257,6 +242,7 @@ Q: 如何启用 `HUD 模糊`，那种视频中的`液体玻璃`效果？
 
 A: 在 其他 一栏中找到 `ScreenCapture / 屏幕捕获` 模块，确保 `排除客户端 Exclude Client` 改为 `保持 Keep`，这样效果最好。启用 HUD Blur 模块，将风格调为 <font style="color:#74B602;">Liquid Glass 液体玻璃</font>。此时客户端将会持续`后台截图`，会消耗一些性能，然后窗口将会开启 `AntiCapture 反捕获`，无法被截图软件和录屏软件的普通模式捕获，只能通过`游戏捕获模式`捕获（也就是注入并hook）。可以调节 `HUD Blur` 相关参数追求更好的视觉效果。
 
+![Hud-Blur](/hud-blur.jpg)
 
 
 Q: 怎么像视频中那样有发光的效果
