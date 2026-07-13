@@ -13,8 +13,7 @@
 
 ## 介绍
 AutoClicker（连点器）用于自动帮助你飞快地点击鼠标。
-适合键鼠行为控制、输入增强和自动化操作场景。
-初次使用可优先调整：Left Blatant Mode、Right Blatant Mode、Extra Key Blatant Mode。
+请在合法合规的情况下使用。如使用该模块造成游戏账号封禁，与作者无关。
 
 ## 配置项
 - CPS Transition Speed（CPS 过渡速度）
@@ -177,13 +176,12 @@ AutoClicker（连点器）用于自动帮助你飞快地点击鼠标。
 - 1. Auto Clicker: 连点器功能。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+仅为简单实现，不能取代专业连点器。
 
 ## 相关命令
 无
 
 ## 相关模块
-- [AntiAFK (反挂机)](./AntiAFK.md)
 - [MouseWatcher (鼠标监视)](./MouseWatcher.md)
 - [MouseSwap (鼠标交换)](./MouseSwap.md)
 - [MouseDisabler (禁用鼠标)](./MouseDisabler.md)

@@ -13,6 +13,7 @@
 
 ## 介绍
 HoverFocus（悬停聚焦）在鼠标悬停达到阈值后自动聚焦窗口，适合多窗口快速切换。
+
 ## 配置项
 - Hover Timeout (ms)（悬停超时（毫秒））
  类型：数值；默认：1000L
@@ -26,20 +27,13 @@ HoverFocus（悬停聚焦）在鼠标悬停达到阈值后自动聚焦窗口，�
 - 17. 【WIP】添加模块：HoverFocus，和 Auto Focus效果一样但是是 Windows 自带的。会同步系统的设置。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+这是一项系统自带的功能，本模块只会调整系统设置，因此客户端退出后依然生效。而 `AutoFocus` 则是纯客户端实现，不要一起开。
 
 ## 相关命令
 无
 
 ## 相关模块
-- [WindowTags (窗口标签)](./WindowTags.md)
-- [WindowHighlight (窗口高亮)](./WindowHighlight.md)
-- [WindowESP (窗口透视)](./WindowESP.md)
-- [Tracers (追踪线)](./Tracers.md)
-- [TargetESP (目标透视)](./TargetESP.md)
-- [TargetHUD (目标显示)](./TargetHUD.md)
-- [WindowMaster (窗口大师)](./WindowMaster.md)
-- [PrivateWindow (隐私窗口)](./PrivateWindow.md)
+- [AutoFocus (自动聚焦)](./AutoFocus.md)
 
 ## 相关资料
 无

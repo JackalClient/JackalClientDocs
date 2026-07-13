@@ -1,9 +1,17 @@
 # GitTracker
+Git跟踪
+分类：Process
+描述：用于跟踪当前运行中的 Git 任务。
 
-GitTracker 是专业版 Process 分类模块，用于跟踪当前运行中的 Git 任务。
+## 需求
+- 安全级别：常规模块
+- 权限需求：无
+- 驱动依赖：否
+- 联网需求：是
+- 开发状态：稳定/常规
+- 版本属性：普通可用
 
-## 功能
-
+## 介绍
 - 监听 `git.exe` 创建与退出。
 - ProcessESP 开启时优先复用 ProcessESP 的 Diff/ETW 进程事件。
 - ProcessESP 未开启时基于客户端进程缓存自行 Diff。
@@ -30,6 +38,18 @@ GitTracker 是专业版 Process 分类模块，用于跟踪当前运行中的 Gi
 - `HUD Fade Effects` 控制 HUD 条目淡入淡出，`HUD Fade Effects Duration (ms)` 控制淡入淡出时长，默认 200ms。
 - HUD 标题可选 `Off`、`Git`、`Git Tasks`、`Git Tracker`，标题后会显示当前条目数。
 
+## 备注
+监视大量 Git 进程可能导致卡顿。
+
 ## 相关命令
 
 - `/gittracker <cmdline...>`：按 GitTracker 规则解析一条 git 命令行，输出识别到的 Git 意图、HUD 文本和图标。
+
+
+
+## 相关模块
+- [CompileESP (编译透视)](./CompileESP.md)
+- [ProcessESP (进程透视)](./ProcessESP.md)
+
+## 相关资料
+- 视频：[\[Devlog\] 本地 Git 进程跟踪 - GitTracker](https://www.bilibili.com/video/BV1v7jG6TEpE)

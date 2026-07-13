@@ -22,3 +22,42 @@ Codex 通知器
 ## 状态同步
 
 模块会读取 `config.toml` 与 `hooks.json` 的实际内容同步开关状态：发现托管 notify/hook 时会静默启用模块，发现托管配置不存在时会静默关闭模块。
+
+## 相关命令
+
+```bash
+/codex <args...>
+Codex 信息管理工具。默认打开 Dashboard 面板，汇总 Codex 根目录、版本、模型、Provider、推理强度、沙盒、Skills 和 Sessions 数量。如果提供了参数但没有命中下列内置子命令，会预览将要执行的 codex 命令行，按 Enter 确认后直接调用 codex 并传递参数，按 Esc 取消。
+
+
+/codex config
+读取 .codex\config.toml 与 auth.json 并彩色显示关键配置；当 PrivacyProtect 模块开启时，API Key、Token、Secret、Auth 等敏感值会自动隐藏为星号。
+
+
+/codex skills
+枚举 .codex\skills 与 .codex\vendor_imports\skills 中包含 SKILL.md 的技能目录，并以二维表输出名称、显示名、来源、路径； 较长的 short_description、description、default_prompt 会作为单独行显示。
+
+
+/codex new [params...]
+创建新的 Codex CLI 窗口。params 会原样追加到 codex 后面，例如 /codex new --model gpt-5.5 等价于在新的 cmd 窗口中执行 codex --model gpt-5.5。
+
+
+/codex terminate all
+结束所有 codex.exe 以及由其派生的相关子进程，并逐项输出 PID、PPID、进程名、路径和成功/失败反馈。
+
+
+/codex sessions
+显示会话数量、最近会话、session-id 与首句用户 Prompt；Prompt 预览按 60 字符截断。
+
+
+/codex files
+列出常用 Codex 本地文件及大小。
+
+
+/codex running
+输出当前运行的 Codex 进程树。
+
+
+/codex help
+显示 /codex 系列命令帮助。
+```

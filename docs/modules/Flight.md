@@ -12,8 +12,7 @@
 - 版本属性：普通可用
 
 ## 介绍
-Flight（飞行）用于打开/关闭飞行模式。
-适合联网信息获取、账号联动和在线交互场景。
+Flight（飞行）用于打开/关闭飞行模式。而不是真的飞行。
 
 ## 配置项
 无（该模块在 default_settings.h 中未定义独立配置项）
@@ -22,20 +21,12 @@ Flight（飞行）用于打开/关闭飞行模式。
 - 12. 添加模块： Flight （飞行模式），意味着断网。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
 
 ## 相关命令
 无
 
 ## 相关模块
-- [IRC (聊天室)](./IRC.md)
-- [AntiRickroll (反诈骗)](./AntiRickroll.md)
-- [AntiBrowser (反浏览器)](./AntiBrowser.md)
-- [AntiWebpage (反网页)](./AntiWebpage.md)
-- [LiveChatter (直播弹幕)](./LiveChatter.md)
-- [TcpMonitor (TCP监视)](./TcpMonitor.md)
-- [TcpKiller (TCP杀手)](./TcpKiller.md)
-- [LiveStream (直播间)](./LiveStream.md)
+- [WebSettings (网络设定)](./WebSettings.md)
 
 ## 相关资料
 无

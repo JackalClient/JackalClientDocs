@@ -21,7 +21,7 @@ Chatter（弹幕）用于从 GUI 快速调用 `/chatter`，向客户端添加一
  说明：要添加的弹幕正文。
 - Color（颜色）
  类型：枚举；默认："Colorful"
- 说明：本地弹幕颜色。该配置也会影响 `/chatter`、`/tchatter`、`/bchatter`、`/rchatter`、`/hchatter`、`/vchatter` 命令生成的弹幕颜色。
+ 说明：本地弹幕颜色。该配置也会影响 `/chatter`、`/tchatter`、`/bchatter`、`/rchatter`、`/hchatter`、`/vchatter` 命令生成的弹幕颜色。不会影响其他模块生成的弹幕颜色（需要在相关模块配置项单独调节）。
  可选：Flow（流动）；Colorful（彩色）；见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
 - Line Gap（行距）
  类型：整数；默认：10
@@ -57,7 +57,7 @@ Chatter（弹幕）用于从 GUI 快速调用 `/chatter`，向客户端添加一
 - 146. 新增 Chatter 模块，可通过图形界面快速添加单条本地弹幕。
 
 ## 备注
-该模块对应本地客户端弹幕，不等同于直播间真弹幕发送。
+该模块对应本地客户端弹幕，不等同于直播间 `真弹幕(Real Chatter)` 发送。
 
 ## 相关命令
 - /chatter <content...>

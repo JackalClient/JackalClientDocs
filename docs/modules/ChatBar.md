@@ -2,7 +2,7 @@
 聊天栏
 [PRO]
 分类：Render
-描述：暂无描述
+描述：绘制一个聊天栏，可以显示控制台信息、IRC消息、直播弹幕等
 
 ## 需求
 - 安全级别：常规模块
@@ -134,4 +134,4 @@ ChatBar 会把仍在显示时间内的最后几行消息加密缓存到 Records.
 - [Console (控制台)](./Console.md)
 
 ## 相关资料
-无
+- 视频介绍： [Windows 聊天栏 HUD](https://www.bilibili.com/video/BV1EDVx63Esx)

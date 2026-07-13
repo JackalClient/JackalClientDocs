@@ -12,7 +12,8 @@
 - 版本属性：普通可用
 
 ## 介绍
-AutoFocus（自动聚焦）会按目标策略主动把窗口拉到前台。建议把检查间隔设置得稍保守，先确认不会打断正常工作流。
+AutoFocus（自动聚焦）会按目标策略主动把窗口拉到前台。
+
 ## 配置项
 - Mode（模式）
  类型：枚举；默认："PointAt"
@@ -40,20 +41,13 @@ AutoFocus（自动聚焦）会按目标策略主动把窗口拉到前台。建�
 - 33. 将 Title 模块的 Check Topmost 改为只设置窗口置顶，添加 Auto Focus 配置项（这个才是设置焦点）
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+这个模块是纯客户端实现，而 `HoverFocus` 则是系统功能，不要一起开。
 
 ## 相关命令
 无
 
 ## 相关模块
-- [WindowTags (窗口标签)](./WindowTags.md)
-- [WindowHighlight (窗口高亮)](./WindowHighlight.md)
-- [WindowESP (窗口透视)](./WindowESP.md)
-- [Tracers (追踪线)](./Tracers.md)
-- [TargetESP (目标透视)](./TargetESP.md)
-- [TargetHUD (目标显示)](./TargetHUD.md)
-- [WindowMaster (窗口大师)](./WindowMaster.md)
-- [PrivateWindow (隐私窗口)](./PrivateWindow.md)
+- [HoverFocus (悬停聚焦)](./HoverFocus.md)
 
 ## 相关资料
 无

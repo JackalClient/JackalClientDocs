@@ -1,7 +1,7 @@
 # GUIStyler
 GUI风格
 分类：未分类
-描述：暂无描述
+描述：用于调整 `Dropdown 下拉式` GUI 的风格。
 
 ## 需求
 - 安全级别：常规模块
@@ -12,11 +12,11 @@ GUI风格
 - 版本属性：普通可用
 
 ## 介绍
-GUIStyler（GUI风格）用于暂无描述。
-适合在日常管理与自动化场景中按需启用。
+GUIStyler（GUI风格）用于调整 `Dropdown 下拉式` GUI 的风格。
 
 ## 配置项
-无（该模块在 default_settings.h 中未定义独立配置项）
+- `Style Preset`: 风格预设
+- 可选："Default", "Old", "Modern", "Vape", "LiquidBounce", "LiquidBounce NextGen", "Raven", "Meteor", "Future", "Opai"
 
 ## 历史更新
 - 7. 修复 Imgui 风格的GUI的 ClickGUI Arrow Key Move Speed 忘记重命名的问题。
@@ -24,10 +24,20 @@ GUIStyler（GUI风格）用于暂无描述。
 - 25. 添加模块：GUI Styler，可以应用一种GUI预设。预设也存在 DefaultSettings.dll 里面。目前还不是很还原。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+用法：选择一种预设，然后启用模块即可。
+对其他 GUI 无效。
 
 ## 相关命令
-无
+
+```bash
+
+/gui style
+查询现在的GUI风格。
+
+
+/gui style <style>
+设置现在的GUI风格（default/neverlose/imgui）
+```
 
 ## 相关模块
 无

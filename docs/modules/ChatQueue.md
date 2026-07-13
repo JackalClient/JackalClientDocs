@@ -12,7 +12,7 @@
 - 版本属性：普通可用
 
 ## 介绍
-ChatQueue（聊天队列）用于管理MC的聊天发送任务。
+ChatQueue（聊天队列）用于管理MC或直播间弹幕的聊天发送任务。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Hide HUD When Menu On、Chat Send Cooldown (s)、Target Unique Message。
 
@@ -144,10 +144,27 @@ ChatQueue（聊天队列）用于管理MC的聊天发送任务。
 - 70. 添加模块：Chat Queue，管理 Minecraft 消息发送队列，并提供一个 HUD，可以显示每条消息的剩余时间以及发送冷却的情况。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+
 
 ## 相关命令
-无
+```bash
+
+/bili live cq
+/bili live cq list
+/bili live cq show
+/bili live cq display
+显示直播弹幕发送队列信息。
+
+
+/bili live clcq
+/bili live cq clear
+/bili live cq pause
+/bili live cq resume
+/bili live cq add <msg...>
+/bili live cq direct <msg...>
+直播弹幕发送队列控制。clear 等价于 clcq；pause/resume 暂停或继续队列；add 入队；direct 立即发送不入队。
+
+```
 
 ## 相关模块
 - [AntiAFK (反挂机)](./AntiAFK.md)

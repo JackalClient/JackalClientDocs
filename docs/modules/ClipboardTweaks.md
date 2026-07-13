@@ -86,20 +86,37 @@ ClipboardTweaks（剪贴板功能）用于对复制的文字开展混淆。
 - 8. 添加模块 Clipboard Tweaks，用于对剪贴板文本进行操作。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+如果想不经过剪贴板，可以去使用 `StringEditor 字符串编辑器` 模块，或者使用命令 `/str ui` `/clipboardtweaks [content...]` 进行处理
 
 ## 相关命令
-无
+```bash
+/clipboardtweaks [content...]
+填参数时，处理指定的文本，无需打开模块。否则为切换模块状态。
+
+/clipboard <args...>
+剪贴板相关命令。
+
+
+/clipboard show
+读取并显示剪贴板。
+
+
+/clipboard get
+获取并存储剪贴板内容到变量 it。
+
+
+/clipboard store text <text...>
+/clipboard store file <path...>
+/clipboard store movefile <path...>
+写入剪贴板。
+
+
+/clipboard clear
+清空剪贴板。
+```
 
 ## 相关模块
-- [AntiAFK (反挂机)](./AntiAFK.md)
-- [AutoClicker (连点器)](./AutoClicker.md)
-- [MouseWatcher (鼠标监视)](./MouseWatcher.md)
-- [MouseSwap (鼠标交换)](./MouseSwap.md)
-- [MouseDisabler (禁用鼠标)](./MouseDisabler.md)
-- [MouseTeleport (鼠标传送)](./MouseTeleport.md)
-- [MouseTrails (鼠标轨迹)](./MouseTrails.md)
-- [MouseESP (鼠标透视)](./MouseESP.md)
+- [StringEditor (字符串编辑器)](./StringEditor.md)
 
 ## 相关资料
 [【活全家程序】构史句子生成器︒](https://www.bilibili.com/video/BV1Nd9KYMEkS)

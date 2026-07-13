@@ -1,7 +1,7 @@
 # Exit
 退出
 分类：Misc
-描述：暂无描述
+描述：退出客户端
 
 ## 需求
 - 安全级别：常规模块
@@ -12,9 +12,7 @@
 - 版本属性：普通可用
 
 ## 介绍
-Exit（退出）用于暂无描述。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：bind。
+Exit（退出）：退出客户端。
 
 ## 配置项
 - bind（绑定）
@@ -24,20 +22,28 @@ Exit（退出）用于暂无描述。
 无（HISTORY 中暂无明确记录）
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+
 
 ## 相关命令
-无
+```bash
+/exit
+/quit
+/ausgang
+异步退出。
+
+
+/exitsync
+同步退出。
+
+
+/break
+/exitshell
+/quitshell
+关闭命令行 (Shell 模块)。
+```
 
 ## 相关模块
-- [Active (活动)](./Active.md)
-- [AutoSpeak (自动讲述)](./AutoSpeak.md)
-- [AntiMicrophone (反麦克风)](./AntiMicrophone.md)
-- [Console (控制台)](./Console.md)
-- [Shell (命令行)](./Shell.md)
-- [QuickCommand (快速命令)](./QuickCommand.md)
-- [ForceTopmost (强制置顶)](./ForceTopmost.md)
-- [MemeTrigger (梗触发)](./MemeTrigger.md)
+- [Restart (重启)](./Restart.md)
 
 ## 相关资料
 无

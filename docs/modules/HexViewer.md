@@ -64,7 +64,7 @@ HexViewer 对“文本”与“二进制”使用的解析路径不同。查看�
 ## 相关命令
 - `/hexview [text...]`：查看文本（不带参数时读取剪贴板文本）。
 - `/hexviewfile &lt;filepath...&gt;`：查看文件十六进制内容。
-- `/hexviewproc <pid/hprocess/hwnd>`：导出并查看进程十六进制内容。
+- `/hexviewproc &lt;pid/hprocess/hwnd&gt;`：导出并查看进程十六进制内容。
 - `/hexviewer`：打开 HexViewer 相关配置列表。
 
 ## 相关模块
