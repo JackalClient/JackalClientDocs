@@ -50,17 +50,32 @@ BiliVideoHelper 的弹幕同步也会复用本模块的下载能力，并使用 
 - Connect Timeout (s)（连接超时（秒））
  类型：数值；默认：10L
  说明：用于限制视频信息查询和弹幕下载的网络等待时间。
+- List UID Reverse Lookup（列表UID反查）
+ 类型：枚举；默认："Off"
+ 说明：控制 `/bilichatter list` 是否尝试把弹幕发送者 hash 反查为 UID。Only Classic 仅使用经典碰撞算法并校验用户卡片；All 在当前登录账号就是视频 UP 主时，还会使用创作中心弹幕查询接口补充映射。
+ 可选：Off；Only Classic；All
 
 ## 历史更新
 - v1.1.2：支持按 AID、BVID 或链接下载视频弹幕 XML，可选择弹幕接口、保存目录，并可在下载成功后自动配置或启用 AutoDanmaku。
 - v1.1.2：弹幕文件改为按 BVID.xml 命名，并支持下载后自动打开和 BiliVideoHelper 专用缓存目录。
+- v1.1.4：新增 `/bilichatter` 命令，并支持在列表输出中按配置反查弹幕发送者 UID。
+- v1.1.4：`/bilichatter list` 支持 keyword 筛选，并用粉色高亮命中的发送者、用户哈希或弹幕正文片段。
+- v1.1.4：`/bilichatter list` 会自动尝试把视频 UP 主加入发送者映射，便于识别 UP 主自己的弹幕。
+- v1.1.4：新增 listnormal、listsub、listspecial、listinteract、listuploader 子命令，可按弹幕池或 UP 主筛选列表。
 
 ## 备注
 下载文件名固定为 BVID.xml。B 站弹幕接口实际使用视频 CID，模块会自动从 AVID 查询首个分 P 的 CID。
 若下载失败，优先检查网络、视频是否存在、B 站接口是否可访问，以及输出目录是否有写入权限。
 
 ## 相关命令
-无
+- `/bilichatter download <aid/bvid/link>`
+- `/bilichatter open <aid/bvid/link>`
+- `/bilichatter list <aid/bvid/link> [ps=20] [pn=1] [keyword...]`
+- `/bilichatter listnormal <aid/bvid/link> [ps=20] [pn=1] [keyword...]`
+- `/bilichatter listsub <aid/bvid/link> [ps=20] [pn=1] [keyword...]`
+- `/bilichatter listspecial <aid/bvid/link> [ps=20] [pn=1] [keyword...]`
+- `/bilichatter listinteract <aid/bvid/link> [ps=20] [pn=1] [keyword...]`
+- `/bilichatter listuploader <aid/bvid/link> [ps=20] [pn=1] [keyword...]`
 
 ## 相关模块
 - [AutoDanmaku (自动弹幕)](./AutoDanmaku.md)

@@ -3,7 +3,7 @@
 `JackalClient` 是一个用 C++ 编写的公益 `Windows 客户端/工具箱`，你只需要关注UP主就可以下载使用。JackalClient 也有一个 `专业版 (PRO)`，你可以在这里永久购买，节假日会有随机优惠：[https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377](https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377)
 [https://ifdian.net/item/1eda4ca6ca2511f0a7ae52540025c377](https://afdian.com/item/1eda4ca6ca2511f0a7ae52540025c377)
 
-
+![client-poster](/docs/public/jackal-1.jpg)
 
 [**<u><font style="color:#3370FF;">UP主/作者：@Wormwaker</font></u>**](https://space.bilibili.com/3494361276877525)
 
@@ -26,6 +26,7 @@ Q: 解压失败（一个意外错误使你无法复制该文件。如果你继�
 
 A: 不要用 <font style="color:#2F8EF4;">Windows自带的 </font>zip解压，因为无法识别 <font style="color:#2F8EF4;">密码 </font> 的存在。你需要其他解压软件。解压的时候解压 <font style="color:#2F8EF4;">整个文件夹</font>。不要只解压启动器。
 
+![extract-failure](/docs/public/extract-failure.png)
 
 **<font style="color:#DF2A3F;">Q: 怎么杀毒软件报毒了</font>**
 
@@ -35,7 +36,7 @@ A: 不要用 <font style="color:#2F8EF4;">Windows自带的 </font>zip解压，�
 
 Q: 启动器在线下载客户端文件时候怎么自己就退出了
 
-A: 客户端本体被 `杀软` 杀掉了，添加信任，恢复到原位置，本体在 Release 文件夹下可以直接运行
+A: 客户端本体被 `杀软` 杀掉了，添加信任，恢复到原位置，本体在 `Release` 文件夹下可以直接运行
 
 
 
@@ -93,9 +94,12 @@ A: 顶部有一个 `GUI 选项`，点一下，往下翻（滚轮或下箭头）�
 
 <font style="color:#DF2A3F;">或者在“搜索”选择模块</font>_<font style="color:#EDCE02;">配置项搜索模式</font>_<font style="color:#DF2A3F;">，搜索语言</font>
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/54044512/1762610636563-0bb1071c-ed92-430b-a98a-2af63610a52b.png)
+![language](/docs/public/language.jpg)
 
+
+Q: 为什么开了汉化还是英文
+
+A: 你的客户端目录存在中文等非ASCII字符，请把客户端目录搬到没有中文的文件夹下，或者重命名那个中文。而且客户端如果在中文路径下，启动时会有弹窗警告。
 
 
 Q: 怎么崩溃了： **Unhandled Exception Occurred 未经处理的异常**
@@ -104,21 +108,22 @@ A: 客户端有各种各样的问题，有时候确实容易崩溃，把在崩�
 
 
 
-Q: JackalClient.exe - _Windows无法访问指定设备、路径或文件。你可能没有适当的权限访问该项目。_
+Q: JackalClient.exe - _Windows无法访问指定设备、路径或文件。你可能没有适当的权限访问该项目。 / 操作已被用户取消。_
 
 A: 杀软问题。如果客户端被杀，则从杀软隔离区/恢复区先恢复，然后给客户端文件夹添加信任。同时注意 Windows Defender 是否开启了实时保护。
 
 
 
-Q: 客户端崩端（版本v1.0.6），然后查看CLIENT.LOG发现最后一行是UACBypassSafeCheck...就没了
+Q: 客户端崩端（版本v1.0.6），然后查看 `CLIENT.LOG` 发现最后一行是 `UACBypassSafeCheck...` 就没了
 
-A: 作者的失误，这一步如果客户端目录含有非ASCII（例如中文）就会导致崩溃。现已修复。你可以临时放到别的纯ASCII目录下运行。
+A: 作者的失误，这一步如果客户端目录含有非 ASCII（例如中文）就会导致崩溃。现已修复（并非意味着在中文路径下就没有任何问题）。你可以临时放到别的纯ASCII目录下运行。
 
 
 
 Q: 怎么编辑客户端模块配置里面的每个配置项
 
-A: 开关直接点就行；
+A: 建议查看：[配置项介绍](/docs/configuration.md)
+开关直接点就行；
 
 数字点一下后编辑（编辑完要按回车），或者用滚轮微调，或者用 **滑动条 **进行调整（新出的）；
 
@@ -138,7 +143,7 @@ A: 开关直接点就行；
 Q: 右上角HUD怎么那么大，遮住我屏幕了
 
 A: 那个模块叫「**<font style="color:#117CEE;">模块列表 (Arraylist)</font>**」，你可以在GUI的 **<font style="color:#117CEE;">渲染(Render)</font>**** **列第一个找到它，展开模块配置，找到 <font style="color:#117CEE;">字号(Font Size)</font>，调小该数值。或者有一个叫 **<font style="color:#117CEE;">给鼠标让道(Give Way to Mouse)</font>** 的选项，把<font style="color:#117CEE;">距离</font>调大点，这样鼠标靠近时就会让道得更厉害一点，防止遮挡。
-
+![arraylist-options](/docs/public/arraylist-options.jpg)
 
 
 Q: 为什么 Ambience 环境氛围 模块打开不会下雨
@@ -149,8 +154,9 @@ A: 把这个模块的配置的 `Weather(天气)` 改成 <font style="color:#2F4B
 
 Q: 按键显示无法捕获星铁等游戏的按键
 
-A: Windows 机制之一：低权限进程无法捕获高权限进程的输入。米哈游启动器是要获取管理员权限的。你只需要给客户端也开一个 **Admin管理员** 就行了。
+A: Windows 机制之一：低权限进程无法捕获高权限进程的输入。米哈游启动器是要获取管理员权限的。你只需要给客户端也开一个 **Admin管理员** 就行了。如果你始终想让客户端以管理员身份启动，你可以在 `Config 选项` 中把 `Always Admin` 打开，或者直接给桌面快捷方式属性里面的`以管理员身份启动`打开（后者更推荐）。
 
+![快捷方式中的管理员身份启动](/docs/public/shortcut-runas.jpg)
 
 
 Q: 为什么开 **屏幕共享/直播/录屏/截图** 看不到客户端窗口
@@ -172,7 +178,7 @@ A: 找到“命令行”模块(Shell)，打开，会弹出一个控制台，就�
 **<font style="color:#74B602;">新版本添加了非常好用的</font>****<font style="color:#DF2A3F;">命令补全</font>****<font style="color:#74B602;">和</font>****<font style="color:#DF2A3F;">高亮系统</font>****<font style="color:#74B602;">，按 Tab 补全。客户端的命令很多，有八百多条，请慢慢探索。</font>**
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/54044512/1762610636891-272e1c72-8902-4eea-b207-07e8125db034.png)
+![Jackal Shell (CLI)](/docs/public/shell.jpg)
 
 
 
@@ -190,6 +196,7 @@ A: 群文件搜索找到一个 `tesseractocr` 的文件（官网下载也可以�
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2025/png/54044512/1762610637330-58233aa4-ac41-4b9c-aaf2-12440fac5a21.png)
+[Tesseract-OCR](/docs/public/tesseract-ocr-1.jpg)
 
 Q: OCR模式的更好的歌词只能网易云吗
 
@@ -205,13 +212,16 @@ Q: 怎么保存配置/档案
 
 A: 客户端退出会自动保存，定时也会保存，不放心就打开GUI按下 **<font style="color:#ECAA04;">Ctrl+S </font>**手动保存；如果想另存为配置，找到上面的档案(Profile)选项卡，点一下，按 **<font style="color:#ECAA04;">Ctrl+Shift+S 另存为</font>**，输入档案名称，就保存了。保存的档案在config文件夹下（json文件）；
 
-在新版本 (v1.0.3) 加入了 `配置的自动备份`，如果你的配置名称叫b.json，会定期保存一个b.backup.json
+- 在新版本 (v1.0.3) 加入了 `配置的自动备份`，如果你的配置名称叫b.json，会定期保存一个b.backup.json
 
+- v1.1.2 加入了配置档案的右键菜单功能：
+
+![Profiles Menu](/docs/public/profiles.jpg)
 
 
 Q: 怎么手动修改配置/档案
 
-A: config 文件夹下找到你的配置。其中default.json 是默认配置不要去改，Records.json是临时数据文件不是配置。打开你的配置**（默认通常会保存为profile-x.json的形式）**后修改要修改的项即可。如果修改错了客户端是无法加载的，所以最好修改前备份
+A: `config` 文件夹下找到你的配置。其中 `default.json` 是默认配置不要去改，`Records.json` 是临时数据文件不是配置。打开你的配置 **（默认通常会保存为profile-x.json的形式）**后修改要修改的项即可。如果修改错了客户端是无法加载的，所以最好修改前备份
 
 Q: 如何解决客户端会导致 `壁纸引擎 (Wallpaper Engine)` 暂停的问题？
 
@@ -227,7 +237,7 @@ A: 因为客户端最大化被壁纸引擎判定为最大化窗口导致壁纸�
 
 Q: 为什么有些网络模块启用后什么都不输出
 
-A: 你关闭了输出CURL错误。请在 WebSettings 网络设定 模块中打开 输出CURL错误 选项。默认值为“非超时错误”
+A: 你关闭了输出CURL错误。请在 `WebSettings 网络设定` 模块中打开 输出CURL错误 选项。默认值为“非超时错误”
 
 
 
@@ -275,19 +285,19 @@ A: 更新到最新版本。已经添加了 `Key Disabler` 的最大启用时长�
 
 Q: 怎么通知一直弹 **Invalid Cookies**
 
-A: 有些哔哩模块是需要你登录的，你可能加载了别人的配置但是本地没有登陆。按一下 BiliSettings 模块（B站设定），会弹出一个二维码，扫一下，登录就行了。Cookies 数据会存在 Records.json里面，<font style="color:#74B602;">所以你不要把Records.json发给别人。</font>
+A: 有些哔哩模块是需要你登录的，你可能加载了别人的配置但是本地没有登陆。按一下 `BiliSettings 模块（B站设定）`，会弹出一个二维码，扫一下，登录就行了。Cookies 数据会存在 `Records.json` 里面并加密，<font style="color:#74B602;"> 所以你不要把 `Records.json` 发给别人（或者发之前去除相关信息）。</font>
 
 
 
 Q: 怎样和视频当中一样有流动的颜色效果
 
-A: 在一些模块的颜色设置中，选择 **<font style="color:#74B602;">流动（Flow）</font>**即可。流动的各项参数可以在 着色器（Shader）模块中调。以及主题也可以在新版本选择了。
+A: 在一些模块的颜色设置中，选择 **<font style="color:#74B602;">流动（Flow）</font>**即可。流动的各项参数可以在 `着色器（Shader）` 模块中调。以及主题也可以在新版本选择了。
 
 
 
 Q: 我怎么爆不了`图腾 (Totem)`
 
-A: 新版本是 `着色器` 实现的三维效果，如果你只能见到粒子效果，作者还不清楚为什么看不到图腾。 旧版本的 `图腾 (Totem) ` 是视频，可能兼容性不太好，直接在客户端窗口里播放。如果卡就不要用了。如果背景是黑的，说明抠图失败，你可以选取黑色的像素点的RGB，把他输入到图腾配置里面的色键中，可能就有一点用。
+A: 新版本是 `着色器` 实现的三维效果，如果你只能见到粒子效果，作者还不清楚为什么看不到图腾。 旧版本的 `图腾 (Totem) ` 是视频，可能兼容性不太好，直接在客户端窗口里播放。如果卡就不要用了。如果背景是黑的，说明抠图失败，你可以选取黑色的像素点的 RGB，把他输入到图腾配置里面的色键中，可能就有一点用。
 
 
 
@@ -390,14 +400,7 @@ Q: 怎么修改启动器样式，我看视频里面有一个VAPE启动器风格
 A: 客户端打开，GUI选项下面的启动器风格 `Launcher Style`。   `Launcher Shaking` 选项开启后，启动器会一直震动。
 
 
-
-Q: 查端。会。封号吗。
-
-A: ...
-
-
-
-Q: 显示某些信息的时候出现 [Streamer Filtered] 或者 [Privacy Filtered] 是什么鬼
+Q: 显示某些信息的时候出现 `[Streamer Filtered]` 或者 `[Privacy Filtered]` 是什么鬼
 
 A: 你开启了 **隐私保护（Privacy Protect）**（在旧版本 < `v1.1.0`下为 **主播模式 (Streamer)** 模块），会自动隐藏和过滤一些关键信息以免泄露。关闭即可。
 

@@ -2,7 +2,7 @@
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
-共 62 组命令。
+共 63 组命令。
 
 ## 获取网页完整内容（`/webpage &lt;url...&gt;`）
 
@@ -383,6 +383,23 @@ go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 
 
 ::: details 点击查看说明
 输出指定直播间的在线观众信息，最多输出 20 位观众。如果 roomId 不填或填 ~，则取 LiveStream 模块的 Room ID。
+:::
+
+## 下载、打开或查看视频弹幕（`/bilichatter <download/open/list> <aid/bvid/link>`）
+
+```bash
+/bilichatter download <aid/bvid/link>
+/bilichatter open <aid/bvid/link>
+/bilichatter list <aid/bvid/link> [ps=20] [pn=1] [keyword...]
+/bilichatter listnormal <aid/bvid/link> [ps=20] [pn=1] [keyword...]
+/bilichatter listsub <aid/bvid/link> [ps=20] [pn=1] [keyword...]
+/bilichatter listspecial <aid/bvid/link> [ps=20] [pn=1] [keyword...]
+/bilichatter listinteract <aid/bvid/link> [ps=20] [pn=1] [keyword...]
+/bilichatter listuploader <aid/bvid/link> [ps=20] [pn=1] [keyword...]
+```
+
+::: details 点击查看说明
+下载指定 B 站视频弹幕 XML，打开本地弹幕文件，或按页彩色输出视频弹幕。`open` 在本地文件不存在时会先下载，`list` 会按视频内弹幕时间排序输出，listnormal/listsub/listspecial/listinteract/listuploader 可按弹幕池或 UP 主筛选。命令会自动尝试把视频 UP 主加入发送者映射，可通过 Bili Chatter 模块的 List UID Reverse Lookup 配置反查发送者 UID，也可用 keyword 从反查成功的用户名、用户哈希和弹幕正文中筛选并高亮命中内容。
 :::
 
 ## Audience Tracker 控制命令（`/audiencetracker status [uid/nickname=all]`）

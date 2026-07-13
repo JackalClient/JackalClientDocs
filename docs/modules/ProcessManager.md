@@ -196,4 +196,4 @@ ProcessManager 是一个可视化进程管理 App，不只是“列进程”。�
 - [AntiProcCreate (禁止创建进程)](./AntiProcCreate.md)
 
 ## 相关资料
-无
+视频科普：[揭秘 Windows「PPL」: 进程无法被终止的秘密](https://www.bilibili.com/video/BV1NkR5BpEWx)

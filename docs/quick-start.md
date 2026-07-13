@@ -22,9 +22,10 @@ JackalClient 客户端作者，请支持我们！
 Free 免费版下载：
 - 蓝奏云: [wormwake.lanzout.com/b00mq8dxcb](https://wormwake.lanzout.com/b00mq8dxcb) 访问密码 d1lu
 - Github Releases: [github.com/noexcept2005/JackalClient/releases](https://github.com/noexcept2005/JackalClient/releases)
-- QQ群聊中获取: `196218959` 进群先看公告
+- QQ群聊中获取: `196218959` （二群）进群先看公告
 - 电脑小白请单击此处查看 → [如何下载并运行 JackalClient 说明书](/download-and-run)
-- 解压密码统一 `Wormwake`，请勿使用 Windows 自带的解压缩。
+- 解压密码统一 `Wormwake`，请勿使用 Windows 自带的解压缩否则识别不到密码，解压请解压整个文件夹。
+- 解压的时候，不要解压到含有中文字符的目录！！（例如：如果你的用户名含有中文，那么桌面路径就是含有中文字符的：`C:\Users\用户名\Desktop`）尽量不要解压到需要高权限的目录，例如 `C:\Program Files`，否则可能出现文件无法写入的问题。
 
 ## 1. 启动方式
 
@@ -135,4 +136,5 @@ Free 免费版下载：
 - [常见问题](/faq/)
 - [安全说明](/safety/)
 - [文件介绍](/client-files/)
+- [命令行参数](/docs/client-cmdline.md)
 - [BetterLyrics 更好的歌词模块专题](/betterlyrics/)
