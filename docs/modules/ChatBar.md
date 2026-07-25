@@ -15,6 +15,7 @@
 ## 介绍
 ChatBar（聊天栏）用于绘制一个聊天栏，可以显示控制台信息、IRC消息、直播弹幕等。
 ChatBar 会把仍在显示时间内的最后几行消息加密缓存到 Records.json，客户端重启或重新打开模块后可恢复这些消息；缓存会限制行数和文本长度，避免 Records.json 过大。
+开启 `Sync Live Chatters` 时，ChatBar 同步的是 LiveStream 当前选择的 `Room ID` 中的直播弹幕；切换到别人直播间时，ChatBar 也应跟随该房间，而不是固定同步自己的直播间。
 
 ## 配置项
 - Background（背景）

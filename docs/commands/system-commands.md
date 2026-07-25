@@ -3114,6 +3114,16 @@ int		LastUpdate: 文本上一次更新的时间。
 获取蓝奏云文件夹的描述。可选参数pwd为密码
 :::
 
+## 解析蓝奏云分享链接直链（`/lanzou parseurl &lt;url...&gt; [pwd]`）
+
+```bash
+/lanzou parseurl <url...> [pwd]
+```
+
+::: details 点击查看说明
+使用内置蓝奏云解析算法解析分享链接直链，彩色输出状态、文件名、大小和最终下载地址。可选参数pwd为密码，也可从url中的pwd/password/p参数自动读取。
+:::
+
 ## 获取网页JSON（必须返回JSON格式）然后用彩…（`/webjson &lt;url...&gt;`）
 
 ```bash

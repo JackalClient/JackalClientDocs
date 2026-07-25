@@ -24,26 +24,26 @@
 
 ### 2.2 Dropdown Integration (下拉式界面的集成配置项界面)
 
-在 `Module Option Style` = `Integration` 时，模块配置项会显示在模块的下方，类似于一个抽屉或者卡片，可以直接调节。
+在 `Module Option Style` = `Integration 集成` 时，模块配置项会显示在模块的下方，类似于一个抽屉或者卡片，可以直接调节。
 
 ![Dropdown-Integration](/dropdown-intergration.jpg)
 
 ### 2.3 Neverlose Card (NL的卡片式配置项界面)
-在 `NL Module Option Style` = `Card` 时，模块配置项会显示在模块的下方，类似于一个小卡片，可以直接调节。
+在 `NL Module Option Style` = `Card 卡片` 时，模块配置项会显示在模块的下方，类似于一个小卡片，可以直接调节。
 
 ![Neverlose-Card](/neverlose-card.jpg)
 
 ### 2.4 Neverlose Page (NL的页面式配置项界面)
 
 (v1.1.2)
-在 `NL Module Option Style` = `Card` 时，模块配置项会单独在右侧作为一列，方便调节。
+在 `NL Module Option Style` = `Page 页` 时，模块配置项会单独在右侧作为一列，方便调节。
 
 ![Neverlose-Page](/neverlose-page.jpg)
 
 ### 2.5 Neverlose Flyout (NL的飞出式配置项界面)
 
 (v1.1.2)
-在 `NL Module Option Style` = `Flyout` 时，模块配置项会单独在`GUI`窗口的右侧作为独立的小窗口，开启和关闭具有飞出和飞入动画，非常难看。这个配置项窗口默认吸附在`GUI`窗口的右侧；你也可以拖动标题栏进行移动。注意，`GUI`窗口最大化时，该窗口将自动关闭。
+在 `NL Module Option Style` = `Flyout 飞入飞出` 时，模块配置项会单独在`GUI`窗口的右侧作为独立的小窗口，开启和关闭具有飞出和飞入动画，非常难看。这个配置项窗口默认吸附在`GUI`窗口的右侧；你也可以拖动标题栏进行移动。注意，`GUI`窗口最大化时，该窗口将自动关闭。
 
 ![Neverlose-Flyout](/neverlose-flyout.jpg)
 
@@ -99,7 +99,8 @@
 
 ### 3.4 浮点数类型
 
-浮点数就是小数的意思。点击即可编辑。支持使用整数，将自动转换为浮点数。下面具有滑动条，可以滑动。也可以用鼠标滚轮进行微调。
+浮点数就是小数的意思。点击即可编辑。支持使用整数，将自动转换为浮点数。下面具有 `滑动条 (Slider)` ，可以滑动。也可以用鼠标滚轮进行微调。
+滑动条的取值范围并非绝对，你仍可以单击数字进行手动修改，回车确认编辑。
 
 ![Float](/float-option.jpg)
 
@@ -114,3 +115,7 @@
 点击即可编辑。下面具有滑动条，可以滑动。也可以用鼠标滚轮进行微调。
 
 ![Keybind](/keybind.jpg)
+
+### 3.7 按钮类型
+
+v1.1.4 新加入的配置项类型，允许你点击后执行相应的命令。

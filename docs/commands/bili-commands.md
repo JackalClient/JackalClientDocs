@@ -2,7 +2,7 @@
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
-共 63 组命令。
+共 67 组命令。
 
 ## 获取网页完整内容（`/webpage &lt;url...&gt;`）
 
@@ -132,6 +132,50 @@
 
 ::: details 点击查看说明
 【PRO】查看或搜索指定用户直播间的大航海成员，会显示舰长/提督/总督、粉丝牌等级与陪伴天数。未指定 uid/user 时默认使用当前登录账号。
+:::
+
+## 彩色输出收藏夹列表（`/bili fav folders [uid=self]`）
+
+```bash
+/bili fav folders [uid=self]
+/bili favorite folders [uid=self]
+```
+
+::: details 点击查看说明
+彩色输出指定用户创建的收藏夹列表，显示 MLID、FID、创建者 UID、公开/私密状态和视频数量。uid 不填时使用当前登录账号。
+:::
+
+## 分页查看收藏夹内容（`/bili fav list <media_id/name...> [ps=20] [pn=1] [order=mtime]`）
+
+```bash
+/bili fav list <media_id/name...> [ps=20] [pn=1] [order=mtime]
+/bili favorite list <media_id/name...> [ps=20] [pn=1] [order=mtime]
+```
+
+::: details 点击查看说明
+分页彩色输出指定收藏夹内容。media_id 可填收藏夹 MLID 或收藏夹名称，名称会按当前账号收藏夹模糊匹配；ps 最大 20；order 支持 mtime、view、pubtime。
+:::
+
+## 收藏指定视频（`/bili fav add <aid/bvid/link> <media_id/name...>`）
+
+```bash
+/bili fav add <aid/bvid/link> <media_id/name...>
+/bili favorite add <aid/bvid/link> <media_id/name...>
+```
+
+::: details 点击查看说明
+将指定 B 站视频收藏到目标收藏夹。media_id 可填收藏夹 MLID 或收藏夹名称，名称会按当前账号收藏夹模糊匹配；需要当前账号已登录。
+:::
+
+## 取消收藏指定视频（`/bili fav del <aid/bvid/link> <media_id/name...>`）
+
+```bash
+/bili fav del <aid/bvid/link> <media_id/name...>
+/bili favorite del <aid/bvid/link> <media_id/name...>
+```
+
+::: details 点击查看说明
+从指定收藏夹取消收藏指定 B 站视频。media_id 可填收藏夹 MLID 或收藏夹名称，名称会按当前账号收藏夹模糊匹配；需要当前账号已登录。
 :::
 
 ## 查看B站视频信息（`/bili video <aid/bid/link>`）

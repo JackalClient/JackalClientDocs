@@ -14,7 +14,7 @@
 ## 介绍
 LiveChatter 负责直播弹幕本身：它从 LiveStream 当前房间接收弹幕，按规则筛选后显示在客户端，也可以写入控制台或文件、朗读、翻译、播放提示音、触发命令，并让 AI 生成回复。
 
-发送相关能力会使用 LiveStream 的 `Room ID` 作为目标房间，包括 `/blc`、`/bili live chatter`、剪贴板快速发送、自动发送和 AI 的 `Real Chatter` 模式。切换到别人直播间观察时，建议保持 `Prevent Others Room Chatter Sending` 开启，或使用 `/bili live switch <roomId> auto`，避免误把弹幕发到非自己的直播间。
+发送相关能力会使用 LiveStream 的 `Room ID` 作为目标房间，包括 `/blc`、`/bili live chatter`、剪贴板快速发送、自动发送和 LiveChatter 自身的 AI `Real Chatter` 模式。LiveChatter/LiveStream 的 `Real Chatter` 都发送到当前选择的直播间；其它模块的 `Real Chatter`（包括 Streamer）默认面向自己的直播间。切换到别人直播间观察时，建议保持 `Prevent Others Room Chatter Sending` 开启，或使用 `/bili live switch <roomId> auto`，避免误把弹幕发到非自己的直播间。
 
 ## 配置项
 - Auto Send Time Mode（自动发送时间模式）
