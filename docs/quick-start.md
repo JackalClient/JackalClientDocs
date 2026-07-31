@@ -23,6 +23,8 @@ JackalClient 客户端作者，请支持我们！
 - `JackalClient` 是一个 `Windows` 平台的工具箱，并非游戏外挂。
 - 没有 Linux 版。没有 Mac 版。没有手机版。
 - 欢迎加入腾讯频道（QQ频道）发帖交流：[点击链接加入腾讯频道【JackalClient】](https://pd.qq.com/s/xa4l6owp)
+  
+![QQ-Channel](/qq-channel.jpg)
 
 Free 免费版下载：
 - 蓝奏云: [wormwake.lanzout.com/b00mq8dxcb](https://wormwake.lanzout.com/b00mq8dxcb) 访问密码 `d1lu`
@@ -66,6 +68,8 @@ Free 免费版下载：
 - 左键：打开或关闭模块
 - 右键（或点击右侧标识）：展开或折叠模块配置
 
+![Dropdown GUI](/dropdown-gui.png)
+
 辅助操作：
 
 - `Ctrl + 滚轮`: 全局缩放
@@ -80,6 +84,8 @@ Free 免费版下载：
 
 - 左键开关：打开或关闭模块
 - 左键模块的其他位置：展开或折叠模块配置
+
+![Neverlose GUI](/neverlose-gui.jpg)
 
 辅助操作：
 

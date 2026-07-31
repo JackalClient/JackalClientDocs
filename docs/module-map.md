@@ -13,6 +13,8 @@
 | 自动化与编排 | 触发器、脚本、宏 | 中 | 高 |
 | 网络相关 | B站、歌词、在线检索 | 中 | 中-高 |
 
+![Neverlose-GUI-Module-Search](/neverlose-module-search.jpg)
+
 ## A. 界面与显示
 
 - ClickGUI

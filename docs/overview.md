@@ -3,7 +3,10 @@
 欢迎查看 `JackalClient 文档`！
 `JackalClient` 是一个面向 Windows 的客户端工具箱，定位为学习与研究用途的软件集合。
 
+![Client-poster1](/jackal-1.jpg)
+
 - 查看视频合集：[JackalClient视频合集](https://space.bilibili.com/3494361276877525/lists/3986082?type=season)
+![Jackal-Video_Series](/jackal-video-series.jpg)
 - 常见问题请戳这里：[常见问题 Q&A](/faq.md)
 
 它的核心形态不是 “单一功能程序” ，而是由多个可独立开关的模块组成：

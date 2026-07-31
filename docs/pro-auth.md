@@ -11,29 +11,24 @@
 
 初次打开PRO专业版客户端<font style="color:#DF2A3F;">【注意需要网络】</font>，可以看到下面的界面：
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/54044512/1779383900411-da1f0759-2168-4825-aa1c-f05f44dba1c9.png)
+![pro-auth-gui](/pro-auth.jpg)
 
 当然如果你点击 `Use Console`使用控制台界面：
 
   
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/54044512/1774087271391-7aefded0-6b57-44ce-8e18-8ca3973b03a8.png)
+![pro-auth-console](/pro-auth-console.jpg)
 
 你可以选择<font style="color:#D22D8D;"> [L] 登陆，  [R] 注册，   [O] 语言,    [Esc] 退出</font>
 
 注册：
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/54044512/1779383970095-24a82cce-b7eb-4b5e-9863-0e4c19dcb395.png)
+![pro-auth-register](/pro-auth-register.jpg)
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/54044512/1774087376997-47ee2124-c32e-4e91-b5fe-3a7f9c845880.png)
+![pro-auth-console-register](/pro-auth-console-register.jpg)
 
 用上下箭头进行选择，按下Enter回车进入字段的编辑。
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/54044512/1774087406588-73b0f9c0-5daf-48c3-a724-e267138f4bc3.png)
+![pro-auth-console-username](/pro-auth-console-username.jpg)
 
 输入cancel可以取消。输入完毕回车即可。
 
@@ -51,8 +46,7 @@
 
 如果按下L进入登陆：
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/54044512/1774087690609-f23c0462-65d2-464c-8050-1e93ad487c67.png)
+![pro-auth-console-password](/pro-auth-console-password.jpg)
 
 输入你的用户名和密码即可。
 
@@ -60,14 +54,14 @@
 
 会在用户名对应的邮箱发送验证码，你输入验证码后，就会<font style="color:#1DC0C9;">重置</font>这个账号的密码为随机值，并发送至邮箱。
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/54044512/1774087711457-d3e96876-39df-45ee-a00d-a9c8cbb54bc1.png)
+![pro-auth-console-login](/pro-auth-console-login.jpg)
 
 然后按下 <font style="color:#8CCF17;">[L] 完成登陆</font>。 会输出登陆结果。
 
 如果账号是普通账号，会要求你输入激活码。激活成功才能进入PRO客户端。
+如果激活失败，请私信作者 `Wormwaker`，或者联系邮箱 `wormwake@qq.com`，带上你的用户名与激活码。在激活码使用之前，不要把激活码泄露给他人。
 
-登陆成功会有一条登入消息被发送出去，别的IRC用户可以看见（例如：IRC Global> [PRO] jackaluser joined.）
+登陆成功会有一条登入消息被发送出去，别的IRC用户可以看见（例如：`IRC Global> [PRO] jackaluser joined.`），自己看不见。
 
 
 
@@ -77,7 +71,7 @@ _旧版IRC采用的是在线文本数据库，非常慢，且不安全，在v1.0
 
 新版IRC命令：
 
-打开IRC模块，一般来说会自动登陆或者恢复登陆。如果输出No token或者 Login required，则是登陆凭证失效，需要你重新登陆。你可以重启客户端回到上面那个界面，或者用命令快捷操作：
+打开IRC模块，一般来说会自动登陆或者恢复登陆。如果输出 `No token` 或者 `Login required` ，则是登陆凭证失效，需要你重新登陆。你可以重启客户端回到上面那个界面，或者用命令快捷操作：
 
 
 
@@ -86,7 +80,8 @@ _旧版IRC采用的是在线文本数据库，非常慢，且不安全，在v1.0
 
 `/irc login <username> [password=input...]`
 
-账户为 username，密码为 password 发送登陆请求。**建议不填写密码，这样回车后会让你输入密码，此时就是用*遮挡了，防止泄露。**
+账户为 username，密码为 password 发送登陆请求。
+**建议不填写密码，这样回车后会让你输入密码，此时就是用*遮挡了，防止泄露。**
 
 
 
@@ -110,16 +105,14 @@ PRO版直接注册账户的命令。不推荐用这个命令。因为你都进�
 `/irc setname <nickname>`
 
 设置你的昵称。每天只能设置一次。不得包含保留字。不得太长不得太短。
-
+你也可以用 `Neverlose GUI` 用户信息界面的按钮来设置昵称。
 
 
 `/irc list`
 
 查看聊天室在线的用户。你也可以在 `Neverlose GUI` 右上角的徽标上鼠标悬停查看。
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/54044512/1774089509991-cd014102-508e-4940-917e-8583821da097.png)
-
+![irc-list](/irc-list.jpg)
 
 
 `/irc email send register <email>`
