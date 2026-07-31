@@ -6,8 +6,8 @@
 
 JackalClient 客户端作者，请支持我们！
 
-- UP主-主要开发：
-- [@Wormwaker](https://space.bilibili.com/3494361276877525)
+- UP主-主要开发/文档书写：
+- [@Wormwaker](https://space.bilibili.com/3494361276877525) 
   
 - 辅助开发：
 - [@涟幽Alex](https://space.bilibili.com/1270641296)
@@ -16,15 +16,21 @@ JackalClient 客户端作者，请支持我们！
 - [@KeBugCheck](https://space.bilibili.com/1632975427)
 - [@Stars_Azusa](https://space.bilibili.com/670866766)
 
-- JackalClient 是一个 `Windows` 平台的工具箱，并非游戏外挂。
+- 网站搭建及服务器支持：
+- [@CnMuHan](https://space.bilibili.com/509427314)
+  
+
+- `JackalClient` 是一个 `Windows` 平台的工具箱，并非游戏外挂。
 - 没有 Linux 版。没有 Mac 版。没有手机版。
+- 欢迎加入腾讯频道（QQ频道）发帖交流：[点击链接加入腾讯频道【JackalClient】](https://pd.qq.com/s/xa4l6owp)
 
 Free 免费版下载：
-- 蓝奏云: [wormwake.lanzout.com/b00mq8dxcb](https://wormwake.lanzout.com/b00mq8dxcb) 访问密码 d1lu
+- 蓝奏云: [wormwake.lanzout.com/b00mq8dxcb](https://wormwake.lanzout.com/b00mq8dxcb) 访问密码 `d1lu`
 - Github Releases: [github.com/noexcept2005/JackalClient/releases](https://github.com/noexcept2005/JackalClient/releases)
 - QQ群聊中获取: `196218959` （二群）进群先看公告
 - 电脑小白请单击此处查看 → [如何下载并运行 JackalClient 说明书](/download-and-run)
-- 解压密码统一 `Wormwake`，请勿使用 Windows 自带的解压缩否则识别不到密码，解压请解压整个文件夹。
+- 解压密码统一 `Wormwake`
+- 【重要】请勿使用 Windows 自带的解压缩否则识别不到密码，解压请解压整个文件夹。
 - 解压的时候，不要解压到含有中文字符的目录！！（例如：如果你的用户名含有中文，那么桌面路径就是含有中文字符的：`C:\Users\用户名\Desktop`）尽量不要解压到需要高权限的目录，例如 `C:\Program Files`，否则可能出现文件无法写入的问题。
 
 ## 1. 启动方式
@@ -87,16 +93,22 @@ Free 免费版下载：
 - 上下箭头↑↓: 可以代替滚轮滚动。
 - `Home` / `End`: 快速跳转到页面的顶部或底部。
 
+其他信息详见 [专业版说明](/pro.md)
+
 ### Imgui:
 这个界面已被废弃，不建议使用。设置为本样式后，需要重启客户端应用。
 
 ### 右下角会有两个按钮：
-第一个绿色的表示 `ModuleEditor / 模块编辑器` ，点一下后就可以修改模块显示状态了，左侧具有绿色竖线的模块表示显示在GUI上，如果你想隐藏，点一下即可。修改完毕后点击下面的完成按钮。
-第二个蓝色的表示 `HUD Editor / HUD编辑器` ，点一下后你可以用鼠标中键（滚轮往下按）拖动任意HUD元素（例如灵动岛、目标显示、模块列表等）。注意，HUD编辑器打开的时候任何“给鼠标让道”选项都会暂时失效。
+- 第一个绿色的表示 `ModuleEditor / 模块编辑器` ，点一下后就可以修改模块显示状态了，左侧具有绿色竖线的模块表示显示在GUI上，如果你想隐藏，点一下即可。修改完毕后点击下面的完成按钮。
+- 第二个蓝色的表示 `HUD Editor / HUD编辑器` ，点一下后你可以用
+  - ① 鼠标左键：新版客户端(>= v1.1.4) HUD编辑器的模式选择为`Classic 经典`时，HUD编辑器是在GUI中的，直接用鼠标左键即可拖动任意HUD元素。按 `Esc` 退出。
+  - ② 鼠标中键（滚轮往下按）：旧版客户端（< v1.1.4），或者HUD编辑器模式选择为`Old 旧版`时，用鼠标中键拖动任意HUD元素（例如灵动岛、目标显示、模块列表等）。
+  - 注意，HUD编辑器打开的时候任何“给鼠标让道”选项都会暂时失效。
 
 ### 配置项
 
-客户端具有五千条以上的配置项。配置项用于控制模块和设置的各项属性，请详见 [配置项说明](configuration.md)
+- 客户端具有五千条以上的配置项。配置项用于控制模块和设置的各项属性
+- 请详见 [配置项说明](configuration.md)
 
 ### 配置档案
 

@@ -75,12 +75,12 @@ opencc 离线翻译。
 ::: details 点击查看说明
 前者如果参数不填，则异步启动一个计算器。
 否则，计算并输出数学表达式 expr 的值。支持四则运算、**乘方运算、三角函数、反三角函数、双曲三角函数、expr、sqrt、pow、random()、randint(a,b)、uniform(a,b)
-部分函数会先由客户端预计算再交给 PowerShell：avg、median、mode、min、max、range、sum、prod、var、svar、std、sstd、pct、quartile、gmean、hmean、corr、cov、linreg、gcd、lcm、prime、factor、fact、perm、comb。
+普通表达式会优先由客户端本地计算；本地暂不支持的表达式才会回退到 PowerShell。部分函数会先由客户端预计算：avg、median、mode、min、max、range、sum、prod、var、svar、std、sstd、pct、quartile、gmean、hmean、corr、cov、linreg、gcd、lcm、prime、factor、fact、perm、comb。
 示例：std(1,2,3,4,5)。pct(p, values...) 中 p 支持 0..1 或 0..100；quartile(q, values...) 中 q 为 0..4；corr/cov/linreg 使用成对点参数，例如 corr(x1,y1,x2,y2,...)，linreg 返回斜率；prime(n) 返回 1/0，factor(n) 返回最小非 1 因子。
 当输入内容无法匹配为已知命令时，会尝试作为数学表达式计算，例如直接输入 sin(1+1)。
-注意这其实是调用 PowerShell 进行最终运算，并非所有计算都由 PowerShell 完成。
+注意：本地计算不需要启动 PowerShell，只有少数兜底表达式会调用 PowerShell。
 
-calculate 命令会输出转化后的PowerShell表达式并输出用时。
+calculate 命令会输出处理后的表达式并输出用时。
 calccopy 命令如果成功，将会将结果写入剪贴板。
 getcalc 命令如果成功，将会将结果以字符串形式写入it
 :::

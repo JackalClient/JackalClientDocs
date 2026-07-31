@@ -14,9 +14,16 @@ HUD编辑器
 ## 介绍
 HudEditor（HUD编辑器）用于帮助你编辑 HUD 元素的属性。
 适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Show Key Names、Show Old Values、Show New Values。
+初次使用可优先调整：Mode、Classic Night Enabled、Show Key Names。
 
 ## 配置项
+- Mode（模式）
+ 类型：枚举；默认："Classic"
+ 说明：Classic 会打开 GUI 进入 HUD 编辑界面，鼠标经过 HUD 即可预览，按住鼠标左键可直接拖动，按 Esc 或关闭菜单即可完成编辑。Old 保留旧版 HUD 形式，需要使用 Old Preview Key 和 Old Drag Key。
+ 可选：Classic（经典）；Old（老版）
+- Classic Night Enabled（经典模式启用夜幕）
+ 类型：布尔；默认：true
+ 说明：Classic 模式下是否自动开启 Night 遮罩。若 Night 原本未开启，退出 HudEditor 后会自动关闭；若 Night 原本已开启，则不会被 HudEditor 退出流程关闭。
 - Show Key Names（显示键名）
  类型：布尔；默认：true
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
@@ -32,22 +39,17 @@ HudEditor（HUD编辑器）用于帮助你编辑 HUD 元素的属性。
 - Show Rectangle（显示矩形）
  类型：布尔；默认：true
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
-- Show Line（显示线条）
- 类型：布尔；默认：true
- 说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
 - Rectangle Opacity (0~1)（矩形不透明度 (0~1)）
  类型：数值；默认：0.7f
  说明：用于控制透明度。默认值 0.7f 兼顾可见性和遮挡；如果你觉得挡视线可小幅下调，若看不清可小幅上调。
-- Line Opacity (0~1)（线条不透明度 (0~1)）
- 类型：数值；默认：0.9f
- 说明：用于控制透明度。默认值 0.9f 兼顾可见性和遮挡；如果你觉得挡视线可小幅下调，若看不清可小幅上调。
-- Preview Key（预览键）
+- Old Preview Key（旧版预览键）
  类型：按键/复合；默认：`{ { "Keybind", {VK_LCONTROL } }`}
- 说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
-- Drag Key（拖拽键）
+ 说明：Old 模式下按住该键时预览 HUD 可拖拽区域；Classic 模式不使用该配置。
+- Old Drag Key（旧版拖拽键）
  类型：按键/复合；默认：`{ { "Keybind", {VK_MBUTTON } }`}
- 说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
+ 说明：Old 模式下按住该键拖动 HUD；Classic 模式使用鼠标左键直接拖动。
 ## 历史更新
+- v1.1.4：新增 Classic 模式，启用后进入 GUI 编辑界面，可直接用鼠标左键拖动 HUD，并可联动 Night 遮罩；旧版按键配置重命名为 Old Preview Key / Old Drag Key。
 - 33. 实装了 HudEditor 的功能，打开后可以按住左Ctrl预览各 HUD 元素，默认按 Ctrl+鼠标中键 直接拖拽 HUD 元素。打开后，所有 Give Way to Mouse 选项将不生效。
 - 44. 在 GUI 右下角添加 Hud Editor 的按钮。
 - 15. 添加模块： HudEditor，编辑 HUD 元素属性。暂时还没做好。

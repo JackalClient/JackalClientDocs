@@ -60,8 +60,12 @@ MinecraftUtils（MC功能）用于一些MC上的实用功能。
  说明：这是数值型配置。默认值 32L 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
 - Log Game Chat Output Mode (PRO)（日志游戏聊天输出模式（专业版））
  类型：枚举；默认："Island"
- 说明：这是该模块的核心行为开关，不同选项对应不同执行策略。选择 Chat Bar 时会按社交媒体格式自动染色，并对内置关键词使用特殊颜色。
+ 说明：这是该模块的核心行为开关，不同选项对应不同执行策略。选择 Chat Bar 时会按社交媒体格式自动染色，并对内置关键词使用特殊颜色；如果多个 Minecraft 会话连续输出完全相同的最后一条消息，会自动合并对应 PID 组以避免重复刷屏，并最多每分钟提示一次警告通知。
  可选：Off（关闭）；Notify（通知）；Chatter（弹幕）；Title（标题）；Speak（讲述）；Island（岛）；Real Chatter（真弹幕）；Console Output（控制台输出）；Log（日志）；Chat Bar（聊天栏）；Actionbar（行为栏）
+- Sync Chat Module Toggle Notification (PRO)（同步聊天模块启停通知（专业版））
+ 类型：枚举；默认："Off"
+ 说明：专业版功能。开启后会识别聊天栏中的模块启停格式，例如 `[Myau] Scaffold Enabled`、`Scaffold Disabled` 或 `Enabled Scaffold`，并按客户端当前通知样式同步显示模块启停消息；Notification 输出为 Minecraft 标题的通知，Island 输出为灵动岛临时消息。
+ 可选：Off（关闭）；Notification（通知）；Island（岛）
 - Log Game Chat Chatter Type（日志游戏聊天弹幕类型）
  类型：枚举；默认："Top"
  说明：用于选择结果反馈方式。默认值 Top 适合大多数场景；若你不想打扰可改为更安静的输出方式。
