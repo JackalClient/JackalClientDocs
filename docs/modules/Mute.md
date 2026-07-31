@@ -1,7 +1,7 @@
 # Mute
 静音
 分类：Misc
-描述：暂无描述
+描述：让当前音频设备静音。
 
 ## 需求
 - 安全级别：常规模块
@@ -12,94 +12,36 @@
 - 版本属性：普通可用
 
 ## 介绍
-Mute（静音）用于暂无描述。
-适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Hide HUD When Menu On、Volume Mode、System Volume HUD。
+Mute（静音）用于控制当前系统输出设备的静音状态。模块开启时按配置进入静音，关闭时按配置解除静音或恢复音量。
+
+该模块和 Volume 的“静音快捷键”行为不同：Mute 是一个可开关的模块，Amount 模式会在开启时记录静音前的系统音量，关闭时可自动恢复；Volume 里的静音按键更偏向一次性切换系统或进程静音状态。
 
 ## 配置项
-- Keybind（未收录）
- 类型：按键/复合；默认：{VK_LCONTROL, VK_LSHIFT, 'M'}}}
- 说明：用于设置快捷键触发。建议避免与系统或常用软件冲突，优先使用组合键提高可控性。
-- Hide HUD When Menu On（打开菜单时隐藏HUD）
- 类型：布尔；默认：false
- 说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
-- Volume Mode（音量模式）
- 类型：枚举；默认："System"
- 说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 System ，确认稳定后再逐项切换比较效果。
- 可选：System（系统）；Process（进程）
-- System Volume HUD（系统音量HUD）
- 类型：枚举；默认："Temp"
- 说明：这是选项型配置。默认值 Temp 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
- 可选：Off（关闭）；Temp（临时）；Always（总是）
-- System Volume HUD Style（系统音量HUD风格）
- 类型：枚举；默认："Bottom"
- 说明：这是选项型配置。默认值 Bottom 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
- 可选：Bottom（底部）；Bottom Big（底部，大号）；Giant（巨型）；Rainbow Giant（彩虹巨型）
-- Process Volume HUD（进程音量HUD）
- 类型：枚举；默认："Temp"
- 说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。
- 可选：Off（关闭）；Temp（临时）；Always（总是）
-- Process Volume HUD Style（进程音量HUD风格）
- 类型：枚举；默认："Bottom"
- 说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。
- 可选：Bottom（底部）；Giant（巨型）；Rainbow Giant（彩虹巨型）
-- Notify Type（通知类型）
- 类型：枚举；默认："Off"
- 说明：用于选择结果反馈方式。默认值 Off 适合大多数场景；若你不想打扰可改为更安静的输出方式。
- 可选：Off（关闭）；Console Output（控制台输出）；Notify（通知）
-- Wheel System Volume Adjust（系统音量滚轮调节）
- 类型：枚举；默认："Mouse On Taskbar"
- 说明：这是选项型配置。默认值 Mouse On Taskbar 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
- 可选：Off（关闭）；LAlt（未收录）；RAlt（未收录）；Mouse On Taskbar（鼠标在任务栏上）
-- Wheel Process Volume Adjust（进程音量滚轮调节）
- 类型：枚举；默认："Mouse On Caption"
- 说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。
- 可选：Off（关闭）；LAlt（未收录）；RAlt（未收录）；Mouse On Caption（鼠标在标题栏上）
-- Process Volume Smart ID Infer（进程音量智能ID推断）
+- Mode（模式）
+ 类型：枚举；默认："Status"
+ 说明：决定 Mute 开启/关闭时如何处理系统声音。
+ 可选：Status（静音状态）；Amount（音量数值）；Both（两者都设置）
+
+- Amount Mode Restore Volume（Amount 模式恢复音量）
  类型：布尔；默认：true
- 说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。
-- Wheel Detect Only If Cursor Visible（仅在光标可见时检测滚轮）
- 类型：布尔；默认：true
- 说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
-- Wheel Volume Step（音量滚轮差值）
- 类型：数值；默认：5U
- 说明：这是数值型配置。默认值 5U 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
-- Step (%%)（差值 (%%)）
- 类型：数值；默认：5U
- 说明：这是数值型配置。默认值 5U 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
-- Temp HUD Duration (ms)（临时HUD持续时间(毫秒)）
- 类型：数值；默认：3000L
- 说明：用于控制检测/刷新/动画节奏。默认值 3000L 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
-- Temp HUD Animation Duration (ms)（临时显示的淡入淡出动画时长（毫秒）。）
- 类型：数值；默认：300L
- 说明：用于控制检测/刷新/动画节奏。默认值 300L 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
-- Limit System Volume（限制系统音量）
- 类型：布尔；默认：false
- 说明：这是开关型配置。默认值 false 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
-- System Volume Min（系统音量最小值）
- 类型：数值；默认：1
- 说明：这是数值型配置。默认值 1 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
-- System Volume Max（系统音量最大值）
- 类型：数值；默认：50
- 说明：这是数值型配置。默认值 50 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
+ 说明：仅在 Mode 包含 Amount 行为时生效。开启后，Mute 启用时会记录当前系统音量并把系统音量设为 0；关闭 Mute 时会尝试恢复到记录的音量。关闭后，退出 Mute 时不会自动恢复音量数值。
+
+## 模式说明
+- Status：使用系统静音状态。开启 Mute 时设置为静音，关闭 Mute 时取消静音，不直接修改音量百分比。
+- Amount：通过音量数值实现静音。开启 Mute 时记录当前音量并把系统音量设为 0，关闭 Mute 时根据 `Amount Mode Restore Volume` 决定是否恢复原音量。
+- Both：同时设置系统静音状态和音量数值。适合希望静音状态与 0 音量同时生效的场景。
+
 ## 历史更新
-无（HISTORY 中暂无明确记录）
+- 40. 修改 Mute 模块配置：`Restore Volume` 重命名为 `Amount Mode Restore Volume`；新增 `Mode`，可选 `Status`、`Amount`、`Both`。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+- Amount 或 Both 模式会写入并读取 `Volume Before Mute` 记录，用于关闭模块时恢复音量。
+- 如果 Volume 模块开启了 `Limit System Volume`，Mute 的 Amount 行为会自动关闭该限制，避免音量被限制规则阻止设置为 0。
+- 该模块作用于系统当前音频输出设备；若功能未生效，优先检查系统音频设备状态、Windows 音量接口可用性，以及是否有其他音量管理软件同时接管。
 
 ## 相关命令
 无
 
 ## 相关模块
-- [Active (活动)](./Active.md)
-- [AutoSpeak (自动讲述)](./AutoSpeak.md)
+- [Volume (音量)](./Volume.md)
 - [AntiMicrophone (反麦克风)](./AntiMicrophone.md)
-- [Console (控制台)](./Console.md)
-- [Shell (命令行)](./Shell.md)
-- [QuickCommand (快速命令)](./QuickCommand.md)
-- [ForceTopmost (强制置顶)](./ForceTopmost.md)
-- [MemeTrigger (梗触发)](./MemeTrigger.md)
-
-## 相关资料
-视频介绍：[更加便利的 Windows 音量调节【ft.Jackal】](https://www.bilibili.com/video/BV1PFJH6HEWJ)
