@@ -16,6 +16,8 @@ LiveStream 面向 B 站直播间使用：它会按 `Room ID` 拉取直播间弹�
 
 LiveStream/LiveChatter 的 `Real Chatter` 会发送到当前选择的 `Room ID`；其它模块的 `Real Chatter`（包括 Streamer）默认发送到自己的直播间。ChatBar 同步直播弹幕时也以当前选择的 `Room ID` 为准，而不是固定使用自己的直播间。
 
+当直播间或主播权限导致观众 UID 不可用时，LiveStream HUD 和 ChatBar 会跳过 B 站用户关系查询，避免使用 UID 0 触发请求错误。
+
 首次使用建议先设置 `Room ID`，确认 `/bili login` 已登录，再开启模块。只想看弹幕和礼物时，保持默认配置即可；如果需要在 HUD 显示观众列表，再重点调整 `HUD Online Audience ...` 相关项；如果需要切换到别人的直播间观察，优先使用 `/bili live switch <roomId> auto`，它会帮你降低误发弹幕、误触发自动回复等风险。
 
 ## 配置项

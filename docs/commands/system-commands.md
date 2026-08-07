@@ -3726,3 +3726,17 @@ zhanan			随机渣男语录
 ::: details 点击查看说明
 `init` 以指定窗口句柄初始化 Typewriter，默认使用当前前台窗口；`start` 在指定倒计时后启动，未初始化时会自动初始化，最后五秒每秒显示一次 TitleTip；`pause` 暂停；`stop` 停止并清空目标窗口与内容；`status` 彩色输出当前状态、目标窗口和进度。
 :::
+
+## 闹钟相关命令（`/alarm <params...>`）
+
+```bash
+/alarm <params...>
+/alarm fire <id>
+/alarm sync
+/alarm list
+```
+
+::: details 点击查看说明
+闹钟相关命令。主要供 Alarm 模块和 Windows 计划任务自动调用。
+`/alarm fire <id>` 触发指定闹钟；`/alarm sync` 异步同步 Windows 计划任务到 Alarm 列表；`/alarm list` 列出当前保存在 Records.json 中的闹钟。
+:::

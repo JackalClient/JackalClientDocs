@@ -16,6 +16,8 @@ LiveChatter 负责直播弹幕本身：它从 LiveStream 当前房间接收弹�
 
 发送相关能力会使用 LiveStream 的 `Room ID` 作为目标房间，包括 `/blc`、`/bili live chatter`、剪贴板快速发送、自动发送和 LiveChatter 自身的 AI `Real Chatter` 模式。LiveChatter/LiveStream 的 `Real Chatter` 都发送到当前选择的直播间；其它模块的 `Real Chatter`（包括 Streamer）默认面向自己的直播间。切换到别人直播间观察时，建议保持 `Prevent Others Room Chatter Sending` 开启，或使用 `/bili live switch <roomId> auto`，避免误把弹幕发到非自己的直播间。
 
+ChatBar 或 LiveStream HUD 查询观众关系时，如果当前弹幕/观众数据没有提供有效 UID，会跳过关系接口请求，避免向 B 站提交 UID 0。
+
 ## 配置项
 - Auto Send Time Mode（自动发送时间模式）
  类型：枚举；默认："Off"

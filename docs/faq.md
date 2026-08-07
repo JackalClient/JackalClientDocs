@@ -133,7 +133,11 @@ A: 那个模块叫「**<font style="color:#117CEE;">模块列表 (Arraylist)</fo
 ![arraylist-options](/arraylist-options.jpg)
 
 
-Q: 为什么 Ambience 环境氛围 模块打开不会下雨
+Q: 为什么客户端开久了之后，字体会突然变成黑色方块，以及控制台报错 `[AppUpdate] Runtime Error: resource unavailable try again: resource unavailable try again`，或者直接崩溃
+A: 客户端的内存爆炸问题，作者已经修过 N 次了还是没修好。与线程的调度有关。重新打开客户端即可。 qwq
+
+
+Q: 为什么 `Ambience 环境氛围` 模块打开不会下雨
 
 A: 把这个模块的配置的 `Weather(天气)` 改成 <font style="color:#2F4BDA;">Rainy</font> 即可。或者打开 **Weather Cycle (天气循环)**，天气将会定期自动变幻。
 

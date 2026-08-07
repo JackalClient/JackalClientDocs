@@ -17,6 +17,11 @@ BiliConsole（B站控制台）用于一个实用的交互式B站控制台。
 初次使用可优先调整：Draw Cooldown (ms)、Update Cooldown (ms)。
 使用前请确认网络可用及相关 API/平台账号配置完整。
 
+## 用户空间页面
+- 稿件页会优先使用 B 站新版用户稿件搜索接口枚举视频，旧动态枚举方式仅在新版接口不可用时作为后备。
+- 动态页会优先使用新版用户空间动态接口，并保留旧接口后备；翻页时会使用新版 offset，避免旧动态 ID 分页失效。
+- `/bili contribution search` 和 `/bili dynamic list/search` 与控制台页面共享同一套枚举逻辑。
+
 ## 配置项
 - Auto Console（自动启用控制台）
  类型：布尔；默认：true

@@ -11,6 +11,8 @@
 
 ```
 ├───assets                      —— 客户端资源文件
+│   ├───default_settings.free.json —— 免费版默认配置源文件
+│   ├───default_settings.pro.json  —— 专业版默认配置源文件
 │   └───opencc                  —— 有关简繁转换功能的数据文件
 ├───backup                      —— 客户端备份文件，通常会做加密处理，涉及到 `AutoRestore` `SelfRestore` `AutoBackup` 等功能
 │   └───dock                    —— 用于临时释放的文件
@@ -76,7 +78,7 @@
 ---
 
 ### config/default.json
-当前客户端版本下的默认配置。请不要进行修改，因为每次启动客户端都会更新一次。如果你使用该配置并按下保存，会自动创建新的配置文件（例如 `profile-1.json`）
+当前客户端版本下的完整默认配置。客户端启动时会从 `assets/default_settings.free.json` 或 `assets/default_settings.pro.json` 读取对应版本，展开配置宏后重新生成此文件。请不要直接修改，因为每次启动客户端都会更新一次。如果你使用该配置并按下保存，会自动创建新的配置文件（例如 `profile-1.json`）。
 
 ### config/Records.json
 客户端的主缓存信息，保存了相当多的内容，如果删除可能有不好的影响。
@@ -119,7 +121,7 @@
 ★ 客户端本体程序。x86 32位可执行程序。
 
 ### Release/DefaultSettings.dll
-★ 默认配置的真正存储的位置。x86 32位动态链接库。
+⚠️ 旧版本遗留文件，当前版本已过时。早期客户端曾通过该 x86 32 位动态链接库读取默认配置；当前客户端不再加载此 DLL，默认配置改由 `assets/default_settings.free.json` 或 `assets/default_settings.pro.json` 提供。
 
 ### Release/loader.exe
 ★ 客户端的辅助程序。x64 64位可执行程序。需要传递相关的命令行参数才能使用。不提供参数以查看帮助信息。
