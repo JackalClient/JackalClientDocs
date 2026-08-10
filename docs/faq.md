@@ -32,6 +32,9 @@ A: 不要用 <font style="color:#2F8EF4;">Windows自带的 </font>zip解压，�
 
 <font style="color:#DF2A3F;">A: 正常现象（例如 `Hetile.e, Exploit/CVE-XXXX, Exploit/Vuldriver, BypassUAC, Hacktool, Injector.bkc` 等字样），恢复区恢复到原目录并添加信任（最好整个目录添加一下），无论什么版本的客户端都没有任何后门。</font>
 
+Q: 打开报错：「此应用无法在你的电脑上运行 - 若要找到适用于你的电脑的版本，请咨询软件发布者」。
+A: 你解压根本就没解压成功，看一下 exe 大小是不是 0，如果是，则重新解压一遍（输对解压密码）。客户端是可以在 `LTSC` 或 `32位` 系统下运行的。
+
 ---
 
 Q: 启动器在线下载客户端文件时候怎么自己就退出了
