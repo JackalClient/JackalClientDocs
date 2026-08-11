@@ -198,6 +198,7 @@ AISettings（AI设定）用于关于AI的设置。
 等价于 /chathistory clear livestream
 
 ## 相关模块
+- [AI Chat (AI聊天)](./AIChat.md)
 - [IRC (聊天室)](./IRC.md)
 - [AntiRickroll (反诈骗)](./AntiRickroll.md)
 - [AntiBrowser (反浏览器)](./AntiBrowser.md)

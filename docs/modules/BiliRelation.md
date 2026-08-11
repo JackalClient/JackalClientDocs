@@ -78,9 +78,13 @@ BiliRelation（B站关系）用于处理当前登录 B 站账号和指定用户�
 
 ## 相关命令
 - `/bili follow <uid1/name1;uid2/name2;...>`
+- 关注指定用户。
 - `/bili unfollow <uid1/name1;uid2/name2;...>`
+- 取关指定用户。
 - `/bili black <uid1/name1;uid2/name2;...>`
+- 拉黑指定用户。
 - `/bili cancelfans <uid1/name1;uid2/name2;...>`
+- 取消指定用户粉丝关系。
 
 ## 相关模块
 - [BiliFans (B站粉丝)](./BiliFans.md)
