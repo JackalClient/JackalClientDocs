@@ -1290,6 +1290,7 @@ keyName 不区分大小写，可以去除空格。
 重置一个模块（或config/gui/hud/sound），或者这个模块的某一个值。支持 moduleName/keyName 模糊匹配，
 自动匹配时会给出提示。keyName 不区分大小写，可以去除空格。
 例如重置 Time Display 模块： /config reset timedisplay
+重置 KeyBind 配置项时会恢复默认绑定；重置整个模块后，新的快捷键会立即生效。
 :::
 
 ## 进入交互式配置界面（彩色输出，_getch 操作…（`/config ui &lt;moduleName&gt;`）
@@ -2808,10 +2809,14 @@ Version: 版本号（例如v0.7c，程序里以宏 CURRENT_VERSION 定义）
 
 ```bash
 /keys <Keys...>
+/keys <preset>
 ```
 
 ::: details 点击查看说明
 模拟多个按键操作。注意，多个按键需要用空格分隔而不是逗号或分号。
+单参数可以使用预设，例如 `/keys copy` 等价于 `/keys LCtrl C`。
+使用 `/keys presets` 或 `/keys list` 枚举所有可用预设。
+预设包括：copy、paste、cut、undo、redo、selectall、save、find、new、open、close、print、refresh、screenshot、taskmanager、lock、run、desktop、switchwindow。
 :::
 
 ## 模拟输入字符串（`/input [string...=clipboard]`）
