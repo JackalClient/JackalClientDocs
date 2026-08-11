@@ -16,6 +16,8 @@ Audience Tracker 用来盯住一批特定 B 站用户。你可以把目标用户
 
 本模块全程为客户端负责监视，不依赖任何第三方平台数据，因此得到的信息绝对真实有效且及时，如需监视所有直播间，请使用新版 `Bili User Spider` 模块，依赖第三方平台实现全方位监视。
 
+如果 `Bili User Spider` 开启 Audience Tracker 联动，它会在发现被监控用户于某直播间发言后，自动把对应 `uid + roomid` 合并到 Audience Tracker 目标组。之后由 Audience Tracker 使用自己的弹幕与观众榜查询继续跟踪该用户。
+
 模块会做两件事：
 - 查询直播间历史弹幕。如果目标用户刚刚发过弹幕，就按你的配置输出到控制台、通知、朗读、Actionbar、Chatter 或真实弹幕。
 - 查询直播间观众榜。如果上一次正常查询没有找到目标，而这一次查询找到了目标，就按你的配置提醒，并可显示榜单排名。
@@ -158,6 +160,7 @@ max_allowed_chatter_delay=60
 - 观众榜数据来源由 `Audience Query Source` 控制。如果你发现观众榜命中不稳定，可先切换为默认的 `Front-end`；API 类型来源仍依赖主播 UID 和 B 站接口可用性。
 - 观众离开通知会优先使用上一轮观众榜命中时保存的昵称；如果接口没有返回昵称，才会退回 UID。
 - `Real Chatter` 会真实发送 B 站直播弹幕，不建议在未确认目标房间和内容前启用。
+- `Bili User Spider` 自动写入目标组时会复用同名目标组；`Config Source=Config File` 时会写入配置文件，`Module Options Below` 时会写入模块配置。
 
 ## 相关命令
 - `/audiencetracker status [uid/nickname=all]`：刷新并查看目标用户当前状态、所在直播间和最近最多 20 条弹幕。

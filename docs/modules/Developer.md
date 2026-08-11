@@ -134,6 +134,9 @@ Developer（开发者）用于开发者调试使用。普通用户不用动它�
 - Better Topmost Debug Output（更好的置顶 调试输出）
  类型：布尔；默认：false
  说明：输出 Better Topmost 诊断日志，主要供开发排查窗口层级问题使用。
+- Bili User Spider（B站用户爬虫）
+ 类型：布尔；默认：false
+ 说明：输出 Bili User Spider 的 aicu 排队、查询和 Audience Tracker 联动诊断日志，主要供排查第三方接口与自动合并目标时使用。
 - Force LivePreview Topmost（强制让客户端菜单打开时使用实时预览独占置顶）
  类型：布尔；默认：false
  说明：菜单打开时强制使用实时预览方式维持置顶；开启后会临时禁用与其冲突的让行策略。
