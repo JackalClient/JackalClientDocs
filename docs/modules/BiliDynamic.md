@@ -25,6 +25,8 @@ B站动态
 - `Show Content`: 是否在通知动作后追加动态正文或标题，默认关闭。
 - `Content Max Characters`: 通知中显示的动态内容最大字符数，默认 20；超出后追加省略号。
 - `Console Output Details`: 是否输出与 `/bili dynamic` 相同的完整动态卡片，默认开启。
+- `Ignore Live Start`: 是否忽略开直播动态，默认关闭。
+- `Ignore Live End`: 是否忽略关播后移除开直播动态产生的事件，默认开启。
 - `Notify Removal (PRO)`: 是否在监视动态被删除时通知，专业版默认开启；免费版不支持。
 - `Auto Like (PRO)`: 是否对符合条件的新动态自动点赞，默认关闭。
 - `Auto Like User IDs (Sep With Semicolon)`: 自动点赞用户列表，必须同时包含在 `User IDs (Sep With Semicolon)` 中，支持 `self` 或 `~`。
@@ -53,4 +55,3 @@ B站动态
 
 ## 相关资料
 无
-

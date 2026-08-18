@@ -25,6 +25,8 @@ WindowHighlight 会围绕目标窗口绘制高亮框，并可给非目标区域�
   类型：布尔；默认：false。未启用 Aura 目标跟随时，开启后固定高亮前台窗口；关闭则高亮鼠标所在窗口。
 - Aura Target Highlight（高亮光环目标）
   类型：布尔；默认：true。开启后在 Aura/AimAssist 工作时优先高亮当前 Aura 目标，而非简单跟随鼠标。
+- Alt Snap Target Highlight（Alt Snap 目标高亮）
+  类型：布尔；默认：true。Alt Snap 正在移动或调整窗口时，临时将 WindowHighlight 目标切换为该窗口；操作结束后恢复原有目标选择。
 - Endangered Excla Mark（濒危感叹号）
   类型：布尔；默认：true。检测到高风险 Aura 行为时在目标中央绘制感叹号，并加粗外框，便于快速识别“正在被危险操作的窗口”。
 - Hide When Menu On（菜单打开时不显示）

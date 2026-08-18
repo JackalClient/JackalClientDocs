@@ -14,7 +14,7 @@
 ## 介绍
 AudioVisualizer（音频可视化）用于显示音频波形或其他形式的可视化。
 适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Capture Cooldown (ms)、Global HUD Pulse Effects、Global HUD Pulse Effects Intensity (0~1)。
+初次使用可优先调整：Capture Cooldown (ms)、Global HUD Pulse Effects、Global HUD Pulse Effects Intensity (0~1)、Beat Texture Shake。
 
 ## 配置项
 - Capture Cooldown (ms)（捕获冷却（毫秒））
@@ -32,6 +32,31 @@ AudioVisualizer（音频可视化）用于显示音频波形或其他形式的�
 - Global HUD Pulse Effects Intensity (0~1)（全局HUD律动效果强度 (0~1)）
  类型：数值；默认：0.5f
  说明：这是数值型配置。默认值 0.5f 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
+- Beat Texture Shake（节拍贴图抖动）
+ 类型：布尔；默认：false
+ 说明：开启后根据系统音频低频起音分析，对最终客户端贴图施加矩阵平移、轻微旋转和缩放冲击。抖动强度会随节拍和音量变化。
+- Beat Trigger SMTC Condition（节拍触发 SMTC 条件）
+ 类型：枚举；默认："Playing Session"
+ 说明：控制接受节拍触发所需的 SMTC 状态。默认仅在存在正在播放的 SMTC 会话时触发；Timeline 模式还要求该会话提供有效进度信息；Off 不检查 SMTC。
+ 可选：Off（关闭条件）；Playing Session（正在播放的会话）；Playing Session with Timeline（具有进度信息的正在播放会话）
+- Disable Beat Trigger When Menu On（菜单打开时禁用节拍触发）
+ 类型：布尔；默认：false
+ 说明：开启后在客户端 GUI 打开期间停止节拍贴图抖动，并丢弃期间产生的节拍，关闭 GUI 后不会补触发旧节拍。
+- Beat Detection Sensitivity（节拍检测灵敏度）
+ 类型：数值；默认：1.0
+ 说明：控制低频频谱起音触发的灵敏度。数值越高越容易触发，过高可能把人声或持续低音误判为节拍。
+- Beat Texture Shake Intensity (px)（节拍贴图抖动强度（像素））
+ 类型：数值；默认：2.0
+ 说明：控制节拍时贴图的最大平移幅度。
+- Beat Texture Shake Decay (ms)（节拍贴图抖动衰减（毫秒））
+ 类型：数值；默认：400
+ 说明：控制一次节拍冲击的回落速度。数值越小越利落，数值越大残留律动越明显。
+- Beat Texture Rotation (deg)（节拍贴图旋转（度））
+ 类型：数值；默认：0.0
+ 说明：控制节拍时的轻微旋转幅度。
+- Beat Texture Scale Punch (0~1)（节拍贴图缩放冲击（0~1））
+ 类型：数值；默认：0.05
+ 说明：控制节拍时的缩放冲击，并会自动配合位移增加少量 overscan 以减少边缘露底。
 - Enable Better Lyrics Module（启用更好的歌词模块）
  类型：布尔；默认：false
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。

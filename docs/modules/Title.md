@@ -16,6 +16,15 @@ Title（标题显示）用于在屏幕中央显示一个标题。和MC的很像�
 初次使用可优先调整：Title Text Mode。
 
 ## 配置项
+- Dedicated Font（独立字体）
+ 类型：布尔；默认：true
+ 说明：为 Title 单独建立高分辨率字体图集，不提高全局字体导入大小；关闭后回退到全局字体。
+- Dedicated Font Import Size（独立字体导入大小）
+ 类型：数值；默认：128
+ 说明：控制 Title 专用字体图集的导入尺寸。调大可减少大字号标题模糊，但会增加该专用图集的显存占用。
+- Dedicated Font Max Codepoints（独立字体最大码点数）
+ 类型：数值；默认：800
+ 说明：限制 Title 专用图集缓存的动态码点数量。超过上限时会淘汰最久未使用的字符。
 - Module Status Auto Switch（模块状态自动切换）
  类型：布尔；默认：true
  说明：在播放标题时，是否自动静默启用该模块。

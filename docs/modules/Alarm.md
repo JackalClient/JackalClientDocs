@@ -53,6 +53,8 @@ Alarm 用于管理闹钟列表，支持计划任务和客户端两种模式。
 
 App 内支持鼠标滚轮、方向键、Home/End 滚动；计划任务同步和计划任务闹钟启停会异步执行并显示加载动画。没有 Actions 的外部计划任务不会同步到闹钟列表。
 
+当 Triggers 模块被手动关闭时，客户端闹钟的开关会显示为暗红色；鼠标悬停可查看提示，重新开启 Triggers 后客户端闹钟才会生效。
+
 ### 动作命令默认值说明
 Run、Cmd、Powershell、Jackal Command 使用独立命令配置。Run/Cmd/Powershell 的默认命令为空；Jackal Command 默认使用客户端命令 `mj title 你闹钟响了。;;chatter alarm triggered!`。旧版统一动作命令字段仅作为兼容回退。
 
@@ -67,3 +69,12 @@ Run、Cmd、Powershell、Jackal Command 使用独立命令配置。Run/Cmd/Power
 
 ### 2026-08-13 触发修复
 同一客户端闹钟一分钟内只会弹出一次；小睡闹钟会继承原闹钟的响铃模式、音源、动作和小睡时长。计划任务在客户端窗口不可用时会正确启动客户端执行闹钟，Run Command 默认值保持为空。
+
+### 2026-08-13 计划任务执行修复
+计划任务不再因为客户端正在运行而提前退出，铃声和动作始终由计划任务脚本执行；任务直接启动 PowerShell 脚本，系统 WAV 铃声使用同步播放，避免计划任务会话中没有反应。旧版通过 loader.exe 启动的任务会在同步时自动刷新。
+
+### 2026-08-13 并行执行与排序
+计划任务会异步启动铃声并立即执行 Run、Cmd、Powershell 或 Notification 动作；Notification 直接在主任务脚本中发送，避免嵌套 PowerShell 参数丢失。新增或修改闹钟后，列表会按时、分和标题自动排序。
+
+### 2026-08-13 标题计数
+Alarm App 标题会显示当前开启闹钟数量；没有开启闹钟时只显示 Alarm，开启 Show Imported 时会把外部开启的计划任务一起计入。

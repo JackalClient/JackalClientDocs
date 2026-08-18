@@ -21,7 +21,7 @@ OpacityChanger（透明度调节）支持对目标窗口进行快捷透明度调
 - Shortcut（快捷键）
  类型：枚举；默认："Wheel on Side"
  说明：快捷交互方式（滚轮等）。日常建议选最顺手的输入设备。
- 可选：Wheel on Side（在边缘滚轮）；HotKey Wheel（热键 滚轮）
+ 可选：Wheel on Side（在边缘滚轮）；Hotkey + Wheel（热键 + 滚轮）
 - Wheel Side（在哪个边缘滚轮）
  类型：枚举；默认："Left"
  说明：滚轮调节触发区域。
@@ -52,6 +52,7 @@ OpacityChanger（透明度调节）支持对目标窗口进行快捷透明度调
 - 15. 为 Volume 和 Opacity Changer 添加配置：
 - 60. 修复了 OpacityChanger 直接对客户端窗口进行透明度修改后被客户端 GUI 配置里的 Opacity (0~1) 调回去的问题。现在会直接同步。
 - 67. 为 OpacityChanger 添加配置：
+- 69. 修复选择 Hotkey + Wheel 时无法调节窗口透明度的问题，并修正光标可见性检测读取错误配置的情况。
 
 ## 备注
 该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。

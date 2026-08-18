@@ -1,7 +1,7 @@
 # BiliVideoHelper
 B站视频助手
 分类：Web 网络
-描述：识别当前 B 站视频会话，显示视频信息，并可同步下载和播放弹幕。
+描述：识别当前 B 站视频会话，显示视频信息，并可同步下载和播放弹幕，也可下载并同步展示字幕。
 
 ## 需求
 - 安全级别：常规模块
@@ -25,6 +25,27 @@ BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中�
  类型：枚举；默认："Off"
  说明：控制是否自动下载并同步当前视频弹幕。
  可选：Off（关闭）；Only Download（只下载缺失弹幕文件，不播放）；Always Sync（下载并按 SMTC 进度同步 AutoDanmaku）；Sync In Background（仅当前前台窗口不是 B 站网页端或桌面端时推送弹幕）
+- Load Subtitles（加载字幕）
+ 类型：布尔；默认：false
+ 说明：开启后从 B 站播放器接口下载当前视频字幕，保存到 output/Subtitles 下的 txt 文件。
+- Subtitles File Life Time (d)（字幕文件保存期限）
+ 类型：数值；默认：3
+ 说明：字幕缓存超过该天数后自动删除。
+- Subtitles Display（字幕显示）
+ 类型：枚举；默认：Island
+ 说明：选择字幕输出方式：Off、Notify、Chatter、Island、Actionbar、Console Output 或 Speak。
+- Subtitles Lyrics Priority（字幕歌词优先级）
+ 类型：枚举；默认：Lyrics First
+ 说明：控制提供歌词时字幕与歌词的显示关系。Default 同时显示，Lyrics First 歌词优先，Subtitles First 字幕优先。
+- Subtitles Language Preference（字幕语言偏好）
+ 类型：枚举；默认：Follow Global
+ 说明：选择字幕语言，支持跟随全局、中文、English 和 日本語。
+- Subtitles Translation Strict（字幕严格翻译）
+ 类型：布尔；默认：false
+ 说明：严格模式会逐句判断字幕语言后决定是否翻译。
+- Subtitles Translation（字幕翻译）
+ 类型：枚举；默认：Off
+ 说明：当字幕语言与偏好不一致时选择译文语言；Island 模式会使用歌词翻译位置显示译文。
 - Monitor Web Client（监视网页端）
  类型：布尔；默认：true
  说明：开启后识别浏览器中的 B 站视频页。
@@ -59,6 +80,8 @@ BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中�
 
 ## 备注
 Danmaku Sync 使用 BiliChatter.Output Directory for Video Helper 作为缓存目录，并定期清理其中超过 3 天的 BV*.xml 文件。
+字幕缓存位于 output/Subtitles，文件名按 aid、cid 和字幕语言生成；切换视频后字幕会话数据自动释放。
+字幕加载异常时，可在 Developer 的 Bili Video Helper Subtitles 分组开启 Debug Output，并分别控制下载事件和错误详情输出。日志包含播放器接口请求、字幕轨选择、响应结构、解析行数和文件写入结果；字幕 URL 的授权参数会被隐藏。
 Always Sync 会在当前视频会话可用且 SMTC 正在播放时推送弹幕；Sync In Background 只在前台不是 B 站相关窗口时推送。
 当当前视频时间轴后续没有弹幕时，Danmaku Sync 会静默结束本轮 AutoDanmaku，不再发送模块关闭提示。
 

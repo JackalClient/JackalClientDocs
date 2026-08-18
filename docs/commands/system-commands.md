@@ -2,7 +2,7 @@
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
-共 322 组命令。
+共 333 组命令。
 
 ## 显示命令的帮助信息（`/help [command...]`）
 
@@ -122,6 +122,18 @@
 注意:
 1. 只能获取到命令函数在返回前的输出，因为异步而在后面的输出并不能讲出来。
 2. 无法获取命令函数调用的子进程的输出，例如执行一条CMD命令的输出（如果要读出一条CMD命令的输出，请使用/runspeak）
+:::
+
+## 控制客户端主窗口（`/client window`）
+
+```bash
+/client window
+```
+
+::: details 点击查看说明
+进入客户端主窗口交互控制界面。方向键移动窗口，A/D 调整宽度，W/S 调整高度，Space 切换高亮边框，J/K 切换坐标或尺寸偏移，Ctrl+R 重置窗口参数，Esc 保存并退出。
+
+界面使用彩色分区显示坐标偏移、尺寸偏移、工作区矩形、窗口矩形和客户区尺寸，并且只在执行操作后刷新。
 :::
 
 ## 查看客户端和系统版本（`/ver`）
@@ -421,6 +433,117 @@
 设置环境变量 /set key=value
 枚举环境变量 /set
 枚举A开头的环境变量 /set A
+:::
+
+## 管理系统环境变量（`/envvar &lt;args...&gt;`）
+
+```bash
+/envvar <args...>
+```
+
+::: details 点击查看说明
+系统环境变量管理命令。所有操作均需要管理员权限，未提权时会提示先输入 `/admin`。
+:::
+
+## 列举系统环境变量（`/envvar list`）
+
+```bash
+/envvar list
+```
+
+::: details 点击查看说明
+列举所有系统环境变量。输出使用彩色显示；仅在 PrivacyProtect 的 String Filter 开启时隐藏敏感值。
+:::
+
+## 搜索系统环境变量（`/envvar search &lt;key...&gt;`）
+
+```bash
+/envvar search <key...>
+```
+
+::: details 点击查看说明
+按名称模糊查找系统环境变量，支持同时输入多个关键词。脱敏规则与 `/envvar list` 相同。
+:::
+
+## 读取系统环境变量（`/envvar get &lt;key&gt;`）
+
+```bash
+/envvar get <key>
+```
+
+::: details 点击查看说明
+读取指定系统环境变量。脱敏规则与 `/envvar list` 相同。
+:::
+
+## 设置系统环境变量（`/envvar set &lt;key&gt; &lt;value...&gt;`）
+
+```bash
+/envvar set <key> <value...>
+```
+
+::: details 点击查看说明
+设置系统环境变量。已有变量会保留原注册表类型；新值包含 `%变量名%` 时会使用可展开字符串类型。需要管理员权限。
+:::
+
+## 复制系统环境变量（`/envvar copy &lt;key&gt;`）
+
+```bash
+/envvar copy <key>
+```
+
+::: details 点击查看说明
+将指定系统环境变量的原始值复制到剪贴板。
+:::
+
+## 从剪贴板设置系统环境变量（`/envvar paste &lt;key&gt;`）
+
+```bash
+/envvar paste <key>
+```
+
+::: details 点击查看说明
+将剪贴板文本设置为指定系统环境变量的值。剪贴板为空、包含多行文本或内容过长时会取消操作。
+:::
+
+## 枚举系统 Path（`/envvar path list`）
+
+```bash
+/envvar path list
+```
+
+::: details 点击查看说明
+按顺序列举系统 Path 中的所有目录项。
+:::
+
+## 添加系统 Path（`/envvar path add &lt;path...&gt;`）
+
+```bash
+/envvar path add <path...>
+```
+
+::: details 点击查看说明
+向系统 Path 添加一个目录。添加前会展开环境变量并校验目录是否存在，同时避免重复添加。
+:::
+
+## 移除系统 Path（`/envvar path remove &lt;path...&gt;`）
+
+```bash
+/envvar path remove <path...>
+```
+
+::: details 点击查看说明
+从系统 Path 中删除指定目录。允许清理已经失效的旧目录项。
+:::
+
+## 删除系统环境变量（`/envvar clear &lt;key&gt;`）
+
+```bash
+/envvar clear <key>
+/envvar delete <key>
+```
+
+::: details 点击查看说明
+删除指定系统环境变量，并向系统广播环境变量变更。`delete` 是 `clear` 的别名。需要管理员权限。
 :::
 
 ## 初始化相关文件的文件关联（`/initassoc`）
@@ -1201,7 +1324,7 @@ HH:mm
 ```
 
 ::: details 点击查看说明
-枚举一个模块的所有配置选项。也可以填 config/gui/hud/sound
+枚举一个模块的所有配置选项。也可以填 config/gui/hud/sound。按钮及 VisibleWhen、VisibleWhenBatch、Groups 界面元数据不会被列出，也不能通过 /config 修改或重置。
 :::
 
 ## 复制模块差异配置（`/config copy &lt;moduleName&gt;`）
@@ -1211,7 +1334,7 @@ HH:mm
 ```
 
 :::: details 点击查看说明
-将指定模块（或config/gui/hud/sound）中不同于默认值的配置差异 JSON 复制到剪贴板（无换行）。
+将指定模块（或config/gui/hud/sound）中不同于默认值的配置差异 JSON 复制到剪贴板（无换行），按钮及界面元数据不会包含在内。
 ::::
 
 ## 复制模块完整配置（`/config copyfull &lt;moduleName&gt;`）
@@ -1222,7 +1345,7 @@ HH:mm
 ```
 
 :::: details 点击查看说明
-将指定模块（或config/gui/hud/sound）的完整配置 JSON 复制到剪贴板（无换行）。
+将指定模块（或config/gui/hud/sound）的完整配置 JSON 复制到剪贴板（无换行），按钮及界面元数据不会包含在内。
 ::::
 
 ## 导入模块配置 JSON（`/config paste [json=clipboard]`）
@@ -1232,7 +1355,7 @@ HH:mm
 ```
 
 :::: details 点击查看说明
-从 JSON 导入配置，自动识别所属模块并应用；不填参数则读取剪贴板。支持 /config copy 生成的差异 JSON，也兼容旧版 /config copy 生成的裸配置 JSON。
+从 JSON 导入配置，自动识别所属模块并应用；不填参数则读取剪贴板。支持 /config copy 生成的差异 JSON，也兼容旧版 /config copy 生成的裸配置 JSON。按钮及界面元数据会被忽略。
 ::::
 
 ## 对比模块配置 JSON（`/config diff &lt;moduleName&gt; [json=clipboard]`）
@@ -1242,7 +1365,7 @@ HH:mm
 ```
 
 :::: details 点击查看说明
-将 JSON 中的配置与当前模块（或config/gui/hud/sound）的本机配置进行对比；不填 JSON 则读取剪贴板。
+将 JSON 中的配置与当前模块（或config/gui/hud/sound）的本机配置进行对比；不填 JSON 则读取剪贴板。按钮及界面元数据会被忽略。
 ::::
 ## 获取一个模块（或configguihudsoun…（`/config get &lt;moduleName&gt; &lt;keyName...&gt;`）
 
@@ -1254,6 +1377,7 @@ HH:mm
 获取一个模块（或config/gui/hud/sound）的某一个选项。支持模糊匹配：
 若相似度 >75% 且唯一，或第一名比第二名高 40% 以上，会自动选中并提示。
 keyName 不区分大小写，可以去除空格。
+按钮及 VisibleWhen、VisibleWhenBatch、Groups 界面元数据不会作为查询结果。
 :::
 
 ## 模糊查找一个模块（或configguihudso…（`/config search &lt;moduleName&gt; &lt;keyName...&gt;`）
@@ -1263,7 +1387,7 @@ keyName 不区分大小写，可以去除空格。
 ```
 
 ::: details 点击查看说明
-模糊查找一个模块（或config/gui/hud/sound）的某一个或几个选项。keyName 不区分大小写，可以去除空格。只要某个选项的键包含该字符串即可。
+模糊查找一个模块（或config/gui/hud/sound）的某一个或几个选项。keyName 不区分大小写，可以去除空格。只要某个选项的键包含该字符串即可。按钮及界面元数据不会被匹配。
 :::
 
 ## 设置一个模块（或configguihudsoun…（`/config set &lt;moduleName&gt; &lt;keyName&gt; &lt;rawValue...&gt;`）
@@ -1278,6 +1402,7 @@ keyName 不区分大小写，可以去除空格。
 且转义字符必须转义。数字不可以添加字面量后缀。
 如果该选项值类型为 ComboBox ，则填写选中的选项，不需要双引号。
 如果为 KeyBind，则填写键名，如果为组合快捷键，则用逗号或分号分隔。例如：Ctrl,Alt,5。如果取消绑定，则为 None, Null, Empty 或 Unbound 任意一个关键字。
+按钮及 VisibleWhen、VisibleWhenBatch、Groups 界面元数据不能设置。
 :::
 
 ## 重置一个模块（或configguihudsoun…（`/config reset &lt;moduleName&gt; [keyName...]`）
@@ -1291,6 +1416,7 @@ keyName 不区分大小写，可以去除空格。
 自动匹配时会给出提示。keyName 不区分大小写，可以去除空格。
 例如重置 Time Display 模块： /config reset timedisplay
 重置 KeyBind 配置项时会恢复默认绑定；重置整个模块后，新的快捷键会立即生效。
+按钮及 VisibleWhen、VisibleWhenBatch、Groups 界面元数据不能重置。
 :::
 
 ## 进入交互式配置界面（彩色输出，_getch 操作…（`/config ui &lt;moduleName&gt;`）
@@ -1307,6 +1433,7 @@ keyName 不区分大小写，可以去除空格。
 Enter/G 查看详情，S 设置当前键，R 重置当前键，Q/Esc 退出。
 Ctrl+R 重置整个模块配置（会二次确认）。
 类型显示与 /config list 一致（string/boolean/int/float/combo/keybind/...）。
+按钮及界面元数据不会出现在交互列表中。
 编辑行为：
 1) ComboBox：用 ↑/↓ 或 1~9 选择，Enter 确认，Q/Esc 取消。
 2) Boolean：1=true, 0=false, T=切换，Q/Esc 取消。
@@ -3716,6 +3843,16 @@ zhanan			随机渣男语录
 
 ::: details 点击查看说明
 切换字体并触发自动重载。name 必须是 GUI 选项 Font 的可选项；path 仅支持 .ttf 文件，支持双引号包裹带空格路径。
+:::
+
+## 查看字体码点缓存（`/font codepoints`）
+
+```bash
+/font codepoints
+```
+
+::: details 点击查看说明
+彩色输出主字体及 FancyText（默认/中文/英文/日文）、Title 独立字体的 codepoints 数量、上限、加载状态与实际路径。
 :::
 
 ## 控制 Typewriter 打字机（`/typewriter <init|start|pause|stop|status>`）

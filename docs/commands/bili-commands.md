@@ -406,7 +406,19 @@
 ```
 
 ::: details 点击查看说明
-go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 LiveStream 模块的 Room ID。
+go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 LiveStream 模块的 Room ID。`go` 与 `switch` 成功使用的直播间号会记录到 Records，并用于后续房间号自动补全。
+:::
+
+## 管理自己直播间的房管（`/bili live mod`）
+
+```bash
+/bili live mod list
+/bili live mod add <name1/uid1;name2/uid2;...>
+/bili live mod remove <name1/uid1;name2/uid2;...>
+```
+
+::: details 点击查看说明
+枚举、批量任命或撤销自己直播间的房管。`add` 和 `remove` 的目标可以用用户名或 UID，并用英文分号批量分隔；`remove` 目标支持根据已缓存房管列表自动补全。房管列表会按直播间号缓存到 `output/Cache/BiliLiveRoomModerators.json`，LiveStream 或 LiveChatter 启用时会在启动阶段获取并每 10 分钟刷新一次。
 :::
 
 ## 查询自己已关注的所有 up 的直播状态（`/bili live following`）
@@ -456,7 +468,7 @@ go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 
 ```
 
 ::: details 点击查看说明
-Audience Tracker 控制命令。status 输出目标用户当前状态、所在直播间与最近最多 20 条弹幕；trace 打开 Present 目标所在直播间；reload 在 Config Source=Config File 时重新加载配置文件；config 彩色列举当前配置和目标组。
+Audience Tracker 控制命令。status 输出目标用户当前状态、所在直播间与最近最多 20 条弹幕；trace 打开 Present 目标所在直播间；reload 在 Config Source=Config File 时重新加载配置文件；config 彩色列举当前有效配置和目标组，不显示按钮及界面元数据。
 :::
 
 ## 给现在的直播间观众的动态点赞（`/bili live likeauds [roomId=~] [limit=5]`）

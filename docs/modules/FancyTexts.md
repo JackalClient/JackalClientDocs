@@ -17,6 +17,27 @@ FancyTexts（花式文字）用于显示一些带有动画和特效的花哨文�
 如果你想实现 `实时PV` ，可以参考底部的视频，配合 `BetterLyrics 更好的歌词` 模块使用。
 
 ## 配置项
+- Dedicated Font（独立字体）
+ 类型：布尔；默认：true
+ 说明：为 FancyText 单独建立高分辨率字体图集，不提高全局字体的导入大小；关闭后回退到全局字体。
+- Dedicated Font Import Size（独立字体导入大小）
+ 类型：数值；默认：128
+ 说明：控制 FancyText 专用字体图集的导入尺寸。调大可减少大字号文字的模糊，但会增加该专用图集的显存占用。
+- Dedicated Font Max Codepoints（独立字体最大码点数）
+ 类型：数值；默认：800
+ 说明：限制 FancyText 专用图集缓存的动态码点数量。超过上限时会淘汰最久未使用的字符。
+- Dedicated Font Path (Default)（独立字体路径（默认））
+ 类型：文本；默认："GoogleSans.ttf"
+ 说明：无法明确判断语言时使用的 FancyText 专用字体。只写文件名时从 assets 目录查找；包含 `/` 或 `\\` 时按填写的绝对或相对路径查找。
+- Dedicated Font Path (Chinese)（独立字体路径（中文））
+ 类型：文本；默认："GoogleSans.ttf"
+ 说明：明显中文歌词使用的 FancyText 专用字体。路径规则同 Dedicated Font Path (Default)。
+- Dedicated Font Path (English)（独立字体路径（英文））
+ 类型：文本；默认："GoogleSans.ttf"
+ 说明：明显英文歌词使用的 FancyText 专用字体。路径规则同 Dedicated Font Path (Default)。
+- Dedicated Font Path (Japanese)（独立字体路径（日文））
+ 类型：文本；默认："GoogleSans.ttf"
+ 说明：明显日文歌词使用的 FancyText 专用字体。ORBIT 布局只会用于 CJK 字符占比大于 90% 且至少包含一个平假名或片假名的日文文本。
 - Async（异步）
  类型：布尔；默认：true
  说明：用于控制是否异步处理。默认值 true 通常能减少主线程卡顿；若你遇到并发相关问题，可回退到更保守设置测试。
