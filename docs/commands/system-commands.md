@@ -3852,7 +3852,7 @@ zhanan			随机渣男语录
 ```
 
 ::: details 点击查看说明
-彩色输出主字体及 FancyText（默认/中文/英文/日文）、Title 独立字体的 codepoints 数量、上限、加载状态与实际路径。
+彩色输出主字体及 FancyText（默认/中文/英文/日文）的 codepoints 数量、上限、加载状态与实际路径。
 :::
 
 ## 控制 Typewriter 打字机（`/typewriter <init|start|pause|stop|status>`）

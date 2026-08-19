@@ -2,7 +2,7 @@
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
-共 26 组命令。
+共 27 组命令。
 
 ## 显示 IP 地址地理位置信息（`/ipaddress [ip1;ip2;...]`）
 
@@ -165,6 +165,18 @@
 
 ::: details 点击查看说明
 网易云音乐相关命令。
+:::
+
+## 导出当前歌曲字幕（`/betterlyrics export/exportraw <format> [path=output/Subtitles...]`）
+
+```bash
+/betterlyrics export <format> [path=output/Subtitles...]
+/betterlyrics exportraw <format> [path=output/Subtitles...]
+```
+
+::: details 点击查看说明
+使用 NeteaseDriver 获取当前歌曲歌词和时间轴并导出字幕。format 支持 srt、lrc、sbv；未指定路径时保存到 output\Subtitles。
+使用 exportraw 时只导出原文歌词和时间轴，不包含译文，默认文件名带 `_raw`。
 :::
 
 ## 搜索单曲（`/ncm song &lt;keywords...&gt;`）

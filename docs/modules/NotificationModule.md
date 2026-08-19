@@ -16,6 +16,9 @@ Notification（通知）用于控制客户端的通知。
 建议一直开着。
 
 ## 配置项
+- Scale（缩放）
+ 类型：数值；默认：1.0
+ 说明：独立控制通知 HUD 的整体缩放，不受 ClickGUI Global Scale 影响。
 - Notify Metro Style（地铁型通知风格）
  类型：枚举；默认："Vape"
  说明：用于选择结果反馈方式。默认值 Vape 适合大多数场景；若你不想打扰可改为更安静的输出方式。
