@@ -45,6 +45,7 @@ It can also feed discovered `uid + roomid` pairs into `Audience Tracker`: when a
 uid/nickname 参数可以是用户UID或昵称，留空或填 ~ 或 self 表示当前登录账号。
 使用 `aicu Legacy` 方法时，该命令会自动启动 BrowserCDP 模块。执行完毕后会显示警告：如果不再查看相关信息，请手动关闭 BrowserCDP 模块。
 后台监控时，新弹幕会按每秒最多一条的速度逐条推送。
+同一批次包含多条新弹幕时会按时间从旧到新推送；已完成推送的最近弹幕会跨客户端重启去重。
 
 
 /biliuserspider ldm_last [uid/nickname=self]

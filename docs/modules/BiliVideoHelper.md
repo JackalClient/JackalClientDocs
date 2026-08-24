@@ -33,7 +33,7 @@ BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中�
  说明：字幕缓存超过该天数后自动删除。
 - Subtitles Display（字幕显示）
  类型：枚举；默认：Island
- 说明：选择字幕输出方式：Off、Notify、Chatter、Island、Actionbar、Console Output 或 Speak。
+ 说明：选择字幕输出方式：Off、Notify、Chatter、Title、Fancy、Island、Actionbar、Console Output 或 Speak。Fancy 会按字幕实际语言加载对应字体字符。
 - Subtitles Lyrics Priority（字幕歌词优先级）
  类型：枚举；默认：Lyrics First
  说明：控制提供歌词时字幕与歌词的显示关系。Default 同时显示，Lyrics First 歌词优先，Subtitles First 字幕优先。
@@ -72,6 +72,7 @@ BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中�
  说明：用于控制 HUD 透明度。
 
 ## 历史更新
+- v1.1.6：修复字幕使用 Fancy 展示时长文本重建布局后丢失专用字体与展示时长、暂停或播放结束后背景不淡出，以及字体字符过多时显示异常的问题；同时修复 Island 模式不显示或反复回缩，并让字体自动适配导入尺寸及在缺字时使用内置字体。
 - v1.1.2：Danmaku Sync 会监控已匹配的前台 B 站窗口，窗口隐藏时自动关闭由 BiliVideoHelper 启动的 AutoDanmaku 并清空同步弹幕。
 - v1.1.2：Danmaku Sync 在当前视频会话消失时会自动关闭由 BiliVideoHelper 启动的 AutoDanmaku。
 - v1.1.2：视频助手会话缓存迁移到 output/Cache/BiliVideoHelperSessions.json，进一步减少 Records.json 保存压力。
@@ -81,7 +82,8 @@ BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中�
 ## 备注
 Danmaku Sync 使用 BiliChatter.Output Directory for Video Helper 作为缓存目录，并定期清理其中超过 3 天的 BV*.xml 文件。
 字幕缓存位于 output/Subtitles，文件名按 aid、cid 和字幕语言生成；切换视频后字幕会话数据自动释放。
-字幕加载异常时，可在 Developer 的 Bili Video Helper Subtitles 分组开启 Debug Output，并分别控制下载事件和错误详情输出。日志包含播放器接口请求、字幕轨选择、响应结构、解析行数和文件写入结果；字幕 URL 的授权参数会被隐藏。
+字幕加载异常时，可在 Developer 的 Bili Video Helper Subtitles 分组开启 Debug Output，并分别控制下载事件和错误详情输出。日志包含播放器接口请求、字幕轨选择、响应结构、解析行数和文件写入结果；字幕 URL 的授权参数会被隐藏。使用 Island 显示字幕时，该开关还会输出字幕决策与灵动岛状态，且仅在当前 SMTC 会话提供播放进度时输出；状态未变化时最多每秒记录一次。
+Island 字幕拥有灵动岛显示权时，不受 Better Lyrics 当前显示模式的残留歌词清理影响；退出字幕 Island 模式后仍会按原逻辑清理。
 Always Sync 会在当前视频会话可用且 SMTC 正在播放时推送弹幕；Sync In Background 只在前台不是 B 站相关窗口时推送。
 当当前视频时间轴后续没有弹幕时，Danmaku Sync 会静默结束本轮 AutoDanmaku，不再发送模块关闭提示。
 

@@ -123,8 +123,11 @@ BiliFans（B站粉丝）用于监控B站粉丝并发送通知。
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
 - Action On Failure（失败时的行为）
  类型：枚举；默认："Pause Temporarily"
- 说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 Pause Temporarily ，确认稳定后再逐项切换比较效果。
+ 说明：控制粉丝数、粉丝团成员和大航海成员查询失败后的处理方式。Ignore 会跳过本次失败数据，Pause Temporarily 会按 Pause Duration 暂停后续监控，Disable Module 会关闭模块。
  可选：Ignore（忽略）；Pause Temporarily（暂时暂停）；Disable Module（关闭模块）
+- Notify Error（通知错误）
+ 类型：布尔；默认：false
+ 说明：控制查询失败时是否弹出错误通知，不影响 Action On Failure 所选择的失败处理方式。
 - Threshold Max（阈值最大值）
  类型：数值；默认：16U
  说明：这是数值型配置。默认值 16U 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。

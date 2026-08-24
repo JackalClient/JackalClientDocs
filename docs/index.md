@@ -35,6 +35,9 @@ features:
   - title: 安全说明
     details: 明确的使用规范与安全指引，包含风险分级、合规建议、故障排查与日志定位，保障使用安全。
     link: /safety/
+  - title: 问题反馈
+    details: 客户端的异常处理机制，常见解决方案以及问题反馈渠道。
+    link: /bug-report/
 ---
 
 <TkVpContainer type="tip" title="小贴士" text="建议优先阅读「快速开始」，随后浏览「模块地图」了解功能全貌，最后查阅 「命令目录」与 「安全说明」。" />

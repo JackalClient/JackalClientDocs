@@ -17,6 +17,8 @@
 
 ---
 
+[有关异常、崩溃、反馈问题专题文档点击此处](/bug-report.md)
+
 
 <font style="color:#2F8EF4;">Q: </font><font style="color:#2F8EF4;">解压密码是什么<br></font>
 <font style="color:#2F8EF4;">A: Wormwake</font>

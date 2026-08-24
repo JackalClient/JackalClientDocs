@@ -3143,7 +3143,7 @@ int		LastUpdate: 文本上一次更新的时间。
 ```
 
 ::: details 点击查看说明
-枚举所有自定义HUD元素。
+枚举所有自定义HUD元素。内置水印预设会显示字号、缩放、颜色、版本或跟随 Arraylist 状态，不再标记为不支持类型。
 :::
 
 ## 移动指定的自定义HUD元素（`/customhud move &lt;id&gt; &lt;x&gt; &lt;y&gt;`）
@@ -3163,7 +3163,7 @@ int		LastUpdate: 文本上一次更新的时间。
 ```
 
 ::: details 点击查看说明
-交互式移动界面。
+交互式移动界面。方向键支持长按连续移动。
 :::
 
 ## 刷新缓存（`/customhud refresh`）
@@ -3183,7 +3183,7 @@ int		LastUpdate: 文本上一次更新的时间。
 ```
 
 ::: details 点击查看说明
-输出所有元素的JSON。
+以彩色缩进格式输出所有元素的 JSON，与 `/formatjson` 的显示效果一致。
 :::
 
 ## 设置某项自定义HUD元素（`/customhud set &lt;id&gt; &lt;json...&gt;`）
@@ -3203,7 +3203,7 @@ int		LastUpdate: 文本上一次更新的时间。
 ```
 
 ::: details 点击查看说明
-设置某项自定义HUD元素的一对键值。
+设置某项自定义HUD元素的一对键值。输入 key 时会根据指定元素提供自动补全；已有字段会校验值类型，数值字段收到非数值时保留原值并报错。运行时发现旧配置中的数值字段类型错误时，会恢复安全默认值并报告错误。
 :::
 
 ## 移除指定自定义HUD元素（`/customhud remove &lt;id&gt;`）

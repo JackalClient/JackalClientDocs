@@ -22,7 +22,21 @@ Notification（通知）用于控制客户端的通知。
 - Notify Metro Style（地铁型通知风格）
  类型：枚举；默认："Vape"
  说明：用于选择结果反馈方式。默认值 Vape 适合大多数场景；若你不想打扰可改为更安静的输出方式。
- 可选：Old（老版）；Vape；SilenceFix（欣欣公益）；Naven（奶粉）；Nexus（哪克萨斯）；Acid（酸）；Southside（南方）；LiquidBounce NextGen（水影下一代）
+ 可选：Old（老版）；Vape；SilenceFix（欣欣公益）；Naven（奶粉）；Solstice (PRO)；Acid（酸）；Southside（南方）；LiquidBounce NextGen（水影下一代）
+
+ `Solstice (PRO)` 仅专业版可用，使用直角背景和线性填充动画，字号为全局通知字号的 80%，先绘制与动态填充同色、轮廓厚度为原来的 130%、不透明度为 30% 的底层发光，再在通知右下方绘制一次阴影。模块开关消息显示为 `<模块> was enabled/disabled`。
+
+所有 Metro 风格都会按 `Easing Endpoint Mode` 从屏幕侧边、屏幕角落或通知目标位置对应的角落减速进入，并使用 EaseInExpo 沿原方向退出。Nvidia 出场时左侧状态色的左边缘保持不动，右边缘按 EaseInExpo 向右展开，同时整张通知执行出场位移。通知栈中较早结束的消息腾出位置后，其余消息会平滑补位。
+
+- `Easing Duration (ms)`：设置入场和出场动画时长，默认为 `500` 毫秒。
+- `Easing Stack Speed (0~1)`：设置通知补位速度，默认为 `0.1`。
+- `Easing Opacity`：控制除 Nvidia 外的 Metro 风格是否随进出场改变整体不透明度，默认关闭；Nvidia 不参与进出场淡化，但仍会按鼠标避让设置改变不透明度。
+- `Easing Endpoint Mode`：设置入场起点和出场终点；`Side` 表示所选位置对应的左/右屏幕外侧，`Corner` 表示屏幕外角落，`Target Corner` 表示通知目标矩形对应的角落，默认为 `Target Corner`。
+- `Easing Enter Start Offset X/Y`：设置入场起点相对所选端点的水平和垂直距离，默认均为 `18`。
+- `Easing Exit End Offset X/Y`：设置出场终点相对所选端点的水平和垂直距离，默认均为 `18`。
+
+- `Solstice Fill Opacity (0~1)`：设置 Solstice (PRO) 动态填充部分的不透明度，默认为 `0.5`。
+- `Solstice Background Opacity (0~1)`：设置 Solstice (PRO) 黑色背景的不透明度，默认为 `0.9`。
  
 - Override Notify When Hidden（隐藏时用什么代替普通通知）
  类型：枚举；默认："WinToast"

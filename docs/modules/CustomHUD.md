@@ -15,11 +15,16 @@
 CustomHUD（自定义显示）用于自定义 HUD 元素。
 请使用/customhud 系列命令操作。
 注意，每一个元素都可以用 HudEditor 拖动。
+Image 元素支持 PNG、JPG、BMP、WebP 与 GIF；GIF 图片会在 HUD 中自动循环播放，并可通过 GIF Playback Speed 调整播放速率。Image 支持横向翻转、纵向翻转和旋转，Text 支持旋转。
+CustomHUD 元素在 HudEditor 中支持复制。粘贴副本会创建独立元素，粘贴引用会共享源元素的内容属性但保留独立位置；修改引用的内容会同步修改源元素。
 
 ## 配置项
 - Global Scale（全局缩放）
  类型：数值；默认：1.0f
  说明：这是数值型配置。默认值 1.0f 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
+- GIF Playback Speed（GIF 播放速率）
+ 类型：数值；默认：1.0
+ 说明：控制 GIF 动画播放速率，数值越大播放越快。
 - Default Font Size（默认字号）
  类型：数值；默认：30
  说明：用于控制文本可读性。默认字号 30 适合多数分辨率；高分屏可适当加大，低分辨率建议减少以免拥挤。
@@ -33,6 +38,7 @@ CustomHUD（自定义显示）用于自定义 HUD 元素。
  类型：文本；默认："[]"
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
 ## 历史更新
+- v1.1.6：Image 元素新增 GIF 动画、播放速率、横纵翻转与旋转支持，Text 元素新增旋转支持；修复 GIF 无法显示或额外叠加首帧的问题。
 - 6. 添加新模块：CustomHUD，自定义HUD元素。可以使用 /customhud 命令进行各方面操作。
 
 ## 备注
@@ -44,6 +50,7 @@ CustomHUD（自定义显示）用于自定义 HUD 元素。
 
 /customhud add &lt;json...&gt;
 /customhud add text [text...]
+/customhud add image &lt;path...&gt;
 添加自定义HUD元素。
 JSON 格式支持的键值有：
 !表示必填项，其中 Color 和 ColorPrefab 两者选一个
@@ -65,6 +72,9 @@ bool	WaveColor: 是否波动颜色。
 int		UpdateCooldown: 文本更新周期时间 (毫秒)；默认 2000ms
 string	TextCache: 文本目前的内容。
 int		LastUpdate: 文本上一次更新的时间。
+float	Rotation: 顺时针旋转角度。Text 与 Image 均支持。
+bool	FlipX: 是否横向翻转。仅 Image 支持。
+bool	FlipY: 是否纵向翻转。仅 Image 支持。
 	
 
 /customhud list

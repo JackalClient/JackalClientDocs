@@ -60,7 +60,7 @@ Speaker（讲述人）用于调用 Windows 的讲述人念一段文本。
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
 - Multiple Text Arrangement（多文本安排）
  类型：枚举；默认："Queue"
- 说明：这是选项型配置。默认值 Queue 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
+ 说明：Queue 会按入队顺序连续朗读消息；Off 会让新消息替换当前朗读；Available 仅在语音空闲时朗读。
  可选：Off（关闭）；Queue（队列）；Available（可用）
 - Spoken Text Mode（讲述文本模式）
  类型：枚举；默认："Fixed"
