@@ -56,6 +56,7 @@ const sidebarGroups = [
       { text: '命令目录页', link: '/commands-catalogue' },
       { text: '完整命令手册', link: '/commands/' },
       { text: '安全说明', link: '/safety' },
+      { text: '问题反馈', link: '/bug-report' },
       { text: '文件介绍', link: '/client-files' },
       { text: '配置项说明', link: '/configuration' }
     ]

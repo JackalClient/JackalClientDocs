@@ -24,6 +24,9 @@
 `Unload DLL When Quit (退出时自动卸载DLL)`:
 客户端退出时是否卸载 DLL，建议关闭，因为卸载后重新开启客户端需要重新注入。
 
+64位（新版）网易云音乐的注入需要 `Release` 文件夹下的 `loader.exe`，如果注入失败，请检查 `loader` 是否被杀毒软件误杀。控制台报错如图：
+![ncm-injection-failure](/ncm-injection-failure.jpg)
+
 ## 1.3 SMTC 模式
 
 新版本（v1.1）加入新的模式：`SMTC`，读取系统 SMTC 信息（包括曲名、艺人、进度等），搜索网易云歌词进行同步。
@@ -45,6 +48,12 @@
 
 当然网易云音乐也可以使用 BetterNCM 安装 `SMTC` 相关插件。
 *新版本网易云添加了内测的SMTC功能，但是不提供进度条信息，所以还是无法直接使用该模式。*
+
+注意如果你使用QQ音乐以外的播放器（例如 Apple Music 等），确保完成以下步骤：
+
+1. 在任务管理器找到你的播放器的进程名。
+2. 填写到上述 `SMTC Whitelist (Sep With Semicolon)` 的后面，多个进程名用英文分号分隔。例如 `QQMusic.exe;XXX.exe`
+3. 推荐是打开 `SMTC Whitelist Enabled`。如果关闭，则白名单不会被考虑，即不在黑名单的进程都能触发歌词匹配，可能会导致误判，例如网页的视频播放等。大多数情况下只会造成麻烦。
 
 你可以使用 `/smtc list` 命令查看所有当前 Windows 中的 `SMTC 会话`。
 示例输出：

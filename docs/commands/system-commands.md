@@ -3855,6 +3855,18 @@ zhanan			随机渣男语录
 彩色输出主字体及 FancyText（默认/中文/英文/日文）的 codepoints 数量、上限、加载状态与实际路径。
 :::
 
+## 验证 FreeType + HarfBuzz + MSDF（`/font poc <on/off/status>`）
+
+```bash
+/font poc on
+/font poc off
+/font poc status
+```
+
+::: details 点击查看说明
+启用、关闭或查看内置 MSDF 字体验证层。验证层使用 FreeType 加载字体、HarfBuzz 进行 shaping，并用 msdfgen 生成单张图集以显示中英文、数字和多种字号。它不会替换现有 raylib 字体渲染路径；初始化失败时也不会卸载或修改当前字体。
+:::
+
 ## 控制 Typewriter 打字机（`/typewriter <init|start|pause|stop|status>`）
 
 ```bash
