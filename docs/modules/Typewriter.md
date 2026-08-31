@@ -52,6 +52,9 @@ Typewriter（打字机）用于自动帮你输入段落。
 - Clipboard Tweaks Module Text Processor（剪贴板功能模块文本处理器）
  类型：布尔；默认：false
  说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。
+- Process Clipboard Tweaks Per Auto Send Segment（按自动发送分段处理剪贴板文本）
+ 类型：布尔；默认：false
+ 说明：开启后按 Auto Send 的句子或固定长度分段分别处理文本，仅在 Clipboard Tweaks Module Text Processor 开启时显示。
 - Accelerate Space Typing（瞬间输入空格类字符。）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
@@ -105,6 +108,9 @@ Typewriter（打字机）用于自动帮你输入段落。
 - Send Period (ms)（发送周期（毫秒））
  类型：数值；默认：1000U
  说明：用于控制检测/刷新/动画节奏。默认值 1000U 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
+- Repeat Times（重复次数）
+ 类型：数值；默认：1
+ 说明：初始化后重复输入来源文本指定次数。
 ## 历史更新
 - 22. Typewriter 修复了无法打出 Tab 的问题。
 - 9. 为 Typewriter 添加配置：HUD Font Size

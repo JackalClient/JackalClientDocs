@@ -32,9 +32,9 @@ IPAddress（IP地址）用于查看本机IP地址及相关信息。
  类型：枚举；默认：XorStringA("https:
  说明：这是选项型配置。默认值 XorStringA("https: 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
 - IP Location Query Source（IP位置查询源）
- 类型：枚举；默认："PearAPI"
- 说明：这是选项型配置。默认值 PearAPI 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
- 可选：Vore.top（Vore.顶端）；PearAPI（未收录）；IQIYI（未收录）
+ 类型：枚举；默认："Chain"
+ 说明：选择 IP 地址转地理位置所使用的接口。Chain 会按顺序尝试可用接口，并在 30 分钟内优先复用最近成功的接口；demo.ip-api 已停用。
+ 可选：Chain；Whois.Pconline；geojs.io；IP2Location；ipapi.com；Vore.top；PearAPI；PearAPI High；IQIYI；BiliWebPlayer
 - Location Cache Update Cooldown (ms)（位置缓存更新冷却（毫秒））
  类型：数值；默认：30000L
  说明：用于控制检测/刷新/动画节奏。默认值 30000L 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。

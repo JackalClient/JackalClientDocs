@@ -2,7 +2,7 @@
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
-共 333 组命令。
+共 334 组命令。
 
 ## 显示命令的帮助信息（`/help [command...]`）
 
@@ -56,6 +56,16 @@
 
 ::: details 点击查看说明
 关于。
+:::
+
+## 打开资源市场（`/resourcemarket font/imagehud/sound/article [search...]`）
+
+```bash
+/resourcemarket font/imagehud/sound/article [search...]
+```
+
+::: details 点击查看说明
+打开 Resource Market 并切换到字体、CustomHUD 图片、音效或文章选项卡。填写 search 时会覆盖资源市场搜索框；不填写时保留搜索框原内容。
 :::
 
 ## 异步执行一条命令（`/async &lt;command...&gt;`）

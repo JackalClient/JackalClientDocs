@@ -32,6 +32,9 @@ Developer（开发者）用于开发者调试使用。普通用户不用动它�
 - Query IP Location（询问 IP Location）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
+- IP Address Location（IP 地址位置）
+ 类型：布尔；默认：false
+ 说明：开启后，当 IPAddress 的 IP Location Query Source 使用 Chain 模式时，会通过 DebugInfo 输出本次查询实际成功使用的接口。
 - Quake Warning（Quake 警告）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
