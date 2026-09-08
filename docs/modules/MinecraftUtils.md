@@ -42,7 +42,7 @@ MinecraftUtils（MC功能）用于一些MC上的实用功能。
  说明：用于控制检测/刷新/动画节奏。默认值 10L 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
 - Log Parser Utilities（日志解析功能）
  类型：布尔；默认：true
- 说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
+ 说明：控制日志解析相关功能；关闭后，解析参数、游戏聊天输出与相关通知配置会一并隐藏。
 - Log Parser UTF-8（日志解析使用UTF-8编码）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
@@ -76,7 +76,7 @@ MinecraftUtils（MC功能）用于一些MC上的实用功能。
  可选：见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
 - Log Game Chat Speak Translator（日志游戏聊天讲述翻译）
  类型：布尔；默认：false
- 说明：这是开关型配置。默认值 false 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
+ 说明：仅在 Log Game Chat Output Mode (PRO) 选择 Speak 时显示，用于控制讲述前是否翻译聊天内容。
 - Log Game Chat Output Filter（日志游戏聊天输出过滤）
  类型：布尔；默认：true
  说明：用于限定作用范围，避免误触发。建议先用小样本验证规则，再逐步扩展；涉及正则时优先从简单规则开始。
@@ -135,6 +135,7 @@ MinecraftUtils（MC功能）用于一些MC上的实用功能。
  类型：按键/复合；默认：`{ { "Keybind", {VK_OEM_2 } }`}
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
 ## 历史更新
+- v1.1.7：配置项按输入、检测、日志解析、聊天输出、通知和移动按键分组，并根据主开关与输出模式隐藏无关选项。
 - 52. 为 Minecraft Utils 添加配置：
 - 13. 修复 MinecraftUtils 的 Log Parser Utilities 尝试对基岩版启动解析的问题。
 - 8. 添加模块：MinecraftUtils，关于MC的合法功能

@@ -365,6 +365,16 @@
 枚举指定用户的稿件列表。uid如果不填则是当前登录的用户。limit为数量限制，显示前多少的稿件。
 :::
 
+## 查看创作中心最近弹幕（`/bili danmaku recent [ps=20] [pn=1]`）
+
+```bash
+/bili danmaku recent [ps=20] [pn=1]
+```
+
+::: details 点击查看说明
+【PRO】通过创作中心接口分页查看最近弹幕。输出包含发送者关系颜色、发送时间、视频 BV 号、标题、弹幕内容和弹幕类型；每页末尾会给出上一页和下一页的具体命令。
+:::
+
 ## 该命令已被废弃（`/bili tag query <avid/bid/link...>`）
 
 ```bash
@@ -605,7 +615,7 @@ Audience Tracker 控制命令。status 输出目标用户当前状态、所在�
 ```
 
 ::: details 点击查看说明
-【PRO】关闭直播。房间号将采用 LiveStream 直播间模块的房间号。
+【PRO】关闭直播。房间号将采用 LiveStream 直播间模块的房间号。通过本命令主动停播不会触发 Streamer 的异常断流警告。
 :::
 
 ## 枚举等级系统所有的观众档案数据（`/bili live levelsystem list`）

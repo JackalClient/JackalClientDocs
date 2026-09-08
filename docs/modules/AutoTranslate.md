@@ -227,8 +227,6 @@ AutoTranslate 由 Tesseract OCR 和在线翻译服务组成。Tesseract 负责�
 - Re-merge Texts Hotkey：用已保存 OCR 结果重新过滤、合并和翻译，不重新截图。
 - Clear Hotkey：默认 Caps Lock，清空结果并重新开启 Show Texts。
 
-> [图片占位：快捷键录入界面和各快捷键效果对比]
-
 ### Notify Result（通知结果）
 
 该键存在于默认配置中，但当前 AutoTranslate 的运行流程不会读取它来控制通知；识别开始、失败等提示仍按客户端既有流程显示。

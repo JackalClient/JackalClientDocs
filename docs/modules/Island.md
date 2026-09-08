@@ -60,9 +60,9 @@ BetterLyrics 的 Mixed 显示模式也会作为灵动岛歌词来源处理，在
 - Show Web（显示联网状态）
  类型：布尔；默认：true
  说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
-- Show Game（显示游戏）
+- Show Game (PRO)（显示游戏（专业版））
  类型：布尔；默认：true
- 说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
+ 说明：显示 GameDetector 检测到的当前游戏；开启时会自动启用专业版 GameDetector 模块。
 - Brand Icon (PRO)（牌子图标（专业版））
  类型：文本；默认："wolf.png"
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
@@ -301,6 +301,7 @@ BetterLyrics 的 Mixed 显示模式也会作为灵动岛歌词来源处理，在
 - [AudioVisualizer (音频可视化)](./AudioVisualizer.md)
 - [LyricsPhysics (物理歌词)](./LyricsPhysics.md)
 - [BetterLyrics (更好的歌词)](./BetterLyrics.md)
+- [GameDetector (游戏检测器)](./GameDetector.md)
 
 ## 相关资料
 [能显示歌词的 Windows 灵动岛？ Jackal 0.7a 更新](https://www.bilibili.com/video/BV1Xxx9zsEC4)

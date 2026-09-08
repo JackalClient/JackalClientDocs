@@ -27,6 +27,15 @@ Mouse Trails V2（鼠标轨迹V2）用于在鼠标移动时绘制半透明轨迹
 - Ribbon Thickness（缎带粗细）
  类型：数值；默认：10.0f
  说明：控制轨迹线条基础粗细。数值越大，鼠标移动后的缎带越宽。
+- Sparse Point Curve Interpolation（稀疏点曲线插值）
+ 类型：布尔；默认：true
+ 说明：局部相邻采样点距离较大时，根据前后真实采样点计算共享切线并在绘制时重建平滑曲线。插值点不会写回真实轨迹，避免预测误差在后续线段中累积。
+- Curve Interpolation Min Distance（曲线插值最小距离）
+ 类型：数值；默认：12.0f
+ 说明：相邻采样点达到该像素距离时，对该线段及相邻局部线段启用曲线插值。仅在 Sparse Point Curve Interpolation 开启时显示。
+- Round Trail Joints（圆形轨迹接点）
+ 类型：布尔；默认：true
+ 说明：在线段接点绘制圆形补偿，填补粗轨迹弯曲处的缝隙。关闭后只绘制线段。
 - Blacklisted Window Processes (Sep With Semicolon)（窗口进程黑名单（用分号分隔））
  类型：字符串；默认："javaw.exe"
  说明：当前前台窗口进程名命中列表时，不再追加新的轨迹节点或粒子。多个进程名使用英文分号分隔。
@@ -39,6 +48,7 @@ Mouse Trails V2（鼠标轨迹V2）用于在鼠标移动时绘制半透明轨迹
  可选：见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
 
 ## 历史更新
+- v1.1.7：曲线插值改为按局部采样距离触发，绘制时使用真实点重建连续曲线；颜色按轨迹累计长度均匀渐进，并新增圆形轨迹接点开关。
 - v1.1.2：新增前台窗口进程黑名单和鼠标隐藏时禁用选项。
 - v1.1.2：新增 Mouse Trails V2 模块，并补充 Opacity 与 Ribbon Thickness 配置。
 

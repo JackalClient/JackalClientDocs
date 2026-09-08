@@ -58,14 +58,14 @@
 关于。
 :::
 
-## 打开资源市场（`/resourcemarket font/imagehud/sound/article [search...]`）
+## 打开资源市场（`/resourcemarket font/imagehud/presethud/sound/article [search...]`）
 
 ```bash
-/resourcemarket font/imagehud/sound/article [search...]
+/resourcemarket font/imagehud/presethud/sound/article [search...]
 ```
 
 ::: details 点击查看说明
-打开 Resource Market 并切换到字体、CustomHUD 图片、音效或文章选项卡。填写 search 时会覆盖资源市场搜索框；不填写时保留搜索框原内容。
+打开 Resource Market 并切换到字体、CustomHUD 图片、HUD 预设、音效或文章选项卡。填写 search 时会覆盖资源市场搜索框；不填写时保留搜索框原内容。
 :::
 
 ## 异步执行一条命令（`/async &lt;command...&gt;`）
@@ -3216,6 +3216,16 @@ int		LastUpdate: 文本上一次更新的时间。
 设置某项自定义HUD元素的一对键值。输入 key 时会根据指定元素提供自动补全；已有字段会校验值类型，数值字段收到非数值时保留原值并报错。运行时发现旧配置中的数值字段类型错误时，会恢复安全默认值并报告错误。
 :::
 
+## 设置自定义HUD元素显示条件（`/customhud setcondition &lt;id&gt; [condition=null] [args...]`）
+
+```bash
+/customhud setcondition <id> [condition=null] [args...]
+```
+
+::: details 点击查看说明
+设置指定自定义HUD元素的显示条件。`condition` 支持 `module_enabled`、`module_disabled`、`null` 或 `none`；模块条件的参数可填写模块名称或 ID。省略 `condition` 或使用 `null`/`none` 会清除条件并始终显示。
+:::
+
 ## 移除指定自定义HUD元素（`/customhud remove &lt;id&gt;`）
 
 ```bash
@@ -3224,6 +3234,26 @@ int		LastUpdate: 文本上一次更新的时间。
 
 ::: details 点击查看说明
 移除指定自定义HUD元素。
+:::
+
+## 设置自定义HUD元素快捷键（`/customhud bind &lt;id&gt; &lt;keybind...&gt;`）
+
+```bash
+/customhud bind <id> <keybind...>
+```
+
+::: details 点击查看说明
+为指定自定义HUD元素设置独立快捷键，按键格式与 `/bind` 相同。Preset 元素会作为整体切换。
+:::
+
+## 清除自定义HUD元素快捷键（`/customhud unbind &lt;id&gt;`）
+
+```bash
+/customhud unbind <id>
+```
+
+::: details 点击查看说明
+清除指定自定义HUD元素的独立快捷键。
 :::
 
 ## 清空自定义HUD元素（`/customhud clear`）
@@ -3903,4 +3933,22 @@ zhanan			随机渣男语录
 ::: details 点击查看说明
 闹钟相关命令。主要供 Alarm 模块和 Windows 计划任务自动调用。
 `/alarm fire <id>` 触发指定闹钟；`/alarm sync` 异步同步 Windows 计划任务到 Alarm 列表；`/alarm list` 列出当前保存在 Records.json 中的闹钟。
+:::
+
+## Game Detector 诊断命令（PRO）
+
+```bash
+/gamedetector known [path=config|<KnownGameList.bin>]
+/gamedetector refresh
+/gamedetector status
+```
+
+::: details 点击查看说明
+`/gamedetector known` 读取并彩色格式化输出 KnownGameList 中的游戏可执行文件名。
+
+省略 path 或使用 `path=config` 时读取 Game Detector 配置指定的路径；也可以传入其他 `KnownGameList.bin`，包含空格的路径需要使用双引号。
+
+`/gamedetector refresh` 忽略检测冷却并立即更新一次。模块未启用时不会自动开启。
+
+`/gamedetector status` 彩色输出模块状态、检测来源、翻译模式以及当前 Steam 和非 Steam 候选。
 :::

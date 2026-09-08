@@ -15,8 +15,14 @@
 CustomHUD（自定义显示）用于自定义 HUD 元素。
 请使用/customhud 系列命令操作。
 注意，每一个元素都可以用 HudEditor 拖动。
-Image 元素支持 PNG、JPG、BMP、WebP 与 GIF；GIF 图片会在 HUD 中自动循环播放，并可通过 GIF Playback Speed 调整播放速率。Image 支持横向翻转、纵向翻转和旋转，Text 支持旋转。
+Image 元素支持 PNG、JPG、BMP、WebP 与 GIF；GIF 图片会在 HUD 中自动循环播放，并可通过 GIF Playback Speed 调整播放速率。Image 支持横向翻转、纵向翻转和旋转，Text 支持旋转。图片路径解析结果会短时缓存，持续渲染时不会逐帧查询磁盘；新落盘资源会在缓存刷新后自动识别。
 CustomHUD 元素在 HudEditor 中支持复制。粘贴副本会创建独立元素，粘贴引用会共享源元素的内容属性但保留独立位置；修改引用的内容会同步修改源元素。
+
+Resource Market 新增 PresetHUD 标签页，从 Gitee 的 `presethud/` 目录读取 HUD 预设。所有存在对应 `presethud_thumb_*.png/.jpg` 的预设都会加载预览；仅当服务端明确提供缩略图大小且超过 10 MiB 时跳过，大小未知时仍正常加载。点击项目时才下载同名 JSON 到 `output/Cache/CustomHUDMarket/`。再次点击已下载项目会追加一个 Preset 容器，不会删除已有 HUD。组合内的子元素在 HUDEditor 中视为一个整体，可统一移动、缩放、旋转、调整透明度、复制、删除、设置快捷键、显示条件或鼠标避让；鼠标进入组合范围时所有元素使用相同淡出系数。旋转以组合中心为锚点，子元素相对位置与整体选框保持一致。
+
+CustomHUD JSON 现支持多段异色/异字号文字、`SinColor` 自定义周期颜色、`Flow` 文本颜色、颜色或显隐闪烁、结构化文字背景与阴影、内置变量插值、元素独立快捷键、秒/毫秒/高精度计时器、Outline/Hollow/Neon/Glitch/Echo 等文字效果，以及文本元素中的相对图片。秒计时器的 `DurationSeconds` 支持 `0.5` 等小数；`ResetCondition` 支持 `Off`、`Show`、`Hide`、`Toggle`，默认在隐藏转为显示时重置，组合 HUD 内会同时考虑 Preset 容器与 Timer 自身的显示状态。缺少 `ElementId` 时会自动生成稳定 ID，避免重载配置或复用序号后继承旧计时状态。Flow 沿用 Shader 模块的 Flow Text 参数，富文本分段可独立使用。旧版 Text、Image 与内置 Logo 元素保持兼容。
+
+Preset 可用 `market://文件名` 引用 ImageHUD 市场图片，也可用 `Type: Preset` 和 `market://预设名` 引用其他 PresetHUD；PresetHUD 名称的 `.json` 可省略，匹配不区分大小写，唯一的单字符误拼也会自动纠正。导入时客户端会递归下载并展开依赖，拒绝循环引用、过深嵌套和超过 256 个元素的组合；图片边界按实际像素尺寸计算，避免选择框明显大于内容。`DisplayCondition` 支持 `module_enabled` 与 `module_disabled`，分别在指定模块启用或禁用时显示；HUDEditor 开启时，普通自定义元素会忽略 Enabled 与显示条件，Custom HUD 配置中的内置预设则仅在对应配置项开启时显示。
 
 ## 配置项
 - Global Scale（全局缩放）
@@ -38,6 +44,7 @@ CustomHUD 元素在 HudEditor 中支持复制。粘贴副本会创建独立元�
  类型：文本；默认："[]"
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
 ## 历史更新
+- v1.1.7：新增 PresetHUD 预设市场，并扩展多段文字、动态颜色、闪烁、背景、阴影、计时器、独立快捷键、文字效果和图文组合格式。
 - v1.1.6：Image 元素新增 GIF 动画、播放速率、横纵翻转与旋转支持，Text 元素新增旋转支持；修复 GIF 无法显示或额外叠加首帧的问题。
 - 6. 添加新模块：CustomHUD，自定义HUD元素。可以使用 /customhud 命令进行各方面操作。
 
@@ -109,4 +116,4 @@ bool	FlipY: 是否纵向翻转。仅 Image 支持。
 - [HudEditor (HUD编辑器)](./HudEditor.md)
 
 ## 相关资料
-无
+- 源码仓库中的 `docs/customhud-format.md` 提供完整字段、市场打包约定和组合示例。

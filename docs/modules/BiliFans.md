@@ -59,6 +59,9 @@ BiliFans（B站粉丝）用于监控B站粉丝并发送通知。
  类型：枚举；默认："On"
  说明：控制大航海成员变化通知中是否显示昵称。大航海接口支持查询他人，因此默认开启。
  可选：Off（关闭）；On（开启）
+- Send Auto Live Messages For Other Users (PRO)（为其他用户发送直播间自动弹幕（专业版））
+ 类型：布尔；默认：false
+ 说明：控制监测目标不是当前登录账号时，是否仍在自己的直播间发送自动感谢或抱怨弹幕。默认关闭，监测自己时不受影响。
 - Notify Famous Fans (Own Only) (PRO)（通知名人粉丝（仅自己）（专业版））
  类型：枚举；默认："Off"
  说明：仅在 Show Fans Nickname (PRO)=Only Self 且能识别新增粉丝昵称时生效；新增粉丝达到 10000 粉丝后，会按所选模式额外提示。
@@ -162,6 +165,7 @@ BiliFans（B站粉丝）用于监控B站粉丝并发送通知。
  类型：数值；默认：0.75f
  说明：用于控制界面元素在屏幕中的相对位置。默认值 0.75f 一般是作者调过的稳定布局；建议每次只改一个轴，避免元素跑出可视区域。
 ## 历史更新
+- 自动感谢与抱怨新增他人目标保护，默认只为当前登录账号的变化发送直播间弹幕。
 - 拆分粉丝、粉丝团、舰长、提督、总督五组通知模式；舰长/提督/总督的 Sound/Command 独立配置；LiveStream 收到礼物后可按 3 秒冷却刷新对应主播的粉丝团和大航海数据。
 - 自定义命令支持 `{{nickname}}` 占位符，可插入粉丝、粉丝团成员或大航海成员名称；未启用名称获取时使用 `BiliUser`。
 - 新增专业版粉丝团成员与大航海成员监视、独立冷却、HUD 聚合显示，以及 `/bili member`、`/bili guard` 命令。
@@ -195,6 +199,14 @@ BiliFans（B站粉丝）用于监控B站粉丝并发送通知。
 /bili guard find &lt;kw...&gt; [uid=&lt;UID或昵称&gt;]
 /bili guard search &lt;limit&gt; &lt;kw...&gt; [uid=&lt;UID或昵称&gt;]
 【PRO】查看或搜索指定用户直播间的大航海成员，显示舰长/提督/总督、粉丝牌等级与陪伴天数。
+
+监测他人直播间时会读取完整的大航海排名数据，并分别统计舰长、提督和总督数量，变化时触发对应的通知配置。
+
+用户昵称会缓存到 `output\Cache\BiliUserNicknames.json`，每天最多刷新一次；接口暂时失败时继续使用缓存昵称。
+
+`Special Number Notify Mode` 会在粉丝、舰长、提督或总督数量到达特殊数字时提示，包括 100 的倍数、至少三位的重复数字、114、1314、114514，以及至少三位的等差数列数字。可选择 Off、Notify、Chatter、Title 或 WinToast，默认为 Notify。
+
+专业版默认在大航海增长通知的昵称后显示接口返回的陪伴天数，例如 `Username [DAY 31]`；可通过 `Show Guard Increase Accompany Days (PRO)` 关闭，减少通知不会显示天数。
 
 /test fans_up
 /test fans_down

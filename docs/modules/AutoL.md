@@ -38,7 +38,7 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
 - File Path（文件路径）
  类型：文本；默认：""
- 说明：用于指定文件/目录路径。建议使用稳定的绝对路径并确认权限可访问，避免因路径变化导致功能失效。
+ 说明：用于指定随机读取一行内容的文本文件，支持包含中文等非 ASCII 字符的路径。建议使用稳定的绝对路径并确认权限可访问，避免因路径变化导致功能失效。
 - Preset（预设）
  类型：枚举；默认："Mesugaki (Chinese
  说明：这是选项型配置。默认值 Mesugaki (Chinese 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
@@ -94,6 +94,15 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
 - Player Blacklist Keywords (Sep With Semicolon)（玩家黑名单关键词（用分号分隔））
  类型：文本；默认："Owner;Admin"
  说明：用于限定作用范围，避免误触发。建议先用小样本验证规则，再逐步扩展；涉及正则时优先从简单规则开始。
+- Cancel If Target Name Is Filtered（目标名称含屏蔽词时取消）
+ 类型：布尔；默认：true
+ 说明：目标名称命中客户端屏蔽词时取消本次嘲讽，并且不会占用本次触发冷却。
+- Prefix Enabled（启用前缀）/ Prefix Content（前缀内容）
+ 类型：布尔/文本；默认：false/""
+ 说明：开启后在正文前添加指定内容。
+- Suffix Enabled（启用后缀）/ Suffix Content（后缀内容）
+ 类型：布尔/文本；默认：false/""
+ 说明：开启后在正文后添加指定内容；Anti Spam 内容始终位于该后缀之后。
 - AntiSpam Style（反刷屏风格）
  类型：枚举；默认："Off"
  说明：这是选项型配置。默认值 Off 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
@@ -114,12 +123,19 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
 - Format（格式）
  类型：枚举；默认："Direct"
  说明：这是选项型配置。默认值 Direct 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
- 可选：Direct（直接）；/shout（未收录）；/pc（未收录）；@（未收录）；/title（/标题）；/tellraw（未收录）；actionbar（行为栏）
+ 可选：Direct（直接）；/shout（未收录）；/pc（未收录）；@（未收录）；/title（/标题）；/tellraw（未收录）；actionbar（行为栏）；Custom（自定义）
+- Custom Format Prefix（自定义格式前缀）
+ 类型：文本；默认："!"
+ 说明：Format 选择 Custom 时使用，并在 Prefix Content 之前添加到最终消息开头。
 - Mode（模式）
  类型：枚举；默认："Smart Send"
  说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 Smart Send ，确认稳定后再逐项切换比较效果。
  可选：Smart Send（智能发送）；Copy（复制）；Chatter（弹幕）；Notify（通知）；Actionbar（行为栏）；Chat Bar（聊天栏）；Console Output（控制台输出）；Log（日志）；Speak（讲述）；WinToast（系统通知）；Real Chatter（真弹幕）
+- Notify Copy（复制时通知）
+ 类型：布尔；默认：true
+ 说明：Mode 选择 Copy 时，控制复制完成后是否显示通知。
 ## 历史更新
+- v1.1.7：新增 Custom 格式、正文前后缀、目标名称屏蔽词检查和复制通知开关，并优化配置分组与显示条件。
 - v1.1.1：玩家名前导 `?` 会自动清理；清理异常前缀后以“正版”开头的玩家名会自动去除“正版”；Mode 新增 Notify、Actionbar、Chat Bar、Console Output、Log。
 - v1.1.1：新增两类中文挖床提示识别，会从行首前三个字中的颜色字判断队伍。
 - 10. 【PRO】修改自动嘲讽和检测发言的调用顺序，可以规避一些特殊情况。

@@ -16,13 +16,15 @@ HudEditor（HUD编辑器）用于帮助你编辑 HUD 元素的属性。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Mode、Enable Selection、Keyboard Move Step、Selection Opacity (0~1)。
 
-Classic 模式下，左键单击 HUD 可选中并显示淡灰色矩形，随后可拖动或使用方向键微调，方向键支持长按连续移动。具有缩放配置的 HUD 会在选框四角显示白色圆点，可拖动圆点以元素中心为锚点等比缩放；CustomHUD Text 会通过字号进行缩放。CustomHUD Text 与 Image 的选框下方还会显示独立白色旋转圆点，按住拖动即可旋转。可分别调整背景宽高且选框尺寸足够的 HUD 还会显示四个边中点，分别调整宽度或高度，所有缩放操作均保持中心不变。Arraylist 也可像普通 HUD 一样选择和移动。Tab / Shift+Tab 可依次选择下一个 / 上一个 HUD，Home 可将选中 HUD 居中，Ctrl+D 或单击空白处可取消选择。Delete 会先详细提示实际操作，再关闭对应模块或删除对应 CustomHUD 元素。
+Classic 模式下，左键单击 HUD 可选中并显示淡灰色矩形，随后可拖动或使用方向键微调，方向键支持长按连续移动。选中 CustomHUD 时，选框下方会以白灰正弦颜色显示 `#<id>` 编号。具有缩放配置的 HUD 会在选框四角显示白色圆点，可拖动圆点以元素中心为锚点等比缩放；CustomHUD Text 会通过字号进行缩放。CustomHUD Text、Image 与 Preset 的选框下方还会显示独立白色旋转圆点，按住拖动即可旋转，其中 Preset 会绕组合中心整体旋转。可分别调整背景宽高且选框尺寸足够的 HUD 还会显示四个边中点，分别调整宽度或高度，所有缩放操作均保持中心不变。Arraylist 也可像普通 HUD 一样选择和移动。Tab / Shift+Tab 可依次选择下一个 / 上一个 HUD，Home 可将选中 HUD 居中，Ctrl+D 或单击空白处可取消选择。Delete 会先详细提示实际操作，再关闭对应模块或删除对应 CustomHUD 元素。
 
 鼠标悬停 HUD 时会显示黄色预览框，并使用约 100 毫秒的淡入淡出。HudEditor 对位置、缩放或不透明度的修改会在拖动、缩放或连续按键结束后，使用最终值触发一次统一的配置变化通知，避免调整过程中连续刷屏。CustomHUD 通知会显示元素编号、类型、字段与最终值。
 
-选中 HUD 后，仅在其矩形内右键才会打开 HUD 操作菜单，可设置位置、缩放、不透明度或移除。未满足该条件时右键会打开空白区域菜单，用于新建文本/图像、启停或查看 CustomHUD，以及退出编辑器。没有整体缩放或不透明度配置的 HUD 不显示对应菜单项。选择新建文本后会在主窗口内打开深蓝色模拟弹窗，支持鼠标定位光标、拖动选择、双击词选、三击全选及 Shift 区间选择；Enter 确认创建，Esc 或取消按钮关闭弹窗。
+选中 HUD 后，仅在其矩形内右键才会打开 HUD 操作菜单，可设置位置、缩放、不透明度或移除。CustomHUD 已绑定按键时可清除绑定，未绑定时可打开按键捕获弹窗添加绑定；弹窗支持组合键，Esc 取消。未满足该条件时右键会打开空白区域菜单，用于新建文本/图像、导入本地 Preset、打开 Online Preset、启停或查看 CustomHUD，以及退出编辑器。Preset 使用文件选择器导入离线 JSON；Online Preset 打开与 Online Image 共用的市场弹窗，并可通过橙色标签和短横线切换 Image / Preset HUD。在线缩略图采用有限并发下载，并在一次绘制中加载当前可见页，避免按需绘制时每次滚动只能出现一张；关闭动画结束前不会提前销毁纹理。没有整体缩放或不透明度配置的 HUD 不显示对应菜单项。选择新建文本后会在主窗口内打开深蓝色模拟弹窗，支持鼠标定位光标、拖动选择、双击词选、三击全选及 Shift 区间选择；Enter 确认创建，Esc 或取消按钮关闭弹窗。
 
 CustomHUD Text 的右键菜单支持直接编辑文本、复制和按固定角度旋转，编辑时会在主窗口内打开深蓝色模拟弹窗并自动载入当前文本，留空时会恢复为示例文本；CustomHUD Image 支持重新选择图像文件、复制、横纵翻转和按固定角度旋转。复制后可在空白区域粘贴副本或引用，Ctrl+C、Ctrl+V 和 Ctrl+Shift+V 分别执行复制、粘贴副本和粘贴引用。引用选中时会在右键菜单上方用红色文字提示修改将作用于源对象。空白区域菜单新建图像时会通过独立进程异步打开文件选择器，不会阻塞 HUD 渲染；选择完成后再创建或更新元素。FPS、客户端水印和 Performance HUD 支持直接调整缩放与不透明度，Session HUD 支持调整文字不透明度。缩放圆点不能越过元素中心进行反向缩放。
+
+CustomHUD Text 与 Timer 的右键菜单还可选择 White Shadow、Black Shadow、Block Mask、Flicker、Color Block、Outline、Hollow、Neon、Glitch、Echo、Vertical Echo、Dissolve、Stretch 等文字效果，快速开关文字背景、结构化文字阴影和 500/500 毫秒显隐闪烁。文字效果层优先使用 MSDF 渲染；Block Mask 覆盖完整文字，Outline 与 Hollow 使用不同的中心字形逻辑。空白区域的新建菜单可直接创建高精度 Timer；Timer 可通过子菜单选择计时格式与 `Off`、`Show`、`Hide`、`Toggle` 重置条件，也可立即重置。包含 Timer 的 Preset 会显示相同菜单，并把操作统一应用到内部所有 Timer。组合文本会隐藏无意义的 Edit Text 与 Set Color 菜单项，Blink 隐藏帧仍可选中和移除元素。Preset 只显示一个整体选框和一组控制点，旋转时文字效果、动态颜色、背景和图片保持有效；带 `DisplayCondition` 的元素可通过右键菜单清除显示条件。
 
 ## 配置项
 - Mode（模式）
@@ -69,6 +71,7 @@ CustomHUD Text 的右键菜单支持直接编辑文本、复制和按固定角�
  类型：按键/复合；默认：`{ { "Keybind", {VK_MBUTTON } }`}
  说明：Old 模式下按住该键拖动 HUD；Classic 模式使用鼠标左键直接拖动。
 ## 历史更新
+- v1.1.7：扩展 CustomHUD 右键菜单，新增 Timer、文字效果、文字背景、结构化阴影和闪烁快捷操作。
 - v1.1.6：Classic 模式新增 HUD 选择、方向键移动、Tab 切换、Home 居中、确认移除及动画右键菜单，并支持长按移动、选框圆点等比缩放、CustomHUD 图片翻转、图片与文本旋转、Arraylist 选择、悬停预览动画、调整结束通知和快速编辑 CustomHUD 文本或图像；修复 CustomHUD 文本缩小时选框高度异常增大的问题。
 - v1.1.4：新增 Classic 模式，启用后进入 GUI 编辑界面，可直接用鼠标左键拖动 HUD，并可联动 Night 遮罩；旧版按键配置重命名为 Old Preview Key / Old Drag Key。
 - 33. 实装了 HudEditor 的功能，打开后可以按住左Ctrl预览各 HUD 元素，默认按 Ctrl+鼠标中键 直接拖拽 HUD 元素。打开后，所有 Give Way to Mouse 选项将不生效。

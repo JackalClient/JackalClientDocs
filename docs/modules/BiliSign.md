@@ -15,17 +15,28 @@ B站个签
 BiliSign（B站个签）是一个 PRO 专属模块，用于自动管理你的哔哩哔哩个性签名。
 支持定时自动更新签名内容，可从多种来源（固定文本、列表循环/随机、文件随机行）获取内容，并支持内置变量与环境变量替换。
 可配置字符长度限制，超长时自动折叠并省略。
-启用时会保存原始签名；禁用时可选自动还原，且支持自动清除 Steam 游戏展示行。
+启用时会保存原始签名；禁用时可选自动还原，且支持自动清除游戏展示行。
+游戏展示由 GameDetector 统一检测；启用 Game Display 时会自动开启 GameDetector。
+游戏展示同步遇到“用户信息审核中”时会保持模块开启并进入 Pending 状态，等待设定时间后自动重试；其他同步错误仍会立即关闭模块。
 使用前请确认已在 Bili Settings 中登录 B 站账号，并确认网络可用。
 
 ## 配置项
-- Steam Game Display（Steam游戏展示）
+- Game Display（游戏展示）
  类型：布尔；默认：true
- 说明：启用后，SteamStatus 模块的 Steam 游戏信息会同步写入个签的第一行；禁用模块时该行会自动清除。
+ 说明：启用后，将 GameDetector 检测到的游戏同步写入个签第一行，并自动开启 GameDetector。
+
+- Game Display Preference（游戏展示偏好）
+ 类型：枚举；默认："Steam"
+ 说明：Steam 与非 Steam 游戏同时存在时优先展示哪一来源；首选来源无结果时自动回退。
+ 可选：Steam；Non-steam
+
+- Excluded Steam Games（排除的 Steam 游戏）
+ 类型：字符串；默认包含 Wallpaper Engine、OBS Studio、VTube Studio、Blender、Godot Engine
+ 说明：以英文分号分隔，仅过滤 Steam 来源。
 
 - Steam Game Language（Steam游戏语言）
  类型：枚举；默认："Follow Global"
- 说明：控制 Steam 游戏展示行使用的语言。
+ 说明：控制游戏展示行使用的语言；为兼容旧配置保留原键名。
  可选：Follow Global（跟随全局）；Chinese（中文）；Chinese Strict（严格中文）；English（英文）
 
 - Length Limit Mode（长度限制模式）
@@ -40,6 +51,10 @@ BiliSign（B站个签）是一个 PRO 专属模块，用于自动管理你的哔
 - Global Cooldown (s)（全局冷却 (秒)）
  类型：整数；默认：60
  说明：两次实际向 B 站 API 提交签名更新之间的最短间隔（秒）。避免频繁调用触发风控。
+
+- Review Pending Retry Cooldown (s)（审核中重试冷却（秒））
+ 类型：整数；默认：300
+ 说明：游戏展示同步因用户信息正在审核而失败时，等待多少秒后再次尝试；等待期间模块列表显示 Pending。
 
 - Auto Update Mode（自动更新模式）
  类型：枚举；默认："Off"
@@ -96,4 +111,5 @@ BiliSign（B站个签）是一个 PRO 专属模块，用于自动管理你的哔
 ## 相关模块
 - [BiliSettings (B站设置)](./BiliSettings.md)
 - [SteamStatus (Steam状态)](./SteamStatus.md)
+- [GameDetector (游戏检测器)](./GameDetector.md)
 - [BiliProfile (B站用户信息)](./BiliProfile.md)
