@@ -18,6 +18,8 @@ CustomHUD（自定义显示）用于自定义 HUD 元素。
 Image 元素支持 PNG、JPG、BMP、WebP 与 GIF；GIF 图片会在 HUD 中自动循环播放，并可通过 GIF Playback Speed 调整播放速率。Image 支持横向翻转、纵向翻转和旋转，Text 支持旋转。图片路径解析结果会短时缓存，持续渲染时不会逐帧查询磁盘；新落盘资源会在缓存刷新后自动识别。
 CustomHUD 元素在 HudEditor 中支持复制。粘贴副本会创建独立元素，粘贴引用会共享源元素的内容属性但保留独立位置；修改引用的内容会同步修改源元素。
 
+MSDF 字体的字形生成会校正轮廓填充与插值伪影，改善部分字体在笔画交接处出现异常缺口或额外色块的问题；正常字腔和尖角保持不变，无需新增配置。此修正也适用于使用同一 MSDF 字体引擎的其他界面文字。
+
 Resource Market 新增 PresetHUD 标签页，从 Gitee 的 `presethud/` 目录读取 HUD 预设。所有存在对应 `presethud_thumb_*.png/.jpg` 的预设都会加载预览；仅当服务端明确提供缩略图大小且超过 10 MiB 时跳过，大小未知时仍正常加载。点击项目时才下载同名 JSON 到 `output/Cache/CustomHUDMarket/`。再次点击已下载项目会追加一个 Preset 容器，不会删除已有 HUD。组合内的子元素在 HUDEditor 中视为一个整体，可统一移动、缩放、旋转、调整透明度、复制、删除、设置快捷键、显示条件或鼠标避让；鼠标进入组合范围时所有元素使用相同淡出系数。旋转以组合中心为锚点，子元素相对位置与整体选框保持一致。
 
 CustomHUD JSON 现支持多段异色/异字号文字、`SinColor` 自定义周期颜色、`Flow` 文本颜色、颜色或显隐闪烁、结构化文字背景与阴影、内置变量插值、元素独立快捷键、秒/毫秒/高精度计时器、Outline/Hollow/Neon/Glitch/Echo 等文字效果，以及文本元素中的相对图片。秒计时器的 `DurationSeconds` 支持 `0.5` 等小数；`ResetCondition` 支持 `Off`、`Show`、`Hide`、`Toggle`，默认在隐藏转为显示时重置，组合 HUD 内会同时考虑 Preset 容器与 Timer 自身的显示状态。缺少 `ElementId` 时会自动生成稳定 ID，避免重载配置或复用序号后继承旧计时状态。Flow 沿用 Shader 模块的 Flow Text 参数，富文本分段可独立使用。旧版 Text、Image 与内置 Logo 元素保持兼容。
@@ -25,6 +27,10 @@ CustomHUD JSON 现支持多段异色/异字号文字、`SinColor` 自定义周�
 Preset 可用 `market://文件名` 引用 ImageHUD 市场图片，也可用 `Type: Preset` 和 `market://预设名` 引用其他 PresetHUD；PresetHUD 名称的 `.json` 可省略，匹配不区分大小写，唯一的单字符误拼也会自动纠正。导入时客户端会递归下载并展开依赖，拒绝循环引用、过深嵌套和超过 256 个元素的组合；图片边界按实际像素尺寸计算，避免选择框明显大于内容。`DisplayCondition` 支持 `module_enabled` 与 `module_disabled`，分别在指定模块启用或禁用时显示；HUDEditor 开启时，普通自定义元素会忽略 Enabled 与显示条件，Custom HUD 配置中的内置预设则仅在对应配置项开启时显示。
 
 ## 配置项
+- Apply HUD Blur（应用 HUD 模糊）
+ 类型：多选枚举；默认全选 Text Background（文本背景）、Image Areas（图片区域），也可全部取消。
+ 说明：HUD Blur 已开启时，Text Background 对 Text / Timer 的已启用背景矩形施加模糊；Image Areas 对最终显示不透明度小于 1 且大于 0 的图片区域施加模糊，包括 Image 元素、GIF、文字中的相对图片及 Vape / LiquidBounce / SigmaJello / Rise / Jackal / Neverlose 等内置图片预设。组合预设内的子元素同样生效，模糊跟随位置、缩放、旋转、透明度及鼠标避让。不透明度为 1 的图片不应用模糊，不根据图片文件的透明像素单独判断；完全透明图片不绘制模糊。该设置使用 HUD Blur 当前的 Legacy / Experimental 后端，不会自动开启 HUD Blur 或额外联动其他模块。旧配置缺少该项时按全选处理。
+
 - Global Scale（全局缩放）
  类型：数值；默认：1.0f
  说明：这是数值型配置。默认值 1.0f 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
@@ -117,3 +123,9 @@ bool	FlipY: 是否纵向翻转。仅 Image 支持。
 
 ## 相关资料
 - 源码仓库中的 `docs/customhud-format.md` 提供完整字段、市场打包约定和组合示例。
+
+## 全屏窗口隐藏
+
+- `Hide In Fullscreen Window`（全屏窗口时隐藏）：布尔，默认 `true`。
+- 开启后，前台窗口为无边框全屏或独占全屏时自动隐藏显示；退出全屏或切换到普通窗口后恢复。普通带标题栏的最大化窗口不会触发，支持多显示器。
+- 此选项只隐藏画面，不关闭模块或停止后台功能；HUD Editor 开启时保留显示，便于编辑布局。

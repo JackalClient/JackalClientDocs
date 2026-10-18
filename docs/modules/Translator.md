@@ -14,7 +14,7 @@
 ## 介绍
 Translator（翻译器）用于一个简单的翻译服务。
 适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Mode。
+初次使用可优先调整：Mode、DeepL Use Custom ApiKey、Niutrans Use EnvVar ApiKey: NIUTRANS_API_KEY。
 
 ## 配置项
 - Module Status Auto Switch（模块状态自动切换）
@@ -23,7 +23,7 @@ Translator（翻译器）用于一个简单的翻译服务。
 - Mode（模式）
  类型：枚举；默认："PearAPI"
  说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 PearAPI ，确认稳定后再逐项切换比较效果。
- 可选：Edge（未收录）；PearAPI（未收录）；AI（人工智能）
+ 可选：Edge（未收录）；DeepL（DeepL）；Niutrans（小牛翻译）；PearAPI（未收录）；ApiHz（未收录）；ApiHz 2（未收录）；AI（人工智能）
 - AI Prompt（人工智能提示词）
  类型：文本；默认："将冒号后面的文本翻译成{lang}，直接输出即可，不要输出其他任何内容：\n{text}"
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。

@@ -107,6 +107,26 @@
 根据文件内容辨别文件类型，较为基础，只能判断一小部分类型。
 :::
 
+## 查看和管理 NTFS 备用数据流（`/ads <subcommand...>`）
+
+> 此命令仅专业版可用。ADS 删除不会删除宿主文件，但被删除的数据流不能进入回收站。
+
+```bash
+/ads list <host-path> [--json]
+/ads info <host-path> <stream-name> [--json]
+/ads read <host-path> <stream-name> [--text|--hex] [--max-bytes <n>]
+/ads create <host-path> <stream-name>
+/ads import <host-path> <stream-name> <source-file> [--overwrite]
+/ads export <host-path> <stream-name> <destination-file> [--overwrite]
+/ads copy <source-host> <source-stream> <destination-host> <destination-stream> [--overwrite]
+/ads rename <host-path> <old-stream-name> <new-stream-name> [--overwrite]
+/ads delete <host-path> <stream-name> --yes
+```
+
+::: details 点击查看说明
+列出、查看和管理文件或目录的 NTFS 命名 `$DATA` 流。路径或流名包含空格时需要使用英文双引号。`read` 默认使用十六进制并最多读取 64 KiB，可通过 `--text` 切换为安全文本预览；预览硬上限为 1 MiB。导入、导出、复制和重命名覆盖现有目标时必须显式使用 `--overwrite`，永久删除必须显式使用 `--yes`。
+:::
+
 ## Codex 信息管理（`/codex <args...>`）
 
 ```bash

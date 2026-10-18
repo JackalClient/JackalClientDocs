@@ -17,6 +17,8 @@ Night（夜间）用于暂无描述。
 初次使用可优先调整：Mask Alpha Rate、When、Hide When No Focus。
 
 ## 配置项
+> 配置界面说明（v1.1.7）：边界、Ripple、Top Drop 与 Side Shutter 参数会随 Effect Style 切换显示。
+
 - Mask Alpha Rate（遮罩不透明度比例）
  类型：数值；默认：0.8f
  说明：这是数值型配置。默认值 0.8f 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。

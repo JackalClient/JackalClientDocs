@@ -5,7 +5,7 @@ Codex 通知器
 
 ## 常用配置
 
-- `Trigger Method`：触发方式。`Codex Notify` 会写入 PowerShell notify 命令；`Codex Hook` 会按 Codex 官方结构写入 `hooks.json`：事件项下先写 matcher group，再在 group 的 `hooks` 数组中写入命令 handler；`Stop` 和权限请求 hook 都会设置 30 秒超时，并通过托管 PowerShell 入口兼容 hook 风格调用。首次安装客户端托管 Hook 时会提示你在 Codex 中运行 `/hooks` 信任新 Hook。脚本在没有参数或管道输入时会直接使用更通用的随机默认提示，不会等待控制台输入；Hook 模式会根据 `PermissionRequest` 和 `Stop` 生成不同提示，且会跟随客户端中文界面输出中文提示。
+- `Trigger Method`：触发方式。`Codex Notify` 直接调用托管 PowerShell 的 `-Dispatch -NotifyPayload` 入口接收 JSON 命令行参数；`Codex Hook` 会按 Codex 官方结构写入 `hooks.json`：事件项下先写 matcher group，再在 group 的 `hooks` 数组中写入命令 handler；`Stop` 和权限请求 hook 都会设置 30 秒超时，直接调用同一 PowerShell 的 `-Dispatch` 入口，以 UTF-8 读取标准输入。前台入口读取事件后会立即投递给隐藏的后台 worker 并退出，系统通知或语音不会继续阻塞 Codex 任务。首次安装客户端托管 Hook 时会提示你在 Codex 中运行 `/hooks` 信任新 Hook。脚本在没有参数或管道输入时会使用固定默认提示，不会等待控制台输入；Hook 模式会根据 `PermissionRequest` 和 `Stop` 生成不同提示，且会跟随客户端中文界面输出中文提示。
 - `Off-client Notification`：客户端外通知方式。`Off` 不弹系统外通知；`Message` 调用 `msg`；`WinToast` 优先尝试 Windows Toast，失败时回退到系统托盘气泡或消息框；`Speak` 通过系统 SAPI 语音服务讲述通知正文。
 - `Send to Client`：若 JackalClient 正在运行，则通过 `loader.exe clientcommand` 把消息发送给客户端；若客户端不存在则放弃。
 - `Client Notification`：客户端内通知方式，支持 `Off`、`Notify`、`Chatter`、`Title`、`Speak`、`WinToast`、`Real Chatter`、`Actionbar`，默认 `Speak`。当该项不是 `Notify`、`Title` 或 `Off` 时，客户端会同时在控制台用深绿色输出该消息。
@@ -13,11 +13,13 @@ Codex 通知器
 
 ## 安全策略
 
-模块只管理 `jackal_codex_notifier.ps1`、`jackal_codex_notifier_hook.bat`、`config.toml` 中带 `jackal_codex_notifier` 标记的托管块，以及 `hooks.json` 中递归带 `jackal_codex_notifier` 字段或旧版命令标记的托管项。若用户已有自己的 `notify = [...]` 配置，开启模块时会临时注释保存到托管块中，关闭模块时恢复；若用户已有自己的 `hooks.json`，客户端会智能合并，只替换客户端托管的 Hook，保留其他 Hook。切换触发方式或关闭模块时，如果实际移除了托管 Hook 或 Notify 配置，客户端会额外弹出提示。Hook 模式安装时若发现 `config.toml` 的 `[features] hooks = false`，会自动改为 `true`；关闭 Hook 时只移除 `hooks.json` 中的托管项，不会回改该开关。
+模块只管理 `jackal_codex_notifier.ps1`、`jackal_codex_notifier_hook.bat`、`jackal_codex_notifier_launcher.js`、`config.toml` 中带 `jackal_codex_notifier` 标记的托管块，以及 `hooks.json` 中递归带 `jackal_codex_notifier` 字段或旧版命令标记的托管项。若用户已有自己的 `notify = [...]` 配置，开启模块时会临时注释保存到托管块中，关闭模块时恢复；若用户已有自己的 `hooks.json`，客户端会智能合并，只替换客户端托管的 Hook，保留其他 Hook。切换触发方式或关闭模块时，如果实际移除了托管 Hook 或 Notify 配置，客户端会额外弹出提示。Hook 模式安装时若发现 `config.toml` 的 `[features] hooks = false`，会自动改为 `true`；关闭 Hook 时只移除 `hooks.json` 中的托管项，不会回改该开关。
+
+启动或调整配置时不会先删除再重建托管文件：脚本与配置内容相同就跳过写入，保留修改时间；`hooks.json` 的解析内容相同也不会重新格式化或写入。只有实际内容变化才更新，避免重复启动无故触发 Hook 信任审查。本次升级会调整 Hook 命令，原有 Hook 可能需要重新审查一次。
 
 ## 稳定性保护
 
-客户端收到 `/codexnotify` 后只负责解析参数并把通知投递到主线程执行，避免 Hook 外部进程触发时直接访问客户端通知对象；自定义命令会进入运行时命令队列执行，避免播放提示音等同步命令卡住主线程。客户端通知、自定义命令、自动重装托管脚本等路径均带异常捕获，异常会写入 DebugError 日志。Hook 脚本会限制标题与正文长度，并对 `loader.exe clientcommand` 调用做额外保护，降低超长 Stop 消息或通知异常导致客户端崩溃的风险；通知正文传回客户端时使用 URL-safe base64，并会尝试修复权限请求文本中 UTF-8 被系统 ANSI 代码页误解码造成的中文乱码。Debug 模式会复用同一 PowerShell 解析路径显示标题、正文与 Hook 原始摘要，不再通过空白 CMD 暂停窗口兜底。
+客户端收到 `/codexnotify` 后只负责解析参数并把通知投递到主线程执行，避免 Hook 外部进程触发时直接访问客户端通知对象；自定义命令会进入运行时命令队列执行，避免播放提示音等同步命令卡住主线程。客户端通知、自定义命令、自动更新托管脚本等路径均带异常捕获，异常会写入 DebugError 日志。前台 PowerShell 入口不会改变控制台窗口状态，避免隐藏或最小化与其共享控制台的 Codex CLI；只有独立启动的后台 worker 使用隐藏窗口。Hook 标准输入与后台载荷使用明确的 UTF-8 编码，Notify 的 JSON 参数也不再经过 WSH，避免 ANSI 解码和 JSON 引号损坏；不再猜测代码页后尝试修复文本。PowerShell 脚本带 UTF-8 BOM，兼容中文路径；旧版批处理与 JScript 启动器仍保留，使用相对位置定位脚本，worker 可识别带 BOM 的 UTF-16 旧版临时载荷。脚本会限制标题与正文长度，截断时保留完整表情符号，并对 `loader.exe clientcommand` 调用做额外保护；通知正文传回客户端时使用 URL-safe base64，客户端拒绝无效 UTF-8，避免将损坏字节交给显示或语音。Debug 模式会复用同一 PowerShell 解析路径显示标题、正文与 Hook 原始摘要，不再通过空白 CMD 暂停窗口兜底。
 
 ## 状态同步
 

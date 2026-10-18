@@ -1,6 +1,61 @@
 # 配置
 本页面将介绍 JackalClient 的配置项及其界面。
 
+## GUI 主窗口配置
+
+以下选项位于 GUI 的 Main Window 分组：
+
+- `Topmost Condition`：默认 `Usual`，沿用原有置顶策略；`Menu Off` 仅在菜单关闭时置顶，打开菜单时主动取消置顶；`Menu On` 仅在菜单开启时置顶，关闭菜单时主动取消置顶。显式菜单条件不会被 Better Topmost 或主窗口的自动置顶恢复覆盖，其他应用窗口可以正常交互。
+- `Client Window Size Mode`：默认 `Always Work Area`。`Always Work Area` 始终使用系统工作区；`Work Area When Menu On` 在菜单打开时使用工作区，关闭时使用全屏预设；`Always Fullscreen` 始终使用全屏预设。位置与尺寸 Offset 仍会生效。
+- `Black Screen Problem Fix`：启用时，全屏预设会在高度上保留 2 像素的非全屏余量，菜单切换和窗口恢复后仍维持该修复，避免透明区域因全屏优化变黑。
+
+`Window Display Mode` 已移除，客户端统一使用 `Undecorated`，不再支持 `Borderless`。Neverlose 的点击外部关闭只在客户端可接收输入时判断，并按菜单的实际动画区域命中，不会把失去焦点期间的输入当作菜单外点击。
+
+## 登录弹窗与手绘对话框
+
+AuthGUI 支持拖动标题栏空白区域，暂时隐藏菜单后保留弹窗位置。AuthGUI 与 Msgbox2 手绘对话框随 `Menu Toggle Animation` 使用相同的动画类型、时长及缩放锚点；拖动允许部分移出屏幕，但会保留可操作的标题栏。
+
+Msgbox2 的 Dark、Light、Fiction 风格均保护后方 GUI 的不透明度，不依赖 Shader 模块；按钮文字按当前语言和字体居中，类型图标不额外绘制彩色背景。按菜单快捷键（默认 RAlt）可暂时隐藏对话框并操作其它窗口，再次打开会恢复对话框；隐藏期间不会响应按钮、确认键或拖动，自动超时仍正常执行。
+
+## 重置与模块启用确认
+
+`GUI` 的 `Reset Button Confirmation` 开启时，点击模块或 Config、GUI、HUD、Sound 分区的重置按钮会弹出 Msgbox2，选择“是”才执行；选择“否”保留原配置，无需按住 Ctrl 或 Shift。Neverlose、Dropdown Old、Dropdown Integration 的重置入口共用该行为。关闭该选项仍会直接重置，搜索筛选模式仍只重置匹配项。
+
+`Config` 的 `Privileges & Safety` 分组包含以下策略：
+
+| 配置项 | 默认值 |
+| --- | --- |
+| `Driver-Used Modules` | Confirm |
+| `Unsafe Modules` | Confirm |
+| `Work-in-progress Modules` | Deny |
+
+三项均可选 `Deny`（禁止）、`Shift + Click`（鼠标启用时需按住 Shift）、`Confirm`（通过 Msgbox2 确认启用）、`Allow`（直接通过此项策略）。同一模块涉及多项确认时合并为一个弹窗，确认前不尝试提权；确认后仍需满足权限和其他限制。确认只对当次启用有效，隐藏菜单后可继续回答；启动恢复已保存的开启状态不会重复弹窗。已有 Profile 保留原选择，可手动改为 Confirm 或重置配置使用新默认值。
+
+## Neverlose 分类导航
+
+以下选项位于 GUI 的 `Neverlose Categories` 分组，只在 `ClickGUI Style` 为 `Neverlose` 时显示：
+
+| 配置项 | 默认值 | 作用 |
+| --- | --- | --- |
+| `NL Category Text Color` | White | 左栏分类名称的文字颜色。 |
+| `NL Category Name Case Style` | Normal | 英文分类名称的大小写风格，不影响中文。 |
+| `NL Category Icons` | true | 是否显示分类图标；关闭时始终显示名称，避免导航项不可见。 |
+| `NL Category Icon Opacity (0~1)` | 0.8 | 分类图标的不透明度；仅在分类图标开启时显示，0 为透明，1 为不透明。 |
+| `NL Category Text Display` | Always | 图标开启时可选 Always、Only Selected、Never；也可右键分类循环切换。 |
+| `NL Category Icon Color Mode` | Theme | Theme 跟随 NL Theme Color，Color 使用自定义图标颜色。 |
+| `NL Category Icon Color` | Blue | Color 模式的图标颜色。 |
+| `NL Category Icon Theme Color Rate (0~1)` | 0.75 | Theme 模式由白色向当前主题色混合的比例；0 为白色，1 为主题色。 |
+| `NL Category Background Color Mode` | Theme | Theme 跟随主题色，Color 使用自定义分类背景颜色。 |
+| `NL Category Background Color` | Blue | Color 模式的背景颜色，也支持旧配置的 Rainbow 和 Flow。 |
+| `NL Category Background Theme Color Rate (0~1)` | 0.7 | Theme 模式由白色向当前主题色混合的比例。 |
+| `NL Category Background Opacity (0~1)` | 0.6 | 选中分类背景的不透明度；悬停背景使用相同颜色，最大不透明度为该值的 58%。 |
+
+分类背景的颜色设置也影响选中项左侧竖线；选中和悬停背景始终限制在左栏内，不会越过左右面板分界线。图标关闭时隐藏图标颜色和文本显示模式选项；Theme 与 Color 模式只显示各自适用的颜色参数，隐藏不会清空已有值。
+
+旧 Profile 缺少新的 NL 分类字段时，会自动从 `Tab Icons`、`Tab Icon Color`、`Tab Name Case Style`、`Tab Theme Color` 和 `Tab Theme Color Mode` 迁移；已有 NL 字段不会被覆盖。旧 Single、Rainbow、Flow 背景模式分别保留为自定义颜色、Rainbow 和 Flow，旧 Tab 字段仍保留供 Dropdown 使用。`Tab...` 分类设置现在只在 Dropdown 中显示，两个 GUI 的分类外观可独立调整。
+
+`NL Card Background Opacity (0~1)` 在 SystemOverview 中只调节页面与卡片背景，不会降低文字、图标、图表和控件的不透明度。
+
 ## 1. 配置项类型
 
 客户端的配置项类型分为：

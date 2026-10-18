@@ -17,6 +17,8 @@ Crosshair（准星线）用于暂无描述。
 初次使用可优先调整：Advanced Mode、Advanced Mode Show HUD、Advanced Mode Hotkey。
 
 ## 配置项
+> 配置界面说明（v1.1.7）：镂空半径、Advanced Mode 参数及坐标 HUD 样式仅在对应开关启用时显示。
+
 - Advanced Mode（高级模式）
  类型：布尔；默认：false
  说明：这是该模块的核心行为开关。默认值 false 通常更稳，建议先验证默认策略再尝试其他模式。

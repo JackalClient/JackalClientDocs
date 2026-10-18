@@ -14,6 +14,18 @@
 ## 介绍
 GUIBlur（界面模糊）用于应用模糊效果到GUI。
 用到了DWMAPI。
+关闭视觉模糊、切换为 Off 或进入节电状态时，仍保留 OpenGL 窗口的逐像素透明合成。GUI 中的 Black Screen Problem Fix 也会在启动、菜单切换、窗口大小及桌面合成状态变化后恢复透明，适用于工作区窗口和全屏窗口；窗口缩放与相关渲染资源更新均在主渲染线程执行。
+Neverlose 的 GUI 选项另有 Neverlose Blur（Neverlose 局部模糊）分组，使用密集高斯采样，无主题色底板，不依赖 GUIBlur、HUDBlur 或 ScreenCapture，不创建额外窗口；效果跟随窗口及菜单动画，搜索框、按钮、标题和描述文字保持清晰。
+
+GUI 的 NL Theme Color 新增 Image Theme（图片主题）：仅在 NL Background Mode 为 Image Offline 且选定图片可用时提取图片代表色作为主题配色。透明像素会被忽略，取色结果按图片纹理缓存，不逐帧读取像素；更换图片或重新加载纹理后重新提取，并沿用主题颜色的平滑过渡。背景为其它模式、图片未加载成功或完全透明时使用 Black 主题作为回退，不修改用户选中的 Image Theme 值。
+
+- NL Right Header Blur（NL 右栏顶部模糊）：Free/Pro 默认开启，覆盖右栏从窗口顶部到模块内容栏顶部的区域，左边界为左右栏分界线；仅在 ClickGUI Style 为 Neverlose 时显示。
+- NL Module Title Blur（NL 模块标题模糊）：默认开启，覆盖模块栏目标题（例如 Render (50)），左侧同样延伸至左右栏分界线，文字下方在一个文字高度内渐退至零。独立开启时保留向上的渐变；与右栏顶部模糊同时生效时取消连接处的顶部渐变。搜索页没有栏目标题效果。
+- NL Bottom Description Blur（NL 底部描述模糊）：默认开启，仅在 Neverlose、Show Module Description 开启且 Description Position 为 Bottom 时显示。悬停模块时，描述在窗口右栏左下角左对齐绘制，超宽时自动滚动；描述背后的模糊横条从文字顶部向上渐退，渐变高度随 Description Font Size 缩放。
+- 底部描述为空或离开模块卡片后，仅文字立即隐藏，模糊横条在 5 秒内平滑淡出；重新悬停有描述的模块时，从当前透明度用约 180 毫秒平滑恢复，打断淡出不会跳变。连续切换有描述的模块不重启动画。关闭底部模糊、关闭模块描述或改用其它描述位置时，清除模糊动画状态。
+- NL Bottom Description Blur Extra Height（NL 底部描述模糊额外高度）：默认 0，仅在底部描述模糊开启时显示。增加该值会向上延伸均匀模糊区域，顶部渐变仍保持一个描述字体高度；数值随 GUI 及菜单缩放应用，区域不会超出右栏。
+
+旧配置缺少模糊开关时按开启处理，缺少额外高度时按 0 处理。关闭开关或着色器不可用时跳过对应模糊，仍绘制清晰文字，不使用有色底板回退。
 初次使用可优先调整：Dark Mode。
 
 ## 配置项

@@ -7,7 +7,7 @@
 - 安全级别：常规模块
 - 恶意标记：否
 - 权限需求：无（部分系统/高权限进程可能需要更高权限）
-- 驱动依赖：否（`Kernel` 方法本身依赖可用内核能力）
+- 驱动依赖：否（`Kernel` 方法已移除）
 - 联网需求：否
 - 开发状态：稳定
 - 版本属性：普通可用
@@ -19,7 +19,7 @@ ProcessKill 会按 `Kill Names (Sep with Semicolon)` 与 `Kill PID` 组合条件
 ## 配置项
 - Method（方法）
   类型：组合框；默认：Chain；说明：决定结束进程时采用的策略。默认 Chain 会尝试链式方案，兼容性通常最好。
-  可选项：Chain（链式）、Normal（普通）、Thread Killer（线程击杀）、Thread Patcher（线程补丁）、Winsta（窗口站）、Debugger（调试器）、Job（作业对象）、WMI（WMI）、Kernel（内核）
+  可选项：Chain（链式）、Normal（普通）、Thread Killer（线程击杀）、Thread Patcher（线程补丁）、Winsta（窗口站）、Debugger（调试器）、Job（作业对象）、WMI（WMI）
 - Kill Names (Sep with Semicolon)（杀名称 (用分号分隔)）
   类型：文本；默认："dwm.exe"；说明：分号分隔多个进程名。未写 `.exe` 会自动补全，便于批量配置。
 - Kill PID（杀PID）

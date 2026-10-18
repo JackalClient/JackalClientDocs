@@ -14,9 +14,34 @@ HUD模糊
 ## 介绍
 HUDBlur（HUD模糊）用于应用模糊效果到HUD。
 适合在日常管理与自动化场景中按需启用。
-初次使用可优先调整：Screen Capture Cooldown (ms)。
+默认使用 Legacy 后端；初次使用可优先调整 Screen Capture Cooldown (ms)。也可切换到 Experimental 试用系统局部背景模糊。
+退出客户端时，Experimental 覆盖层会先于主窗口隐藏同步销毁；直接进入卸载流程时也会在耗时的退出清理之前销毁，避免主窗口消失后模糊覆盖层仍短暂留在桌面。
+
+## 后端选择
+Custom HUD 的 Apply HUD Blur 可多选 Text Background 与 Image Areas，默认全选；对文字背景矩形、半透明图片及组合预设中的相应区域使用当前后端模糊。配置面板中，所有子项都因可见性规则或搜索过滤而隐藏的分组会同步隐藏；正常折叠但仍有可用选项的分组保持标题可见。
+
+Arraylist 开启 Background 时自动接入 HUD Blur；启用 Neverlose GUI Background (PRO) 且 GUI Blur 未开启时，Neverlose 主窗口区域也接入 HUD Blur，跟随窗口圆角与菜单动画。两处均需启用 HUD Blur，支持 Legacy / Experimental，不会自行开启该模块。Neverlose 已有背景模糊路径不会重复叠加；未使用图片或着色器背景时，可通过 NL Background Overlay Opacity 调整覆盖颜色透明度，避免不透明底色挡住模糊。
+
+- Backend 默认 Legacy，可选择 Legacy 或 Experimental，旧配置缺少该项时仍使用 Legacy。
+- Experimental 后端开启或关闭时不会自动启停 ScreenCapture、AntiCapture 等模块，也不会改变用户已开启的这些模块。
+- Legacy 保持原有自动启停行为：开启时自动启动所需屏幕捕获，关闭时关闭由 HUD Blur 自动开启的 ScreenCapture / AntiCapture，不关闭原本已开启的模块。保留普通模糊和专业版 Liquid Glass，模糊参数继续随 Style 切换显示。ScreenCapture 自身的 Exclude Client / Keep 防捕获策略不变。
+- Experimental 使用 Windows Composition HostBackdropBrush，通过主窗口下方的一个鼠标穿透背景窗口承载多个局部模糊区域，不会为每个 HUD 创建窗口，也不再为 HUD Blur 请求屏幕截图或运行旧版模糊 shader。
+- Experimental 下，Opacity (0~1)、Dropdown GUI Background (PRO) 与 Neverlose GUI Background (PRO) 保持可见；Backend 始终可见。系统模糊强度由 Windows 管理，不提供旧版强度、采样数、亮度或 Liquid Glass 参数。
+- Notification 的各 Metro 样式也可接入 HUD Blur，模糊区域跟随实际通知形状与动画，通知的 Blur Opacity 控制该模糊层。Notification 的 Background Opacity 为 1 时始终跳过模糊，需将其调低才能显示；Text Opacity 不影响模糊。
+- Island 开启 Background 时，灵动岛主体、常驻 Idle/歌词扩展区域和外置音频波形面板也接入 HUD Blur。Island 的 Blur Opacity (0~1) 默认 0.9，可独立控制模糊层，随灵动岛整体透明度及鼠标避让一起衰减；背景图片模糊与切换模糊不受该项影响。
+- 实验后端面向 Windows 10 2004（19041）及以上系统与 Windows 11。Windows 10 的 HostBackdrop 路径依赖系统内部接口，实际兼容性仍需在目标机器验证。
+- 模糊针对窗口后方的桌面内容，不会模糊客户端自身前景；当前只跟随主窗口，不覆盖多窗口复制输出，也不参与客户端自身 shader、运动模糊等后处理。
+- 背景窗口跟随主窗口位置、大小、透明度及截图保护；HUD 区域支持圆角、显隐与现有裁剪/菜单缩放平移。截图工具或暂停模块更新时暂时隐藏实验模糊。
+- 实验背景窗口始终保持鼠标穿透；关闭 ClickGUI 后，点击和滚轮可传递给桌面及其他应用，不受是否与客户端同进程或同线程影响。打开 ClickGUI 时仍由主窗口正常接收交互。
+- 初始化或绘制失败会通知一次并停止重试，不会悄悄回退到 Legacy。可切换到 Legacy 恢复旧效果，再重新选择 Experimental 重试。
 
 ## 配置项
+> 配置界面说明：旧版参数仅在 Backend 为 Legacy 时显示；其中普通模糊与 Liquid Glass 参数还会随 Style 切换，并分别归入对应分组。
+
+- Backend（后端）
+ 类型：枚举；默认："Legacy"
+ 可选：Legacy（旧版）；Experimental（实验性）。
+
 - Style（风格）
  类型：枚举；默认："Blur"
  说明：这是选项型配置。默认值 Blur 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
@@ -36,6 +61,9 @@ HUDBlur（HUD模糊）用于应用模糊效果到HUD。
 - Dropdown GUI Background (PRO)（下拉式 GUI 背景（专业版））
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
+- Neverlose GUI Background (PRO)（Neverlose GUI 背景（专业版））
+ 类型：布尔；默认：true（PRO）/ false（免费版）
+ 说明：HUD Blur 开启且 GUI Blur 未开启时，控制是否对 Neverlose GUI 主窗口矩形绘制 HUD Blur；跟随窗口圆角和菜单动画，不会自动开启 HUD Blur。
 - Liquid Blur（液体模糊）
  类型：布尔；默认：false
  说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。

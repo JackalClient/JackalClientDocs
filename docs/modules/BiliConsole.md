@@ -23,6 +23,8 @@ BiliConsole（B站控制台）用于一个实用的交互式B站控制台。
 - `/bili contribution search` 和 `/bili dynamic list/search` 与控制台页面共享同一套枚举逻辑。
 
 ## 配置项
+
+> 配置界面说明（v1.1.7）：用户资料中的显示开关已合并为 `Profile Sections` 多选项。
 - Auto Console（自动启用控制台）
  类型：布尔；默认：true
  说明：用于选择结果反馈方式。默认值 true 适合大多数场景；若你不想打扰可改为更安静的输出方式。

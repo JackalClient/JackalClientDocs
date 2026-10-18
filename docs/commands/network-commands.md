@@ -191,6 +191,38 @@
 搜索单曲。songraw 输出原始 json 数据。
 :::
 
+## 跨平台歌曲搜索
+
+```bash
+/qqmusic song <keywords...>
+/qqmusic songex <page> <keywords...>
+/qqmusic songraw <keywords...>
+
+/kugou song <keywords...>
+/kugou songex <page> <keywords...>
+/kugou songraw <keywords...>
+
+/kuwo song <keywords...>
+/kuwo songex <page> <keywords...>
+/kuwo songraw <keywords...>
+```
+
+::: details 点击查看说明
+分别使用 QQ 音乐、酷狗音乐和酷我音乐搜索歌曲；`songraw` 输出对应 provider 的原始 JSON 数据。
+:::
+
+## GD 音乐台 API
+
+```bash
+/gdstudio search <source> <keywords...>
+/gdstudio searchraw <source> <keywords...>
+/gdstudio url <source> <id> [bitrate]
+/gdstudio pic <source> <id> [size]
+/gdstudio lyric <source> <id>
+```
+
+调用 GD 音乐台 API。`search` 使用彩色结构化输出，`searchraw` 输出原始 JSON；其他子命令用于获取歌曲链接、专辑图和歌词。
+
 ## 获取单曲的详细信息（`/ncm songdetails/songinfo &lt;id&gt;`）
 
 ```bash

@@ -17,6 +17,8 @@ ToggleKey（切换键）用于帮助你持续按住一些键，直到你再次�
 初次使用可优先调整：Minecraft Window Check、Left Mouse Button、Right Mouse Button。
 
 ## 配置项
+
+> 配置界面说明（v1.1.7）：可切换的按键类别已合并为 `Keys` 多选项，对向停止设置会按对应按键类别显示。
 - Minecraft Window Check（Minecraft 窗口检查）
  类型：布尔；默认：false
  说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。

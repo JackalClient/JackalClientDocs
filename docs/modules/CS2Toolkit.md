@@ -23,6 +23,8 @@ CS2工具箱
 检测到冲突时，Jackal Client 会警告并关闭 `CS2 Toolkit` 模块。模块启用时会立即检查一次，运行期间每 5 分钟按 `Conflict Check Cooldown (ms)` 再检查一次。
 
 ## 配置项
+
+> 配置界面说明（v1.1.7）：各类 GSI 事件启用开关已合并为 `Enabled Events` 多选项。
 - `Auto Detect CS2 Path`
   类型：布尔；默认：true
   说明：自动从 Steam 安装目录和库目录查找 CS2。

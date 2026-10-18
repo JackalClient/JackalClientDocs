@@ -446,22 +446,25 @@ getcalc 命令如果成功，将会将结果以字符串形式写入it
 对字符串进行屏蔽词过滤。
 :::
 
-## 中文分词（`/str transform cut [content=it...]`）
+## 中文分词（`/str transform cut_words [content=it...]`）
 
 ```bash
-/str transform cut [content=it...]
+/str transform cut_words [content=it...]
+/str transform cut_word_to_lines [content=it...]
+/str transform cut_word_to_spaces [content=it...]
+/str transform cut_word_to_list [content=it...]
 ```
 
 ::: details 点击查看说明
-中文分词。使用在线API。
+使用本地 Jieba，词典和模型位于 `assets/jieba`，无需联网。普通分词以 ` / ` 连接，其他入口分别输出换行、空格连接或 JSON 字符串列表；`tokens` 是普通分词的兼容别名。StringEditor 的分词菜单使用相同的本地入口。
 :::
 
-## 中文分词（`/str transform cut_bili [content=it...]`）
+## 旧分词兼容入口（`/str transform cut_words_bili [content=it...]`）
 
 ```bash
-/str transform cut_bili [content=it...]
+/str transform cut_words_bili [content=it...]
 ```
 
 ::: details 点击查看说明
-中文分词。使用B站搜索推荐词。
+旧的 `cut_words_bili` 与别名 `cut_bili` 现同样使用本地 Jieba，不再请求 B站分词。
 :::

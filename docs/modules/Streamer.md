@@ -15,6 +15,7 @@
 Streamer（主播模式）用于哔哩哔哩开播相关内容。
 也可以自动帮你打开或关闭你的哔哩哔哩直播、管理分区标题等。
 Streamer 属于面向自己直播间的模块；其中涉及 `Real Chatter` 或开播管理的能力默认发送/操作自己的直播间。与之不同，LiveStream/LiveChatter 的 `Real Chatter` 会发送到当前选择的 LiveStream `Room ID`。
+开关 Streamer 时直接查询本人房间的直播状态并执行开播或停播，LiveStream 即使正在观察别人的直播间也能正常关播。此过程不切换 LiveStream 的房间号；`/bili live start`、`startsilent`、`stop` 同样始终操作本人房间。
 
 ## 配置项
 - Async（异步）

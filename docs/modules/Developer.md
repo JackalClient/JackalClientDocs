@@ -17,6 +17,9 @@ Developer（开发者）用于开发者调试使用。普通用户不用动它�
 初次使用可优先调整：Level System Profiles HUD。
 
 ## 配置项
+- Live Stream Performance Log（直播间性能日志）
+ 类型：布尔；默认：false；分组：Live Telemetry。
+ 说明：开发者模式启用时，记录 LiveStream 在线观众 HUD 的慢帧性能统计到 `CLIENT.LOG`。仅出现至少 50 毫秒的慢帧时输出，每 5 秒最多一条；关闭后立即停止并清空统计，重新开启后重新累计。适用于消息流和旧版接收方式，不依赖 Live Telemetry HUD 开关。
 - AI Context（人工智能 Context）
  类型：布尔；默认：false
  说明：这是开关型配置。默认值 false 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。

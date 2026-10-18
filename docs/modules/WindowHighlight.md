@@ -41,6 +41,20 @@ WindowHighlight 会围绕目标窗口绘制高亮框，并可给非目标区域�
   可选：Flow（流动）；其余颜色见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)。
 - Dark Background Alpha (0~1)（暗背景不透明度 (0~1)）
   类型：数值；默认：0.5f。控制暗幕强度。0.3~0.6 适合日常使用；太高会影响周边内容辨识。
+- Blur Background Enabled (PRO)（模糊背景（专业版））
+  类型：布尔；默认：false。开启后对高亮窗口外区域应用 HUD Blur；使用 Experimental 后端时会扩大内部采样范围并裁剪回窗口外区域，减少窗口边缘缝隙。
+- Blur Background Opacity (0~1)（模糊背景不透明度 (0~1)）
+  类型：数值；默认：1.0f。控制 WindowHighlight 自身模糊层的不透明度；HUD Blur 的整体 Opacity 仍会同时生效。
+- Exclude Window Shadow（排除窗口阴影）
+  类型：布尔；默认：false。开启后高亮框和窗口外效果会避开系统窗口阴影区域。
+- Rectangle Trail Enabled（启用矩形叠影）
+  类型：布尔；默认：false。开启后保留并绘制目标窗口最近位置的矩形轮廓，形成逐渐消退的叠影效果。
+- Rectangle Trail Max Samples（矩形叠影最大数量）
+  类型：整数；默认：8。限制保留的历史矩形数量。
+- Rectangle Trail Sample Interval (ms)（矩形叠影采样周期）
+  类型：整数；默认：80。控制历史位置采样间隔。
+- Rectangle Trail Decay (0~1)（矩形叠影衰减系数）
+  类型：数值；默认：0.65。数值越小，较早的矩形越快淡出。
 
 ## 历史更新
 - 17. 为 Window Highlight 模块添加丝滑动画。

@@ -16,6 +16,8 @@ Console（控制台）就是那个黑窗口。
 **如果你需要输入命令，请打开 Shell 命令行 模块。**
 
 ## 配置项
+> 配置界面说明（v1.1.7）：Border Color、Caption Color 与 Caption Text Color 使用统一颜色选择器；Transparent 表示沿用系统默认外观。
+
 - Random Title（随机标题）
  类型：布尔；默认：true
  说明：用于选择结果反馈方式。默认值 true 适合大多数场景；若你不想打扰可改为更安静的输出方式。
@@ -65,6 +67,7 @@ Console（控制台）就是那个黑窗口。
  类型：按键/复合；默认：`{ { "Keybind", {VK_RMENU, 'C' } }`}
  说明：该配置用于调整模块行为细节。建议先按默认值运行，确认需求后再逐步调整。
 ## 历史更新
+- 53. 修复 Existence 模式打开控制台时可能阻塞客户端界面的问题。
 - 130. 修复 PRO 验证后 Console 仍可能按临时验证窗口状态弹出的问题，进入客户端后会再次按 Console 配置隐藏或关闭控制台。
 - 48. 为 Console 控制台模块添加配置：
 - 20. 为 IP Address, IP Horror 和 Weather 添加 Auto Console 选项。

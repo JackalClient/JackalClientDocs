@@ -17,6 +17,8 @@ MouseESP（鼠标透视）用于高亮鼠标指针的位置。
 初次使用可优先调整：Visibility Check、Circle、Circle Radius。
 
 ## 配置项
+
+> 配置界面说明（v1.1.7）：Circle、Box、CPS Display、Coordinates 与 Particles 合并为 `Components` 多选项；CPS 文本样式改由 `CPS Display Format` 设置，粒子类型由 `Particles Mode` 设置。
 - Visibility Check（可见性检查）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。

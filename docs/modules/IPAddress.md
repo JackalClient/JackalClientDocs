@@ -28,13 +28,16 @@ IPAddress（IP地址）用于查看本机IP地址及相关信息。
  类型：枚举；默认："Curl"
  说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 Curl ，确认稳定后再逐项切换比较效果。
  可选：Curl（未收录）；Command（命令）
-- External IP Address Source URL（外网 IP 获取来源网址）
- 类型：枚举；默认：XorStringA("https:
- 说明：这是选项型配置。默认值 XorStringA("https: 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。
+- External IP Address Source URL（外网 IP 获取来源）
+ 类型：枚举；云控默认：BiliWebPlayer
+ 说明：选项来自 Ricochesta/data/IPAddressSources.json 的 external_ip 数组，仅显示 enabled=true 的接口。启动时保留仍有效的旧选择，已停用或删除的选择回退至云控默认值；不允许自定义 URL 绕过停用规则。返回必须为有效 IPv4/IPv6，支持纯文本及 JSON 字段映射。
 - IP Location Query Source（IP位置查询源）
- 类型：枚举；默认："Chain"
- 说明：选择 IP 地址转地理位置所使用的接口。Chain 会按顺序尝试可用接口，并在 30 分钟内优先复用最近成功的接口；demo.ip-api 已停用。
- 可选：Chain；Whois.Pconline；geojs.io；IP2Location；ipapi.com；Vore.top；PearAPI；PearAPI High；IQIYI；BiliWebPlayer
+ 类型：枚举；云控默认：Chain
+ 说明：选项来自同一 JSON 的 location 数组，仅显示 enabled=true 的接口，另保留 Chain。链式查询按云端 chain 顺序尝试，默认 30 分钟内优先复用最近成功接口；停用接口始终跳过。BiliWebPlayer 只参与本机位置查询，不会用于指定 IP 或远端连接。
+ 当前启用：Whois.Pconline、geojs.io、IP2Location、ipapi.com、PearAPI、BiliWebPlayer。实际列表以启动下载的 JSON 为准。
+ 更新与缓存：每次正常启动在应用代理后下载一次，完整校验成功才替换数据和选项。失败保留旧缓存；无有效云控/缓存时公网查询不可用，本地网卡信息仍可查看。运行期间不热更新；切换 Profile 会重新应用本次已加载的接口列表。
+ 删除来源缓存后，下次正常启动仍会下载补齐；禁用来源也必须具有完整合法定义，否则整份更新被拒绝。校验错误会指出分类和来源名称；Chain 没有启用来源时提示检查 IPAddressSources.json 与 CLIENT.LOG 中的 [ModuleMetadata] 启动记录。
+ 返回与调用规则：云端 JSON 记录 URL、GET/POST、请求头、IP 占位符、仅本机限制、编码、成功条件及字段映射，可由维护者直接调整。HTML 网页不能作为纯 IP 接口。HTTP 200 仍须通过业务成功与非空位置校验；位置解析不依赖 AI。
 - Location Cache Update Cooldown (ms)（位置缓存更新冷却（毫秒））
  类型：数值；默认：30000L
  说明：用于控制检测/刷新/动画节奏。默认值 30000L 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
@@ -55,7 +58,7 @@ IPAddress（IP地址）用于查看本机IP地址及相关信息。
  说明：这是开关型配置。默认值 false 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
 - Use HTTPS When Query Position（查询位置时使用 HTTPS）
  类型：布尔；默认：true
- 说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。
+ 说明：默认使用云端 request.url；关闭时仅在接口提供 http_url 的情况下使用该地址，HTTPS-only 接口仍保持 HTTPS。
 - Output Local IP Details（输出本地 IP 详细信息）
  类型：布尔；默认：true
  说明：这是开关型配置。默认值 true 代表作者推荐的初始行为；若要改动，建议一次只改一个开关便于观察影响。

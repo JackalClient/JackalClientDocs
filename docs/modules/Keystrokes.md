@@ -17,6 +17,12 @@ Keystrokes（按键显示）用于显示游戏按键（AWSD空格Shift以及鼠�
 初次使用可优先调整：Text Color、Outline Color、Background Color。
 
 ## 配置项
+- Fill Animation（填充动画）
+ 类型：单选；默认：`Fade`。
+ 可选：`Off`（保留原来的即时切换）、`Fade`（文字与填充颜色淡入淡出）；专业版增加 `Round Rect (PRO)`（中心圆角矩形扩张）和 `Ripple (PRO)`（中心圆形扩张）。形状动画按下使用 EaseOutCubic，松开使用 EaseInExpo，并限制在原键框内；文字颜色随进度过渡。覆盖键盘键、鼠标左右键、CPS 与计数文字，原有位移、雨效果和鼠标避让保持独立。
+- Fill Animation Duration (ms)（填充动画时长）
+ 类型：整数；默认：`100` 毫秒，仅填充动画不是 Off 时显示。运行时限制为 0～10000 毫秒，0 表示立即切换。每个按键独立计时，快速松开或再次按下时从当前进度反向续接，不跳回动画起点；旧配置缺少这两项时使用 Fade 和 100 毫秒。
+
 - Text Color（文本颜色）
  类型：枚举；默认："Rainbow"
  说明：用于控制视觉配色。建议先选对比度高的配色保证可读性；若是动态颜色，注意在复杂背景下的辨识度。
@@ -80,11 +86,15 @@ Keystrokes（按键显示）用于显示游戏按键（AWSD空格Shift以及鼠�
 - Shadow Thickness（阴影厚度）
  类型：数值；默认：20.0f
  说明：用于细调显示样式和间距。默认值 20.0f 通常是平衡视觉效果与紧凑度的设置，建议小步调整并实时观察。
+- Shadow Opacity (0~1)（阴影不透明度 (0~1)）
+ 类型：数值；默认：0.75
+ 说明：独立控制按键框阴影的不透明度，不受方框不透明度影响。
 - Shadow Color（阴影颜色）
  类型：枚举；默认："Black"
  说明：用于控制视觉配色。建议先选对比度高的配色保证可读性；若是动态颜色，注意在复杂背景下的辨识度。
  可选：见 [NAMED_COLOR_BASE_LIST](./NAMED_COLOR_BASE_LIST.md)
 ## 历史更新
+- 53. 修复鼠标按键框不透明度偏高的问题，并增加独立阴影不透明度。
 - 8. 修复了 Keystrokes 里 Shift 隐藏无效的问题。
 - 7. 为 Keystrokes2 添加了丝滑动画。添加配置项：
 - 8. 为 Keystrokes 也添加了 Give Way to Mouse 选项，鼠标经过后会自动偏移。

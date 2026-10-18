@@ -4,6 +4,34 @@
 
 共 334 组命令。
 
+## 安装原生通知后端（`/toastesp install`）
+
+```text
+/toastesp install
+```
+
+后台调用客户端 `toast-native/Install-ToastWinRT.ps1 -Guided`，打开安装向导；模块“安装并启动 WinRT”按钮直接调用此命令，Mode 选项置顶。安装前请先关闭 WinRT 通知透视；重复调用不会启动多个安装进程，客户端退出时取消自己的普通权限安装进程。
+
+流程为：检查组件与签名 → 必要时明确确认信任匹配公钥并同意 Windows UAC → 原普通用户注册身份 → 自动选择 WinRT 并启动 ToastESP → 允许 Windows 通知访问。需要完整组件和已签名的 `JDToastIdentity.msix`；不会生成用户签名密钥。向导显示发布者、指纹与目录，只有证书信任步骤提权，无法降权或取消授权时不启动模块。
+
+相同目录、版本和架构已注册时不卸载；更新或迁移另行确认，并要求关闭所有客户端的通知透视。组件目录提供中英文 `README.txt`，仅分发运行和安装所需文件，不分发调试/链接产物、暂存目录或私钥。
+
+## 菜单闪退诊断（启动参数）
+
+```powershell
+.\JackalClient.exe --trace-clickgui
+```
+
+适用于按菜单键后闪退的排障场景。该参数独立于 `--diagnose`，会将每次 `ToggleClickGUI` 的调用编号、步骤编号、线程、窗口句柄、耗时、Win32 最后错误值，以及各操作的 `BEGIN` / `END`、返回值和 C++ 异常写入客户端 `Release/CLIENT.LOG`。即使配置中开启 `Disable Log`，这些诊断记录仍会写入；每条记录单独关闭文件，减少崩溃时日志尚未落盘的情况。
+
+启动后按菜单键复现，保留并提供 `CLIENT.LOG` 和崩溃报告。查看同一个调用编号中没有对应 `END` 的最后一条 `BEGIN`，可缩小未完成操作的范围。如果菜单切换已经记录 `RETURN completed`，但随后仍闪退，应结合崩溃调用栈继续检查绘制阶段，而不是仅凭切换日志认定菜单无问题。`last_error` 可能是此前遗留值，需结合对应 API 返回值判断。
+
+参数会随客户端自动重启及提权保留；日志量较大，排障结束后请移除。
+
+### GUI 重置范围
+
+Neverlose 和 Dropdown Integration 的模块卡片重置按钮只重置对应模块，不应影响 `Config`、`GUI`、`HUD` 或 `Sound`。全局设置卡片的重置只作用于对应分类；模块重置确认框固定打开时的目标模块，切换页面不会改变重置对象。启用选项搜索时仍只重置命中的可见选项。
+
 ## 显示命令的帮助信息（`/help [command...]`）
 
 ```bash
@@ -58,14 +86,14 @@
 关于。
 :::
 
-## 打开资源市场（`/resourcemarket font/imagehud/presethud/sound/article [search...]`）
+## 打开资源市场（`/resourcemarket font/imagehud/presethud/sound/article/shader [search...]`）
 
 ```bash
-/resourcemarket font/imagehud/presethud/sound/article [search...]
+/resourcemarket font/imagehud/presethud/sound/article/shader [search...]
 ```
 
 ::: details 点击查看说明
-打开 Resource Market 并切换到字体、CustomHUD 图片、HUD 预设、音效或文章选项卡。填写 search 时会覆盖资源市场搜索框；不填写时保留搜索框原内容。
+打开 Resource Market 并切换到字体、CustomHUD 图片、HUD 预设、音效、文章或着色器选项卡。填写 search 时会覆盖资源市场搜索框；不填写时保留搜索框原内容。
 :::
 
 ## 异步执行一条命令（`/async &lt;command...&gt;`）
@@ -1478,7 +1506,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 ```
 
 ::: details 点击查看说明
-设置现在的GUI风格（default/neverlose/imgui）
+设置现在的GUI风格（default/neverlose/dropdown/imgui）。`default` 使用 Neverlose；Neverlose 已开放给免费版，`dropdown` 可切回下拉式界面。
 :::
 
 ## 查看所有模块的按键绑定（bind, bind (…（`/binds`）
@@ -3371,14 +3399,24 @@ int		LastUpdate: 文本上一次更新的时间。
 获取一句随机名言。
 :::
 
-## 枚举当前的 Minecraft 实例以及对应的日…（`/mclog list`）
+## 查看 Minecraft 实例详细信息（`/mclog list`）
 
 ```bash
 /mclog list
 ```
 
 ::: details 点击查看说明
-枚举当前的 Minecraft 实例以及对应的日志的情况；如果已解析到多人服务器，也会显示服务器地址。
+枚举当前 Minecraft 实例，显示 PID、用户名、当前场景（Scene）、世界状态、游玩时长、服务器地址及连接状态、日志路径、缓存行数与最近日志。击杀、连胜、胜利和失败仅在 SessionHUD 启用、Mode 为 Minecraft 且相应 Show Kills / Show Win Streak / Show Wins / Show Losses 开启时依次输出；击杀数由 MinecraftUtils 独立识别本人击杀，不要求 AutoL 开启或指定 Detect Kills 模式。统计与时长遵循 SessionHUD 的 Statistics Per Player / Playtime Per Player 设置。场景名称来自 assets/MINECRAFT_SCENE_PATTERNS.txt，可通过 /mclog simulate 输入日志进行验证。
+:::
+
+## 手动设置最近 Minecraft 实例的用户名（`/mclog setname <name>`）
+
+```bash
+/mclog setname <name>
+```
+
+::: details 点击查看说明
+设置最近一个 Minecraft 实例的用户名，优先使用最近活动实例，其次为最近检测到的实例。没有实例时返回错误。设置后更新用户名、统计归属以及头像查询所用的玩家名；已有玩家统计从缓存恢复，不需要重启客户端。
 :::
 
 ## 清空 Minecraft 实例记录（`/mclog clear`）
@@ -3399,6 +3437,7 @@ int		LastUpdate: 文本上一次更新的时间。
 
 ::: details 点击查看说明
 用于测试日志解析器对于给定的 commandline 命令行，能否正常提取需要的信息。会输出相关结果。如果commandline 参数不填，则从剪贴板中取文本。
+失败时输出 `detectionError`：`BundledJava.InvalidRuntimePath` 表示未找到有效的内置 Java 路径，`BundledJava.LogOpenFailed` 表示无法打开日志并附路径及 `errno`，`BundledJava.NoMinecraftLogEntries` 表示未找到 Minecraft 日志特征，`GameDir.Unresolved` 表示无法确定游戏目录。日志轮转后仅有 Minecraft 专用聊天记录时也可识别实例；缺失的版本和用户名显示为未识别，不导致测试失败。
 :::
 
 ## 模拟输入一条 Minecraft 原始日志行（`/mclog simulate <logline...>`）
@@ -3409,6 +3448,21 @@ int		LastUpdate: 文本上一次更新的时间。
 
 ::: details 点击查看说明
 模拟输入一条 Minecraft 原始日志行，并触发 Minecraft Utils 日志解析事件。logline 可以包含空格，也可以包含完整日志前缀。
+:::
+
+## 查询与管理 AutoL 击杀统计（`/autol`）
+
+```bash
+/autol killtop [ps=20] [pn=1]
+/autol query <name>
+/autol clear <name>
+/autol clearall
+```
+
+::: details 点击查看说明
+以彩色表格显示本人击杀各玩家的累计次数。killtop 按次数降序排列，同次数按玩家名排序；ps 为每页数量（1~1000，默认 20），pn 为页码（从 1 开始，默认 1）。query 查询指定玩家，无记录时显示 0。clear 清除指定目标玩家，同时扣除其在 Total、Player、Minecraft 三种总击杀范围中的次数；clearall 无需确认清除全部目标玩家数据及三种范围计数。名称匹配不区分大小写，清除立即同步保存；不影响 SessionHUD 的战绩统计。
+
+数据位于 `output/Cache/autol_kill_counts.json`，由 AutoL 的 Count Player Kills 开关控制记录，仅在 Detect Kills 为 Killed by me 时累计。读取和清除历史记录无需当前启用 AutoL。
 :::
 
 ## 显示 BiliDaily 缓存状态（`/bilidaily status`）
@@ -3692,14 +3746,54 @@ zhanan			随机渣男语录
 移除数据库。
 :::
 
-## 输出当前直播间模块缓存信息（`/livestreaminfo`）
+## 输出抖音直播间状态（`/douyin live status`）
+
+```bash
+/douyin live status
+```
+
+::: details 点击查看说明
+彩色输出当前抖音直播间状态摘要，包含房间、主播、标题、开播状态、监控阶段、WSS 连接、观看人数、各类接收事件计数、丢弃消息、重试次数、更新时间及错误。仅在 Live Stream 的 Platform 选择 Douyin 时可用；读取后台任务的当前缓存，不额外发起网络查询。
+:::
+
+## 输出抖音直播间原始信息（`/douyin live info`）
+
+```bash
+/douyin live info
+```
+
+::: details 点击查看说明
+输出当前抖音直播间查询与弹幕连接状态的原始 JSON，保留房间信息、连接状态、缓存过期标记、各类接收能力及事件计数，适合诊断和脚本读取。仅在 Live Stream 的 Platform 选择 Douyin 时可用。
+:::
+
+## 抖音直播间链接、标题与观众榜
+
+```bash
+/douyin live go [room]
+/douyin live link [room]
+/douyin live title
+/douyin live gettitle
+/douyin live audience
+/douyin live reception [reconnect]
+/douyin live levelsystem <list|read|save>
+```
+
+::: details 点击查看说明
+- `go` 在浏览器打开房间，`link` 输出并复制链接；省略 room 使用当前 Douyin Room，可传网页房间号或完整 live.douyin.com 链接。不会切换当前监控房间；显式指定房间不要求当前平台为抖音。
+- `title/gettitle` 输出缓存标题；`audience` 输出缓存观众榜 JSON，没有刷新时可能为空，不代表直播间无人，也不根据缺席推断离场。错误原因在 `status` / `info` 中显示。
+- `reception` 查看状态，`reconnect` 重新查询并连接，同时使旧观众请求失效。
+- `levelsystem list` 输出抖音档案，`read` 读取 `config/audience_profiles_douyin.json`，`save` 保存已加载的两平台档案；原 B 站文件不重命名。
+- 除 go/link 外需要当前平台为 Douyin；数据查询读取缓存，不额外发起网络请求。
+:::
+
+## 输出当前直播间模块缓存信息（`/livestreaminfo`，兼容命令）
 
 ```bash
 /livestreaminfo
 ```
 
 ::: details 点击查看说明
-输出当前直播间模块缓存信息。（JSON）
+输出当前直播间模块缓存信息。（JSON）。抖音平台建议使用 `/douyin live info`，友善状态摘要使用 `/douyin live status`；本命令继续保留兼容。
 :::
 
 ## 列出所有模块及相关信息（`/list`）

@@ -1,4 +1,6 @@
 # ForceTerminator
+
+> 已废弃：Sirius 驱动支持已移除，本模块不再可用。
 暴力送终
 分类：Process
 描述：使用驱动程序帮你强制终止目标进程。

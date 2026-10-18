@@ -17,6 +17,8 @@ KeySound（按键音效）用于暂无描述。
 初次使用可优先调整：Alloc Mode、Detect Mode、All Mode Sound。
 
 ## 配置项
+
+> 配置界面说明（v1.1.7）：Category 音效配置现在只在 Alloc Mode 为 Category 时显示。
 - Alloc Mode（分配模式）
  类型：枚举；默认："All"
  说明：这是该模块的核心行为开关，不同选项对应不同执行策略。建议先保持默认 All ，确认稳定后再逐项切换比较效果。

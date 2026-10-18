@@ -3,6 +3,22 @@
 分类：Web
 描述：接收、显示、过滤、朗读、翻译和发送 B 站直播间弹幕，并可联动触发器与 AI 回复。
 
+## 抖音平台（第三轮）
+
+普通/表情弹幕会保留抖音用户身份：聊天栏、控制台与 Neverlose BiliLive 面板中，当前主播的有效粉丝团成员昵称显示粉色，主播 UID 显示绿色，其他用户保持默认色。识别只使用抖音消息内的粉丝团数据，并核对粉丝团主播 ID；不会借用 B 站关系、缓存或同名用户。游客推送缺少粉丝团身份时不能强制判为粉丝；普通“关注”关系也不等于已加入粉丝团。
+
+主播消息缺少昵称时会按已知 UID 回退房间主播昵称，并兼容 Common.user 中的发送者信息；空字符串 UID 不再覆盖数值 UID，无消息编号的弹幕不会用本地毫秒数去重。匿名身份仍禁止远程执行和命令触发，但不受抖音界面中已隐藏的 B 站 VIP、等级及勋章筛选限制。接收端不按主播 UID 过滤本人弹幕；若服务端未向游客连接广播（例如仅发送者可见），当前游客接入不能补回该条消息。已收到但缺少昵称或正文而无法解析的消息会在日志中记录 `[Douyin] Chat payload missing sender name or content`，不输出正文。
+
+平台和房间在 LiveStream 设置。选择 Douyin 后，LiveChatter 会共用游客房间查询和 WSS 接收任务，读取公共弹幕、表情弹幕、礼物、点赞、进场、社交互动和房间统计；仍然不发送抖音弹幕。
+
+抖音模式暂停 B 站定时/剪贴板发送和发送队列，屏蔽异步 AI 回复；不删除 B 站设置或队列。底层发送同样拒绝，不仅隐藏按钮。礼物检测、通知、聚合和 PRO 礼物触发器可以运行，但触发器中的 B 站发送命令仍会被平台保护拒绝。切回 Bilibili 才恢复原平台发送能力，并继续执行既有房间与发送权限检查。
+
+抖音弹幕不会查询 B 站观众缓存、B 站用户等级、VIP、粉丝勋章或房管信息，也不会触发 B 站 GAL 互动；因此抖音用户不会被误判为 B 站身份。通用的昵称显示、用户黑白名单、关键词/敏感词过滤、朗读、翻译、声音、屏幕弹幕、通知、控制台、文件输出和本地触发器仍然可用。抖音进场事件可以复用 `Notify Audience Enter`，但不会生成离场事件。
+
+选择抖音后，界面会隐藏自动发送、剪贴板发送、发送确认、发送冷却、B 站醒目留言、B 站身份筛选、B 站聊天框样式和 AI 回复配置；其它接收与显示配置保持可见。AI、GAL、房管及真实弹幕发送均不因旧 Profile 中的值而重新启用。
+
+抖音支持 `Console Output Wealth & Medal` 显示开关（默认开启），在聊天栏、控制台和 Neverlose 直播面板的昵称前依次显示荣耀等级与粉丝牌，例如 `[∨12] [8] 昵称`。荣耀等级沿用 B 站格式；粉丝牌只显示 `[等级]`，点亮为黄色、熄灭为灰色，不显示名称，不套用 B 站勋章。消息优先读取 User.PayGrade.level 和当前主播 FansClub；缺少荣耀等级或粉丝牌字段时，按 UID 从当前抖音房间的有效观众 HUD 缓存补充。缓存必须匹配房间和接收会话，超时或无匹配时不添加，不按同名用户推断，也不查询 B 站资料。
+
 ## 需求
 - 安全级别：常规模块；远程执行和真实发送弹幕属于高风险能力，默认关闭或受保护。
 - 权限需求：接收弹幕通常不需要管理员；发送弹幕、AI 以真实弹幕回复、部分直播间管理能力需要已登录 BiliSettings 账号。
@@ -14,11 +30,76 @@
 ## 介绍
 LiveChatter 负责直播弹幕本身：它从 LiveStream 当前房间接收弹幕，按规则筛选后显示在客户端，也可以写入控制台或文件、朗读、翻译、播放提示音、触发命令，并让 AI 生成回复。
 
+Neverlose 用户页的 BiliLive 与 IRC、Console 共用左对齐的现代文字选项卡，主题色下划线随切换平滑移动。输入框和发送按钮在无警告时整体下移一行提示高度；需要拆分长弹幕或出现其它输入警告时，自动保留额外提示空间。
+
+未登录 B 站时，直播弹幕历史请求按游客方式发送，不携带 Cookies，也不读取 CSRF；即使启用请求附带 CSRF 或强制 Cookies 的调试选项，也不会在游客状态读取认证信息。登录后保留原有的请求模式及空结果后使用 Cookies 重试机制。
+
 发送相关能力会使用 LiveStream 的 `Room ID` 作为目标房间，包括 `/blc`、`/bili live chatter`、剪贴板快速发送、自动发送和 LiveChatter 自身的 AI `Real Chatter` 模式。LiveChatter/LiveStream 的 `Real Chatter` 都发送到当前选择的直播间；其它模块的 `Real Chatter`（包括 Streamer）默认面向自己的直播间。切换到别人直播间观察时，建议保持 `Prevent Others Room Chatter Sending` 开启，或使用 `/bili live switch <roomId> auto`，避免误把弹幕发到非自己的直播间。
 
 ChatBar 或 LiveStream HUD 查询观众关系时，如果当前弹幕/观众数据没有提供有效 UID，会跳过关系接口请求，避免向 B 站提交 UID 0。
 
 ## 配置项
+### 共用消息接收
+
+接收方式统一在 LiveStream 的 `Message Source` 设置。LiveChatter 单独开启时也能使用该房间与接收方式；同时开启两个模块时共用一条消息流连接，两个模块均关闭后停止连接。
+
+消息流和轮询共用现有弹幕显示、控制台、文件、ChatBar 同步、筛选、朗读、翻译与 AI 处理。发送仍走原有 HTTP 发送队列，保留发送冷却、他人房间限制及封禁检查。
+
+Neverlose 的 BiliLive 面板在消息流模式下读取共享连接最近 300 条弹幕缓存，不再定期查询历史弹幕；旧版模式保留历史查询和顶部补拉。切房、换账号或切换接收方式后会丢弃尚未处理的旧消息及翻译结果。
+
+消息流下隐藏 `Max Allowed Chatter Delay (s)`，该值只筛选旧版历史轮询结果；Developer 中的历史请求 GET/POST、CSRF、时间差和旧版礼物检查调试项也会隐藏。观众查询冷却仍有效，因此不会隐藏。
+
+消息流弹幕的荣耀等级优先读取 `info[0][15].user.wealth.level`，兼容补充信息 `extra.wealth_level`，缺失时读取 `info[16][0]`。用于聊天栏、Neverlose BiliLive、控制台等级显示及最低荣耀等级筛选，不依赖 HUD 观众名单。有效的 0 级同样保留；字段缺失或无效时视为未知，不借用观众缓存等级，无等级限制时仍正常显示，有最低等级限制时不放行。`ChronosWealth_*.png` 是图标资源，不作为具体等级读取。
+
+控制台弹幕正文采用与 ChatBar 一致的社交文本高亮：突出 @提及、#话题# 和 [表情]，普通字符、数字和标点保留正文颜色，表情替代方式也遵循当前设置。
+
+游客 UID 0 或遮蔽身份不会按昵称补成可信用户，不能执行远程命令、命令触发器或 GAL 互动；依赖账号等级、VIP、粉丝或勋章的筛选在身份未知时不放行。翻译结果与 AI 回复会检查原会话，切房、换账号或关闭模块后丢弃失效结果。
+
+使用 `/bili live reception` 查看状态，或 `/bili live reception reconnect` 手动重连；在 `Auto` 模式下，配置显示会跟随实际消息来源变化。
+
+### Super Chat（醒目留言）
+
+分组及其中全部选项仅在实际消息流模式下显示，`Auto` 回退旧版轮询后自动隐藏。SC 输出独立于 `Gift Check`、普通弹幕 `Display` 和 ChatBar 的 `Sync Live Chatters`。
+
+SC 控制台边框按标题和最长正文行的终端显示列宽生成，中文按宽字符计算，并为正文补齐空白和右边框。ChatBar 将标题放入卡片内独立一行，上下边框在实际排版时按换行后的像素宽度生成，随字体、字号及可用宽度重新适配，不再共用控制台的字符数量。
+
+- SC Notify（醒目留言输出）
+ 类型：多选枚举；默认：`Notify`、`Chat Bar`、`Console Output`。
+ 可选：`Notify`、`Chatter`、`WinToast`、`Chat Bar`、`Console Output`。
+ `Notify` 按 SC 的 `time` 显示通知，`Chatter` 以置顶弹幕显示相同时长；缺少 `time` 时使用 `end_time - start_time`，时长均无效时回退 60 秒。客户端输出队列中的等待时间会从显示时长中扣除。`WinToast` 使用系统通知，其停留时间由 Windows 控制。
+ `Chat Bar` 输出带首尾边框的纯文字卡片，例如：
+
+ ```text
+ ╭─ SC · 界原虚 · 300 电池 ─╮
+ │ 猪播完美预测自己第一个死
+ ╰──────────────────────────────╯
+ ```
+
+ 标识及边线使用 `background_color_start`、`background_bottom_color`，金额使用 `background_price_color`，昵称使用 `user_info.name_color`，正文使用 `message_font_color`；颜色缺失或无效时使用可读的默认色。金额跟随 LiveStream 的 `Gift Value Display`（默认 Battery）；抖音平台自动使用 `Douyin Coin`，即 diamond，按 `1 元 = 10 抖币` 显示。B 站金额优先使用已有单位数据，缺失时按 1000 金瓜子 = 1000 金仓鼠 = 10 电池 = 1 元换算：示例为 30 元 SC 的 `300 电池`，CNY 显示 `30 元`，Gold/Hamster 分别显示 `30000 金瓜子` / `30000 金仓鼠`。电池、抖币与元保留可读显示，不添加估算标记。Off 或无对应银瓜子价值的 Silver 不显示金额。金额设置独立于 Gift Check，不加载 SC 背景图或头像。聊天栏保留自己的淡出及历史显示规则。`Console Output` 使用相同卡片和配色，并在卡片前后留空行。
+
+- SC Chatter Color（醒目留言弹幕颜色）
+ 类型：Color；默认：`Red`。控制 `SC Notify` 中 `Chatter` 的颜色；消息流模式下始终显示此选项。
+
+### 原有配置
+
+- Emoji Renderer（表情渲染方式）
+ 类型：枚举；默认：`Legacy`；归入 Display 分组。
+ 可选：`Image`、`Legacy`。
+ 说明：`Legacy` 保持原有文字表情与 `Transform Emoji` 行为；`Image` 根据弹幕附带的 `emots` 和独立大表情资源，将正文中的表情标记替换为图片，并保留其余文字及前置 @ 昵称。适用于 ChatBar、Neverlose BiliLive 面板与 `Display = Chatter` 的屏幕弹幕，兼容消息流和带有表情资源的历史弹幕；没有资源时保留文字，控制台、文件、通知及触发逻辑仍使用文字内容。旧 Profile 的 `Emoji Chat Bar Renderer` 自动兼容到此项。
+ 图片与文字底部对齐，后台下载和解码，图片缓存超过三天自动清理。暂以静态图片显示，动态表情显示首帧；加载期间或失败时保留文字占位。历史消息恢复时保留图片资源和原高度信息。
+
+- Emoji Image Height Mode（表情图片高度模式）
+ 类型：枚举；默认：`Smart`；仅在 `Emoji Renderer = Image` 时显示。
+ `Smart` 将原高度限制在当前字号的 100%～200%；`Raw` 保留资源提供的原始像素高度；`Uniform` 将图片等比缩放至当前字号高度。未提供有效高度时使用当前字号。聊天栏及聊天气泡按最高片段撑高行；屏幕弹幕保持固定的文字行底部，表情向上延伸，不移动其它弹幕，并将每句带表情的弹幕单独限制在屏幕内。切换模式会更新现有消息的布局，所有界面均保持图文底部对齐。
+
+- Clear Emoji Cache When Disabled（关闭模块时清除表情缓存）
+ 类型：布尔；默认：true；归入 Display 分组。
+ 关闭 LiveChatter 时释放表情贴图、取消待处理图片并清除磁盘表情缓存；已关闭后完成的旧下载不会重新保留缓存。已留在聊天栏中的图片片段暂显示文字占位，重新启用后按需加载。关闭此项可保留缓存。文件位于 `output/Cache/bili_emoji_<hash>.<格式>`，扩展名按实际图片数据确定，例如 `.png`、`.webp`、`.gif`；同时兼容清理旧版 `chatbar_image_*` 文件。
+
+- Emoji Opacity (0~1)（表情不透明度）
+ 类型：浮点数；默认：1.0；范围：0～1；仅在 `Emoji Renderer = Image` 时显示。
+ 仅控制表情图片，不改变文字透明度；实际透明度还会乘以所在界面的透明度及淡出效果。屏幕弹幕图片透明度为此项乘以弹幕不透明度、弹幕颜色自身 Alpha 和鼠标避让系数。
+
 - Auto Send Time Mode（自动发送时间模式）
  类型：枚举；默认："Off"
  说明：控制是否自动向当前直播间发送弹幕。`Off` 不自动发送；`Periodic` 按固定间隔发送。自动发送会公开出现在直播间，启用前应确认内容和房间号正确。
@@ -295,6 +376,7 @@ ChatBar 或 LiveStream HUD 查询观众关系时，如果当前弹幕/观众数�
 - 8. 添加模块：AutoLiveChatter，自动直播间弹幕。
 
 ## 备注
+- 消息流弹幕中的回复对象会以 `@昵称 正文` 显示在弹幕、聊天栏、通知、标题、Actionbar、控制台、文件输出和朗读中，Neverlose 的消息流历史也会保留该前缀。翻译只处理正文，保留被 @ 的昵称；触发器、远程执行与自动回复继续使用原有正文。若正文已含同一前缀，不重复添加。
 - `Real Chatter`、自动发送、剪贴板快速发送和 `/blc` 都会向直播间公开发送弹幕。启用前确认当前 `Room ID`、登录账号和保护开关。
 - `Developer.Live Chatter Fullwidth Spaces` 会影响手动命令发送路径中的空格处理；需要控制半角/全角空格时请到 Developer 模块配置。
 - 远程执行默认关闭。开启前建议先用测试房间、白名单账号和无破坏命令验证完整流程。
@@ -311,7 +393,7 @@ ChatBar 或 LiveStream HUD 查询观众关系时，如果当前弹幕/观众数�
 - `/bili live cq add <content...>`、`/bili live cq direct <content...>`：向队列追加弹幕，或直接执行发送流程。
 - `/bili live switch <roomId> auto`：切换到指定直播间并自动启用保护策略，适合观察别人直播间。
 - `/bili live switch back`：切回自己的直播间。
-- `/livestreaminfo`：查看当前直播间信息，便于确认房间号和连接状态。
+- `/douyin live status`：彩色查看抖音房间、连接与事件接收状态摘要；`/douyin live info` 输出原始 JSON，`/livestreaminfo` 继续作为 JSON 兼容命令查看当前直播间信息。
 - `/chathistory clear livestream`：清空直播弹幕 AI 回复上下文。
 - `/config list livechatter`：列出 LiveChatter 当前配置，便于核对生效值。
 
@@ -329,3 +411,9 @@ ChatBar 或 LiveStream HUD 查询观众关系时，如果当前弹幕/观众数�
 
 ## 相关资料
 无
+
+## 抖音弹幕
+
+当 Live Stream 的 `Platform` 为 `Douyin` 时，LiveChatter 读取同一条抖音 WSS 的公共聊天弹幕、表情弹幕、礼物、点赞、进场、社交互动和房间统计。昵称、用户 ID、内容和时间沿用公共弹幕处理链；礼物沿用 `Gift Check`、通知、ChatBar 聚合、`Gift Value Display` 和 PRO 礼物触发器，这些配置不再仅限 B 站显示。仅旧版礼物轮询冷却在抖音下隐藏。连击按房间、发送者 UID、礼物 ID 和 groupId 去重，只把累计数量的新增部分及相应金额入队；无需等待结束包，相同数量结束包不重复计入。现有礼物聚合在约 3 秒无新增后输出，触发器继续按聚合结果运行。进场事件可复用观众进入通知，点赞和房间统计用于更新直播信息与 HUD。抖音不提供完整在线名单、可靠离场和弹幕发送；发送入口保持禁用，也不会查询 B 站身份资料或触发 B 站 GAL 互动。
+
+连接状态可通过 `/douyin live status` 查看，原始 JSON 使用 `/douyin live info`；`/douyin live go/link [room]` 可打开或复制房间链接。LiveStream 的观众榜另行轮询并使用独立抖音等级档案，不因此调用 B 站资料接口，也不补齐平台未广播的弹幕。未开播时按 Live Stream 的等待配置查询，连接断开后自动重连。切换回 Bilibili 后恢复原有 B 站接收和发送队列。

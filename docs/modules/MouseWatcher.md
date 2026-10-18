@@ -17,6 +17,8 @@ MouseWatcher（鼠标监视）用于监视鼠标移动和交互。
 初次使用可优先调整：Movement Check Mode、Hide HUD When Menu On、HUD。
 
 ## 配置项
+> 配置界面说明（v1.1.7）：HUD 样式与严格移动检查参数仅在对应模式启用时显示。
+
 - Movement Check（运动检查）
  类型：枚举；默认："Ignore"
  说明：这是选项型配置。默认值 Ignore 一般更稳妥；建议按使用场景逐个试用，而不是一次性切换多项。

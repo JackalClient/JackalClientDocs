@@ -17,6 +17,8 @@ AudioIsolation（音频隔离）用于只有一个进程可以发出声音。
 初次使用可优先调整：Process Name (Empty For Any)、Process Id (Zero For Any)、Set Highlight Process Volume。
 
 ## 配置项
+> 配置界面说明（v1.1.7）：目标进程名使用可逐项编辑的字符串列表。
+
 - Process Name (Empty For Any)（进程名 (用空指代任何)）
  类型：文本；默认："JackalClient.exe"
  说明：用于指定模块实际作用对象。建议先对单个目标测试通过，再扩大到多目标，降低误操作风险。

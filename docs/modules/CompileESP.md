@@ -19,6 +19,9 @@ CompileESP 会识别常见编译链进程（MSVC/GCC/Clang/Java 等），在“�
 编译进程很多时，模块会缓存正则规则和已识别 PID，减少重复读取命令行与 response file 带来的卡顿。
 
 ## 配置项
+- HUD 时长显示使用 `SS.mm`、`MM:SS.mm` 或 `HH:MM:SS.mm` 格式，前导的小时和分钟会在未达到时省略。
+> 配置界面说明（v1.1.7）：编译器黑名单与 HUD 样式参数仅在对应过滤器或 HUD 背景启用时显示。
+
 - Compile Start Notify Mode（编译开始通知模式）
  类型：枚举；默认："Notify"；说明：控制“检测到编译开始”时如何提示。若你希望低打扰建议 `Notify`，希望直播可见性更高可选 `Title/Island`。可选：Off（关闭）；Notify（通知）；Chatter（弹幕）；Title（标题）；Island（灵动岛）；Console Output（控制台输出）；WinToast（系统托盘提示）；Speak（语音播报）；Real Chatter（真实弹幕）
 - Compile Finish Notify Mode（编译结束通知模式）

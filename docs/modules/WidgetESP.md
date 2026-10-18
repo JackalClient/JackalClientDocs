@@ -8,6 +8,8 @@ WidgetESP（组件透视）用于检查鼠标所在窗口或前台窗口中的 U
 
 ## 常用配置
 
+> 配置界面说明（v1.1.7）：配置项按检测、标签、详情标签、单标签、边框和交互分组；Label、Name、Role、Class、Description 与 Automation Id 合并为 `Visible Elements` 多选项。
+
 - Mode（模式）
   类型：枚举；默认：`Accurate`。
   说明：选择组件查询范围。`Accurate` 只查询鼠标所在组件；`Point At` 查询鼠标所在窗口；`Foreground` 查询前台窗口；`Screen` 查询整屏。

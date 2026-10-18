@@ -2,7 +2,18 @@
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
-共 67 组命令。
+共 68 组命令。
+
+## 直播消息接收状态（`/bili live reception [reconnect]`）
+
+```bash
+/bili live reception
+/bili live reception reconnect
+```
+
+查看 LiveStream / LiveChatter 共用的消息接收方式、连接状态、最后心跳、重连次数及收到或丢弃的消息数量。`reconnect` 重新建立消息流连接；固定消息流模式失败时只重连，Auto 连续失败后回退 Legacy 并定期尝试恢复。
+
+LiveStream 选择 Douyin 时，本轮只显示游客房间信息监控状态与暂不支持弹幕的提示；`reconnect` 重新查询抖音房间，不建立弹幕连接。B 站弹幕发送须先将 Platform 切回 Bilibili。
 
 ## 获取网页完整内容（`/webpage &lt;url...&gt;`）
 
@@ -419,6 +430,40 @@
 go 打开直播间网页。link 仅复制链接。如果 roomId 不填，则取 LiveStream 模块的 Room ID。`go` 与 `switch` 成功使用的直播间号会记录到 Records，并用于后续房间号自动补全。
 :::
 
+## 当前房间与本人房间
+
+`host/hostinfo/likeauds/likeauds2/getarea/area/gettitle/title/fetch/chat/fetchraw/link/go/audience/status` 默认查询 LiveStream 当前选中的 `Room ID`；仅 Room ID 为 0 时自动填入本人房间。支持显式房间或 UID 参数的命令继续支持这些参数。
+
+`start/startsilent/stop/settitle/setarea/violation` 始终操作本人房间，不修改当前选择。`area` 只用于查询分区，旧版的分区修改语法请改用 `setarea`。
+
+```bash
+/bili live status
+/bili live violation [page=1] [pageSize=6]
+/bili live reception [reconnect]
+/bili live switch <roomId> [force|auto]
+/bili live switch back
+```
+
+`status` 显示当前房间的状态，账号诊断、封禁/权限恢复时间和违规记录仅在本人房间获取并显示。`violation` 只查询本人账号的违规记录。`reception` 查看共享消息接收状态，`reconnect` 手动重连。`switch ... auto` 调整冲突选项并备份，`switch back` 切回本人房间并恢复备份；消息流模式保留礼物检测，关闭自定义礼物触发器和默认命令，旧版轮询仍关闭礼物检测。
+
+## 直接查询本人直播间
+
+```bash
+/bili live mylink
+/bili live mygo
+/bili live getmytitle
+/bili live getmyarea
+/bili live mystatus
+/bili live myaudience
+/bili live likemyauds [limit=5]
+/bili live likemyauds2 [limit=5]
+/bili live fetchmine [limit=100]
+/bili live fetchmineraw [limit=100]
+/bili live mychat [limit=100]
+```
+
+需要登录账号且已创建直播间，不会切换 LiveStream 当前房间。`mylink` 复制本人链接；`mygo` 在浏览器打开；`getmytitle/getmyarea` 查询标题/分区；`mystatus` 查询状态、账号诊断及最新违规信息；`myaudience` 输出观众资料。`likemyauds/likemyauds2` 给本人房间观众的动态点赞，第二种方式后台执行，limit 为每位观众的动态数量。`fetchmine/mychat` 输出本人房间的弹幕，`fetchmineraw` 输出原始 JSON。
+
 ## 管理自己直播间的房管（`/bili live mod`）
 
 ```bash
@@ -501,6 +546,7 @@ Audience Tracker 控制命令。status 输出目标用户当前状态、所在�
 
 ::: details 点击查看说明
 获取主播信息。
+uid 不填或为 `~` 时查询当前选中直播间的主播。
 :::
 
 ## 获取并输出当前直播间弹幕列表的前limit个（`/bili live fetch [limit=100]`）
@@ -514,14 +560,14 @@ Audience Tracker 控制命令。status 输出目标用户当前状态、所在�
 获取并输出当前直播间弹幕列表的前limit个。
 :::
 
-## 将有关模块的直播间ID选项全部设为roomId（`/bili live setroom [roomId=auto]`）
+## 自动补入本人房间（`/bili live setroom`）
 
 ```bash
-/bili live setroom [roomId=auto]
+/bili live setroom
 ```
 
 ::: details 点击查看说明
-将有关模块的直播间ID选项全部设为roomId。如果不填，则为自己的直播间ID。
+仅在 LiveStream 的 Room ID 为 0 时补入本人房间；切换房间使用 `/bili live switch`。
 :::
 
 ## 获得直播间原始信息JSON（`/bili live info [roomId=~]`）
@@ -552,6 +598,7 @@ Audience Tracker 控制命令。status 输出目标用户当前状态、所在�
 
 ::: details 点击查看说明
 【PRO】设置直播间标题为 title。
+始终修改本人房间，与 LiveStream 当前选择无关。
 :::
 
 ## 获取直播间标题（`/bili live gettitle [roomId=~]`）
@@ -578,23 +625,24 @@ Audience Tracker 控制命令。status 输出目标用户当前状态、所在�
 ## 获取直播间分区（`/bili live area`）
 
 ```bash
-/bili live area
+/bili live area [roomId=~]
 /bili live getarea [roomId=~]
 ```
 
 ::: details 点击查看说明
 获取直播间分区。使用 /bili live areas 查看所有分区。
+默认查询当前选中的房间，修改分区请使用 `setarea`。
 :::
 
-## 设置直播间分区（`/bili live area <area_id/area_name>`）
+## 设置本人直播间分区（`/bili live setarea <area_id/area_name>`）
 
 ```bash
-/bili live area <area_id/area_name>
 /bili live setarea <area_id/area_name>
 ```
 
 ::: details 点击查看说明
 设置直播间分区。可填分区ID或分区名。分区名将自动模糊匹配（命中规则：相似度&gt;0.8，或&gt;0.6且领先第二名&gt;0.2）；若匹配失败会输出候选分区。使用 /bili live areas 查看所有分区。
+始终修改本人房间，不改变当前选择。
 :::
 
 ## 立即开播（`/bili live start [area=current]`）
@@ -605,7 +653,7 @@ Audience Tracker 控制命令。status 输出目标用户当前状态、所在�
 ```
 
 ::: details 点击查看说明
-【PRO】立即开播。房间号将采用 LiveStream 直播间模块的房间号。area为分区ID，如果不填则为当前分区。startsilent 子命令是静默开播，不会提示任何信息。
+【PRO】在本人房间开播，与 LiveStream 当前选择无关。area 为分区ID，不填时使用本人房间的当前分区。startsilent 不输出推流码及开播成功提示。
 :::
 
 ## 关闭直播（`/bili live stop`）
@@ -615,7 +663,7 @@ Audience Tracker 控制命令。status 输出目标用户当前状态、所在�
 ```
 
 ::: details 点击查看说明
-【PRO】关闭直播。房间号将采用 LiveStream 直播间模块的房间号。通过本命令主动停播不会触发 Streamer 的异常断流警告。
+【PRO】关闭本人房间的直播，与 LiveStream 当前选择无关。通过本命令主动停播不会触发 Streamer 的异常断流警告。
 :::
 
 ## 枚举等级系统所有的观众档案数据（`/bili live levelsystem list`）

@@ -16,6 +16,8 @@ Title（标题显示）用于在屏幕中央显示一个标题。和MC的很像�
 初次使用可优先调整：Title Text Mode。
 
 ## 配置项
+> 配置界面说明（v1.1.7）：Title Text List 使用可逐项编辑的字符串列表。
+
 - Module Status Auto Switch（模块状态自动切换）
  类型：布尔；默认：true
  说明：在播放标题时，是否自动静默启用该模块。

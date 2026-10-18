@@ -17,6 +17,12 @@ AudioVisualizer（音频可视化）用于显示音频波形或其他形式的�
 初次使用可优先调整：Capture Cooldown (ms)、Global HUD Pulse Effects、Global HUD Pulse Effects Intensity (0~1)、Beat Texture Shake。
 
 ## 配置项
+- Give Way to Mouse（鼠标避让）
+ 类型：布尔；默认：true。
+ 说明：位于 Mouse Avoidance 分组。鼠标经过可视化图形时平滑降低其不透明度，移开后恢复；HUD Editor 开启时不生效，不改变柱高、频谱或拖动范围。
+- Give Way to Mouse Mode（鼠标避让模式）
+ 类型：枚举；默认：Fade Partial。仅在 Give Way to Mouse 开启时显示。
+ 可选：Fade Partial（局部淡出）；Fade All（全部淡出）。局部模式淡出鼠标经过的柱子及左右最多各两根相邻柱子，中心淡出至原不透明度的 20%，向邻柱逐渐减弱；支持顶部、底部、左侧和右侧柱列以及 Normal、Pixel、Capsule 样式。全部模式在命中任一柱列时同步淡出所有已开启柱列。Line Wave 对应淡出附近波形片段或整个波形，移开鼠标后平滑恢复。
 - Capture Cooldown (ms)（捕获冷却（毫秒））
  类型：数值；默认：50L
  说明：用于控制检测/刷新/动画节奏。默认值 50L 以稳定为主；调小会更灵敏但可能增加资源占用，调大则更省资源但响应更慢。
@@ -82,7 +88,21 @@ AudioVisualizer（音频可视化）用于显示音频波形或其他形式的�
  说明：用于控制透明度。默认值 0.3f 兼顾可见性和遮挡；如果你觉得挡视线可小幅下调，若看不清可小幅上调。
 - Bar Easing Speed (0~1)（柱缓动速率 (0~1)）
  类型：数值；默认：0.15f
- 说明：这是数值型配置。默认值 0.15f 通常在稳定性与效果之间做了平衡，建议小步调整并观察实际变化。
+ 说明：开启时间平滑后控制柱子高度上升速度。
+- Bar Time Smoothing（柱子时间平滑）
+ 类型：布尔；默认：true。开启后柱高会逐帧靠近目标值，音频突然停止时也会逐渐回落。
+- Bar Time Smoothing Speed (0~1)（柱子回落平滑速度）
+ 类型：数值；默认：0.15。控制柱高回落速度，值越小回落越慢；只在时间平滑开启时显示。
+- Bar Horizontal Color Mode（柱子横向颜色变化模式）
+ 类型：枚举；默认：Off。Wave 沿柱列形成移动正弦波；Flicker 让各柱以不同相位闪烁；Periodic 每指定数量的柱子重复一个相位周期。
+- Bar Horizontal Color Metric（柱子横向颜色变化指标）
+ 类型：枚举；默认：Opacity，可切换为 Brightness。仅在横向颜色变化开启时显示。
+- Bar Horizontal Color Amplitude (0~1)（柱子横向颜色变化幅度）
+ 类型：数值；默认：0.5。控制变化幅度。
+- Bar Horizontal Color Speed (Hz)（柱子横向颜色变化速度）
+ 类型：数值；默认：1.0。控制波动或闪烁速度。
+- Bar Horizontal Color Period (bars)（柱子横向颜色变化周期）
+ 类型：整数；默认：8。仅用于 Periodic，控制相位重复的柱数。
 - Bar Y Rate（柱纵坐标比例）
  类型：数值；默认：1.0f
  说明：用于控制界面元素在屏幕中的相对位置。默认值 1.0f 一般是作者调过的稳定布局；建议每次只改一个轴，避免元素跑出可视区域。
@@ -218,3 +238,9 @@ AudioVisualizer（音频可视化）用于显示音频波形或其他形式的�
 
 ## 相关资料
 无
+
+## 全屏窗口隐藏
+
+- `Hide In Fullscreen Window`（全屏窗口时隐藏）：布尔，默认 `true`。
+- 开启后，前台窗口为无边框全屏或独占全屏时自动隐藏显示；退出全屏或切换到普通窗口后恢复。普通带标题栏的最大化窗口不会触发，支持多显示器。
+- 此选项只隐藏画面，不关闭模块或停止后台功能；HUD Editor 开启时保留显示，便于编辑布局。

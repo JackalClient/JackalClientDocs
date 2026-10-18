@@ -12,6 +12,8 @@
 - 版本属性：普通可用
 
 ## 介绍
+
+在线文章使用 Gitee 仓库 `thunderbringer/ricochesta` 的 `main` 分支，读取 `texts/typing` 目录，与 ResourceMarket 的 Article 来源保持一致。
 TypingPractice（打字练习）位于 Apps 页面。模块开启后会自动进入练习界面并保持暂停，首次敲击按键时开始或继续计时。
 
 右上角的“选择文章”按钮会打开 Material Design 3 风格的右侧文章浏览器：Local 标签页保存添加过的本地文章，Online 标签页按目录浏览 Gitee 仓库中的中英文文章。在线文章下载后缓存到 `output/Cache/Articles`，并保留仓库中的 `cn`、`en` 等相对目录。列表会在成功获取时显示文章的字节大小，页面标题同时显示当前文章文件名。也可在 ResourceMarket 的 Article 标签页右键文章并选择“设为打字练习文章”，该操作会自动切换到 Online 来源并保存文章相对路径。
@@ -56,6 +58,9 @@ TypingPractice（打字练习）位于 Apps 页面。模块开启后会自动进
 - Next Color（下一字符颜色）
  类型：枚举；默认：Yellow
  说明：下一个待输入字符及定位框的颜色。
+
+## 界面
+- 文章区域使用半透明背景；在 Neverlose 界面下，文章背景、字号滑块和滚动条会跟随当前主题色。
 
 ## 操作
 - 点击“选择文章”打开文章浏览器，点击弹窗外区域或按 Esc 关闭。

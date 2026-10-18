@@ -75,9 +75,12 @@ Notification（通知）用于控制客户端的通知。
 - Notify Max Length（通知最大长度）
  类型：数值；默认：120
  说明：`Metro`类型的通知正文最大长度，再长会被截断加上省略号。
-- Notify Opacity (0~1)（通知不透明度 (0~1)）
- 类型：数值；默认：1.0f
- 说明：`Metro`类型的通知不透明度。
+- Background Opacity (0~1)（背景不透明度 (0~1)）
+ 类型：数值；默认：1.0
+ 说明：控制各 Metro 样式的背景、进度填充、边框和阴影的不透明度倍率，不影响文字和图标。
+- Text Opacity (0~1)（文本不透明度 (0~1)）
+ 类型：数值；默认：1.0
+ 说明：独立控制各 Metro 样式的文字和图标，不影响通知背景与模糊。旧 Opacity / Notify Opacity 配置会迁移到缺失的背景与文本配置项，保留原透明度效果。
 - Shadow（阴影）
  类型：布尔；默认：true
  说明：控制 `Metro` 类型通知是否绘制阴影。切换到 `Nvidia (PRO)` 样式时会自动关闭一次，之后仍可手动重新开启。
@@ -109,6 +112,9 @@ Notification（通知）用于控制客户端的通知。
 - Notify AntiSpam（通知反刷屏）
  类型：布尔；默认：true
  说明：反刷屏机制，对于高度相似的消息，会合并为一个消息并添加`xN`的数量标识。
+- Blur Opacity (0~1)（模糊不透明度 (0~1)）
+ 类型：数值；默认：0.9
+ 说明：HUD Blur 开启时控制每个 Metro 通知区域的模糊层不透明度，支持 Legacy / Experimental，并按当前样式匹配矩形、圆角与高度。模糊跟随进出场和鼠标避让，不受 Text Opacity 影响。Background Opacity 恰好为 1 时始终跳过模糊，因此默认不绘制；要观察模糊，请先将背景不透明度调低，例如 0.4。相关外观选项归入 Appearance 分组，仅在 Metro 模式显示，Blur Opacity 还要求背景不透明度不为 1。
 - Notify AntiSpam Min Similarity (0~1)（通知反刷屏最小相似度(0~1)）
  类型：数值；默认：0.97f
  说明：会被反刷屏机制判定成重复消息的字符串最小相似度。越小越容易触发反刷屏机制。
@@ -192,5 +198,6 @@ Notification（通知）用于控制客户端的通知。
 
 
 ## 历史更新
+- v1.1.9：通知不透明度拆分为背景和文本两项；修正各 Metro 样式的模糊区域，背景不透明度为 1 时跳过模糊，兼容旧透明度配置。
 - v1.1.2：新增 Shadow、Shadow Color、Shadow Opacity (0~1)、Shadow Thickness，用于控制 Metro 通知阴影；切换到 Nvidia (PRO) 样式时会自动关闭一次阴影。
 - v1.1.1：新增 Sound、Sound Volume (0~100) 与 Sound Pitch Randomization (0~1)，通知音效开关从 Sound 选项迁移到 Notification。
