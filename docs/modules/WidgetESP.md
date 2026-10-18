@@ -4,9 +4,18 @@
 
 描述：读取 UIAutomation/MSAA 组件信息，并在屏幕上绘制组件边界、标签与提示。
 
+## 需求
+- 安全级别：会读取界面组件信息，使用时应注意目标窗口隐私
+- 权限需求：需要能够访问目标窗口的 UIAutomation/MSAA 信息；受目标进程权限限制
+- 驱动依赖：否
+- 联网需求：否
+- 开发状态：稳定/常规
+- 版本属性：普通可用；带 PRO 标记的能力需要 PRO
+
+## 介绍
 WidgetESP（组件透视）用于检查鼠标所在窗口或前台窗口中的 UI 组件。它支持 Accurate、Point At、Foreground、Screen 等模式，可显示组件名称、角色、类名、描述、值、框架和 Automation Id。
 
-## 常用配置
+## 配置项
 
 > 配置界面说明（v1.1.7）：配置项按检测、标签、详情标签、单标签、边框和交互分组；Label、Name、Role、Class、Description 与 Automation Id 合并为 `Visible Elements` 多选项。
 

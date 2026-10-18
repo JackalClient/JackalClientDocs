@@ -1,9 +1,17 @@
 # Mini Map
+小地图
+分类：Web（位于 WeatherHUD 上方）
+描述：根据当前位置在 HUD 中显示全国云图和雷达图。
 
-小地图  
-分类：Web（位于 WeatherHUD 上方）  
-版本：专业版
+## 需求
+- 安全级别：常规模块
+- 权限需求：无
+- 驱动依赖：否
+- 联网需求：是；需要获取 IP 定位和地图数据
+- 开发状态：稳定/常规
+- 版本属性：PRO 专有
 
+## 介绍
 以当前 IP 定位的经纬度为中心显示全国云图和雷达图。定位复用 WeatherInfo 的 `GetCurrentDistinct` 查询路径及 IP Address 的定位来源设置，并在该次来源只返回城市信息时复用已有完整 IP 定位结果，无需开启 WeatherInfo，也不依赖 QWeather 密钥。无法获取有效经纬度时隐藏整个 HUD。默认同时选择 Cloud Map、Radar Map，云图位于雷达图上方。
 
 ## 配置项

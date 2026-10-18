@@ -1,6 +1,5 @@
 # CompileESP
 编译透视
-[PRO]
 分类：Process
 描述：监控编译器进程并通知编译开始/结束。
 

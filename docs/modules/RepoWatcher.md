@@ -1,8 +1,20 @@
 # RepoWatcher
 仓库监视
-用于定期检查 GitHub 仓库状态变化，可监视 Stars、Forks、Issues、Subscribers、归档/禁用状态、更新时间以及 Release 下载量，并按配置方式发送通知。
+分类：Web
+描述：定期检查 GitHub 仓库状态与 Release 下载量变化，并按配置发送通知。
 
-## 常用配置
+## 需求
+- 安全级别：常规模块
+- 权限需求：需要能够访问目标 GitHub 仓库的 API
+- 驱动依赖：否
+- 联网需求：是
+- 开发状态：稳定/常规
+- 版本属性：PRO 专有
+
+## 介绍
+RepoWatcher 用于定期检查 GitHub 仓库状态变化，可监视 Stars、Forks、Issues、Subscribers、归档/禁用状态、更新时间以及 Release 下载量，并按配置方式发送通知。
+
+## 配置项
 
 - `Repositories (Sep With Semicolon)`：仓库列表，使用英文分号分隔，支持 `owner/repo`、`github.com/owner/repo` 或完整 GitHub URL。
 - `Notify Mode`：变化通知方式。

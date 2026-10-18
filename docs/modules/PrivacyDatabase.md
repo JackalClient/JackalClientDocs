@@ -1,6 +1,5 @@
 # PrivacyDatabase
 隐私数据库
-[PRO]
 分类：File
 描述：一个有用的隐私数据库。（专业版）
 

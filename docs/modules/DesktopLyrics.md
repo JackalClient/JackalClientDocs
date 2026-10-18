@@ -3,6 +3,14 @@
 分类：Render（位于 Karaoke 上方）
 描述：显示 Better Lyrics 的滚动桌面歌词。
 
+## 需求
+- 安全级别：常规模块
+- 权限需求：无；歌词来源需在 Better Lyrics 或 Bili Video Helper 中配置
+- 驱动依赖：本模块无需驱动；歌词来源的依赖以所选模式为准
+- 联网需求：取决于歌词、字幕及翻译来源
+- 开发状态：稳定/常规
+- 版本属性：普通可用；带 PRO 标记的来源或效果需要 PRO
+
 ## 介绍
 Desktop Lyrics 是 Better Lyrics 的桌面歌词输出组件。先在 Better Lyrics 的 Display Components 中选择 Desktop Lyrics，再在本模块配置位置、动画、逐字效果、颜色和译文布局。Driver (PRO) 与 SMTC 模式会提供历史句和后续句；OCR 与 Hook Render 仅显示当前句和历史句。HudEditor 可拖动位置并缩放。
 

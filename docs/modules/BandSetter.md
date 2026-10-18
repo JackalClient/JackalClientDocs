@@ -1,6 +1,5 @@
 # BandSetter
 Z序段设置
-[PRO]
 分类：Window
 描述：动态设置指定窗口的Z序段。（专业版）
 

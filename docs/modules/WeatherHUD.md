@@ -1,18 +1,20 @@
 # WeatherHUD
-
-天气显示  
+天气显示
 分类：Web（位于 WeatherInfo 上方）
+描述：在 HUD 中显示和风天气实时观测数据，复用 WeatherInfo 的城市和接口配置。
 
-专业版 [Mini Map](MiniMap.md) 位于本模块上方，用于显示全国云图和雷达图。
-
-显示和风天气的实时观测数据。复用 WeatherInfo 的城市、自动定位、QWeather ApiKey、ApiHost 和连接超时设置，无需打开 WeatherInfo 模块开关。可运行一次 WeatherInfo 手动更新缓存。
-
-## 属性
-
+## 需求
 - 安全级别：常规模块
 - 权限需求：无
-- 驱动依赖：无
-- 版本特性：普通可用
+- 驱动依赖：否
+- 联网需求：是；需要配置可用的 QWeather ApiKey 与 ApiHost
+- 开发状态：稳定/常规
+- 版本属性：普通可用
+
+## 介绍
+显示和风天气的实时观测数据。复用 WeatherInfo 的城市、自动定位、QWeather ApiKey、ApiHost 和连接超时设置，无需打开 WeatherInfo 模块开关。可运行一次 WeatherInfo 手动更新缓存。
+
+专业版 [Mini Map](MiniMap.md) 位于本模块上方，用于显示全国云图和雷达图。
 
 ## 配置项
 

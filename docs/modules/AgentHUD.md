@@ -1,4 +1,5 @@
 # Agent HUD
+智能体 HUD
 分类：Process
 描述：显示 Codex 与 Claude Code 的运行会话、任务状态和子进程。
 

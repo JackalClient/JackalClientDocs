@@ -1,8 +1,4 @@
 # WeatherInfo
-
-专业版 [Mini Map](MiniMap.md) 复用本模块自动定位时的 IP 经纬度查询路径，显示以当前位置为中心的全国云图和雷达图，无需开启本模块。
-
-WeatherHUD 会复用本模块的城市、QWeather ApiKey、ApiHost 和连接超时设置，在 Web 列位于本模块上方。无需启用本模块即可持续更新天气显示；单次 WeatherInfo 查询成功后也会更新对应城市的一小时缓存。详见 [WeatherHUD](WeatherHUD.md)。
 天气信息
 分类：Web
 描述：一些天气方面的功能。
@@ -16,6 +12,10 @@ WeatherHUD 会复用本模块的城市、QWeather ApiKey、ApiHost 和连接超�
 - 版本属性：普通可用
 
 ## 介绍
+专业版 [Mini Map](MiniMap.md) 复用本模块自动定位时的 IP 经纬度查询路径，显示以当前位置为中心的全国云图和雷达图，无需开启本模块。
+
+WeatherHUD 会复用本模块的城市、QWeather ApiKey、ApiHost 和连接超时设置，在 Web 列位于本模块上方。无需启用本模块即可持续更新天气显示；单次 WeatherInfo 查询成功后也会更新对应城市的一小时缓存。详见 [WeatherHUD](WeatherHUD.md)。
+
 WeatherInfo（天气信息）用于一些天气方面的功能。
 适合联网信息获取、账号联动和在线交互场景。
 初次使用可优先调整：Async、Auto Console、Use Custom QWeather ApiKey。

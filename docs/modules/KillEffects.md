@@ -1,7 +1,18 @@
 # KillEffects
+击杀效果
+分类：Control
+描述：根据 Minecraft 日志检测击杀，显示指示器、播放音效并可联动通知与命令。
 
-击杀效果，位于 Control 分类的 MinecraftUtils 下方。
+## 需求
+- 安全级别：常规模块；自定义命令的风险取决于命令内容
+- 权限需求：需要可读取的 Minecraft 日志
+- 驱动依赖：否
+- 联网需求：本地日志检测与效果显示不需要联网
+- 开发状态：稳定/常规
+- 版本属性：普通可用；通知和命令效果为 PRO 功能
 
+## 介绍
+KillEffects 位于 Control 分类的 MinecraftUtils 下方。
 启用后自动启用 MinecraftUtils 和 Log Parser Utilities。与 AutoL 的 `Detect Kills = Killed by me` 使用相同的死亡消息与击杀模板解析，不要求启用 AutoL。默认只显示击杀指示器并播放音效；通知和命令仅专业版可用。
 
 ## 击杀检测与计数

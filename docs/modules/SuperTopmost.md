@@ -1,6 +1,5 @@
 # SuperTopmost
 超级置顶
-[PRO]
 分类：Combat
 描述：动态设置客户端窗口为超级置顶。（专业版）
 

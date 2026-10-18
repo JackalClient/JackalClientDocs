@@ -1,9 +1,21 @@
 # CodexNotifier
 Codex 通知器
-用于在 Codex 任务完成后弹出提醒。
+分类：Web
+描述：在 Codex 任务完成或请求权限时，通过系统或客户端通知提醒。
+
+## 需求
+- 安全级别：常规模块；会修改本地 Codex 托管通知配置
+- 权限需求：需要本地 Codex 配置目录的读写权限
+- 驱动依赖：否
+- 联网需求：通知本身不需要联网
+- 开发状态：稳定/常规
+- 版本属性：普通可用
+
+## 介绍
+Codex Notifier 用于在 Codex 任务完成或请求权限时弹出提醒。
 模块开启时会在 `C:\Users\WormWaker\.codex` 下写入带 `jackal_codex_notifier` 标记的托管脚本，并按触发方式向 `config.toml` 或 `hooks.json` 写入托管配置；模块关闭时只会清理带该标记的托管脚本与配置块，避免误删用户自己的脚本。
 
-## 常用配置
+## 配置项
 
 - `Trigger Method`：触发方式。`Codex Notify` 直接调用托管 PowerShell 的 `-Dispatch -NotifyPayload` 入口接收 JSON 命令行参数；`Codex Hook` 会按 Codex 官方结构写入 `hooks.json`：事件项下先写 matcher group，再在 group 的 `hooks` 数组中写入命令 handler；`Stop` 和权限请求 hook 都会设置 30 秒超时，直接调用同一 PowerShell 的 `-Dispatch` 入口，以 UTF-8 读取标准输入。前台入口读取事件后会立即投递给隐藏的后台 worker 并退出，系统通知或语音不会继续阻塞 Codex 任务。首次安装客户端托管 Hook 时会提示你在 Codex 中运行 `/hooks` 信任新 Hook。脚本在没有参数或管道输入时会使用固定默认提示，不会等待控制台输入；Hook 模式会根据 `PermissionRequest` 和 `Stop` 生成不同提示，且会跟随客户端中文界面输出中文提示。
 - `Off-client Notification`：客户端外通知方式。`Off` 不弹系统外通知；`Message` 调用 `msg`；`WinToast` 优先尝试 Windows Toast，失败时回退到系统托盘气泡或消息框；`Speak` 通过系统 SAPI 语音服务讲述通知正文。

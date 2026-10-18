@@ -1,6 +1,5 @@
 # MusicOverlay
 音乐信息
-[PRO]
 分类：Render
 描述：显示一个覆盖层，展示音乐信息。（专业版）
 
