@@ -2,7 +2,29 @@
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
-共 68 组命令。
+共 70 组命令。
+
+## 视频助手倍速（`/bvh setrate [value=1.0] [mode=set]`）
+
+```bash
+/bvh setrate [value=1.0] [mode=set]
+/bilivideohelper setrate [value=1.0] [mode=set]
+```
+
+设置 BiliVideoHelper 的 Video Rate 配置项，value 为可表示为浮点数的正有限数，默认 `1.0`。`set` 保持设定；`temp` 仅当前视频分P生效，切换视频、分P或关闭模块后恢复原设定。连续使用 temp 不改变原恢复值，再次使用 set 或 Reset Video Rate Hotkey 会取消临时模式，重置快捷键将倍速设为 `1.0`。
+
+该值用于字幕、视频歌词及弹幕时间轴同步，不会操作网页或桌面播放器本身的倍速，请与播放器实际倍速保持一致。
+
+## 视频助手分P（`/bvh setpart [p=1]`）
+
+```bash
+/bvh setpart [p=1]
+/bilivideohelper setpart [p=1]
+```
+
+设置当前已识别视频正在跟踪的分P，默认 P1。按视频详情 pages 列表中的 CID 加载字幕和弹幕，支持多个分P使用相同标题的情况；不同 CID 的弹幕缓存互不覆盖。p 必须是实际存在的正整数分P，无活动视频或序号越界时不修改当前状态。
+
+Next Part Hotkey / Prev Part Hotkey 分别增减跟踪分P，成功后通知当前 P 序号，边界不循环。命令和快捷键只改变助手跟踪目标，不操作播放器跳转。`/bvh status` 显示当前分P及倍速，`/bvh subtitles ...` 默认使用所选分P。
 
 ## 直播消息接收状态（`/bili live reception [reconnect]`）
 

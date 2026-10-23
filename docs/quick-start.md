@@ -14,13 +14,13 @@ JackalClient 客户端作者，请支持我们！
   
 - 驱动支持：
 - [@KeBugCheck](https://space.bilibili.com/1632975427)
-- [@S■■■■■■■■■■](2026/9/14 已决裂。)
+- 
 
 - 网站搭建及服务器支持：
 - [@CnMuHan](https://space.bilibili.com/509427314)
   
 
-- `JackalClient` 是一个 `Windows` 平台的工具箱，并非游戏外挂。
+- `JackalClient` 是一个仅限 `Windows` 平台的多方位工具箱，并非游戏外挂。
 - 没有 Linux 版。没有 Mac 版。没有手机版。
 - 欢迎加入腾讯频道（QQ频道）发帖交流：[点击链接加入腾讯频道【JackalClient】](https://pd.qq.com/s/xa4l6owp)
   
@@ -33,7 +33,7 @@ Free 免费版下载：
 - 电脑小白请单击此处查看 → [如何下载并运行 JackalClient 说明书](/download-and-run)
 - 解压密码统一 `Wormwake`
 - 【重要】请勿使用 Windows 自带的解压缩否则识别不到密码，解压请解压整个文件夹。
-- 解压的时候，不要解压到含有中文字符的目录！！（例如：如果你的用户名含有中文，那么桌面路径就是含有中文字符的：`C:\Users\用户名\Desktop`）尽量不要解压到需要高权限的目录，例如 `C:\Program Files`，否则可能出现文件无法写入的问题。
+- 解压的时候，不要解压到含有中文字符的目录，否则可能导致汉化失效等问题！！（例如：如果你的用户名含有中文，那么桌面路径就是含有中文字符的：`C:\Users\用户名\Desktop`）也尽量不要解压到需要高权限的目录，例如 `C:\Program Files`，否则可能出现文件无法写入的问题。
 
 ## 1. 启动方式
 

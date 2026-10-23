@@ -86,6 +86,7 @@ TcpKiller（TCP杀手）用于断开指定进程的某些TCP连接。
 无
 
 ## 相关模块
+- [Block Emudhra（封禁 Emudhra 证书）](./BlockEmudhra.md)
 - [IRC (聊天室)](./IRC.md)
 - [AntiRickroll (反诈骗)](./AntiRickroll.md)
 - [AntiBrowser (反浏览器)](./AntiBrowser.md)

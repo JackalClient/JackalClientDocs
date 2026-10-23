@@ -123,7 +123,10 @@ BiliFans（B站粉丝）用于监控B站粉丝并发送通知。
  说明：控制 BiliFans HUD 是否显示粉丝、粉丝团成员、大航海成员数据；每类数据只会在对应监视 UID 列表包含该用户时显示。
 - Hide HUD When Menu On（打开菜单时隐藏HUD）
  类型：布尔；默认：true
- 说明：这是行为开关项。建议先按默认值使用，确认行为符合预期后再逐项启停，避免多个开关同时改动造成排查困难。
+ 说明：打开菜单时隐藏 HUD；HudEditor 开启时忽略此项，仍可查看和调整 HUD。
+- HUD Give Way to Mouse（HUD给鼠标让道）
+ 类型：布尔；默认：true
+ 说明：鼠标进入 HUD 区域时，整个 HUD 平滑淡至原不透明度的 20%，移开后恢复；HudEditor 开启时停用避让并立即恢复正常不透明度，便于选中和拖动。仅在 HUD 开启时显示。
 - Action On Failure（失败时的行为）
  类型：枚举；默认："Pause Temporarily"
  说明：控制粉丝数、粉丝团成员和大航海成员查询失败后的处理方式。Ignore 会跳过本次失败数据，Pause Temporarily 会按 Pause Duration 暂停后续监控，Disable Module 会关闭模块。

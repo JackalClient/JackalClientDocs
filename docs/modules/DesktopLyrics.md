@@ -34,6 +34,8 @@ Opacity 分组新增 `Give Way to Mouse`，默认开启；`Give Way to Mouse Mod
 避让按当前动画位置判断，不改变布局、滚动、逐字进度或原透明度配置。淡出平滑过渡到原不透明度的 20%，移开鼠标后平滑恢复；关闭避让或开启 HUD Editor 时恢复正常显示，便于拖动和缩放。切换歌词来源时清除旧的避让状态。
 
 ## 配置分组
+文字模糊开启时，历史、未来歌词及译文的重叠字形会正确合成透明边缘，避免相邻字符出现缺口或异常像素；无需调整字距、字号或现有布局。
+
 - Layout：对齐、每侧行数、最大宽度、字体大小、缩放、行距与屏幕位置。
 - Blur：Blur Mode (PRO) 为专业版独有，默认 Off；专业版支持 Off、Temp、Stepped 和 Global，免费版仅提供 Off，并在加载配置及绘制时强制关闭，导入专业版配置也不能启用文字模糊。旧 Blur Mode 及更早的 Desktop Lyrics Blur Mode 会自动迁移到新名称，专业版保留原选择，不覆盖已保存的新配置。Blur Intensity (0~1) 控制模糊强度，Blur Enhancement Passes (1~16) 控制模糊叠加强度，两项仅在模糊模式不为 Off 时显示。Temp 只对最下方入场行和最上方出场行按平滑过渡进度模糊，入场同时由透明渐显，出场同时渐隐；Stepped 让当前歌词向两侧逐级增强模糊；Global 以相同强度模糊全部歌词及译文。模糊开启时，当前句的 Tint/Fade 逐字效果仍然生效。本次版本限制仅针对歌词文字模糊，不影响 Background 分组的 HUD Blur 背景接入。
 - Animation：Garble Slide、Garble Dissolved、Unfold 入场效果及时长；Position Easing 控制歌词行纵向过渡。

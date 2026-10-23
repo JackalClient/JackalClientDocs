@@ -21,7 +21,7 @@
 ├───crashlog                    —— 存储崩溃日志，如 `last_crash.log`
 ├───logs                        —— 存储旧日志。最新日志应在 `Release` 文件夹中的 `CLIENT.LOG` 查看。
 ├───output                      —— 客户端输出文件。涉及到多个模块。
-│   ├───Cache                   —— 存储缓存文件，如 `LiveStream` `BiliVideoHelper` `NCM_Cache` `SMTC` 等
+│   ├───Cache                   —— 存储缓存文件，如 `LiveStream` `BiliVideoHelper` `NCM_Cache` `SMTC` 等，如果占用过大可以选择删除部分文件
 │   ├───Cover                   —— 存储封面图像
 │   │   ├───BiliVideoHelper
 │   │   ├───NCM_Cache
@@ -133,9 +133,6 @@
 ### Release/JDPcaPayload.dll
 客户端用于绕过`UAC`的动态链接库。为了防止被杀毒软件报毒，已做混淆处理。
 
-### Release/Sirius.sys
-客户端内核功能的驱动程序。由 [@Stars_Azusa](https://space.bilibili.com/670866766) 编写。
-
 ### Release/ConsoleMenuHook64.dll
 ### Release/ConsoleMenuHook32.dll
 客户端用于注入控制台窗口的动态链接库。x86 32位和 x64 64位动态链接库。详情请查看 `Console 控制台` 模块的`标题栏右键菜单`选项。
@@ -187,6 +184,9 @@
 
 ### Release/PPLControl.exe
 【已过时】旧版本客户端用于控制`PPL`的第三方程序，新版本已移除。
+
+### Release/Sirius.sys
+【已过时】旧版本客户端内核功能的驱动程序。已不再受支持。
 
 ### Release/ConhostProtect.dll
 用于`AntiClose 反关闭`的控制台防止关闭用的动态链接库。以后将被移除，相关功能转运至上述`ConsoleMenuHook`DLL。

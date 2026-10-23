@@ -14,7 +14,8 @@ B站视频助手
 ## 介绍
 BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中的视频，查询并显示视频数据。
 未登录 B 站时，视频统计和评论内容使用游客请求；不轮询个人点赞、投币、收藏状态，也不补查评论用户与自己的关系，不自动加载需要登录的字幕元数据。搜索时跳过导航认证请求，使用网页搜索后备。登录状态判断同时检查必要 Cookie 值是否非空；退出登录不会被误判为取消点赞或收藏，也不会触发相关三连通知。
-开启 Danmaku Sync 后，模块会在 BiliChatter 的 Output Directory for Video Helper 中查找当前视频的 BVID.xml；如果文件不存在或无法解析，会自动调用 BiliChatter 下载弹幕。
+开启 Danmaku Sync 后，模块会在 BiliChatter 的 Output Directory for Video Helper 中查找当前视频分P的 BVID_CID.xml；如果文件不存在或无法解析，会自动调用 BiliChatter 下载对应 CID 的弹幕，各分P缓存互不覆盖。
+字幕输出到 Island 并与通知同时显示时，上下常驻字幕区域与普通歌词共用布局，不依赖 Better Lyrics 是否开启，避免通知顶部空白过多或与字幕挤在一起。
 下载失败会重试一次；仍失败则取消当前视频的弹幕同步。同步播放依赖 SMTC 的时间轴进度；当当前 B 站视频会话消失，或已匹配的前台 B 站视频窗口被隐藏时，会自动关闭由 BiliVideoHelper 启动的 AutoDanmaku 并清空同步弹幕。
 
 ## 配置项
@@ -36,7 +37,7 @@ BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中�
  说明：字幕缓存超过该天数后自动删除。
 - Subtitles Display（字幕显示）
  类型：枚举；默认：Island
- 说明：选择字幕输出方式：Off、Notify、Chatter、Title、Fancy、Island、Desktop Lyrics、Actionbar、Console Output 或 Speak。Fancy 会按字幕实际语言加载对应字体字符。Desktop Lyrics 会自动启用桌面歌词模块，按当前视频的 SMTC 时间轴显示当前句、历史句和后续句，并使用该模块的动画、逐字进度、位置和暂停设置；字幕空档不显示上一句，跳转后直接定位到对应字幕。字幕原文与译文使用桌面歌词的译文布局，不依赖 Better Lyrics 的翻译组件选择。
+ 说明：选择字幕输出方式：Off、Notify、Chatter、Title、Fancy、Island、Desktop Lyrics、Actionbar、Console Output 或 Speak。Fancy 会按字幕实际语言加载对应字体字符。Island 开启 Hide When Idle 时，字幕状态生效前保持隐藏，空闲状态栏在隐藏阶段完成退场，避免字幕入场时携带残影；被进度或通知打断后使用当前字幕，不恢复旧句。Desktop Lyrics 会自动启用桌面歌词模块，按当前视频的 SMTC 时间轴显示当前句、历史句和后续句，并使用该模块的动画、逐字进度、位置和暂停设置；字幕空档不显示上一句，跳转后直接定位到对应字幕。字幕原文与译文使用桌面歌词的译文布局，不依赖 Better Lyrics 的翻译组件选择。
 - Subtitles Lyrics Priority（字幕歌词优先级）
  类型：枚举；默认：Lyrics First
  说明：控制提供歌词时字幕与歌词的显示关系。Default 同时显示，Lyrics First 歌词优先，Subtitles First 字幕优先。同一显示组件不会同时被两个来源覆盖：Default 下 Island / Desktop Lyrics 的字幕优先占用对应组件，其他歌词组件仍可正常输出。
@@ -75,6 +76,7 @@ BiliVideoHelper 用于识别前台 B 站网页端、桌面端或 SMTC 会话中�
  说明：用于控制 HUD 透明度。
 
 ## 历史更新
+- v1.2.1：新增 `/bvh setrate [value=1.0] [mode=set]`、`/bvh setpart [p=1]`，支持倍速同步及同标题多分P字幕、弹幕跟踪，并提供上/下分P及重置倍速快捷键。
 - v1.1.6：修复字幕使用 Fancy 展示时长文本重建布局后丢失专用字体与展示时长、暂停或播放结束后背景不淡出，以及字体字符过多时显示异常的问题；同时修复 Island 模式不显示或反复回缩，并让字体自动适配导入尺寸及在缺字时使用内置字体。
 - v1.1.2：Danmaku Sync 会监控已匹配的前台 B 站窗口，窗口隐藏时自动关闭由 BiliVideoHelper 启动的 AutoDanmaku 并清空同步弹幕。
 - v1.1.2：Danmaku Sync 在当前视频会话消失时会自动关闭由 BiliVideoHelper 启动的 AutoDanmaku。
@@ -93,6 +95,14 @@ Always Sync 会在当前视频会话可用且 SMTC 正在播放时推送弹幕�
 
 ## 相关命令
 `/bilivideohelper`
+
+## 倍速与分P
+- Video Rate：默认 `1.0`，用于 SMTC 时间轴停滞时的进度推算、字幕与歌词时长以及弹幕发送节奏。不会操作播放器本身的倍速，请与播放器实际倍速保持一致。
+- `/bvh setrate [value=1.0] [mode=set]`：自动修改 Video Rate；value 必须是可表示为浮点数的正有限数。`set` 保持设定，`temp` 仅当前视频分P生效，切换视频、分P或关闭模块后恢复原设定。连续临时设置仍恢复到最初的设定；再次使用 `set` 则取消临时模式。
+- `/bvh setpart [p=1]`：设置正在跟踪的分P，通过视频详情的 pages 列表取得对应 CID，切换字幕和弹幕缓存；不操作播放器跳转。分P序号从 1 开始，超出范围不改变当前状态。
+- Next Part Hotkey / Prev Part Hotkey：默认未绑定，分别将跟踪分P加一或减一，成功后通知当前 P 序号；在第一P或最后一P不会循环跳转。
+- Reset Video Rate Hotkey：默认未绑定，将 Video Rate 重置为 `1.0` 并取消临时模式。
+- 上述配置统一放在 Playback 分组；设置快捷键时不会触发操作。`/bvh status` 显示当前分P与倍速，`/bvh subtitles ...` 默认处理所选分P。
 `/bvh`
 
 ## 相关模块
