@@ -26,6 +26,8 @@ CustomHUD JSON 现支持多段异色/异字号文字、`SinColor` 自定义周�
 
 Preset 可用 `market://文件名` 引用 ImageHUD 市场图片，也可用 `Type: Preset` 和 `market://预设名` 引用其他 PresetHUD；PresetHUD 名称的 `.json` 可省略，匹配不区分大小写，唯一的单字符误拼也会自动纠正。导入时客户端会递归下载并展开依赖，拒绝循环引用、过深嵌套和超过 256 个元素的组合；图片边界按实际像素尺寸计算，避免选择框明显大于内容。`DisplayCondition` 支持 `module_enabled` 与 `module_disabled`，分别在指定模块启用或禁用时显示；HUDEditor 开启时，普通自定义元素会忽略 Enabled 与显示条件，Custom HUD 配置中的内置预设则仅在对应配置项开启时显示。
 
+文本或富文本分段可使用内置变量 `%minecraft_scene%`，例如 `场景：%minecraft_scene%`。显示 MinecraftUtils 当前或最近活动实例已识别的原始场景名称，例如 Skywars、Bedwars；没有实例或场景未识别时显示 Unknown。多个实例按最近活动实例选择，切到其他程序不会仅因游戏不在前台而清空场景。需要启用 MinecraftUtils 的日志解析来持续更新场景，变量本身不会自动开启模块；使用 `/variables` 可查看内置变量列表。
+
 ## 配置项
 - Apply HUD Blur（应用 HUD 模糊）
  类型：多选枚举；默认全选 Text Background（文本背景）、Image Areas（图片区域），也可全部取消。

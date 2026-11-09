@@ -12,7 +12,10 @@
 - 版本属性：普通可用
 
 ## 介绍
+在线数据：使用 Ricochesta `data` 中的 `IslandLyricsKeywordColors.txt`，每次客户端启动均尝试更新至 `output/Cache/ModuleMetadata`；内容未变化时不重复写入，断网或更新失败时继续使用已有有效缓存。以后优先修改并发布云控文件，不要恢复旧 assets 副本。本地下载缓存采用 deflate256 `japanese` 字母表和 `JP:` 标记保护，客户端自动解码，旧明文缓存自动迁移并保留修改时间；云端源文件仍维护为 UTF-8 明文，不要直接编辑本地密文缓存。
+
 Island（灵动岛）用于显示一个酷炫的灵动岛。
+背景阴影跟随 GUI 的 `Shadow Rendering Method`。新增默认方式 `Smooth`，以连续渐变替代叠加描边，改善浅色背景下明显的放射状纹路与横线；`Old`、`Outdated`、`New` 均保留。已有 Profile 不会强制切换，需要体验新效果时手动选择 `Smooth`。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Sync Status、Idle Components、Diversify Notify Icons。
 Idle Icon Type 为 Normal 时，实际使用的贴图图标会在首次绘制时生成 mipmaps 并使用三线性过滤，无法生成多级 mipmap 时回退到双线性。该处理覆盖内置和自定义品牌图标，常驻 Idle 行同样生效；图标重新加载后会重新应用，不会每帧重复生成，原有尺寸、缩放和布局保持不变。
@@ -33,6 +36,9 @@ BetterLyrics 的 Mixed 显示模式也会作为灵动岛歌词来源处理，在
 Bili Video Helper 使用 Island 显示字幕时会独立占用岛内歌词区域，Better Lyrics 的普通输出、Mixed 输出及暂停歌曲的重复恢复不会覆盖字幕。字幕时长、逐字进度与译文独立读取视频时间轴；字幕刷新不影响 Desktop Lyrics 的歌曲滚动动画，退出字幕显示也不会清理 Karaoke 的歌曲内容。
 
 ## 配置项
+Idle Status Bar 的图标、文本和分隔符共用同一套测量与绘制布局；图标按字号与 Icon Scale 等比缩放，不再重复乘以字号缩放。显式空格予以保留，缺少空格的图文交界自动补齐间隔，末尾图标不额外占用尾部间距，避免时钟刷新、内容折叠或缩放后出现拥挤与两侧留白失衡。
+混排文字使用与实际 raylib 绘制相同的字体测量，不再使用全局 MSDF 度量替代 raylib 字体的实际字宽；字宽向上取整，绘制时显式使用当前行字号，避免启用 MSDF 或调整 Icon Scale 后文字、分隔符与图标互相覆盖。
+
 - Hide While Hold Key Enabled（启用按住快捷键隐藏）
   类型：布尔；默认：false。开启后，按住 `Hide While Hold Key` 设置的快捷键才会隐藏 Island。
 - Hide While Hold Key（按住时隐藏快捷键）

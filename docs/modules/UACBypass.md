@@ -3,6 +3,9 @@
 分类：Combat
 描述：绕过UAC弹窗获得管理员权限。
 
+## 扩展依赖
+依赖 `jd-uac-bypass` 扩展，按客户端位数选择 JDUacBipass32.dll 或 JDUacBipass64.dll。组件位于 `output/Extensions/jd-uac-bypass/`，原有安全检查与用户确认保持不变。
+
 ## 需求
 - 安全级别：具有风险
 - 权限需求：无

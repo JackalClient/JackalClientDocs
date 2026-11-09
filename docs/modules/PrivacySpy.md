@@ -13,6 +13,8 @@
 - 版本属性：普通可用
 
 ## 介绍
+在线数据：使用 Ricochesta `data` 中的 `PersonSurnames.txt`、`PersonExclude.txt`，每次客户端启动均尝试更新至 `output/Cache/ModuleMetadata`；内容未变化时不重复写入，断网或更新失败时继续使用已有有效缓存。以后优先修改并发布云控文件，不要恢复旧 assets 副本。本地下载缓存采用 deflate256 `japanese` 字母表和 `JP:` 标记保护，客户端自动解码，旧明文缓存自动迁移并保留修改时间；云端源文件仍维护为 UTF-8 明文，不要直接编辑本地密文缓存。
+
 PrivacySpy 会扫描指定目录的文件名与目录名，提取可能的人名、身份证号、手机号，并输出统计与可疑路径列表。
 它还支持“其他隐私线索”检测（例如常见软件路径痕迹），用于快速评估本机可被侧推的隐私暴露面。模块不需要联网，但结果高度敏感，建议仅在授权环境下使用。
 
@@ -60,7 +62,7 @@ PrivacySpy 会扫描指定目录的文件名与目录名，提取可能的人名
 - 13. 支持扫描中取消。
 
 ## 备注
-PrivacySpy 依赖 `assets/PERSON_SURNAMES.TXT` 与 `assets/PERSON_EXCLUDE.TXT` 辅助识别。若你发现人名识别偏差，优先调整这两个词表与扩展名白名单。
+PrivacySpy 依赖 `output/Cache/ModuleMetadata/PersonSurnames.txt` 与 `output/Cache/ModuleMetadata/PersonExclude.txt` 辅助识别。若你发现人名识别偏差，优先调整这两个词表与扩展名白名单。
 
 ## 相关命令
 无

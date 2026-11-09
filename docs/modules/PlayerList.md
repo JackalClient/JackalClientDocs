@@ -10,6 +10,8 @@
 - 联网需求：列表识别不需要联网，在线头像首次获取需要联网。
 
 ## 介绍
+在线数据：使用 Ricochesta `data` 中的 `PlayerListJoinPatterns.txt`、`PlayerListLeavePatterns.txt`、`KillPatterns.txt`、`MinecraftScenePatterns.txt`，每次客户端启动均尝试更新至 `output/Cache/ModuleMetadata`；内容未变化时不重复写入，断网或更新失败时继续使用已有有效缓存。以后优先修改并发布云控文件，不要恢复旧 assets 副本。本地下载缓存采用 deflate256 `japanese` 字母表和 `JP:` 标记保护，客户端自动解码，旧明文缓存自动迁移并保留修改时间；云端源文件仍维护为 UTF-8 明文，不要直接编辑本地密文缓存。
+
 开启后自动开启 MinecraftUtils 和 Log Parser Utilities。通过 Minecraft 日志中的加入和离开提示维护名单，名称统一 normalize 并按不区分大小写的名称去重。默认还会通过死亡检测补充缺失的死者，并通过普通发言检测补充缺失的发言者，两项可以分别关闭；不主动查询服务器在线名单。发言补充只处理 Game Chat，不依赖 AutoL 开关或 Detect Speak 模式，新名字遵守人数上限并替换相应未知占位行，已有玩家不会因发言而重置死亡状态或加入顺序。切换到另一个 Minecraft 实例时显示该实例的名单，切换服务器或断线后清空。
 
 默认每行依次显示头像、名称、被我击杀次数、状态。无法获取头像时使用 `steve.png`；本人的击杀次数列留空，其他玩家击杀次数未知或为零时显示 `-`。已存在的 AutoL 玩家击杀缓存用于初始化次数，之后本实例识别到本人击杀时更新，即使 AutoL 关闭或 Detect Kills 不是 Killed by me 也生效。
@@ -18,9 +20,10 @@ Filter Player Names 默认开启，复用 MinecraftUtils 的系统消息、保�
 
 其中日志包含词、玩家名包含词和完整名称排除词来自 `MinecraftPlayerFilters.json` 云控。MinecraftUtils 开启时在客户端启动或重新开启模块后异步更新，失败保留有效缓存与规则；尚无有效云控或缓存时使用旧内置列表。缓存使用 deflate256 japanese 加密，新规则完整加载后即用于已有名单的显示过滤。
 
-新加入玩家显示 Alive。死亡检测复用 AutoL 的普通死亡检测及 `assets/KILL_PATTERNS.txt`，不受其 Detect Kills、Detect Speak、死亡类别过滤和自动发送设置影响；显示死亡消息中的死因，例如 `slain by xxx`，无法提取时显示 Dead。被本人击杀的死亡状态使用独立颜色。再次检测到加入时恢复 Alive，清除旧死因和死亡去重信息，并刷新加入顺序，保留累计被我击杀次数；没有复活日志时不会猜测复活时间。PrivacyProtect 的 StringFilter 开启时过滤显示名称和死因中的敏感内容，不影响内部识别、排序或头像查询。
+新加入玩家显示 Alive。死亡检测复用 AutoL 的普通死亡检测及 `output/Cache/ModuleMetadata/KillPatterns.txt`，不受其 Detect Kills、Detect Speak、死亡类别过滤和自动发送设置影响；显示死亡消息中的死因，例如 `slain by xxx`，无法提取时显示 Dead。被本人击杀的死亡状态使用独立颜色。再次检测到加入时恢复 Alive，清除旧死因和死亡去重信息，并刷新加入顺序，保留累计被我击杀次数；没有复活日志时不会猜测复活时间。PrivacyProtect 的 StringFilter 开启时过滤显示名称和死因中的敏感内容，不影响内部识别、排序或头像查询。
 
 列表尺寸、位置和行排序带缓动，新行渐入。支持 Hud Editor 拖拽位置和缩放。
+背景模糊不会降低已绘制背景的不透明度；背景最终为完全不透明时，玩家名、标题和状态等文字的抗锯齿边缘不会透出下方窗口。配置中的半透明、阴影、鼠标避让和新行渐入仍正常生效。
 
 ## 直播捣乱防护
 Stream Sabotage Protection 可选择 On、Only Streamer Enabled、Off，默认 Only Streamer Enabled，即仅在 PlayerList 与 Streamer 都开启时启用；On 不要求开启 Streamer。检查进退服、发言和死亡检测到的规范化名称，包括击杀者；启用时也检查已有及缓存恢复的真实名单，与场景筛选或 HUD 是否聚焦无关，不检查 `?` 占位行。
@@ -39,11 +42,11 @@ Stream Sabotage Protection 可选择 On、Only Streamer Enabled、Off，默认 O
 
 名单、状态、累计击杀次数、加入顺序、人数上限、当前场景及日志读取位置保存在 `output/Cache/minecraft_player_list.json`。重启 Jackal Client 后，仍在运行的同一 Minecraft 实例恢复数据，并继续处理停机期间的新日志；按日志路径、PID 和进程创建时间隔离实例，避免新游戏进程误用旧名单。关闭 PlayerList 只停止显示和收集，不清空名单；切换世界、断线或日志截断仍清空。
 
-默认仅在 Skywars、LuckyIslands、PillarOfFortune 显示玩家表格。其他场景默认只显示标题，也可以改为在表格位置用粉色显示当前场景，或隐藏整个 HUD。未知场景使用 Unknown。场景筛选仅影响显示，不停止收集，也不清空名单。场景名称来自 `assets/MINECRAFT_SCENE_PATTERNS.txt` 的段名；未配置识别规则的游戏需自行补充模板。Hud Editor 编辑时忽略场景筛选、焦点隐藏和鼠标淡出，便于预览拖拽。
+默认仅在 Skywars、LuckyIslands、PillarOfFortune 显示玩家表格。其他场景默认只显示标题，也可以改为在表格位置用粉色显示当前场景，或隐藏整个 HUD。未知场景使用 Unknown。场景筛选仅影响显示，不停止收集，也不清空名单。场景名称来自 `output/Cache/ModuleMetadata/MinecraftScenePatterns.txt` 的段名；未配置识别规则的游戏需自行补充模板。Hud Editor 编辑时忽略场景筛选、焦点隐藏和鼠标淡出，便于预览拖拽。
 
 ## 进退服模板
-- 加入模板：`assets/PLAYERLIST_JOIN_PATTERNS.txt`
-- 离开模板：`assets/PLAYERLIST_LEAVE_PATTERNS.txt`
+- 加入模板：`output/Cache/ModuleMetadata/PlayerListJoinPatterns.txt`
+- 离开模板：`output/Cache/ModuleMetadata/PlayerListLeavePatterns.txt`
 
 每行一个模板，空行与 `#` 开头的注释行忽略。默认分别为：
 

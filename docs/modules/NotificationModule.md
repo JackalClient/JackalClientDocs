@@ -201,3 +201,26 @@ Notification（通知）用于控制客户端的通知。
 - v1.1.9：通知不透明度拆分为背景和文本两项；修正各 Metro 样式的模糊区域，背景不透明度为 1 时跳过模糊，兼容旧透明度配置。
 - v1.1.2：新增 Shadow、Shadow Color、Shadow Opacity (0~1)、Shadow Thickness，用于控制 Metro 通知阴影；切换到 Nvidia (PRO) 样式时会自动关闭一次阴影。
 - v1.1.1：新增 Sound、Sound Volume (0~100) 与 Sound Pitch Randomization (0~1)，通知音效开关从 Sound 选项迁移到 Notification。
+
+## 任务栏避让
+
+`Position / Avoid Taskbar`（避让任务栏）默认开启，免费版和专业版均可使用。任务栏显示且客户端窗口超出工作区时，底部通知以任务栏上边为底部边界；任务栏位于上方时，顶部通知从任务栏下边开始排列，位于左右两侧时也按对应工作区边缘避让。
+
+任务栏显示、隐藏、自动隐藏展开、位置变化，以及窗口移动或缩放时，通知位置平滑调整。已处于工作区内的窗口沿用自身边界；`Horizontal Margin`、`Vertical Margin` 在可用区域内生效，Exhibition 贴角模式紧贴可用区域角落。
+
+Center 保持窗口居中；配置了光标显示时的角落位置后，移至角落的通知同样参与避让。纯 Center 模式且光标位置覆盖为 Off 时隐藏此选项。
+
+## Exhibition 与 Center（专业版）
+
+`Metro Style / Exhibition (PRO)` 使用紧凑直角黑色面板、图标和两行文本，标题与正文字号比例为 3:2。底部进度条按消息类型着色，从完整条开始由左向右线性消退。模块启停标题为 `Module`，正文为 `<模块> Enabled/Disabled`。
+
+- 图标：普通消息为 `exhi_info`，警告为 `exhi_notify`，错误为 `exhi_warning`，成功为 `exhi_okay`。
+- `Exhibition Stay In Corner` 默认开启，紧贴选定窗口角落，并隐藏常规横纵边距；选择 Center 时以居中位置为准。
+- Exhibition 的入场、出场及位置移动比其他风格更快。
+
+`Start Position / Center (PRO)` 从窗口中心下方开始向下排列，每条消息按自身宽度居中对齐；进场起点和出场终点均在目标位置正右方的屏幕外侧。
+
+- `Center Vertical Margin` 默认 `200`，表示距窗口中心向下的距离；常规 `Horizontal Margin`、`Vertical Margin` 隐藏。
+- `Center Single Message` 默认开启，居中时仅保留最新消息，并在标题后标注合并数量，例如 `Module (5)`；光标显示使通知移至角落时允许显示多条，返回中心后恢复合并。关闭后显示多条居中通知。
+- `Start Position When Cursor Shown (PRO)` 默认 `Off`，保持居中；也可选择四个角落。光标出现时，现有消息立即开始移向所选角落，隐藏后返回中心。
+- `Start Position Move Speed Rate` 默认 `1.0`，控制中心与角落之间的位置移动速度倍率。

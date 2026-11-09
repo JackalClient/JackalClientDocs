@@ -87,3 +87,6 @@ AutoText（自动文本）用于特定情况下自动发送指定文本。
 
 ## 相关资料
 无
+## AutoGG 结算识别补充
+
+AutoGG 与 MinecraftUtils、SessionHUD 和音乐盒共用胜负结果：按结算中的 Winner 或获胜队伍玩家名单判断本人是否获胜，不把击杀榜第一名当作获胜者。未知结束不会强制发送胜利消息，也不依赖 Developer 的旧强制胜利选项。

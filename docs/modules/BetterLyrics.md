@@ -13,6 +13,7 @@
 
 ## 介绍
 BetterLyrics（更好的歌词）用于识别歌词并以更好的方式显示。
+客户端启动后首次使用 Hook Render，或刚切换到该模式时，如果没有找到音乐软件的桌面歌词窗口，会提示先开启桌面歌词；窗口放在任意位置即可，无需摆放在特定区域。
 切歌时只清除歌名语言缓存，不再在切歌通知路径同步访问语言识别接口；使用默认异步 OCR 时，由 OCR 任务在实际需要时识别并缓存。Driver 歌词获取后的时间轴解析在后台共享锁之外完成，避免切歌清理歌词时等待整首歌词解析。
 
 
@@ -21,7 +22,7 @@ Driver (PRO) 模式会按当前歌曲 ID 与歌曲标题维护独立歌词时间
 从 OCR、Hook Render 或 SMTC 切换到 Driver (PRO) 时，会主动刷新当前歌曲信息；如果暂时没有歌曲 ID，会后台解析当前歌名并在解析完成后继续拉取歌词。
 当 Island/Karaoke 使用 Manual 或 Driver+ 译文来源时，BetterLyrics 会后台预取缺失译文；网络异常时会自动限制并发和重试频率，避免反复请求翻译接口。Components Translation 决定哪些输出组件使用译文，Translation Language 决定目标语言；Island 的手动翻译不会自动影响未选中的 Fancy 等组件。
 Display Mixed Mode 开启且 Island 模块开启时，BetterLyrics 会同时维护灵动岛的正常歌词显示，并使用原有随机混合输出；此时 Display Components 与 Components Translation 被隐藏且不参与输出。选择 Bar Graph、Island 或 Karaoke (PRO) 时会自动启用对应模块。Karaoke 在 BetterLyrics 的 SMTC 模式下依据 BetterLyrics 当前选中的 SMTC 会话状态判断是否暂停。
-Desktop Lyrics 显示组件的详细设置已移至独立的 [Desktop Lyrics（桌面歌词）模块](./DesktopLyrics.md)。组件输出仍由本页的 Display Components 控制；在 Render 栏中，Desktop Lyrics 位于 Karaoke 上方。
+Desktop Lyrics 显示组件的详细设置已移至独立的 [Desktop Lyrics（桌面歌词）模块](./DesktopLyrics.md)。手动启用该模块会自动勾选 Display Components 中的 Desktop Lyrics，并保留其他已选组件，不再因此前未勾选而立即关闭；取消勾选时仍会关闭不被视频字幕使用的桌面歌词。在 Render 栏中，Desktop Lyrics 位于 Karaoke 上方。
 
 Bili Video Helper 的 Island 字幕显示期间，Better Lyrics 仍可输出其他组件，但不会覆盖岛内字幕；Driver 对灵动岛的同一句恢复不会重复添加桌面歌词或重置滚动动画。视频助手提供的歌词也支持 Desktop Lyrics 的前后句时间轴显示。视频助手直接选择 Desktop Lyrics 字幕时不依赖本模块，视频来源结束后恢复歌曲桌面歌词。
 

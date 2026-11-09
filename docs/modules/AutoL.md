@@ -12,6 +12,12 @@
 - 版本属性：PRO 独有
 
 ## 介绍
+在线数据：统一使用 Ricochesta `data` 中的 `MinecraftAutoLPatterns.txt`，原 `KillPatterns.txt` 已合并并停止维护和下载。每次客户端启动均尝试更新至 `output/Cache/ModuleMetadata`；内容未变化时不重复写入，断网或更新失败时继续使用已有有效缓存。以后优先修改并发布云控文件，不要恢复旧 assets 副本。本地下载缓存采用 deflate256 `japanese` 字母表和 `JP:` 标记保护，客户端自动解码，旧明文缓存自动迁移并保留修改时间；云端源文件仍维护为 UTF-8 明文，不要直接编辑本地密文缓存。
+
+`MinecraftAutoLPatterns.txt` 使用 `[Scenario Name]` 分节，分节后的每一行是按字面匹配的提示模板。支持 `{player}`、`{killer}` 和 `{team}`，分别提取死亡玩家、击杀者和队伍名称；`{count}` / `{max_count}` 匹配纯数字，`{sep_count}` 还支持千位逗号数字，如 `5,371`、`1,234,567`，目前没有内置模板使用它。场景名包括 `Bed Destruction`、`Team Elimination`、`Void Falling`、`Falling`、`Spear Penetration`、`Mace Smashing`、`Burnt`、`Lava` 和 `General`。床破坏和队伍淘汰模板必须包含 `{team}`，不能只写无法提取队伍的宽泛片段。
+
+原击杀模板的 `{victim}` 已统一改为 `{player}`，与原 `[Nonfinal Kills]` 一起合并到 `[General]`。General 中不含 `{killer}` 的行仅作通用死亡检测；严格本人击杀必须由同一模板同时提取 `{player}` 和 `{killer}`，不能因为提示包含本人名字就触发。其他场景分节的击杀者模板同样有效，通用模板不会遮挡严格识别。旧缓存的 `[Nonfinal Kills]` 仍按 General 兼容读取。
+
 AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
 适合键鼠行为控制、输入增强和自动化操作场景。
 初次使用可优先调整：Add Target Name、Trigger Cooldown (ms)、Event Dedup Cooldown (ms)。
@@ -20,6 +26,18 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
 
 ## 配置项
 
+击杀记录长期保存在 `output/Cache/autol_kill_counts.json`，自动缓存清理会保留此文件。备份时请将它复制到客户端目录以外；恢复时先正常退出客户端，再放回原路径。`Backup Records Cache` 备份的是配置目录中的 `Records.json`，击杀统计需要单独备份。
+
+### 语言过滤
+
+- `Language Filters`：多选 combobox，选项为 English、Chinese、Japanese、Others，默认全选，位于 Filtering 分组。适用于固定正文、列表随机元素、文件随机行及所有内置预设；随机来源先筛选全部候选，再从可用句子中按原有规则避免重复抽取。空选、全部候选被跳过或移除后正文为空时，取消本次发送并弹出错误通知，不会无限重试或改用不符合条件的句子。
+- `Language Filter Mode`：单选 Skip / Remove，默认 Skip。Skip 跳过含禁用语言字符的整句；Remove 只移除对应 UTF-8 字符，不截断多字节字符，保留其余内容。长度超限的备用句子同样遵守语言过滤。
+- `Language Filter Content Only`：默认 true。仅过滤替换占位符并移除可选装饰后的正文，不检查自动添加的目标名前缀、击杀计数、普通前后缀、AntiSpam 和自定义格式前缀。正文内部的 `{player}` / `{team}` 替换结果仍属于正文。关闭后这些附加文本也参与过滤；客户端生成的 `/shout`、`/title` 等命令语法不会被删坏。
+
+分类是本地字符启发式，不是在线语种识别：拉丁字母归 English；假名归 Japanese；同一正文或附加片段中含假名时，其汉字归 Japanese，否则归 Chinese；纯汉字日语无法可靠区别于中文。空白、数字及常用中英文标点不受限；其他文字及装饰符号（包括表情）归 Others。正文与各附加片段分别判定，日语 AntiSpam 不会改变中文正文的归类。
+
+### 其他选项
+
 > 配置界面说明（v1.1.7）：以 Includes 开头的检测场景已合并为 `Detection Scenarios` 多选项。
 - Source（来源）
  类型：枚举；默认："Preset"
@@ -27,23 +45,26 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
  可选：Fixed（固定）；List Random Element（列表中随机的元素）；File Random Line（文件随机行）；Preset（预设）
 - Detect Kills（检测击杀）
  类型：枚举；默认："Death"
- 说明：Death 检测死亡提示；PVP 同时支持 KILL_PATTERNS.txt 中含击杀者字段的模板；Killed by me 仅在符合本人击杀条件时触发，不触发挖床或队伍淘汰事件。
+ 说明：Death 检测死亡提示；PVP 同时支持 MinecraftAutoLPatterns.txt 中含 `{killer}` 的模板；Killed by me 的 Strict 模式仅在含击杀者占位符的模板与本人名字完整匹配时触发，不触发挖床或队伍淘汰事件。
  可选：Death（死亡）；PVP（玩家对战）；Killed by me（被我击杀）
 - Killed By Me Detection（本人击杀检测方式）
  类型：枚举；默认："Strict"；仅在 Detect Kills 为 Killed by me 时显示。
- 说明：Strict 要求模板中的 killer 字段经过玩家名规范化后，与当前玩家名完整匹配，不区分大小写；Line Contains Keyword 只要求击杀提示行包含配置的关键词，不区分大小写。
+ 说明：Strict 要求模板中的 killer 字段经过玩家名规范化后，与当前玩家名完整匹配，不区分大小写；支持 `/mclog setname <name>` 手动设置的用户名。英文 `player was killed by Wormwaker.`、`player was slain by Wormwaker.` 使用对应云控模板识别，模板末尾玩家名后的句号、感叹号、问号不计入名字。Line Contains Keyword 只要求击杀提示行包含配置的关键词，不区分大小写。
 - Killed By Me Line Contains Keyword（本人击杀行内关键词）
  类型：文本；默认：空；仅在 Killed by me + Line Contains Keyword 时显示。
- 说明：留空不触发；请填入能唯一标识本人击杀的关键词。用户名尚未识别时，关键词模式仍可统计本人击杀，不会清空已有计数；Strict 必须具有已识别的玩家名。击杀统计按 SessionHUD 的 Statistics Per Player 选择玩家统计或共享总计，自动缓存，并对重复日志去重，不受嘲讽输出冷却或内容过滤影响。
+ 说明：留空不触发；请填入能唯一标识本人击杀的关键词。用户名尚未识别时，关键词模式仍可统计本人击杀，不会清空已有计数；Strict 必须具有已识别的玩家名。AutoL 的击杀统计由本模块的 Statistics Per Player 控制，独立于 SessionHUD，自动缓存，并对重复日志去重，不受嘲讽输出冷却或内容过滤影响。
 - Count Player Kills（统计被我击杀的玩家次数）
  类型：布尔；默认：true；仅在 Detect Kills 为 Killed by me 时显示和生效。
- 说明：将本人击杀各玩家的次数和击杀者账号归属保存到 `output/Cache/autol_kill_counts.json`，玩家名不区分大小写，重启后恢复，不受输出冷却、内容过滤或 HUD 显示开关影响，并对重复日志去重。排行榜和 Kill By Me 仍跨本人账号共享；Total Kills 可通过 Total Kills Scope 选择统计范围，不受 SessionHUD 的 Statistics Per Player 设置影响，也不应用 30 天过期清理。关闭后停止更新此缓存和三种范围计数，并停用计数前后缀，但不影响 SessionHUD 的击杀统计。
+ 说明：将本人击杀各玩家的次数和击杀者账号归属保存到 `output/Cache/autol_kill_counts.json`，玩家名不区分大小写，重启后恢复，不受输出冷却、内容过滤或 HUD 显示开关影响，并对重复日志去重。排行榜始终跨本人账号共享；计数前后缀使用本模块的 Statistics Per Player 和 Total Kills Scope 设置，不受 SessionHUD 影响，也不应用 30 天过期清理。关闭后停止更新此缓存和各范围计数，并停用计数前后缀，但不影响 SessionHUD 的击杀统计。
+- Statistics Per Player（按玩家分别统计战绩）
+ 类型：布尔；默认：false；仅在 Detect Kills 为 Killed by me 时显示。
+ 说明：同时控制 Total Kills 与 Kill By Me。关闭时，默认使用全部本人账号的总击杀和同一受害者被所有本人账号击杀的次数；开启时，两种计数均只使用当前用户名的记录，同名多个实例共享，并忽略 Total Kills Scope。切换开关不清空记录，后台仍同时保存全局和账号计数。全局记录缺失时，按受害者汇总所有账号的次数，总击杀也随之相加；已有全局记录不会与账号数据重复相加。用户名未知时沿用此前统计归属，首次未知使用匿名归属。
 - Kill Count Affix Mode（击杀计数前后缀模式）
  类型：枚举；默认：Off；可选：Off、Total Kills、Kill By Me；仅在 Detect Kills 为 Killed by me 时显示和生效。
- 说明：Total Kills 使用 Total Kills Scope 所选范围中的总击杀次数；Kill By Me 使用本次目标玩家被本人击杀的累计次数，不受该范围设置影响。计数包含当前击杀，仅在真实本人击杀事件生成消息时添加，不用于发言响应、挖床或队伍淘汰。
+ 说明：Total Kills 与 Kill By Me 均受 Statistics Per Player 控制；仅在该开关关闭时，Total Kills 额外使用 Total Kills Scope 所选范围。Kill By Me 使用本次目标玩家被本人击杀的累计次数，不受范围设置影响。计数包含当前击杀，仅在真实本人击杀事件生成消息时添加，不用于发言响应、挖床或队伍淘汰。
 - Total Kills Scope（总击杀统计范围）
- 类型：枚举；默认：Total；可选：Total、Player、Minecraft；仅在 Killed by me + Total Kills 时显示和生效。
- 说明：Total 累计全部账号、全部实例的记录，保持旧行为；Player 累计当前玩家名的记录，同名多个实例共享，并保存到击杀缓存；Minecraft 仅累计当前 Minecraft 实例的记录，切换用户名或重新进服不会重置，实例退出、日志解析记录清空或重新检测后从 0 开始。未知用户名沿用此前的统计归属，首次未知时使用匿名统计。旧版缓存无法推断击杀者，旧次数仍保留在 Total 与匿名归属中，不会伪分配给某个已知账号；具名 Player 统计从有归属的新记录起累计。
+ 类型：枚举；默认：Total；可选：Total、Minecraft；仅在 Killed by me + Total Kills 且 Statistics Per Player 关闭时显示和生效。
+ 说明：Total 累计全部账号、全部实例的记录；Minecraft 仅累计当前 Minecraft 实例的记录，切换用户名或重新进服不会重置，实例退出、日志解析记录清空或重新检测后从 0 开始。原 Player 范围改由 Statistics Per Player 开关控制，旧 Profile 中的 Player 值在开关关闭时按 Total 处理。旧版缓存无法推断击杀者，旧次数仍保留在 Total 与匿名归属中，不会伪分配给某个已知账号；具名账号统计从有归属的新记录起累计。
 - Total Kills Affix Minimum（总击杀计数最低次数）
  类型：整数；默认：1；仅在 Killed by me + Total Kills 时显示。
  说明：总击杀累计达到该值时才添加计数文字。

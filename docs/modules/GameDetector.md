@@ -12,6 +12,7 @@
 
 ## 介绍
 GameDetector 为 BiliSign 与 Island 提供统一的当前游戏状态。开启 BiliSign 的 `Game Display` 或 Island 的 `Show Game (PRO)` 时会自动启用本模块。
+Steam 游戏忽略名单属于本模块的检测策略，只影响 GameDetector 输出及其消费者，不会改变 SteamStatus 的原始状态查询，也不会替代 BiliSign 自己的签名过滤名单。
 
 模块复用客户端维护的进程列表并按冷却周期扫描，不依赖需要额外权限的 WMI 进程启动监听，因此也能识别客户端启动前已经运行的游戏。
 
@@ -27,6 +28,10 @@ GameDetector 为 BiliSign 与 Island 提供统一的当前游戏状态。开启 
 - Detect Minecraft（检测 Minecraft）
   类型：布尔；默认：true
   说明：使用客户端已有 Minecraft 前台状态与日志实例判断；仅在 Detect Non-steam Games 开启时显示并生效。
+
+- Ignored Steam Games（忽略的 Steam 游戏）
+  类型：字符串列表；默认：空
+  说明：按 Steam 显示名称精确匹配并忽略这些 Steam 候选。忽略后 GameDetector、Island 等检测消费者不会显示该游戏；SteamStatus 仍可继续报告原始 Steam 状态，BiliSign 另有独立的 `Excluded Steam Games`。
 
 - KnownGameList Path（KnownGameList 路径）
   类型：路径；默认：空

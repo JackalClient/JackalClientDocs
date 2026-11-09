@@ -22,6 +22,8 @@ Codex 操作器
 
 再次按下捕获快捷键会移除当前前台窗口；模块可以同时监视多个已捕获窗口。
 
+多窗口监视会在同一轮后台检查中依次扫描全部已捕获终端，避免前面的窗口占用检查任务后导致其他窗口漏检 `Action Required`；单个窗口失效不会中断其余目标的检查。
+
 开启 `Check Terminal` 时，捕获窗口必须是 `PseudoConsoleWindow`、`ConsoleWindowClass` 或 Windows Terminal 的 `CASCADIA_HOSTING_WINDOW_CLASS`。
 
 ## 批准方式
@@ -31,6 +33,12 @@ Codex 操作器
 - `Chain`：先尝试 WMessage，失败后自动切换到 Simulation。
 
 在 Simulation 或 Chain 回退到 Simulation 的流程中，如果当前前台窗口就是本次要操作的目标终端，会立即结束输入空闲等待，即使仍有键鼠活动或该终端为全屏，也直接使用最多 0.5 秒的批准倒计时；原倒计时配置小于 0.5 秒时沿用较小值。离开目标终端后恢复普通输入等待和全屏暂停规则。判断按当前待操作目标分别进行，不会因另一个已捕获终端位于前台而跳过等待；HUD 的剩余时间和进度同步使用缩短后的倒计时。
+
+当目标终端已经位于前台且缩短倒计时结束时，模块最多再检查 3 秒的键盘和鼠标按键；按键松开后立即执行操作，避免因用户仍在终端中操作而误发批准按键。单纯移动鼠标不计为输入活动，不会暂停倒计时或延长输入等待。
+
+`Cursor Hidden Actions` 控制鼠标光标不可见时的处理，选项与 `Fullscreen Actions` 相同。`Blacklist Foreground Window Processes` 使用进程名匹配前台窗口，匹配后执行 `Blacklist Foreground Window Actions`；两组动作均可分别选择暂停倒计时和隐藏 HUD，默认全部开启。默认黑名单为空。
+
+`Sound Enabled (PRO)` 是 Codex Operator 的事件音效总开关，专业版默认开启。`Sound (New Request)`、`Sound (Success)` 和 `Sound (Failure)` 分别控制新请求、批准成功和批准失败事件，可选择 `Off`、`Custom` 或 `Select`。`Select Sound (...)` 从客户端本地音效列表中选择；`Custom Sound (...)` 支持填写单个音频文件路径或文件夹路径，填写文件夹时会从其中的 `.wav` 或 `.mp3` 文件随机选择并播放。默认新请求选择 `sigma_enable.wav`，成功和失败事件默认关闭，但分别预置 `steam_confirm_positive.wav` 与 `steam_confirm_negative.wav`。
 
 `Minimize After Approval` 位于 Approval 分组，控制每次批准操作结束后的目标窗口最小化策略，与 `Focus Back After Approval` 独立：
 
@@ -46,7 +54,9 @@ Codex 操作器
 
 `Notify Capture` 和 `Notify Approval` 支持 `Off`、`Notify`、`Chatter`、`WinToast`、`Actionbar`。HUD 支持颜色、缩放和相对坐标配置；Chain、Simulation 及开启 `Set Foreground Window` 的 WMessage 共用批准倒计时、输入空闲等待和进度条配置。输入等待 HUD 显示 `Input Idle Delay (s)` 的剩余空闲等待时间，进度条随该时间缩短；再次输入时重置空闲等待进度，等待结束后恢复显示批准倒计时进度，等待期间批准倒计时保持暂停。`Fullscreen Actions` 的隐藏 HUD 选项仅在当前前台窗口为全屏时生效。
 
-HUD 在空闲状态下自动隐藏；WMessage 模式下，当前前台窗口已经是目标时，按键提示会改为移除目标窗口。开启重试后，WMessage 的中间失败会短暂显示终端编号和尝试次数。
+HUD 在空闲状态下自动隐藏；显示与隐藏之间使用 500 毫秒淡入淡出。开启 `HUD Give Way to Mouse` 后，鼠标移入 HUD 区域时整体不透明度平滑降低至 20%；WMessage 模式下，当前前台窗口已经是目标时，按键提示会改为移除目标窗口。按键提示现在使用前景色填充的紧凑矩形徽章，徽章内文字字号为原来的 50%，右侧描述文字保持原字号。开启重试后，WMessage 的中间失败会短暂显示终端编号和尝试次数。
+
+只要存在捕获目标，Arraylist 额外信息会显示目标数量；当倒计时因输入、全屏、隐藏光标或前台进程黑名单而暂停时，会显示 `Paused`。
 
 `Approve Key` 自定义批准按键，默认是 `1`；`Focus to Approval Delay (s)` 控制前台批准流程实际聚焦后到发送按键或消息之间的等待时间，默认 0.5 秒。需要切换到目标时使用客户端统一的窗口聚焦流程；目标已经位于前台时，不重复聚焦，也不额外等待该聚焦延迟。Simulation 确认目标在前台后才发送模拟按键。切换批准模式或调整 `Set Foreground Window` 时，重置重试次数、倒计时及失败状态，并立即重新检查目标；旧模式的异步结果不会覆盖新状态。
 

@@ -12,6 +12,8 @@
 - 版本属性：普通可用
 
 ## 介绍
+在线数据：使用 Ricochesta `data` 中的 `SecondRoundZhCn.txt`、`Substitution.txt`，每次客户端启动均尝试更新至 `output/Cache/ModuleMetadata`；内容未变化时不重复写入，断网或更新失败时继续使用已有有效缓存。以后优先修改并发布云控文件，不要恢复旧 assets 副本。本地下载缓存采用 deflate256 `japanese` 字母表和 `JP:` 标记保护，客户端自动解码，旧明文缓存自动迁移并保留修改时间；云端源文件仍维护为 UTF-8 明文，不要直接编辑本地密文缓存。
+
 ClipboardTweaks（剪贴板功能）用于对复制的文字开展混淆。
 
 ## 配置项

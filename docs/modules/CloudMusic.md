@@ -4,6 +4,7 @@
 描述：一个简单的网易云音乐的挂钩。
 
 ## 需求
+- 扩展依赖：Cloud Music Version Agent（`netease-version`）及前置 MinHook Runtime（`minhook`），均包含 32/64 位组件；下载前提示确认前置扩展，安装后自动解析对应架构文件。
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否

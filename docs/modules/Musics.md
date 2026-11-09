@@ -7,11 +7,13 @@
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
-- 联网需求：否
+- 联网需求：可选（内置曲目首次下载需要联网，已有缓存或本地音频可离线使用）
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
 ## 介绍
+默认 `FunkyStars.mp3` 优先从 Ricochesta `sounds/music/` 下载至 `output/Cache/Sounds/music/`，已有有效缓存直接复用，失败时再使用旧音效缓存或 assets 文件。内置候选 `Genshin.mp3`、`shock.mp3` 同样支持该目录，其他用户指定的文件路径保持原有行为。下载在后台播放任务中执行，不依赖 ResourceMarket 开关。
+
 Musics（音乐）用于播放音乐。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Filename、When、Style。

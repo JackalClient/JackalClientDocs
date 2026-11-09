@@ -7,11 +7,13 @@
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
-- 联网需求：否
+- 联网需求：可选（首次下载 Phigros 音效需要联网，已有缓存或本地音频可离线使用）
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
 ## 介绍
+Phigros 自动音效会异步预取 Ricochesta `sounds/music/` 中的 `phigros_drag.wav`、`phigros_tap.wav`、`phigros_flick.wav`，缓存至 `output/Cache/Sounds/music/`。播放时优先使用缓存，未下载或下载失败时回退旧音效缓存与 assets；没有任何本地文件时，下载完成后的下一次点击才有声音。自定义音效路径不受影响，不依赖 ResourceMarket 开关。
+
 Click Effects（点击效果）用于在鼠标点击位置绘制动画反馈。
 模块提供 Ripples、Blue Archive、Phigros 三种预设，并会在切换 Preset 时自动同步 Color：Ripples 和 Blue Archive 自动使用 Blue，Phigros 自动使用 Gold。
 适合录屏演示、直播展示、桌面视觉增强和点击反馈场景。

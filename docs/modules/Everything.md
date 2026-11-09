@@ -4,6 +4,7 @@ Everything
 描述：软件“Everything”的一些功能。
 
 ## 需求
+- 扩展依赖：Everything SDK（`everything-sdk`），缺失时点击模块下载按钮安装；包含 SDK 1 与 SDK 3 动态库，不包含 Everything 服务本身。
 - Unsafe：否
 - Malicious：否
 - 需要管理员权限：否

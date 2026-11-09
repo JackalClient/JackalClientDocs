@@ -3,6 +3,9 @@
 分类：Combat
 描述：通过注入动态链接库，拦截 Winlogon 事件（需要管理员和特权）
 
+## 扩展依赖
+依赖 `jd-gatekeeper` 扩展，按系统位数选择 DLL。组件及 JDGatekeeper.ini、JDGatekeeper.tmp 位于 `output/Extensions/jd-gatekeeper/`，不再读取 Release 中的旧组件。
+
 ## 需求
 - 安全级别：常规模块
 - 权限需求：管理员

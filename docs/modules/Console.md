@@ -15,6 +15,8 @@
 Console（控制台）就是那个黑窗口。
 **如果你需要输入命令，请打开 Shell 命令行 模块。**
 
+打开 GUI 不会再强制显示控制台。从托盘恢复客户端时，仅在当前 Console 开关、隐藏设置及 Shell 运行要求允许显示时恢复此前临时隐藏的控制台；关闭 Console 后不会因打开菜单重新弹出。
+
 ## 配置项
 > 配置界面说明（v1.1.7）：Border Color、Caption Color 与 Caption Text Color 使用统一颜色选择器；Transparent 表示沿用系统默认外观。
 

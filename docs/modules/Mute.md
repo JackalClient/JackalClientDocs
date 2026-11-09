@@ -35,6 +35,7 @@ Mute（静音）用于控制当前系统输出设备的静音状态。模块开�
 - 40. 修改 Mute 模块配置：`Restore Volume` 重命名为 `Amount Mode Restore Volume`；新增 `Mode`，可选 `Status`、`Amount`、`Both`。
 
 ## 备注
+- 静音和恢复系统音量时保留客户端自身的进程音量，不将系统的 0 音量同步为客户端主音量；系统静音仍然作用于整个输出设备，不会让客户端声音绕过系统静音。
 - Amount 或 Both 模式会写入并读取 `Volume Before Mute` 记录，用于关闭模块时恢复音量。
 - 如果 Volume 模块开启了 `Limit System Volume`，Mute 的 Amount 行为会自动关闭该限制，避免音量被限制规则阻止设置为 0。
 - 该模块作用于系统当前音频输出设备；若功能未生效，优先检查系统音频设备状态、Windows 音量接口可用性，以及是否有其他音量管理软件同时接管。

@@ -77,6 +77,7 @@ const sidebarGroups = [
     text: '专题文档 THEMES',
     items: [
       { text: '专业版', link: '/pro' },
+      { text: '扩展与 SDK', link: '/extension-sdk' },
       { text: '更好的歌词说明', link: '/betterlyrics' }
     ]
   },

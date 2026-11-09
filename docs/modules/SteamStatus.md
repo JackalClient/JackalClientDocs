@@ -12,11 +12,12 @@
 - 版本属性：PRO 专有
 
 ## 介绍
-SteamStatus 跟踪当前 Steam 游戏状态，并将游戏信息提供给 GameDetector。
+SteamStatus 跟踪当前 Steam 游戏状态，并将原始 Steam/非 Steam 状态提供给 GameDetector。它不负责 GameDetector 的忽略名单，也不直接管理 BiliSign 的签名过滤；BiliSign 使用自己的 `Excluded Steam Games`。
 
 ## 配置项
-- Exclude Non-steam Game（排除非 Steam 游戏）
-  类型：布尔；默认：true。开启后会隐藏无法解析为 Steam 游戏的非 Steam 状态。
+- Status Scope（状态范围）
+  类型：枚举；默认：Steam Only。控制 SteamStatus 的 Arraylist 附加信息与状态变化通知是否包含无法解析为 Steam 游戏的状态。
+  可选：Steam Only；Steam + Non-steam
 - Update Cooldown (s)（更新冷却，秒）
   类型：数值；默认：60。控制状态轮询间隔。
 - Notify Changes（状态变化通知）

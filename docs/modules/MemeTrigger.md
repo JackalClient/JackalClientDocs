@@ -7,11 +7,13 @@
 - 安全级别：常规模块
 - 权限需求：无
 - 驱动依赖：否
-- 联网需求：否
+- 联网需求：可选（首次下载配乐需要联网，已有缓存或本地音频可离线使用）
 - 开发状态：稳定/常规
 - 版本属性：普通可用
 
 ## 介绍
+内置配乐 `Genshin.mp3`、`WHAT.wav`、`shock.mp3` 优先从 Ricochesta `sounds/music/` 获取，缓存于 `output/Cache/Sounds/music/`，失败时使用旧音效缓存或 assets 文件。启用模块后异步预取，不依赖 ResourceMarket 开关；首次未缓存时触发梗效果可能需要等待下载或超时回退。
+
 MemeTrigger（梗触发）用于暂无描述。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Notify、Disable Client Other HUD。

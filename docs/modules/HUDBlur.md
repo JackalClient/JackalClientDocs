@@ -12,6 +12,10 @@ HUD模糊
 - 版本属性：普通可用
 
 ## 介绍
+Other HUD Blur（其他 HUD 模糊）默认开启，控制普通 HUD 与 GUI 的背景模糊。关闭后不影响 Glow 与 WindowHighlight 的 Blur Background，也不会关闭 HUD Blur 本身；旧配置缺少该项时保持开启。
+
+Glow 与 WindowHighlight 的背景模糊会自动联动 HUD Blur。关闭其中一处不会关闭另一处仍在使用的模糊；两处都关闭后，仅自动关闭由它们开启的 HUD Blur。
+
 HUDBlur（HUD模糊）用于应用模糊效果到HUD。
 适合在日常管理与自动化场景中按需启用。
 默认使用 Legacy 后端；初次使用可优先调整 Screen Capture Cooldown (ms)。也可切换到 Experimental 试用系统局部背景模糊。

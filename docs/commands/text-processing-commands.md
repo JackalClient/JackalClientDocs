@@ -14,7 +14,7 @@
 回显文本。
 :::
 
-## Edge 翻译功能（`/translate [content...=clipboard]`）
+## 在线翻译功能（`/translate [content...=clipboard]`）
 
 ```bash
 /translate [content...=clipboard]
@@ -26,7 +26,7 @@
 ```
 
 ::: details 点击查看说明
-Edge 翻译功能。translateto 可指定目标语言， translateloop 将会把文本按每一种语言轮流进行翻译，最后翻回原先的语言，共翻译 times 次。
+在线翻译功能，使用 Translator 模块当前选择的 Mode，不再优先尝试旧 QQ 翻译接口。translateto 可指定目标语言， translateloop 将会把文本按每一种语言轮流进行翻译，最后翻回原先的语言，共翻译 times 次。
 如果结尾是copy，则会将结果复制到剪贴板。
 :::
 

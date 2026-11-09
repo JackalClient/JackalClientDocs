@@ -29,14 +29,14 @@ BiliSign（B站个签）是一个 PRO 专属模块，用于自动管理你的哔
  类型：布尔；默认：true
  说明：启用后，将 GameDetector 检测到的游戏同步写入个签第一行，并自动开启 GameDetector。
 
-- Game Display Preference（游戏展示偏好）
- 类型：枚举；默认："Steam"
- 说明：Steam 与非 Steam 游戏同时存在时优先展示哪一来源；首选来源无结果时自动回退。
- 可选：Steam；Non-steam
+- Game Display Source（游戏展示来源）
+ 类型：枚举；默认："Steam Preferred"
+ 说明：控制个签游戏行使用的检测来源。Preferred 模式在首选来源无结果时回退，Only 模式只接受指定来源。
+ 可选：Steam Preferred；Non-steam Preferred；Steam Only；Non-steam Only
 
 - Excluded Steam Games（排除的 Steam 游戏）
- 类型：字符串；默认包含 Wallpaper Engine、OBS Studio、VTube Studio、Blender、Godot Engine
- 说明：以英文分号分隔，仅过滤 Steam 来源。
+ 类型：字符串列表；默认包含 Wallpaper Engine、VTube Studio、OBS Studio、Godot Engine、Blender
+ 说明：仅过滤 BiliSign 的 Steam 游戏展示，不影响 GameDetector、Island 或 SteamStatus；按 Steam 显示名称精确匹配，大小写不敏感。
 
 - Steam Game Language（Steam游戏语言）
  类型：枚举；默认："Follow Global"

@@ -10,7 +10,7 @@
 /toastesp install
 ```
 
-后台调用客户端 `toast-native/Install-ToastWinRT.ps1 -Guided`，打开安装向导；模块“安装并启动 WinRT”按钮直接调用此命令，Mode 选项置顶。安装前请先关闭 WinRT 通知透视；重复调用不会启动多个安装进程，客户端退出时取消自己的普通权限安装进程。
+后台调用客户端 `output/Extensions/jd-toast-winrt/Install-ToastWinRT.ps1 -Guided`，打开原有安装向导；模块“安装并启动 WinRT”按钮直接调用此命令，Mode 选项置顶。扩展缺失或未启用时先下载并启用，完成后再次执行命令安装身份。安装前请先关闭 WinRT 通知透视；重复调用不会启动多个安装进程，客户端退出时取消自己的普通权限安装进程。
 
 流程为：检查组件与签名 → 必要时明确确认信任匹配公钥并同意 Windows UAC → 原普通用户注册身份 → 自动选择 WinRT 并启动 ToastESP → 允许 Windows 通知访问。需要完整组件和已签名的 `JDToastIdentity.msix`；不会生成用户签名密钥。向导显示发布者、指纹与目录，只有证书信任步骤提权，无法降权或取消授权时不启动模块。
 
@@ -31,6 +31,15 @@
 ### GUI 重置范围
 
 Neverlose 和 Dropdown Integration 的模块卡片重置按钮只重置对应模块，不应影响 `Config`、`GUI`、`HUD` 或 `Sound`。全局设置卡片的重置只作用于对应分类；模块重置确认框固定打开时的目标模块，切换页面不会改变重置对象。启用选项搜索时仍只重置命中的可见选项。
+
+## 预览击杀效果（`/killeffects preview <sound/indicator>`）
+
+```text
+/killeffects preview sound
+/killeffects preview indicator
+```
+
+按 KillEffects 当前配置单独播放一杀音效或一杀指示器，沿用音量、位置、缩放、不透明度与音画匹配设置。无需开启 KillEffects、MinecraftUtils 或进入游戏，不修改击杀统计，不触发通知或自定义命令。云端资源尚未就绪时最多等待 30 秒，过期不补播。支持 Tab 补全，`/help killeffects` 可查看说明。
 
 ## 显示命令的帮助信息（`/help [command...]`）
 
@@ -83,7 +92,7 @@ Neverlose 和 Dropdown Integration 的模块卡片重置按钮只重置对应模
 ```
 
 ::: details 点击查看说明
-关于。
+显示客户端信息并检查对应版本的更新；免费版读取 Gitee Free 目录，专业版使用独立更新服务。
 :::
 
 ## 打开资源市场（`/resourcemarket font/imagehud/presethud/sound/article/shader [search...]`）
@@ -178,11 +187,26 @@ Neverlose 和 Dropdown Integration 的模块卡片重置按钮只重置对应模
 
 ```bash
 /ver
+/version
 ```
 
 ::: details 点击查看说明
-查看客户端和系统版本。
+查看客户端和系统版本，并检查对应版本的更新。免费版支持无需 IRC 登录的更新检查。
 :::
+
+## 客户端更新（`/client update`）
+
+```bash
+/client update check
+/client update status
+/client update
+```
+
+`check` 异步检查最新版本，`status` 查看检查及更新状态。免费版从 Gitee 的 `thunderbringer/JackalClientPublic` 仓库 `master/Free` 目录查找 ZIP 或从 `.zip.001` 开始的连续分片，按数字版本比较，不执行降级。
+
+免费版 `/client update` 先弹窗确认；确认后启动同安装目录的 Free Launcher 静默重新检查、下载和安装，客户端退出，安装后重新启动。托盘菜单可完成同样的检查与确认。取消时不启动安装器，缺少 Launcher 时不退出客户端。开发 runtime-copy 环境不允许覆盖安装。
+
+`/client update tls`、`base`、`list` 和 `upload` 仅专业版可用；免费版固定使用 Gitee 并验证 TLS。
 
 ## 异步退出（`/exit`）
 
@@ -448,6 +472,8 @@ Neverlose 和 Dropdown Integration 的模块卡片重置按钮只重置对应模
 
 ::: details 点击查看说明
 显示所有内置变量。如需列举环境变量，请使用 /set 命令。
+
+`%minecraft_scene%` 返回 MinecraftUtils 当前或最近活动实例的场景名称，例如 Skywars。没有实例或场景未知时返回 Unknown，也可用于 CustomHUD 普通文本和富文本分段，例如 `场景：%minecraft_scene%`。场景由 MinecraftUtils 日志解析更新，变量不会自动启用模块。
 :::
 
 ## 启用或禁用命令行的内置变量（`/variables &lt;enable&gt;`）
@@ -1509,6 +1535,44 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 设置现在的GUI风格（default/neverlose/dropdown/imgui）。`default` 使用 Neverlose；Neverlose 已开放给免费版，`dropdown` 可切回下拉式界面。
 :::
 
+## 设置 GUI 位置和尺寸（`/gui setpos`、`/gui resetpos`、`/gui setsize`）
+
+```bash
+/gui setpos <x> <y> [ui=current]
+/gui resetpos
+/gui setsize <w> <h>
+```
+
+- `x/y` 为像素整数，`ui` 可填 `current/dropdown/neverlose/imgui`，默认操作当前风格。
+- Dropdown 的 `setpos` 修改摄像机坐标，不直接移动各列；`resetpos` 按当前各列及展开内容的范围居中摄像机，不重排各列。
+- Neverlose/ImGui 的 `setpos` 设置窗口左上角，`resetpos` 将窗口放到显示区域中央。
+- `setsize` 仅对当前 Neverlose/ImGui 有效，宽高必须为正整数，遵循对应 UI 的最小尺寸和显示区域限制；Dropdown 会报不支持。
+- Neverlose 设置位置、居中或修改尺寸时会先退出最大化。修改在主线程应用，ImGui 已打开时也会在下一次绘制应用新位置或尺寸。
+
+## 查询和设置 GUI 缩放（`/gui scale`）
+
+```bash
+/gui scale
+/gui scale <value>
+/gui scale 1.2
+/gui scale 120
+/gui scale 120%
+/gui scale reset
+```
+
+不带参数时输出当前倍率和百分比。`1.2`、`120`、`120%` 均设置为 120%；`reset` 恢复为 100%。不带 `%` 且数值小于 10 时按倍率解释，其余按百分比解释。有效范围为 10%～200%，与当前 GUI 渲染范围一致；无效或越界数值不会修改设置。
+
+## Neverlose 最大化与窗口化（`/gui max`、`/gui windowed`）
+
+```bash
+/gui max
+/gui windowed
+```
+
+仅对当前 Neverlose 风格有效。`max` 最大化并保留窗口化位置与尺寸，`windowed` 恢复窗口化；已窗口化时不会关闭菜单，重复调用保持当前状态。
+
+上述命令也可使用 `/clickgui` 别名。Tab 支持补全子命令、`setpos` 的 UI 名称、缩放预设及位置/尺寸示例；`style`、`bind` 和配置键名也提供候选。
+
 ## 查看所有模块的按键绑定（bind, bind (…（`/binds`）
 
 ```bash
@@ -1557,9 +1621,18 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 	pipatradplus: 繁体+
 	pipasimpplus2: 简体+，带标点
 	pipatradplus2: 繁体+，带标点
+	deflate256: 使用 /deflate256 setalphabet 选择的 256 字符字母表
 若 content 不指定，则会先查看剪贴板里的文本，如果为空且为命令行线程，则直接要求输入。
 后两条带copy的会将结果复制到剪贴板。
 :::
+
+## 设置 deflate256 字母表（`/deflate256 setalphabet <name>`）
+
+```bash
+/deflate256 setalphabet <name>
+```
+
+仅开发者模式可用。名称精确匹配：`pipasimp`、`pipatrad`、`porn`、`chemical`、`lisao`、`japanese`、`cjk-ext`、`wind`、`black`、`ghost`。例如先执行 `/deflate256 setalphabet japanese`，再使用 `/encrypt deflate256 <content...>` 或 `/decrypt deflate256 <content...>`。指定字母表的独立转换不修改此选择；已经开始的操作使用自身的稳定快照。
 
 ## 没有参数时，切换加密器模块状态（`/encryptor [content...]`）
 
@@ -1615,7 +1688,8 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 
 ::: details 点击查看说明
 向指定进程注入DLL。三种形式分别对应：CreateRemoteThread, NtCreateThreadEx, QueueUserAPC 注入方法。
-如果后面写 32 或 64，将不自动判断进程架构，而是根据指定架构进行操作。
+如果后面写 32 或 64，会检查目标架构是否匹配，不匹配时拒绝执行。x86 客户端支持 x86/x64 目标，x64 客户端仅支持 x64 目标。
+支持 Unicode 路径和命令；成功仅表示命令进程已创建，不代表命令执行完毕。单个目标等待上限为 10 秒（经 loader 中转时额外等待其退出），超时不代表没有执行，请勿盲目重试。
 :::
 
 ## 向指定进程卸载DLL（`/uninject &lt;hprocess&gt; &lt;dllname&gt;`）

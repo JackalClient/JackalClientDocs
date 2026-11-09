@@ -4,6 +4,7 @@ B站关注图
 描述：分析并展示 B 站账号之间的关注关系图。支持递归抓取公开关注列表、查看单向/双向关系、缩放拖拽浏览、缓存关注列表与昵称、实时查看分析进度。 
 
 ## 需求
+- 可选扩展：Microsoft Edge WebView2 Loader（`ms-webview2`）提供双架构加载器。内嵌页面仍需系统已安装 Microsoft Edge WebView2 Runtime；扩展或 Runtime 缺失时回退系统浏览器，不影响 Legacy 图谱。
 - 安全级别：专业版模块
 - 权限需求：无
 - 驱动依赖：否

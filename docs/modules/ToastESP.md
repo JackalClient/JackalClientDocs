@@ -3,6 +3,9 @@
 分类：Window
 描述：监视当前用户的 Windows 通知，并将来源、标题和正文转发到客户端。
 
+## 扩展依赖
+仅 WinRT 原生后端依赖 `jd-toast-winrt` 扩展；Legacy 不需要该扩展。先在 Extensions 页面下载安装，组件位于 `output/Extensions/jd-toast-winrt/`；随后运行原有身份安装向导，显式确认签名、公钥信任与通知访问权限。下载不会自动导入证书或注册身份。
+
 ## 需求
 - 安全级别：涉及通知内容读取，使用时应注意个人隐私
 - 权限需求：WinRT 模式需当前用户授权通知访问；安装时信任证书可能需要管理员确认
@@ -30,9 +33,9 @@ Mode 在模块开启期间修改也会生效：自动停止旧后端、清理旧
 
 ## WinRT 模式
 
-原生后端由 `toast-native/JDToastBroker.exe` 和 `JDToastNotification.dll` 提供。客户端本体不直接加载监听 DLL，也不需要改成 MSIX 应用。
+原生后端由 `output/Extensions/jd-toast-winrt/JDToastBroker.exe` 和同目录的 `JDToastNotification.dll` 提供。客户端本体不直接加载监听 DLL，也不需要改成 MSIX 应用。
 
-构建客户端时会通过项目引用依次构建两个原生组件，解决方案配置管理器中也默认勾选构建。两个项目保留客户端的 Free / Pro 配置名称：例如 `Release-Pro-StaticCRT` 输出至 `build/Release-Pro-StaticCRT/Release/toast-native/`，单独构建组件时也不会落入 Free 目录。Broker 构建后生成身份包；未指定签名证书时身份包仍未签名，不能直接安装。
+构建客户端时会通过项目引用依次构建两个原生组件，解决方案配置管理器中也默认勾选构建。两个项目保留客户端的 Free / Pro 配置名称，均输出至仓库 `extensions/jd-toast-winrt/`，再打包到运行目录；不要并行混用不同配置或架构。Broker 构建后仍通过原脚本生成身份包，可复用原本机开发证书；未指定签名证书时身份包仍未签名，不能直接安装。
 
 - 需要 Windows 10 2004 或更新版本，并为实际运行客户端的用户安装通知身份包。
 - 首先使用原生事件；事件订阅不可用时才尝试原生轮询，不会静默切换到 Legacy。
@@ -59,10 +62,10 @@ Mode 在模块开启期间修改也会生效：自动停止旧后端、清理旧
 
 若提示身份包未签名，请向作者索取完整的已签名发行版本；普通用户无需编译或自行生成证书。开发者可使用 `build-toast-winrt.ps1 -SkipBuild -CreateDevelopmentCertificate` 为现有组件重新打包签名，并指定正确的配置、平台和运行目录。正式分发应使用正式签名证书，不应分发开发私钥。
 
-客户端的 `toast-native` 目录必须包含完整组件、已签名的 `JDToastIdentity.msix` 及 `Install-ToastWinRT.ps1`。以目标用户的普通 PowerShell 运行：
+客户端的 `output/Extensions/jd-toast-winrt` 目录必须包含完整组件、已签名的 `JDToastIdentity.msix`、匹配公钥 CER 及 `Install-ToastWinRT.ps1`。以目标用户的普通 PowerShell 运行：
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\toast-native\Install-ToastWinRT.ps1 -Guided
+powershell -NoProfile -ExecutionPolicy Bypass -File .\output\Extensions\jd-toast-winrt\Install-ToastWinRT.ps1 -Guided
 ```
 
 手动运行脚本后回到客户端选择 WinRT 并开启 ToastESP；通过客户端向导安装则自动启动。首次请求时允许 Windows 通知访问。
@@ -79,7 +82,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\toast-native\Install-Toast
 
 关闭 ToastESP、切换后端或退出客户端时，WinRT 后台会自动停止。Broker 除了受客户端 Job 管理，还独立监控对应客户端的进程句柄与管道断开；优先释放监听，授权或释放卡住时在退出信号后的 2 秒宽限后结束自身，避免残留占用 DLL。
 
-重新构建或覆盖组件前，先关闭使用同一 `toast-native` 目录的所有客户端或 WinRT 监听，再等待后台退出。若旧版本留下后台，请在任务管理器核对程序路径后只结束对应的 `JDToastBroker.exe`，不要结束其他目录或仍在使用的客户端实例。DLL 输出文件占用导致的链接失败，可能连带造成 Broker 所需的 LIB 缺失；LIB 属于构建中间文件，不应放回用户组件目录。
+重新构建或覆盖组件前，先关闭使用同一扩展目录的所有客户端或 WinRT 监听，再等待后台退出。若旧版本留下后台，请在任务管理器核对程序路径后只结束对应的 `JDToastBroker.exe`，不要结束其他目录或仍在使用的客户端实例。DLL 输出文件占用导致的链接失败，可能连带造成 Broker 所需的 LIB 缺失；LIB 属于构建中间文件，不应放回用户组件目录。
 
 ## 错误处理
 

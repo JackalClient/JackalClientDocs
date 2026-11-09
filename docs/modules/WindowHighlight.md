@@ -42,7 +42,7 @@ WindowHighlight 会围绕目标窗口绘制高亮框，并可给非目标区域�
 - Dark Background Alpha (0~1)（暗背景不透明度 (0~1)）
   类型：数值；默认：0.5f。控制暗幕强度。0.3~0.6 适合日常使用；太高会影响周边内容辨识。
 - Blur Background Enabled (PRO)（模糊背景（专业版））
-  类型：布尔；默认：false。开启后对高亮窗口外区域应用 HUD Blur；使用 Experimental 后端时会扩大内部采样范围并裁剪回窗口外区域，减少窗口边缘缝隙。
+  类型：布尔；默认：false。开启后自动启用 HUD Blur，对高亮窗口外区域应用模糊，不受 Other HUD Blur 开关影响；使用 Experimental 后端时会扩大内部采样范围并裁剪回窗口外区域，减少窗口边缘缝隙。关闭时若 Glow 仍在使用模糊，不会连带关闭 HUD Blur；仅在两处均不再使用时关闭由联动自动开启的 HUD Blur。
 - Blur Background Opacity (0~1)（模糊背景不透明度 (0~1)）
   类型：数值；默认：1.0f。控制 WindowHighlight 自身模糊层的不透明度；HUD Blur 的整体 Opacity 仍会同时生效。
 - Exclude Window Shadow（排除窗口阴影）

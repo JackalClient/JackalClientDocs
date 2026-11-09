@@ -13,6 +13,8 @@
 
 ## 介绍
 Encryptor（加密器）用于帮助你加密指定的文本。
+
+使用 deflate256 前，在开发者模式执行 `/deflate256 setalphabet <name>` 选择字母表。可用名称为 pipasimp、pipatrad、porn、chemical、lisao、japanese、cjk-ext、wind、black、ghost，名称精确匹配。显式指定字母表的后台转换与缓存读写不会改变此选择；每次普通加解密使用开始时取得的稳定快照，避免处理中混入其他字母表。
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Method。
 

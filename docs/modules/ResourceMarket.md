@@ -17,6 +17,8 @@
 ## 介绍
 ResourceMarket 是客户端的资源管理 App。启用模块后会自动切换到 Apps 页的 Resource 选项卡，并从 Gitee 仓库 `thunderbringer/ricochesta` 读取资源列表。
 
+资源卡片的下载图标与选中边框跟随当前 GUI 主题色，Neverlose 下与当前实际主题及其颜色过渡保持同步。没有搜索结果时，在 `No search results` 上方显示与 Neverlose 搜索页相同的 `search-empty.png` 插图；图片来自云仓库 `img/runtime/gui`，复用现有下载与本地缓存流程，图片不可用时仍保留文字提示。
+
 资源列表请求固定读取仓库的 `main` 分支，并使用标准 JSON 请求头。v5 contents API 请求失败或返回空列表时，会回退到 v3 前端 tree API 枚举目录，并根据 blob 的完整路径生成 `raw/main` 下载地址；两种接口都失败时会保留当前已经显示的资源，并在列表下方显示市场服务暂不可用提示。
 
 页面顶部包含 Font、ImageHUD、Sound 和 Article 四个资源类型。标签使用文字加粉色短横线样式，切换时短横线会平滑移动并适配标签文字宽度；客户端使用中文时会显示对应中文名称：
@@ -24,7 +26,7 @@ ResourceMarket 是客户端的资源管理 App。启用模块后会自动切换�
 - Font 对应仓库 `fonts` 目录。每个 TTF 字体可配一张同名 PNG、JPG 或 JPEG 缩略图。点击未下载字体会下载到 `output/Cache/Fonts`。
 - ImageHUD 对应仓库 `img/customhud` 目录。图片会随滚动自动缓存用于预览，支持 JPG 与 GIF 动画，左键只选择资源。
 - PresetHUD 对应仓库 `presethud` 目录。所有具有匹配缩略图的预设都会加载预览；已知超过 10 MiB 的缩略图不显示，无法取得大小时仍会正常加载。
-- Sound 对应仓库 `sounds` 目录。音效不会自动下载，点击格子后才会下载到 `output/Cache/Sounds` 并预览。切换音效时会停止上一段预览，格子内会显示播放进度；超过 10 秒的本地音效使用歌词图标，其余使用音量图标。
+- Sound 对应仓库 `sounds` 目录，支持与 Article 相同的文件夹卡片、目录标题、返回按钮及 `Alt+↑`，可进入 `valorant`、`music` 等任意子目录。点击音频后下载到 `output/Cache/Sounds/<相对路径>` 并预览，跨目录同名文件不会覆盖；切换音频或进入其他目录时停止上一段预览。格子内显示播放进度，超过 10 秒的本地音效使用歌词图标，其余使用音量图标。文件夹不参与音频下载、预览或时长检测。
 - Article 与 TypingPractice 共用仓库 `texts/typing` 目录。文件夹显示文件夹图标，点击可进入下一级；子目录左上角显示等比缩放的返回箭头和当前目录名称，也可按 `Alt+↑` 返回上一级。TXT 文件使用 `file.png` 图标，点击后下载到 `output/Cache/Articles/<相对路径>`，再次点击会打开本地文件；右键可将在线文章设为 TypingPractice 当前文章或强制重新下载。
 - Shader 对应仓库 `shaders` 目录，读取 `.fs` 文件及同名 PNG、JPG 或 JPEG 缩略图。着色器下载到 `output/Cache/Shaders`；已下载项右键时会预加载检查，成功后可直接设为 Background 在线滤镜，无效时可重新检查，也可定位、在 FileManager 中显示或删除。菜单关闭后，未设为背景的预加载着色器会自动释放。
 
@@ -37,6 +39,14 @@ GUI 的 Font 下拉框在展开时自动枚举 `assets` 与 `output/Cache/Fonts`
 开启 Auto Translate 后，除 Font 外的资源名称会根据客户端语言自动翻译：英文客户端为中文名称追加橘色英文译名，中文客户端为英文名称追加橘色中文译名；译名使用括号显示并在当前客户端会话中缓存。
 
 ## 客户端启动元数据
+
+### 标签图标
+
+字体、HUD 图片、HUD 预设、声音、文章、着色器标签与 Neverlose Standard 设置页共用图标标签栏：文字右对齐，左侧显示较大的主题色图标，图文整体下方以主题色短横线标识当前标签。图标顶部不透明度由未选中的 30% 平滑变化至选中的 60%，并向下羽化渐隐。
+
+主题颜色过暗时，图标颜色会平滑提亮至至少可辨识的灰色，保持原有透明度渐变与羽化。选中短横线加长至约图文整体宽度的 75%，并限制在单个标签内。
+
+图标维护于 Ricochesta `data/NeverloseTabIcons.json`：`Settings` 下使用 `Config`、`GUI`、`HUD`、`Sound`；`ResourceMarket` 下使用 `Font`、`ImageHUD`、`PresetHUD`、`Sound`、`Article`、`Shader`。值仅填写同仓库 `img/runtime/gui` 内的图片文件名，初始全部为 `crystal.png`；空字符串或缺少键时不绘制对应图标。JSON 在启动应用代理后刷新，失败继续使用旧缓存，不阻止启动。修改本地文件后仍需发布云控仓库，客户端下次正常启动才会下载。
 
 客户端启动时也复用资源市场的 Gitee 下载接口，从 `thunderbringer/ricochesta` 的 `main` 分支读取 `data` 目录中的四个 JSON 文件；此流程独立于 ResourceMarket 模块开关，不需要先打开资源市场：
 
