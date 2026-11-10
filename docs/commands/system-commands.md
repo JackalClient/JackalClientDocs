@@ -2,7 +2,41 @@
 
 > 本页由 `test/COMMANDS.txt` 自动拆分生成。
 
-共 334 组命令。
+共 335 组命令。
+
+## 扩展管理（`/extension`）
+
+```text
+/extension
+/extension list [ps=20] [pn=1]
+/extension installed [ps=20] [pn=1]
+/extension enabled [ps=20] [pn=1]
+/extension install <name...>
+/extension uninstall <name...>
+/extension update <name...>
+/extension search <keyword...>
+/extension enable <name...>
+/extension disable <name...>
+/extension info <name...>
+/extension disableall
+/extension enableall
+```
+
+`list` 分页列出已知市场与本地扩展，`installed`、`enabled` 分别筛选已安装、保存状态为启用的扩展。有开关的扩展在 Installed / Enabled 页及对应命令中优先显示，同组内本地扩展优先。`ps` 每页 1～1000 项，默认 20；`pn` 从 1 开始，默认 1。支持 `/extension list 20 2` 和 `/extension list ps=20 pn=2`。
+
+`name` 使用扩展 ID 或名称，可包含空格。优先精确匹配 ID、名称，再查找唯一的部分匹配；匹配多项时列出候选 ID。`search` 在 ID、名称、作者、双语描述与标签中搜索，`info` 显示版本、作者、依赖、开关、待重启状态和错误信息。
+
+安装与更新在后台执行，依赖随安装处理，结果通过客户端通知显示；`update` 直接检查远端版本。本地导入的扩展通过重新导入更新。启用、禁用、删除和更新在重启客户端后生效；删除扩展保留模块配置。扩展开关与模块开关分别管理。
+
+`disableall`、`enableall` 批量处理已安装且有开关的扩展，输出修改、无需修改和失败数量。首次使用市场列表或搜索时，命令会异步读取目录；提示加载后稍后重复命令，已安装与已启用列表支持离线查询。
+
+```text
+/extension installed
+/extension search Lua
+/extension info Lua Starter
+/extension install example-lua
+/extension disable example-lua
+```
 
 ## 安装原生通知后端（`/toastesp install`）
 

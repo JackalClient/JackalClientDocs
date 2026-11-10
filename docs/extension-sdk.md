@@ -16,11 +16,34 @@ outline: [2, 4]
 
 扩展可以只包含客户端必要的组件，也可以新增模块或其他数据。
 
-对于注册自定义模块的扩展，首次安装后，新增模块立即出现在对应分类中，手动开启即可使用。本地导入的扩展在 All、Installed 列表置顶，并带有 Local 标识。扩展更新、禁用和删除在重启客户端后生效。
+对于注册自定义模块的扩展，首次安装后，新增模块立即出现在对应分类中，手动开启即可使用。Installed / Enabled 页优先显示有开关的扩展，同组内本地扩展优先；All 页保持本地扩展优先。本地导入的扩展带有 Local 标识。扩展更新、禁用和删除在重启客户端后生效。
 
 扩展模块的设置保存在当前配置档案。删除或禁用扩展后，这些设置继续保留，重新安装同名模块即可恢复；运行中重装的模块初始为关闭状态。
 
 想先体验现成示例，可以安装 `example-module`，在 「其他 (Misc)」 分类开启 [示例扩展 ExampleExtension](/modules/ExampleExtension)。它能观察 时钟 (Clock) 模块的开关与配置变化，并在目标启用、停用时执行指定的客户端命令。
+
+### 1.1. 命令行管理
+
+使用 `/extension` 查看用法，也可在命令行管理扩展：
+
+```text
+/extension list [ps=20] [pn=1]
+/extension installed [ps=20] [pn=1]
+/extension enabled [ps=20] [pn=1]
+/extension search <keyword...>
+/extension info <name...>
+/extension install <name...>
+/extension uninstall <name...>
+/extension update <name...>
+/extension enable <name...>
+/extension disable <name...>
+/extension disableall
+/extension enableall
+```
+
+分页参数可以写成 `20 2` 或 `ps=20 pn=2`，每页 1～1000 项，页码从 1 开始。名称可以包含空格，支持准确 ID、名称及唯一部分匹配；有多个匹配项时，按提示使用准确 ID。搜索覆盖名称、ID、作者、双语描述和标签。
+
+安装与更新进入后台队列，结果通过通知显示；首次安装后即可使用，更新、删除及扩展开关在重启后应用。批量启停只处理有开关的已安装扩展，模块开关另行管理。首次读取市场列表或搜索时会提示后台加载，稍后重复命令即可查看完整结果；已安装与已启用列表支持离线查询。详细说明见[扩展管理命令](/commands/system-commands)。
 
 ## 2. Lua 与批处理扩展
 
@@ -179,7 +202,7 @@ Lua 或批处理扩展首次导入后，模块立即加入分类。编辑脚本�
 
 停用模块会取消旧回调和待执行请求，再执行 disable。已经开始的普通命令按其自身规则结束。每个脚本最多 2 MiB，每个 Lua 扩展最多使用 16 MiB 内存；长计算可通过 `jackal.sleep(0)` 分块。
 
-独立下载示例时，按本页清单准备运行文件，给 `files` 中每个条目填写实际的 `size`、`sha256`。可在扩展目录查询文件字节数与 SHA-256：
+Lua 与批处理示例附带的清单已为全部运行文件登记 `size`、`sha256`。独立下载后可直接导入；修改脚本、词典或图标时，需要更新对应校验值。自建扩展发布时，也需给 `files` 中每个条目填写实际的大小与 SHA-256。可在扩展目录查询：
 
 ```powershell
 (Get-Item -LiteralPath ./main.lua).Length
