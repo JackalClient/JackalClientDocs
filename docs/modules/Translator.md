@@ -17,6 +17,8 @@ Translator（翻译器）为翻译命令和其他调用统一翻译入口的功�
 适合在日常管理与自动化场景中按需启用。
 初次使用可优先调整：Mode、DeepL Use Custom ApiKey、Niutrans Use EnvVar ApiKey: NIUTRANS_API_KEY。
 
+`/translateoffline` 的中文简繁及地区字形转换使用独立的 OpenCC 扩展，首次实际转换自动下载，安装后可离线运行。下载期间保留原文，收到安装通知后重新执行；该命令与本模块选择的在线服务分别使用。
+
 ## 配置项
 - Module Status Auto Switch（模块状态自动切换）
  类型：布尔；默认：true

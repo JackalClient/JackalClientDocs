@@ -16,11 +16,58 @@ outline: [2, 4]
 
 扩展可以只包含客户端必要的组件，也可以新增模块或其他数据。
 
+内置模块缺少所需扩展时，可直接悬停下载按钮查看扩展名称并点击安装。Neverlose 的提示支持淡入淡出，显示在模块列表和设置面板上方，拖动窗口或调整左右栏宽度时跟随按钮移动。
+
 对于注册自定义模块的扩展，首次安装后，新增模块立即出现在对应分类中，手动开启即可使用。Installed / Enabled 页优先显示有开关的扩展，同组内本地扩展优先；All 页保持本地扩展优先。本地导入的扩展带有 Local 标识。扩展更新、禁用和删除在重启客户端后生效。
+
+扩展安装或更新下载期间，卡片底部会显示从左向右延伸的主题色进度线，并用缓动追赶实际下载进度；完成后短暂停留并淡出。
 
 扩展模块的设置保存在当前配置档案。删除或禁用扩展后，这些设置继续保留，重新安装同名模块即可恢复；运行中重装的模块初始为关闭状态。
 
 想先体验现成示例，可以安装 `example-module`，在 「其他 (Misc)」 分类开启 [示例扩展 ExampleExtension](/modules/ExampleExtension)。它能观察 时钟 (Clock) 模块的开关与配置变化，并在目标启用、停用时执行指定的客户端命令。
+
+### 作者、仓库和安装目录
+
+扩展卡片支持多个作者，每个名称均可单独点击；悬停名称时显示蓝色下划线。作者主页在进入 Extensions 时异步刷新，下载失败时继续使用已有链接。认证标识按作者分别显示，主页链接与认证名单独立维护。
+
+鼠标移入卡片后，右侧按钮由左至右为 **升级 / 打开文件夹 / GitHub / 删除**，只显示当前可用操作。文件夹按钮打开已安装扩展的实际目录（包括本地导入扩展）；GitHub 按钮异步打开清单指定的项目仓库。
+
+作者在 `extension.json` 中填写：
+
+```json
+{
+  "publishers": ["First Author", "Second Author"],
+  "github": "https://github.com/owner/repository"
+}
+```
+
+`publishers` 按顺序列出 1–16 个互不重复的名称，每项最多 256 UTF-8 字节，不含控制字符或纯空格。单作者仍兼容 `publisher` 字符串，两者并存时使用 `publishers`。`github` 为可选的 HTTPS GitHub 仓库地址，可带末尾斜杠；省略或留空则隐藏按钮，作者主页放在下面的链接表中。
+
+维护者在云控仓库 `data/ExtensionPublisherLinks.json` 按名称（区分大小写）配置主页：
+
+```json
+{
+  "schemaVersion": 1,
+  "publishers": {
+    "First Author": "https://github.com/first",
+    "Second Author": "https://example.com/author"
+  }
+}
+```
+
+值使用 HTTP/HTTPS 网页地址。每次进入扩展页请求完整列表，全部合法后替换并缓存，空对象清空链接；认证仍单独维护 `data/ExtensionTrustedPublishers.json`。暂未确认主页的 KALI_MC 使用带名称的 GitHub 用户搜索页，确认后可直接替换链接。GitHub 图标维护于云控 `img/runtime/gui/github.png`，文件夹图标使用客户端 `assets/folder.png`。
+
+### 按需下载的语言组件
+
+OpenCC（`opencc`）与 CppJieba（`cppjieba`）是内置扩展。首次实际使用中文简繁/地区转换或中文分词时自动下载；普通启动不预下载。安装后下一次调用即可使用，之后可离线处理。下载期间转换保留原文，分词暂用双字切分；手动命令可在安装通知后重新执行，歌词会在后续处理时使用已安装组件。
+
+CppJieba 的分词实现和词典在独立 DLL 中运行。扩展作者使用客户端现有转换、分词入口即可触发下载；发布这些组件时，按架构登记 DLL、依赖运行库及配套数据，并为每个文件提供真实的 `size` 和 `sha256`。
+
+### 旧组件清理
+
+第一次进入 Extensions 时检查 Release 等旧分发位置；之后仅在再次进入且距上次检查至少一小时后检查。发现遗留组件时，弹窗显示总大小，每行列出一个组件名称，可选择 **清理 / 取消 / 不再提示**。清理完成后显示通知；不再提示会持续保存。
+
+客户端启动时还会按云端 `data/OutdatedComponents.json` 自动清理完全弃用的文件及目录，删除目录时包含其内容，成功删除的项目记录在客户端日志中。自动清理与上述确认提示分别管理。维护者在 `automatic` 中按 `Release`、`assets` 和 `files`、`directories` 列出名称；需用户确认的组件放在 `extensions`，附 `id`、`name` 与 `targets`。仅填写指定目录的直接子项名称，发布前确认其中没有用户数据；完整格式见客户端仓库 `docs/module-metadata.zh-CN.md`。
 
 ### 1.1. 命令行管理
 
@@ -211,14 +258,23 @@ Lua 与批处理示例附带的清单已为全部运行文件登记 `size`、`sh
 
 为每个登记文件替换文件名并填写结果。发布包根目录放 `extension.json` 及其登记的所有文件；本地开发时可省略这两个校验字段，由导入器计算。修改带校验值的文件后，需要同步更新校验值。
 
+新版客户端也允许下载缺少 `size`、`sha256` 的扩展，提供的字段仍须与文件匹配。没有 SHA-256 就无法验证下载内容是否与作者原始文件一致，只有大小也不能验证内容完整；客户端下载后补齐的本地计算值仅用于后续检查。缺省时直接省略键，不要填写 `null`、零或空字符串；哈希字段名为 `sha256`，不是 `hash`。旧客户端仍依赖完整字段，因此正式发布包继续提供两项校验信息。
+
+单文件受到源站大小限制时，可在清单顶层使用 `splitFiles`。逻辑文件仍在 `files` 中登记完整 `size` 与 `sha256`，`splitFiles` 关联其键并列出最大 9,900,000 字节的 `.001`、`.002`、`.003` 分片，每片也要提供大小和 SHA-256。客户端逐片校验后按顺序拼装，再校验完整文件；安装目录只保留最终文件。完整源码仓库可运行 `py -3 scripts/extension-package.py split --source <仓库> --id <id>` 自动拆分已登记的大文件并更新清单。
+
+检查 `files` 中的每一项，包括 SYS、DLL、另一种架构的文件、许可证、词典、图标和压缩包，不能只填写主文件或图标的校验值。
+
 如果使用完整客户端源码仓库，可自动打包：
 
 ```powershell
 py -3 scripts/extension-package.py publish --id example-lua --destination temp/script-preview
 py -3 scripts/extension-package.py publish --id example-batch --destination temp/script-preview
+py -3 scripts/extension-package.py validate --source temp/script-preview --require-integrity
 ```
 
 工具生成带实际大小和 SHA-256 的清单，输出目录可用于本地导入或扩展市场发布。扩展自己的配置词条可按第 5 节加入 Dictionary 文件。
+
+普通 `validate` 允许开发清单缺少校验字段；发布前使用 `validate --require-integrity`，检查所有文件是否存在、两项字段是否完整及是否与实际文件一致。同步发布目录后对目标目录再运行一次严格校验，确保上传的是校验通过的文件和清单。修改资源后重新打包，并保持 Git 不转换资源换行，避免许可证、脚本的字节内容发生变化。
 
 ## 3. C++ 原生扩展
 
@@ -334,6 +390,85 @@ extern "C" int __cdecl ExampleUpdate(const char*) {
 示例的 `example.def` 已登记这些导出名。清单 `modules[].behaviors` 把 enable、disable、isEnabled、update 分别关联到这些函数，`pollIntervalMs` 设置轮询间隔，范围为 100～60000 毫秒。希望快捷键更灵敏时，可将其设为 100。
 
 创建自己的扩展时，为清单的 `id`、模块 `name` 和显示名称使用自己的命名，并同步修改构建产物名。模块的 `defaults` 定义配置项，`displayName`、`description`、`optionDescriptions` 提供中英文显示内容。
+
+### 3.3. 注册命令与处理回调
+
+原生扩展可以在 `extension.json` 顶层添加命令。主命令和子命令分别写完整路径，`/example echo` 会作为 `/example` 的子命令参与匹配、高亮、帮助和补全：
+
+```json
+{
+  "commands": [
+    {
+      "path": "/example",
+      "aliases": ["/ex"],
+      "handler": "ExampleCommand",
+      "help": {
+        "summary": {"en": "Example command.", "zh": "示例命令。"},
+        "usage": ["/example echo <text>"]
+      }
+    },
+    {
+      "path": "/example echo",
+      "aliases": ["/ex echo"],
+      "handler": "ExampleCommand",
+      "arguments": [{"name": "text", "type": "string", "required": true}]
+    }
+  ]
+}
+```
+
+`handler` 是对外导出名。所有命令和钩子使用同一回调原型：
+
+```cpp
+extern "C" int __cdecl ExampleCommand(
+    const char* requestUtf8, char* responseUtf8,
+    uint32_t capacity, uint32_t* required) {
+    try {
+        const auto request = nlohmann::json::parse(requestUtf8);
+        const auto text = request.at("arguments").at("text").get<std::string>();
+        return jackal::WriteResponse(
+            jackal::CommandResult(true, text, "success"), responseUtf8, capacity, required);
+    } catch (const std::exception& error) {
+        return jackal::WriteResponse(
+            {{"ok", false}, {"error", error.what()}}, responseUtf8, capacity, required);
+    }
+}
+```
+
+参数按清单顺序解析，支持 `string`、`integer`、`number`、`boolean`、`enum`、`enum-list`、`json`、`path`、`module` 和 `command`。`enum` / `enum-list` 使用 `choices`，`module` 在回调前按当前模块列表校验。最后一项可以设置 `multiple:true` 收集剩余参数；可选参数使用同类型 `default`。包含空格的单个参数可以使用双引号或单引号。
+
+客户端发送的请求包含原始 `command`、规范化 `path`、命中的 `alias`、类型化 `arguments`、`positional` 和 `phase`。普通命令响应使用 `jackal::CommandResult()`；失败时返回 `{"ok":false,"error":"..."}`。回调请求上限 64 KiB，响应上限 1 MiB，容量不足时返回 `JC_EXTENSION_BUFFER_TOO_SMALL` 并填写 `required`。
+
+### 3.4. 追加帮助、补全和原命令行为
+
+`commandHelp` 向现有主命令或子命令追加说明，`commandCompletions` 追加 Tab 候选。静态候选使用 `values`；参数类型或规则中的 `type:path/module/command/hwnd` 会复用客户端补全来源：
+
+```json
+{
+  "commandHelp": [
+    {"command": "/version", "text": {"en": "Example note.", "zh": "示例补充。"}}
+  ],
+  "commandCompletions": [
+    {"command": "/example echo", "argument": 0, "values": ["hello", "world"]},
+    {"command": "/about", "argument": 0, "values": ["version", "license"]}
+  ]
+}
+```
+
+`commandHooks` 用于给已有命令添加行为。`before` 在原命令执行前运行，`after` 接收原结果。父路径匹配其子命令，`priority` 越小越先执行：
+
+```json
+{
+  "commandHooks": [
+    {"command": "/version", "phase": "before", "handler": "ExampleCommandHook", "priority": 0},
+    {"command": "/version", "phase": "after", "handler": "ExampleCommandHook", "priority": 10}
+  ]
+}
+```
+
+钩子返回 `jackal::HookContinue()` 继续；before 阶段可返回 `HookReplace("/other command")` 修改本次调用；before 或 after 可返回 `HookOverride(result, message, level)` 接管或改写最终布尔结果。直接返回 `{"action":"deny","result":false}` 可拒绝原命令。命令回调与钩子在客户端命令执行线程同步运行，应快速返回；网络、文件扫描等耗时操作通过 `host.http()` 或后台任务完成。
+
+命令名与内置命令冲突时不会覆写内置命令，需要改变行为时使用钩子。命令贡献属于原生 `schemaVersion:1`；首次安装并热激活后，客户端会在下一次输入、补全或帮助查询时刷新扩展命令表，无需重启。扩展更新、禁用和删除仍在重启后应用。可编译的完整示例见 `extensions/example-module/`：`/example types` 覆盖全部参数类型，`/version` 演示前后钩子、替换与覆写。
 
 ## 4. 客户端接口
 
@@ -486,7 +621,24 @@ Show Status;显示状态
 
 词典随扩展一起安装。英文键区分大小写，每行用一个分号分隔两侧文本，同一扩展中的键保持唯一。公共词条优先；扩展之间的同名词条按扩展 ID 排序采用第一项。
 
-## 6. 原始 JSON 接口与能力检查
+## 6. 发布运行包与安装后设置
+
+文件很多的运行环境可以打包成一个 ZIP，注册为 `archive` 并用 `unpack` 指定解压目录。安装和本地导入会在校验压缩包哈希后自动解压，不需要逐个登记文件：
+
+```json
+{
+  "files": {"bundle": {"path": "Runtime.zip", "kind": "archive", "architecture": "any"}},
+  "unpack": [{"file": "bundle", "path": "runtime"}],
+  "setup": {
+    "environment": {"RUNTIME_PREFIX": "runtime"},
+    "config": [{"module": "Example OCR", "key": "Executable Path", "path": "runtime/tool.exe"}]
+  }
+}
+```
+
+`unpack` 最多 8 项，目标目录必须在扩展目录内且不能与登记文件重叠；压缩包沿用本地导入限制（最多 1024 项、单文件 128 MiB、合计 512 MiB，不支持加密、多卷和 ZIP64）。`setup.environment` 安装时设置当前进程环境变量并写入当前用户环境，`setup.config` 只在配置为空时填入扩展内绝对路径，不覆盖用户已有路径。官方 `tesseract-ocr` 扩展即用此方式发布整个 Tesseract 运行目录；用户也可以不安装它，改为在 TesseractOCR 模块中填写本机路径。
+
+## 7. 原始 JSON 接口与能力检查
 
 C++ 便捷方法封装了 `host.get(request)` 和 `host.post(request)`。例如：
 

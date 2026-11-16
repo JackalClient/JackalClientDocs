@@ -24,7 +24,21 @@ AutoL（自动嘲讽）用于敌人死亡时自动发送嘲讽信息。
 
 目标玩家的日志包含词、玩家名包含词和完整名称排除词共用 MinecraftUtils 的 `MinecraftPlayerFilters.json` 云控，在 MinecraftUtils 开启时随客户端启动或重新开启模块异步刷新。更新失败继续使用有效缓存或规则，尚无有效数据时使用旧内置列表；模块中的自定义玩家黑名单仍独立生效。
 
+`Player Whitelist` 默认为空，留空沿用常规过滤；填写后仅对列表中指定名称触发，名称完整匹配且不区分大小写，使用去除装饰后的玩家名。匹配白名单时跳过内置玩家名过滤（包括上述云控规则），但 `Player Blacklist` 和 `Player Blacklist Keywords` 仍优先生效。队伍事件按完整队伍名匹配这些名单；`Cancel If Target Name Is Filtered` 仍独立控制目标名称屏蔽词检查。
+
 ## 配置项
+
+- Cancel When Total Kills Less Than（总击杀数低于此值时取消）
+ 类型：整数；默认：1
+ 说明：在 `Detect Kills = Killed by me` 且开启 `Count Player Kills` 时，总击杀数小于此值则取消生成，等于门槛时可生成。遵循 `Statistics Per Player` 与 `Total Kills Scope` 的统计范围，与是否显示击杀前后缀无关；设为 0 关闭此门槛。
+- Cancel When Kills By Me Less Than（被我击杀数低于此值时取消）
+ 类型：整数；默认：1
+ 说明：同样在被我击杀模式并开启玩家击杀统计时生效，该目标被本人击杀次数小于此值则取消生成。遵循 `Statistics Per Player`；设为 0 关闭此门槛。
+- Player Whitelist（玩家白名单）
+ 类型：字符串列表；默认：空
+ 说明：只允许列表中指定的名称触发，黑名单优先，白名单优先于内置玩家名过滤；留空不限制目标。
+
+两个击杀门槛均包含本次击杀，任一未达标就取消生成；取消仍保留本次击杀统计，不占用发言冷却。例如目标门槛设为 3，前两次取消，第三次起可生成。发言、床破坏和队伍淘汰等非本人击杀事件不受这两个门槛限制。
 
 击杀记录长期保存在 `output/Cache/autol_kill_counts.json`，自动缓存清理会保留此文件。备份时请将它复制到客户端目录以外；恢复时先正常退出客户端，再放回原路径。`Backup Records Cache` 备份的是配置目录中的 `Records.json`，击杀统计需要单独备份。
 

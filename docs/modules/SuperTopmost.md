@@ -27,7 +27,7 @@ SuperTopmost（超级置顶）
 - 20. 【PRO】添加模块：SuperTopmost，动态设置客户端窗口为 `UIAccess`
 
 ## 备注
-依赖 `WindowTopMost.dll` `IAMKeyHacker.dll`
+依赖 `jd-window-topmost` 扩展（包含 `WindowTopMost.dll` 与 `IAMKeyHacker.dll`）。扩展缺失时模块会显示下载按钮，安装并启用后即可使用。
 
 ## 相关命令
 - /bands

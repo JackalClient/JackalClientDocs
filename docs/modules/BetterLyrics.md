@@ -26,6 +26,14 @@ Desktop Lyrics 显示组件的详细设置已移至独立的 [Desktop Lyrics（�
 
 Bili Video Helper 的 Island 字幕显示期间，Better Lyrics 仍可输出其他组件，但不会覆盖岛内字幕；Driver 对灵动岛的同一句恢复不会重复添加桌面歌词或重置滚动动画。视频助手提供的歌词也支持 Desktop Lyrics 的前后句时间轴显示。视频助手直接选择 Desktop Lyrics 字幕时不依赖本模块，视频来源结束后恢复歌曲桌面歌词。
 
+## Particle Lyrics（专业版）
+
+Display Components 新增 **Particle Lyrics (PRO)**，选择后自动开启位于 DesktopLyrics 之后的 [ParticleLyrics（粒子歌词）](./ParticleLyrics.md)。也可直接启用该模块，自动勾选组件并保留其他展示方式；Components Translation 也可单独选择此组件，按 Translation Language 与 Components Translation Source 展示译文。支持 HUD Editor 拖动中心、换行对齐、整句及按词或逐字旋转，提供重叠淡入、上下交错、阻尼闪烁和整句锚点错时放大。各字符同步入场与汇聚，可跟随歌词时间轴并微调偏移，保留各自设定的入场时长；连续短句可短暂同屏并各自完成退场，旧句不会立即打断新句。短句可自动加快粒子转场，同屏歌词按字符共享粒子预算；标点与括号内容过滤、粒子闪烁、按词或逐字晃动、鼠标避让、菜单隐藏及暂停动作均在 ParticleLyrics 调节。
+
+## 中文分词组件
+
+使用 Jieba 分词模式时，首次实际分词会自动下载内置 CppJieba 扩展。下载期间暂用双字切分，安装后后续处理自动使用扩展词典；临时切分不会写入歌词分词缓存。已安装后可离线分词。
+
 ## 配置项
 - Async（异步）
  类型：布尔；默认：true

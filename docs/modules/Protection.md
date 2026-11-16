@@ -1,40 +1,36 @@
 # Protection
 自保护
 分类：Combat
-描述：为客户端启用进程保护，可以阻止一切用户层的终止进程函数。（需要 RTCore64 驱动）
+描述：使用 KSwordARK 驱动为客户端启用 PPL/PP 进程保护。
 
 ## 需求
-- 可用状态：已废弃。Sirius 驱动支持已移除，本模块不再可用。下文仅保留历史说明。
-- 安全级别：常规模块
-- 权限需求：无
-- 驱动依赖：是
-- 联网需求：否
-- 开发状态：已废弃
-- 版本属性：废弃
+- 可用状态：可用（需要 KSwordARK Driver 扩展）
+- 安全级别：中高风险
+- 需要管理员权限：是
+- 驱动依赖：是（KSwordARK）
+- 是否需要联网：否
+- 开发状态：稳定/常规
+- 版本属性：普通可用
 
 ## 介绍
-Protection（自保护）建议先按默认配置运行一段时间，确认对目标窗口/系统行为的影响后，再从关键开关项开始逐步微调。
-## 配置项
-无（该模块在 default_settings.h 中未定义独立配置项）
+Protection（自保护）使用 KSwordARK 的 `SET_PPL_LEVEL` 为客户端进程设置 PPL/PP 保护，并可通过驱动清除自身保护。开启后，常见用户态结束进程、写内存、远程建线程等操作会受到限制；关闭模块时会把保护字节清回 0。
 
-## 历史更新
-无（HISTORY 中暂无明确记录）
+## 配置项
+- Block Child Processes（阻止子进程创建）
+ 类型：布尔；默认：false
+ 说明：开启后使用完整 PP 保护，保护更强但可能阻止客户端创建子进程；默认使用 PPL-Light，兼容性更好。
 
 ## 备注
-该模块可能受系统版本、权限级别、目标进程状态或安全软件策略影响；若功能未生效，优先检查管理员权限、驱动依赖、联网状态与系统兼容性。
+- 需要管理员权限和 KSwordARK 驱动。驱动加载失败时模块会自动回滚开关。
+- 对系统关键进程或安全软件设置保护可能触发蓝屏、系统不稳定或安全软件拦截，请先在小范围验证。
+- `/ppl set <target> none` 可手动清除目标保护。
 
 ## 相关命令
-无
+- `/ppl set <hprocess/pid/procname> <level>`
 
 ## 相关模块
-- [AntiCapture (反捕获)](./AntiCapture.md)
-- [AntiClose (反关闭)](./AntiClose.md)
-- [AntiDebug (反调试)](./AntiDebug.md)
-- [AntiIntercept (反拦截)](./AntiIntercept.md)
-- [AntiSpy (反间谍)](./AntiSpy.md)
-- [AntiTaskkill (反进程杀手)](./AntiTaskkill.md)
-- [AntiMouseHook (反鼠标钩子)](./AntiMouseHook.md)
-- [AntiKeyHook (反键盘钩子)](./AntiKeyHook.md)
+- [PPLButcher (解除进程保护)](./PPLButcher.md)
+- [ForceTerminator (暴力送终)](./ForceTerminator.md)
 
 ## 相关资料
 无

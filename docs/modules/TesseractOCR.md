@@ -14,6 +14,7 @@ TesseractOCR
 ## 介绍
 TesseractOCR（TesseractOCR）用于Tesseract 文字识别设置。
 初次使用可优先调整：Executable Path、Language。
+可直接安装免费的 Tesseract OCR 扩展，安装后会自动解压运行环境、设置 `TESSERACT_PREFIX` 与 `TESSDATA_PREFIX`，并把 `tesseract.exe` 路径填入本模块；也可以继续使用本机已安装的 Tesseract，自行填写可执行文件路径。扩展缺失时模块会显示下载按钮，但填写有效自定义路径后同样可用。
 
 ## 配置项
 > 配置界面说明（v1.1.7）：Language 提供常见 Tesseract 语言候选，并允许添加自定义语言代码。

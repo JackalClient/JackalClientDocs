@@ -33,7 +33,7 @@ BandSetter（层级设置）用于修改窗口 Z-Order Band。该操作影响显
 - 21. 【PRO】添加模块：`BandSetter`，动态设置窗口Z序段。
 
 ## 备注
-依赖 `WindowTopMost.dll` `IAMKeyHacker.dll`
+依赖 `jd-window-topmost` 扩展（包含 `WindowTopMost.dll` 与 `IAMKeyHacker.dll`）。扩展缺失时模块会显示下载按钮，安装并启用后即可使用。
 
 ## 相关命令
 - /bands

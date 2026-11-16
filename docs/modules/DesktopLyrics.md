@@ -39,7 +39,7 @@ Opacity 分组新增 `Give Way to Mouse`，默认开启；`Give Way to Mouse Mod
 
 - `Advanced Highlight (PRO)` 支持多选 Keywords、Chinese Word、CJK Sentence、Japanese Hiragana、Japanese Katakana、Punctuation、Parentheses、Square Brackets、Quotes。
 - Keywords 复用灵动岛的 `IslandLyricsKeywordColors.txt`，包含相同的大小写、整词匹配和长词优先规则，不要求开启 Island 或岛内关键词开关。
-- Chinese Word 只在本地判断为中文、且不包含假名或韩文的文本中使用 Jieba 分词；不调用在线语言识别。纯汉字的日文无法仅凭字符与中文可靠区分。
+- Chinese Word 只在本地判断为中文、且不包含假名或韩文的文本中使用 Jieba 分词；不调用在线语言识别。首次分词会自动下载 CppJieba 扩展，安装后可离线使用；下载期间暂用双字切分。纯汉字的日文无法仅凭字符与中文可靠区分。
 - CJK Sentence 按空格、制表符、全角空格等 Unicode 空白分段，仅处理包含中日韩或其他无空格书写字符的片段，不给纯英文片段分句着色。平假名、片假名各自按连续字符形成语素。
 - Punctuation 处理国际标点；Parentheses / Square Brackets 将匹配括号及其内部视为整体，至少支持 `()` / `（）`、`[]` / `【】`；Quotes 支持国际单双引号、`「」` 和 `『』`。必须按配置正确配对，忽略转义，`it's`、`don’t` 内部撇号不被误当作引语。
 - `Advanced Highlight Strength (0~1)` 默认 0.5，仅在统一模式不为 Off 时显示并生效；0 不改变原色，1 完全使用目标颜色或透明度。

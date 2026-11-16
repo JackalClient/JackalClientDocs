@@ -30,6 +30,8 @@
 
 `disableall`、`enableall` 批量处理已安装且有开关的扩展，输出修改、无需修改和失败数量。首次使用市场列表或搜索时，命令会异步读取目录；提示加载后稍后重复命令，已安装与已启用列表支持离线查询。
 
+原生扩展可以注册新的主命令和子命令，使用 `/help <command>` 查看类型化参数与用法。扩展也可向现有命令追加静态、路径、模块、命令或窗口补全，并通过 before / after 钩子替换、拒绝或覆写原有命令结果。命令名冲突时内置命令保持优先。
+
 ```text
 /extension installed
 /extension search Lua
@@ -2579,7 +2581,7 @@ Ctrl+R 重置整个模块配置（会二次确认）。
 ```
 
 ::: details 点击查看说明
-【PRO】动态设置窗口的Z序段。hwnd不填，则为客户端主窗口，如果主窗口不存在则为控制台窗口，zorderband不填则为ZBID_UIACCESS（值为2）
+【PRO】动态设置窗口的Z序段。hwnd不填，则为客户端主窗口，如果主窗口不存在则为控制台窗口，zorderband不填则为ZBID_UIACCESS（值为2）。需要 WindowTopMost 扩展，未安装或未启用时返回错误。
 :::
 
 ## 获取一个进程句柄存储到代词 it 中（`/hproc`）
