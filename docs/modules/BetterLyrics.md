@@ -28,6 +28,8 @@ Bili Video Helper 的 Island 字幕显示期间，Better Lyrics 仍可输出其�
 
 ## Particle Lyrics（专业版）
 
+Display Components 的勾选会在重启与重新加载配置后保留。恢复 Karaoke、Desktop Lyrics 或 Particle Lyrics 模块的开关状态时，不会重新勾选已取消的组件；手动启用模块时仍会选择对应组件。
+
 Display Components 新增 **Particle Lyrics (PRO)**，选择后自动开启位于 DesktopLyrics 之后的 [ParticleLyrics（粒子歌词）](./ParticleLyrics.md)。也可直接启用该模块，自动勾选组件并保留其他展示方式；Components Translation 也可单独选择此组件，按 Translation Language 与 Components Translation Source 展示译文。支持 HUD Editor 拖动中心、换行对齐、整句及按词或逐字旋转，提供重叠淡入、上下交错、阻尼闪烁和整句锚点错时放大。各字符同步入场与汇聚，可跟随歌词时间轴并微调偏移，保留各自设定的入场时长；连续短句可短暂同屏并各自完成退场，旧句不会立即打断新句。短句可自动加快粒子转场，同屏歌词按字符共享粒子预算；标点与括号内容过滤、粒子闪烁、按词或逐字晃动、鼠标避让、菜单隐藏及暂停动作均在 ParticleLyrics 调节。
 
 ## 中文分词组件

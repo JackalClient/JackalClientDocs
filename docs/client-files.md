@@ -3,33 +3,38 @@
 注意：
 - 客户端不会在你的计算机的 `AppData` 产生任何数据。如果没给客户端开启默认管理员权限，请不要把客户端放置在 `C:\Program Files` 等高权限文件夹下，否则可能会产生一些权限问题。
 - 旧版本客户端完全不支持`中文路径`。新版本客户端中文路径支持`尚未完全支持`，请尽量不要使用包含中文字符等`非ASCII字符`的路径。注意如果你的`计算机用户名`含有中文字符，你的桌面路径就会包含中文字符的。
-- 客户端崩溃时，考虑发送`crashlog/last_crash.log` `Release/CLIENT.LOG` 以及出现异常前的控制台错误信息等给开发者反馈。
-- 客户端会在注册表这个位置设置基础信息：`HKEY_CURRENT_USER\Software\JackalClient`，你可以使用 `/clientreg` 系列命令进行相关操作。
+- 客户端崩溃时，考虑发送 `crashlog/last_crash.log` `Release/CLIENT.LOG` 以及出现异常前的控制台错误信息等给开发者反馈。
+- 客户端会在注册表这个位置设置基础信息： `HKEY_CURRENT_USER\Software\JackalClient`，你可以使用 `/clientreg` 系列命令进行相关操作。
 - 客户端本体在运行时会检测自身 EXE 名称，如果不为 `JackalClient.exe` ，会自动报错弹窗。如果不是你自己重命名的，就有可能你的计算机中了感染性病毒，请使用杀毒软件进行全盘查杀。
+- 客户端会检测辅助程序 `Release/loader.exe` 是否存在，如果缺失，会弹窗警告。
 
 ## 客户端目录介绍：
 
 ```
 ├───assets                      —— 客户端资源文件
 │   ├───default_settings.free.json —— 免费版默认配置源文件
-│   ├───default_settings.pro.json  —— 专业版默认配置源文件
-│   └───opencc                  —— 有关简繁转换功能的数据文件
+│   └───default_settings.pro.json  —— 专业版默认配置源文件
 ├───backup                      —— 客户端备份文件，通常会做加密处理，涉及到 `AutoRestore` `SelfRestore` `AutoBackup` 等功能
 │   └───dock                    —— 用于临时释放的文件
 ├───config                      —— 客户端配置档案文件，以及其他的重要数据
 │   └───chat_history            —— 存储`AI对话`的聊天记录
-├───crashlog                    —— 存储崩溃日志，如 `last_crash.log`
+├───crashlog                    —— 存储客户端会话标记与崩溃日志，如 `last_crash.log`
 ├───logs                        —— 存储旧日志。最新日志应在 `Release` 文件夹中的 `CLIENT.LOG` 查看。
-├───output                      —— 客户端输出文件。涉及到多个模块。
-│   ├───Cache                   —— 存储缓存文件，如 `LiveStream` `BiliVideoHelper` `NCM_Cache` `SMTC` 等，如果占用过大可以选择删除部分文件
+├───output                      —— 客户端输出文件。涉及到很多模块。
+│   ├───Alarm                   —— 存储闹钟触发脚本（`Alarm` `Triggers` 模块）
+│   ├───Cache                   —— 存储缓存文件，包括多种模块数据，如 `LiveStream` `BiliVideoHelper` `NCM_Cache` `SMTC` 等，如果占用过大可以选择删除部分文件
 │   ├───Cover                   —— 存储封面图像
 │   │   ├───BiliVideoHelper
 │   │   ├───NCM_Cache
 │   │   └───SMTC
+│   ├───Danmaku                 —— 存储视频弹幕文件（`BiliChatter` `BiliVideoHelper` 模块）
+│   ├───Extensions              —— 存储所有下载的扩展文件（请详见「扩展与SDK」页面）
+│   ├───KeyLogger               —— 存储按键记录日志（`KeyLogger` 模块）
 │   ├───Macros                  —— 存储宏文件（`MacroRecorder` `MacroPlayer` 模块）
-│   ├───Registry                —— 存储注册表导出的`.reg`文件（`RegManager`模块）
-│   └───Screenshot              —— 存储截图（`Screenshot`模块）
-├───Release                     —— 客户端几乎所有的组件
+│   ├───Registry                —— 存储注册表导出的`.reg`文件（`RegManager` 模块）
+│   ├───Screenshot              —— 存储保存的截图（`Screenshot`模块）
+│   └───Subtitles               —— 存储导出的字幕（`BetterLyrics` `BiliVideoHelper` 模块）
+├───Release                     —— 客户端内置组件，包括程序本体
 └───THIRD_PARTY_LICENSE         —— 第三方库的开源协议
 ```
 
@@ -39,7 +44,7 @@
 客户端启动器。免费版会检查版本并检查更新。然后启动 `Release/JackalClient.exe` 客户端本体。
 
 ### COMMANDS.txt
-★ 客户端命令行参数和内置命令语法文档。如果删除，命令行的自动补全将无法正常工作。
+★ 客户端命令行参数和内置命令语法文档。如果删除，命令行的自动补全、命令提示、帮助命令将无法正常工作。
 
 ### HISTORY.txt
 ★ 客户端更新历史记录。
@@ -53,20 +58,22 @@
 
 ---
 
+注意：自 `v1.2.1` 版本起，很多内置的数据已被转为云控，存储在 `output/Cache/ModuleMetadata` 下，至少每天刷新一次，部分数据会暂时加密。
+
 ### assets/DICTIONARY.txt
-★ 存储汉化词库。格式为 英文;中文
+【已过时】 存储汉化词库。格式为 英文;中文
 
 ### assets/PROCESS_PROFILE.csv
-一些常见进程的已知数据。
+【已过时】 一些常见进程的已知数据。
 
 ### assets/PASSWORD.txt, PASSWORD_STRONG.txt
-密码词典。用于密码破解等。
+【已过时】 密码词典。用于密码破解等。
 
 ### assets/KEY_CODE.txt
-键盘键码文件，包括每个键的显示名称。
+【已过时】 键盘键码文件，包括每个键的显示名称。
 
 ### assets/EMOJI_ALTS.txt
-表情符号的文字替换形式，某些模块会自动进行替换，防止图形库无法渲染 `Emoji`。
+【已过时】 表情符号的文字替换形式，某些模块会自动进行替换，防止图形库无法渲染 `Emoji`。
 
 **assets** 中的其他文件不再介绍。
 
@@ -81,7 +88,7 @@
 当前客户端版本下的完整默认配置。客户端启动时会从 `assets/default_settings.free.json` 或 `assets/default_settings.pro.json` 读取对应版本，展开配置宏后重新生成此文件。请不要直接修改，因为每次启动客户端都会更新一次。如果你使用该配置并按下保存，会自动创建新的配置文件（例如 `profile-1.json`）。
 
 ### config/Records.json
-客户端的主缓存信息，保存了相当多的内容，如果删除可能有不好的影响。
+客户端的主缓存信息，保存了相当多的内容，如果删除可能有不好的影响。自 `v1.2.2` 版本起，该文件会受到加密保护，将无法被旧版本客户端和不同设备的客户端读取。
 
 ### config/liveStreamGiftTriggers.ini
 `LiveStream` 直播间模块的礼物触发器自定义配置。你如果要修改，一定要先复制一份，否则会在更新客户端时被替换掉。
@@ -120,18 +127,11 @@
 ### Release/JackalClient.exe
 ★ 客户端本体程序。x86 32位可执行程序。
 
-### Release/DefaultSettings.dll
-⚠️ 旧版本遗留文件，当前版本已过时。早期客户端曾通过该 x86 32 位动态链接库读取默认配置；当前客户端不再加载此 DLL，默认配置改由 `assets/default_settings.free.json` 或 `assets/default_settings.pro.json` 提供。
-
 ### Release/loader.exe
 ★ 客户端的辅助程序。x64 64位可执行程序。需要传递相关的命令行参数才能使用。不提供参数以查看帮助信息。
 
 ### Release/minigzip.exe
 客户端用于解压缩的第三方程序。主要为`gzip`算法。
-
-### Release/JDUacBipass.dll
-### Release/JDPcaPayload.dll
-客户端用于绕过`UAC`的动态链接库。为了防止被杀毒软件报毒，已做混淆处理。
 
 ### Release/ConsoleMenuHook64.dll
 ### Release/ConsoleMenuHook32.dll
@@ -141,33 +141,12 @@
 ### Release/JCConhostInjector64.exe
 客户端用于注入控制台窗口的辅助程序。x86 32位和 x64 64位可执行程序。
 
-### Release/Everything32.dll
-### Release/Everything3_x86.dll
-客户端接入 `Everything` 软件的动态链接库。前者用于小于 `1.5` 版本的 `Everything`，后者用于 `1.5` 版本。
-
 ### Release/JDLyrics64.dll
 ### Release/JDLyrics32.dll
-客户端用于注入网易云音乐从而显示歌词的动态链接库。x86 32位和 x64 64位动态链接库。
+客户端用于注入网易云音乐从而显示歌词的动态链接库（ `BetterLyrics` 模块的 `Hook Render` 模式所需组件）。x86 32位和 x64 64位动态链接库。
 
-### Release/NeteaseDriver.dll
-用于`BetterLyrics 更好的歌词`模块的`Driver`驱动模式的动态链接库。
-
-### Release/version.64.dll.bin
-### Release/version.32.dll.bin
-用于64/32位的网易云音乐驱动程序的二进制数据。
-
-### Release/minhook.x32.dll
-### Release/minhook.x64.dll
-客户端用于实现钩子的第三方动态链接库。x86 32位和 x64 64位。
-
-### Release/dodge.exe
-`AntiIntercept 反拦截` 程序。可能具有一定的风险，请谨慎使用。
-
-### Release/IAMKeyHacker.dll
-用于 `explorer` 注入的动态链接库。被 `WindowTopMost.dll` 所利用。
-
-### Release/WindowTopMost.dll
-用于动态设置窗口Z序段的动态链接库。
+### Release/ConhostProtect.dll
+用于 `AntiClose 反关闭` 的控制台防止关闭用的动态链接库。以后将被移除，相关功能转运至上述`ConsoleMenuHook`DLL。
 
 ### Release/libcurl.dll
 ### Release/sqlite3.dll
@@ -176,8 +155,38 @@
 ### Release/zlib1.dll
 其他依赖。
 
+### Release/NeteaseDriver.dll
+用于`BetterLyrics 更好的歌词`模块的`Driver`驱动模式的动态链接库。
+
+**下列组件已过时，不再出现在新版本中。**
+
+### Release/JDUacBipass.dll
+### Release/JDPcaPayload.dll
+⚠️ 旧版本遗留文件，当前版本已过时。客户端用于绕过`UAC`的动态链接库。为了防止被杀毒软件报毒，已做混淆处理。自 `v1.2.2` 版本起，已改为可选扩展组件（ `JDUacBipass` 扩展），不再出现在客户端压缩包内。
+
+### Release/Everything32.dll
+### Release/Everything3_x86.dll
+⚠️ 旧版本遗留文件，当前版本已过时。客户端接入 `Everything` 软件的动态链接库。前者用于小于 `1.5` 版本的 `Everything`，后者用于 `1.5` 版本。自 `v1.2.2` 版本起，已改为可选扩展组件（ `Everything SDK` 扩展），不再出现在客户端压缩包内。
+
+### Release/version.64.dll.bin
+### Release/version.32.dll.bin
+【已过时】用于64/32位的网易云音乐驱动程序的二进制数据。自 `v1.2.2` 版本起，已改为可选扩展组件（ `Netease Version Agent` 扩展），不再出现在客户端压缩包内。
+
+### Release/minhook.x32.dll
+### Release/minhook.x64.dll
+【已过时】客户端用于实现钩子的第三方动态链接库。x86 32位和 x64 64位。自 `v1.2.2` 版本起，已改为可选扩展组件（ `MinHook Runtime` 扩展），不再出现在客户端压缩包内。
+
+### Release/dodge.exe
+【已过时】 由于安全性原因，已被停用。 `AntiIntercept 反拦截` 程序。可能具有一定的风险，请谨慎使用。
+
+### Release/IAMKeyHacker.dll
+【已过时】用于 `explorer` 注入的动态链接库。被 `WindowTopMost.dll` 所利用。自 `v1.2.2` 版本起，已改为可选扩展组件（ `WindowTopMost` 扩展），不再出现在客户端压缩包内。
+
+### Release/WindowTopMost.dll
+【已过时】用于动态设置窗口Z序段的动态链接库。自 `v1.2.2` 版本起，已改为可选扩展组件（ `WindowTopMost` 扩展），不再出现在客户端压缩包内。
+
 ### Release/Kernel1.sys
-旧版客户端所使用的内核驱动程序。将在以后的版本彻底淘汰。
+【已过时】旧版客户端所使用的内核驱动程序。将在以后的版本彻底淘汰。自 `v1.2.2` 版本起，已改为可选扩展组件（ `Kernel1 Driver` 扩展），不再出现在客户端压缩包内。
 
 ### Release/RTCore64.sys
 【已过时】利用内核漏洞进行内存读写的驱动程序，会被杀毒软件报毒，已从新版本客户端移除。新版本客户端已接入 `Sirius.sys` 使用相关功能。
@@ -188,5 +197,5 @@
 ### Release/Sirius.sys
 【已过时】旧版本客户端内核功能的驱动程序。已不再受支持。
 
-### Release/ConhostProtect.dll
-用于`AntiClose 反关闭`的控制台防止关闭用的动态链接库。以后将被移除，相关功能转运至上述`ConsoleMenuHook`DLL。
+### Release/DefaultSettings.dll
+⚠️ 旧版本遗留文件，当前版本已过时。早期客户端曾通过该 x86 32 位动态链接库读取默认配置；当前客户端不再加载此 DLL，默认配置改由 `assets/default_settings.free.json` 或 `assets/default_settings.pro.json` 提供。
